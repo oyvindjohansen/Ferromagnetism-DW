@@ -1,0 +1,64 @@
+\documentclass[5p]{elsarticle}		% 5p gir 2 kolonner pr side. 1p gir 1 kolonne pr side.
+\journal{students}
+\usepackage[T1]{fontenc} 						% Vise norske tegn.
+% \usepackage[latin1]{inputenc}		% Velger tengsettet i dette dokumentet			
+\usepackage[english]{babel}		
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath,amssymb}
+\usepackage{esint}
+\usepackage[output-decimal-marker = {,}]{siunitx}
+\usepackage[font=footnotesize,labelsep=period,labelfont=bf,margin=1cm]{caption}
+
+
+\setcounter{totalnumber}{5}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\floatpagefraction}{0.35}
+\setlength\parindent{0pt}
+
+
+
+\setcounter{totalnumber}{5}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\floatpagefraction}{0.35}
+
+\makeatletter
+\def\ps@pprintTitle{%
+  \let\@oddhead\@empty
+  \let\@evenhead\@empty
+  \let\@oddfoot\@empty
+  \let\@evenfoot\@oddfoot
+}
+\makeatother
+
+\begin{document}
+\begin{frontmatter}
+
+\title{Specialization project in physics}
+\author{\O yvind Johansen}
+\date{\today}
+
+\begin{abstract}
+
+\end{abstract}
+
+\end{frontmatter}
+
+\section{Fundamentals}
+
+\section{Domain walls}
+
+\section{Domain wall dynamics}
+
+\section{Skyrmions}
+
+\bibliography{main}
+\bibliographystyle{unsrt}
+
+
+\end{document}

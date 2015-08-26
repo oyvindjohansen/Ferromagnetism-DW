@@ -1,0 +1,23 @@
+\subsection{Anisotropic energy}
+Magnetic materials may be anisotropic, meaning that certain directions of the magnetization in the material are more energetically favorable than others. This stands in contrast to isotropic materials where the energy is independent of the direction of the magnetization, assuming uniform magnetization. There are several possible causes for anisotropy in a material, the most common one being the crystalline structure in the material. The shape of the magnetic particles may also cause anistropy in the material. In anisotropic magnetic materials one defines different axes; the easy, intermediate and hard axes. If the magnetization is oriented along the easy axis, the anisotropic energy is at its minimum value. Similarly, if the magnetization is oriented along the hard axis the anisotropic energy is at its maximum value. The intermediate axis is the direction along which there is a saddlepoint in the anisotropic energy. In most materials the anisotropic energy is the same for both possible orientations of the magnetization along the axes. When this is the case, the terms in the anisotropic energy can only contain even powers of the components in the magnetization vector.
+
+\subsubsection{Uniaxial anisotropy}
+The simplest form of anisotropy is the case where there is only one axis that the anisotropic energy varies with. This is known as uniaxial anisotropy. This can often be found in crystal structures with a single principal axis, such as the hexagonal and simple tetragonal lattice. If we consider a uniform magnetization $\vec{M} = \left[M_x, M_y, M_z\right]$ and let one of the directions along the axis in the material that the anisotropical energy varies be $\vec{e}$, the anisotrpic energy must be on the form
+
+\begin{align}
+E_A = V \sum_{i=0}^{\infty} K_i (\frac{\vec{M}\cdot\vec{e}}{M_s})^{2i}
+\end{align}
+
+if there is to be no preferential direction with respect to energy along the axis. Here $V$ is the volume, $M_s$ the saturation magnetization and $K_i$ are the anisotropy constants. By only considering the lowest order in the anisotropical energy it becomes
+
+\begin{align}
+E_A = K V (\frac{\vec{M}\cdot\vec{e}}{M_s})^2
+\end{align}
+
+by ignoring the constant energy term as that only leads to a constant shift in the energy. If $K < 0$ the axis that $\vec{e}$ points along is then the easy axis, and if $K > 0$ the axis is the hard axis. Note that if we have a non-uniform magnetization we let
+
+\begin{align*}
+V \rightarrow \int \d V.
+\end{align*}
+
+\subsubsection{Cubic anisotropy}
