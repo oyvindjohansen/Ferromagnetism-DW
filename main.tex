@@ -55,7 +55,9 @@
 
 \section{Energy terms in micromagnetics}
 \subsection{Anisotropic energy}
-Magnetic materials may be anisotropic, meaning that certain directions of the magnetization in the material are more energetically favorable than others. This stands in contrast to isotropic materials where the energy is independent of the direction of the magnetization, assuming uniform magnetization. There are several possible causes for anisotropy in a material, the most common one being the crystalline structure in the material. The shape of the magnetic particles may also cause anistropy in the material. In anisotropic magnetic materials one defines different axes; the easy, intermediate and hard axes. If the magnetization is oriented along the easy axis, the anisotropic energy is at its minimum value. Similarly, if the magnetization is oriented along the hard axis the anisotropic energy is at its maximum value. The intermediate axis is the direction along which there is a saddlepoint in the anisotropic energy. In most materials the anisotropic energy is the same for both possible orientations of the magnetization along the axes. When this is the case, the terms in the anisotropic energy can only contain even powers of the components in the magnetization vector.
+Magnetic materials may be anisotropic, meaning that certain directions of the magnetization in the material are more energetically favorable than others. This stands in contrast to isotropic materials where the energy is independent of the direction of the magnetization, assuming uniform magnetization. There are several possible causes for anisotropy in a material, the most common one being the crystalline structure in the material. One of the most important causes of magnetocrystalline anisotropy is the spin--orbit interaction. This interaction arises from the fact that in the restframe of the electron, the proton is orbiting the electron, thereby creating a varying electric field. Since the electric field is varying, Maxwell's equations say that there will also be a corresponding magnetic field. This magnetic field is proportional to the angular momentum $\vec{L}$ of the electron. The electron also has a magnetic moment $\vec{\mu}$, proportional to its spin $\vec{S}$, that will interact with the magnetic field. The energy is lowest when the magnetic moment and field are aligned, which we will see when discussing the Zeeman energy later in the text. Combining the spin--orbit interaction with the orientation of the atoms in the lattice it is possible that some directions in the material are magnetized easier than others. This is magnetocrystalline anisotropy. The shape of the magnetic particles may also cause anistropy in the material, which will be briefly discussed in the section on the demagnetization energy. 
+
+In anisotropic magnetic materials one defines different axes; the easy, intermediate and hard axes. If the magnetization is oriented along the easy axis, the anisotropic energy is at its minimum value. Similarly, if the magnetization is oriented along the hard axis the anisotropic energy is at its maximum value. The intermediate axis is the direction along which there is a saddlepoint in the anisotropic energy. In most materials the anisotropic energy is the same for both possible orientations of the magnetization along the axes. When this is the case, the terms in the anisotropic energy can only contain even powers of the components in the magnetization vector.
 
 \subsubsection{Uniaxial anisotropy}
 The simplest form of anisotropy is the case where there is only one axis that the anisotropic energy varies with. This is known as uniaxial anisotropy. This can often be found in crystal structures with a single principal axis, such as the hexagonal and simple tetragonal lattices. If we consider a uniform magnetization $\vec{M} = \left[M_x, M_y, M_z\right]$ and let one of the directions along the axis in the material that the anisotropic energy varies be the unit vector $\hat{n}$, the anisotropic energy must be on the form
@@ -136,14 +138,16 @@ Using the constraint in \eqref{eq:cosinesconstraint} one finds $\lambda = 2K_1/3
 
 
 \subsection{Demagnetization energy}
-The magnetic dipoles inside a ferromagnet will generate a magnetic field, known as the demagnetization field. This name stems from the behavior of the field, as it will try to reduce the total magnetic moment in the magnet. The energy in a ferromagnet will depend on the orientation of the magnetic dipoles with respect to the demagnetization field created by the other magnetic dipoles. This demagnetization energy is given by
+The magnetic dipoles inside a ferromagnet will generate a magnetic field, known as the demagnetizing field. This name stems from the behavior of the field, as it will try to reduce the total magnetic moment in the magnet. This is because a high magnetic moment in the magnet will generate a strong external magnetic field, which costs energy. Magnetic materials consist of magnetic dipoles. If the magnetization is uniform in the magnet there will be no poles inside the magnet, as the positive and negative poles cancel each other out. There will, however, be a positive pole at one surface of the magnet and a negative pole at the opposing surface that do not cancel out. This causes a large total magnetic moment in the magnet, as it is proportional to the length between the poles. To minimize the total magnetic moment and thereby the energy, the demagnetizing field will therefore create magnetic domains, where the different domains have uniform magnetization in different directions. There is a limit to how small the domains can be, as the exchange interaction will begin to dominate on short ranges, which we will discuss later. 
+
+The energy in a ferromagnet will depend on the orientation of the magnetic dipoles with respect to the demagnetizing field created by the other magnetic dipoles. This demagnetization energy is given by
 
 \begin{align}
 \label{eq:demagenergy}
 E_D = -\frac{\mu_0}{2}\int \d {^3}r \vec{M}(\vec{r})\cdot\vec{H}_D(\vec{r}),
 \end{align}
 
-with $\vec{H}_D$ being the demagnetization field. To determine the demagnetization energy one needs to find the magnetic field generated by a magnetic dipole $\vec{M}$. The vector potential of a magnetic dipole is known to be
+with $\vec{H}_D$ being the demagnetization field. From this equation it looks like the demagnetizing field will attempt to align the magnetization with itself, which is not the behavior that was discussed earlier. One can not make this conclusion yet, however, as the demagnetizing field is at this point an unknown function of the magnetization $\vec{M}$. To determine the demagnetization energy one needs to find the magnetic field generated by a magnetic dipole $\vec{M}$. The vector potential of a magnetic dipole is known to be
 
 \begin{align}
 \vec{A}(\vec{r}) = \frac{\mu_0}{4\pi}\frac{\vec{M}\times\vec{r}}{r^3}.
@@ -171,13 +175,16 @@ This means that the magnetic field strength of the demagnetization field generat
 \vec{H}_D = \frac{1}{4\pi} \int \d {^3}r' (\frac{3(\vec{M}(\vec{r'}) \cdot (\vec{r}-\vec{r'})) (\vec{r}-\vec{r'})}{|\vec{r}-\vec{r'}|^5}-\frac{\vec{M} (\vec{r'})}{|\vec{r}-\vec{r'}|^3}).
 \end{align}
 
-Inserting this result into \eqref{eq:demagenergy} one finds that the energy is
+From this one can see that the demagnetizing field has a tendency to point in a different direction than the magnetization. At a position that is perpendicular to the magnetization the field is completely anti-aligned with the magnetization. Inserting \eqref{eq:demagfield} into \eqref{eq:demagenergy} one finds that the energy is
 
 \begin{align}
+\label{eq:demagenergy_mag}
 E_D = \frac{\mu_0}{8\pi} \int \d {^3}r \int \d {^3}r' (\frac{\vec{M} (\vec{r}) \cdot \vec{M} (\vec{r'})}{|\vec{r}-\vec{r'}|^3} - \frac{3(\vec{M}(\vec{r}) \cdot (\vec{r}-\vec{r'})) (\vec{M}(\vec{r'}) \cdot(\vec{r}-\vec{r'}))}{|\vec{r}-\vec{r'}|^5}).
 \end{align}
 
-This integrand can be rewritten in a tensor form \cite{kruger2006current}. Using the relation
+The energy is small when the total magnetization in the magnet is small, the demagnetizing field will therefore try to reduce the total magnetic moment in the magnet as discussed earlier. 
+
+This integrand in \eqref{eq:demagenergy_mag} can be rewritten in a tensor form \cite{kruger2006current}. Using the relation
 
 \begin{align}
 \partial_i \frac{1}{|\vec{r}-\vec{r'}|} = -\frac{r_i-r_i'}{|\vec{r}-\vec{r'}|^3}
@@ -203,13 +210,13 @@ E_D &= \frac{\mu_0}{2} \int \d {^3}r \int \d {^3}r' \vec{M}(\vec{r}) N(\vec{r}-\
 \vec{H}_D(\vec{r}) &= - \int \d {^3}r' N(\vec{r}-\vec{r'})\vec{M}(\vec{r'}).
 \end{align}
 
-Something worth noting is that if the demagnetization tensor $N(\vec{r}-\vec{r'})$ is strictly diagonal, the energy can be written as
+Something worth noting is that if the demagnetization tensor $\bar{N}(\vec{r}-\vec{r'})$ is strictly diagonal, the energy can be written as
 
 \begin{align}
 E_D = \mu_0(N_{xx}M_x^2+N_{yy}M_y^2+N_{zz}M_z^2).
 \end{align}
 
-This is the case for ellipsoidal bodies \cite{kruger2006current}. This form of the demagnetization energy is similar to that of the uniaxial anisotropic energy in \eqref{eq:uniaxialanisotropy}.
+This is the case for ellipsoidal bodies \cite{kruger2006current}. This form of the demagnetization energy is similar to that of the uniaxial anisotropic energy in \eqref{eq:uniaxialanisotropy}. This means that ellipsoidal magnetic particles cause shape anisotropy, assuming the magnetic particle is not spherical ($N_{xx} = N_{yy} = N_{zz}$).
 
 \subsection{Zeeman energy}
 The Zeeman energy describes the energy from the interaction between the magnetization of the magnet and an external field $\vec{H}_{Z}$. The Zeeman energy is on the same form as the demagnetization energy in \eqref{eq:demagenergy}, with the internally generated demagnetization field replaced by the external magnetic field:
@@ -280,7 +287,7 @@ This means that the energy in \eqref{eq:exchangeenergylaplace} becomes
 E_E = \int \d {^3}r \frac{A}{M_s^2} (\nabla\cdot\vec{M}(\vec{r}))^2,
 \end{align}
 
-where we have introduced the exchange constant $A$.
+where we have introduced the exchange constant $A$. As one can see, the energy depends on the divergence of the magnetization squared, meaning the variation in the magnetization. Because the exchange constant $A$ is positive in a ferromagnet, the exchange energy is higher the more the magnetization varies. This can also easily be seen from \eqref{eq:heisenberg}, it costs energy when the spins are not aligned when $J>0$, which is the case in a ferromagnet. To minimize the exchange energy the magnetization therefore has to vary slowly. On short ranges this effect is much stronger than the demagnetization and magnetocrystalline anisotropy. This is why neighbouring spins have a tendency to align in a ferromagnet, while on longer ranges when the demagnetization effect becomes stronger than the exchange interaction the spins tend to be anti-aligned.
 
 \section{Landau--Lifshitz--Gilbert equation}
 
