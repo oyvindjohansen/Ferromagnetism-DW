@@ -223,10 +223,10 @@ The Zeeman energy describes the energy from the interaction between the magnetiz
 
 \begin{align}
 \label{eq:zeemanenergy}
-E_Z = -\frac{\mu_0}{2}\int \d {^3}r \vec{M}(\vec{r})\cdot\vec{H}_{Z}(\vec{r}).
+E_Z = -\mu_0\int \d {^3}r \vec{M}(\vec{r})\cdot\vec{H}_{Z}(\vec{r}).
 \end{align}
 
-This energy is at its minimum when the magnetization is aligned with the external field.
+The factor 1/2 in the demagnetization energy is to account for double counting of the dipole interactions, and is therefore not included in the Zeeman energy as the magnetic moments only interact with an external field. The Zeeman energy is at its minimum when the magnetization is aligned with the external field.
 
 \subsection{Exchange energy}
 Spins on a lattice will have an exchange energy with their nearest neighbors, as given by the Heisenberg Hamiltonian
@@ -290,6 +290,81 @@ E_E = \int \d {^3}r \frac{A}{M_s^2} (\nabla\cdot\vec{M}(\vec{r}))^2,
 where we have introduced the exchange constant $A$. As one can see, the energy depends on the divergence of the magnetization squared, meaning the variation in the magnetization. Because the exchange constant $A$ is positive in a ferromagnet, the exchange energy is higher the more the magnetization varies. This can also easily be seen from \eqref{eq:heisenberg}, it costs energy when the spins are not aligned when $J>0$, which is the case in a ferromagnet. To minimize the exchange energy the magnetization therefore has to vary slowly. On short ranges this effect is much stronger than the demagnetization and magnetocrystalline anisotropy. This is why neighbouring spins have a tendency to align in a ferromagnet, while on longer ranges when the demagnetization effect becomes stronger than the exchange interaction the spins tend to be anti-aligned.
 
 \section{Landau--Lifshitz--Gilbert equation}
+The time evolution of the magnetization in a magnet is described by the Landau--Lifshitz--Gilbert (LLG) equation. To get an understanding of the origin of the equation, it is useful to look at the time evolution of spin, as the magnetic moment and therefore the magnetization is proportional to it. 
+The time evolution of an angular momentum $\vec{L}$ can be described by a variation on the classical Newton's second law for rotation:
+
+\begin{align}
+\label{eq:newton2rotation}
+\frac{\textrm{d} \vec{L}}{\textrm{d} t} = \vec{T},
+\end{align}
+
+where $\vec{T}$ is the torque acting on the angular momentum. Spin is often compared to an intrinsic angular momentum of the electron, and will satisfy the same equation, with the exception that the vectors become operators as spin is a quantum mechanical effect. We are interested in looking at the magnetization on a microscopic scale, which would correspond to a semi-classical limit, so the quantum mechanical operators are replaced by their expectation values. 
+
+A magnetic moment $\vec{\mu}$ will precess around an external magnetic field $\vec{H}$. This is known as Larmor precession, and is caused by the torque
+
+\begin{align}
+\label{eq:larmortorque}
+\vec{T} = \vec{\mu} \times \vec{H} = \gamma \vec{S} \times \vec{H},
+\end{align}
+
+where we have introduced the gyromagnetic ratio $\gamma$. The gyromagnetic ratio gives the ratio of the magnitude of the magnetic moment relative to the spin of a particle. For the electron the gyromagnetic ratio is given by
+
+\begin{align}
+\gamma = \frac{g_e\mu_B}{\hbar},
+\end{align}
+
+with the $g$-factor $g_e \approx 2$ and $\mu_B$ being the Bohr magneton
+
+\begin{align}
+\mu_B = \frac{e\hbar}{2m_e}.
+\end{align}
+
+By inserting \eqref{eq:larmortorque} into \eqref{eq:newton2rotation} and replacing the angular momentum with spin, we get
+
+\begin{align}
+\frac{\textrm{d} \vec{S}}{\textrm{d} t} = \gamma \vec{S} \times \vec{H},
+\end{align}
+
+or by replacing the spin with the magnetization using that $\vec{S}$ is proportional to $\vec{M}$:
+
+\begin{align}
+\label{eq:mag_undamped}
+\frac{\textrm{d} \vec{M}}{\textrm{d} t} = \gamma \vec{M} \times \vec{H}.
+\end{align}
+
+If the magnetic moments were free, meaning they did not interact with each other, the field $\vec{H}$ in \eqref{eq:mag_undamped} would just be the magnetic field in the material. The magnetic field is the sum of any external field and the internal demagnetizing field discussed earlier. The magnetic moments are not free, however, as we have effects such as exchange interaction between the magnetic moments and magnetic anisotropy. Landau and Lifshitz introduced an effective field $\vec{H}_{eff}$ that replaced the magnetic field $\vec{H}$ in \eqref{eq:mag_undamped} that would minimize the energy in the system at equilibrium \cite{LandauLifshitz1935}. The terms in the micromagnetic energy discussed earlier were the anisotropic energy, demagnetization energy, the Zeeman energy and the exchange energy. Using the results derived earlier, we can write the total energy in the system as
+
+\begin{align}
+\label{eq:micromagneticenergy}
+E(\vec{M}) = \int \d {^3} r (\epsilon_A(\vec{M}) + \epsilon_D(\vec{M}) + \epsilon_Z(\vec{M}) + \epsilon_E(\vec{M})),
+\end{align}
+
+where the $\epsilon$'s are the energy densities of the different terms. In equilibrium we must require that $\delta E=0$, with $\delta E$ being defined by
+
+\begin{align}
+\label{eq:deltaE}
+\delta E = \int_a^b \frac{\delta E[\vec{M}]}{\delta \vec{M}(\vec{r})}\cdot \delta \vec{M}(\vec{r}) \d {\vec{r}}.
+\end{align}
+
+The functional derivative $\frac{\delta E[\vec{M}]}{\delta \vec{M}(\vec{r})}$ is just the left hand side of the Euler-Lagrange equation, so that
+
+\begin{align}
+\label{eq:functionaldiff}
+\frac{\delta E[\vec{M}]}{\delta \vec{M}(\vec{r})} = \frac{\partial E[\vec{M}]}{\partial \vec{M}(\vec{r})} - \frac{\partial}{\partial x} \frac{\partial E[\vec{M}]}{\partial (\frac{\partial \vec{M}}{\partial x})} - \frac{\partial}{\partial y} \frac{\partial E[\vec{M}]}{\partial (\frac{\partial \vec{M}}{\partial y})} - \frac{\partial}{\partial z} \frac{\partial E[\vec{M}]}{\partial (\frac{\partial \vec{M}}{\partial z})}.
+\end{align}
+
+As $|\vec{M}| = M_s$ is a constant, $\delta \vec{M}$ must be perpendicular to $\vec{M}$. Because of this, $\frac{\delta E[\vec{M}]}{\delta \vec{M}(\vec{r})}$ must be parallel to $\vec{M}$ for $\delta E$ to be 0 for arbitrary choices of $a$ and $b$. In \eqref{eq:mag_undamped} one can see that the system is in equilibrium if the effective field $\vec{H}_{eff}$ is parallel to $\vec{M}$, therefore the effective field must also be parallel to $\frac{\delta E[\vec{M}]}{\delta \vec{M}(\vec{r})}$. It is reasonable to assume that one of the terms in the effective field will just be the external magnetic field $\vec{H}_Z$. We can therefore look at $\epsilon_Z$, the energy density in \eqref{eq:zeemanenergy}, to find the proportionality constant. It is easy to see that by letting
+
+\begin{align}
+\vec{H}_{eff} = -\frac{1}{\mu_0}\frac{\delta E[\vec{M}]}{\delta \vec{M}(\vec{r})},
+\end{align}
+
+one of the terms in the effective field will be the external field $\vec{H}_Z$. By using this definition and the definition of the functional derivative in \eqref{eq:functionaldiff}, one then finds that the effective field is
+
+\begin{align}
+\vec{H}_{eff} = \vec{H}_Z + \vec{H}_D + \frac{2A}{\mu_0M_s^2}\nabla^2\vec{M} -\frac{1}{\mu_0}\frac{\delta \epsilon_A[\vec{M}]}{\delta \vec{M}(\vec{r})}.
+\end{align}
+
 
 \section{Domain walls}
 
