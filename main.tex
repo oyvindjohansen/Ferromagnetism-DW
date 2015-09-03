@@ -63,6 +63,7 @@ In anisotropic magnetic materials one defines different axes; the easy, intermed
 The simplest form of anisotropy is the case where there is only one axis that the anisotropic energy varies with. This is known as uniaxial anisotropy. This can often be found in crystal structures with a single principal axis, such as the hexagonal and simple tetragonal lattices. If we consider a uniform magnetization $\vec{M} = \left[M_x, M_y, M_z\right]$ and let one of the directions along the axis in the material that the anisotropic energy varies be the unit vector $\hat{n}$, the anisotropic energy must be on the form
 
 \begin{align}
+\label{eq:uniaxialanisotropy}
 E_A = V \sum_{i=0}^{\infty} K_i (\frac{\vec{M}\cdot\hat{n}}{M_s})^{2i}
 \end{align}
 
@@ -291,6 +292,8 @@ where we have introduced the exchange constant $A$. As one can see, the energy d
 
 \section{Landau--Lifshitz--Gilbert equation}
 The time evolution of the magnetization in a magnet is described by the Landau--Lifshitz--Gilbert (LLG) equation. To get an understanding of the origin of the equation, it is useful to look at the time evolution of spin, as the magnetic moment and therefore the magnetization is proportional to it. 
+
+\subsection{Larmor precession}
 The time evolution of an angular momentum $\vec{L}$ can be described by a variation on the classical Newton's second law for rotation:
 
 \begin{align}
@@ -300,14 +303,14 @@ The time evolution of an angular momentum $\vec{L}$ can be described by a variat
 
 where $\vec{T}$ is the torque acting on the angular momentum. Spin is often compared to an intrinsic angular momentum of the electron, and will satisfy the same equation, with the exception that the vectors become operators as spin is a quantum mechanical effect. We are interested in looking at the magnetization on a microscopic scale, which would correspond to a semi-classical limit, so the quantum mechanical operators are replaced by their expectation values. 
 
-A magnetic moment $\vec{\mu}$ will precess around an external magnetic field $\vec{H}$. This is known as Larmor precession, and is caused by the torque
+A magnetic moment $\vec{\mu}$ will precess around an external magnetic field $\vec{H}$. This is known as Larmor precession, and is given by the torque
 
 \begin{align}
 \label{eq:larmortorque}
-\vec{T} = \vec{\mu} \times \vec{H} = \gamma \vec{S} \times \vec{H},
+\vec{T} = \vec{\mu} \times \vec{H} = -\gamma \vec{S} \times \vec{H},
 \end{align}
 
-where we have introduced the gyromagnetic ratio $\gamma$. The gyromagnetic ratio gives the ratio of the magnitude of the magnetic moment relative to the spin of a particle. For the electron the gyromagnetic ratio is given by
+where we have introduced the gyromagnetic ratio $\gamma$. The gyromagnetic ratio gives the ratio of the magnetic moment relative to the spin of a particle. For the electron the gyromagnetic ratio is given by
 
 \begin{align}
 \gamma = \frac{g_e\mu_B}{\hbar},
@@ -322,15 +325,17 @@ with the $g$-factor $g_e \approx 2$ and $\mu_B$ being the Bohr magneton
 By inserting \eqref{eq:larmortorque} into \eqref{eq:newton2rotation} and replacing the angular momentum with spin, we get
 
 \begin{align}
-\frac{\textrm{d} \vec{S}}{\textrm{d} t} = \gamma \vec{S} \times \vec{H},
+\frac{\textrm{d} \vec{S}}{\textrm{d} t} =- \gamma \vec{S} \times \vec{H},
 \end{align}
 
 or by replacing the spin with the magnetization using that $\vec{S}$ is proportional to $\vec{M}$:
 
 \begin{align}
 \label{eq:mag_undamped}
-\frac{\textrm{d} \vec{M}}{\textrm{d} t} = \gamma \vec{M} \times \vec{H}.
+\frac{\textrm{d} \vec{M}}{\textrm{d} t} = -\gamma \vec{M} \times \vec{H}.
 \end{align}
+
+\subsection{Effective field}
 
 If the magnetic moments were free, meaning they did not interact with each other, the field $\vec{H}$ in \eqref{eq:mag_undamped} would just be the magnetic field in the material. The magnetic field is the sum of any external field and the internal demagnetizing field discussed earlier. The magnetic moments are not free, however, as we have effects such as exchange interaction between the magnetic moments and magnetic anisotropy. Landau and Lifshitz introduced an effective field $\vec{H}_{eff}$ that replaced the magnetic field $\vec{H}$ in \eqref{eq:mag_undamped} that would minimize the energy in the system at equilibrium \cite{LandauLifshitz1935}. The terms in the micromagnetic energy discussed earlier were the anisotropic energy, demagnetization energy, the Zeeman energy and the exchange energy. Using the results derived earlier, we can write the total energy in the system as
 
@@ -362,9 +367,81 @@ As $|\vec{M}| = M_s$ is a constant, $\delta \vec{M}$ must be perpendicular to $\
 one of the terms in the effective field will be the external field $\vec{H}_Z$. By using this definition and the definition of the functional derivative in \eqref{eq:functionaldiff}, one then finds that the effective field is
 
 \begin{align}
-\vec{H}_{eff} = \vec{H}_Z + \vec{H}_D + \frac{2A}{\mu_0M_s^2}\nabla^2\vec{M} -\frac{1}{\mu_0}\frac{\delta \epsilon_A[\vec{M}]}{\delta \vec{M}(\vec{r})}.
+\label{eq:effectivefield}
+\vec{H}_{eff}(\vec{r}) = \vec{H}_Z(\vec{r}) + \vec{H}_D(\vec{r}) + \frac{2A}{\mu_0M_s^2}\nabla^2\vec{M}(\vec{r}) -\frac{1}{\mu_0}\frac{\delta \epsilon_A[\vec{M}]}{\delta \vec{M}(\vec{r})}.
 \end{align}
 
+The last term depends on what kind of anisotropy there is in the material. For a uniaxial anisotropy as in \eqref{eq:uniaxialanisotropy}, the effective field term becomes 
+
+\begin{align}
+\label{eq:effielduniaxialani}
+-\frac{1}{\mu_0}\frac{\delta \epsilon_A[\vec{M}]}{\delta \vec{M}(\vec{r})} = -\frac{2K_1}{M_s^2}(\vec{M}(\vec{r})\cdot\hat{n})\hat{n} - \frac{4K_2}{M_s^4}(\vec{M}(\vec{r})\cdot\hat{n})^3\hat{n}
+\end{align}
+
+up to fourth order in the directional cosine. For a cubic anisotropy the energy density $\epsilon_A$ becomes the integrand in \eqref{eq:cubicanisotropy} instead.
+
+Looking at the effective field in \eqref{eq:effectivefield} we see that it consists of the external magnetic field and the demagnetizing field, as one would expect, and two effective field terms that originate from quantum mechanical effects. The exchange interaction between the magnetic moments cause an effective field that points in the direction that is the average rate of change in the magnetization $\vec{M}(\vec{r})$ at a point $\vec{r}$. If the magnetization is uniform or varies very slowly in space, the effective field from the exchange interaction is very small or non-existent. If the magnetization varies at a significant rate, the effective field from the exchange interaction will point in a direction that will try to decrease this rate of change, thereby minimizing the exchange energy. If one studies the effective field from the anisotropic energy, one finds that the field will try to align the magnetization with the easy axis, or move the magnetization away from the hard axis, depending on the axes in the material. For a uniaxial anisotropy, the effective field is described by \eqref{eq:effielduniaxialani}. We discussed earlier that the direction $\hat{n}$ was parallel to the easy axis if the anisotropy constants $K_i$ were $<0$, and it was parallel to the hard axis if the anisotropy constants were $>0$. Considering the case of $\hat{n}$ being parallel to te easy axis first, we see that the effective field will point in the direction that the component of $\vec{M}(\vec{r})$ has along the easy axis. This is regardless of which of the two directions the component points in, as we only have odd powers of $(\vec{M}(\vec{r})\cdot\hat{n})$ in the field. If $\hat{n}$ is parallel to the hard axis, the constants $K_i$ are positive, and the field points in the opposite direction that the component of $\vec{M}(\vec{r})$ has along the hard axis. The effective field then tries to reduce the component along the hard axis, to minimize the anisotropic energy.
+
+\subsection{Damping and the Landau--Lifshitz equation}
+The time evolution in \eqref{eq:mag_undamped} only describes the precession of the magnetization around a field $\vec{H}$. This system is not in equilibrium unless the magnetization is parallel to the field. In a physical system the magnetization will eventually relax to equilibrium. To model this, Landau and Lifshitz introduced a damping term that is perpendicular to the magnetization and the direction of the precession around the field \cite{LandauLifshitz1935}. The damping term will point in a direction as to attempt to align the magnetization with the field, \eqref{eq:mag_undamped} therefore becomes
+
+\begin{align}
+\label{eq:LL}
+\frac{\textrm{d} \vec{M}}{\textrm{d} t} = -\gamma (\vec{M} \times \vec{H}_{eff} + \frac{\alpha}{M_s} \vec{M}\times(\vec{M}\times\vec{H}_{eff})),
+\end{align}
+
+with $\alpha > 0$ being a dimensionless damping constant. This is known as the Landau--Lifshitz equation.
+
+\subsection{The Gilbert damping term}
+The Landau-Lifshitz equation agrees with experiments for low damping constants $\alpha$, but it does not perform well when the damping constants get large. To improve the model of damping in \eqref{eq:LL}, Gilbert proposed a damping term on a different form. By comparing the damping of the magnetization to dampings in other physical systems, Gilbert used a Rayleigh dissipation functional that depended on the time derivative of the magnetization to model the dissipative force \cite{Gilbert2004Classics}. This is analogous to a model for friction where the Rayleigh dissipation functional depends on the time derivative of the position, which is just the velocity. By using this new damping term that is a function of $\frac{\textrm{d} \vec{M}}{\textrm{d} t}$, the Gilbert form of the Landau--Lifshitz equation becomes
+
+\begin{align}
+\label{eq:LLG_implicit}
+\frac{\textrm{d} \vec{M}}{\textrm{d} t} = -\gamma \vec{M} \times (\vec{H}_{eff} - \eta \frac{\textrm{d} \vec{M}}{\textrm{d} t}),
+\end{align}
+
+with $\eta$ being a damping parameter. This equation is implicit in $\frac{\textrm{d} \vec{M}}{\textrm{d} t}$. It can be shown that \eqref{eq:LLG_implicit} and \eqref{eq:LL} are mathematically equivalent by rewriting it to an explicit form in $\frac{\textrm{d} \vec{M}}{\textrm{d} t}$. To rewrite \eqref{eq:LLG_implicit} we must find an expression for $\vec{M}\times\frac{\textrm{d} \vec{M}}{\textrm{d} t}$ that does not involve a cross-product. To do this we can just take the cross product of \eqref{eq:LLG_implicit} with $\vec{M}$ from the left:
+
+\begin{align}
+\label{eq:mtimesdmdt}
+\vec{M}\times\frac{\textrm{d} \vec{M}}{\textrm{d} t} = -\gamma \vec{M}\times(\vec{M}\times\vec{H}_{eff}) + \gamma\eta \vec{M}\times(\vec{M}\times\frac{\textrm{d} \vec{M}}{\textrm{d} t}).
+\end{align}
+
+The first term on the right hand side is proportional to one of the terms in \eqref{eq:LL}, so we leave that be. The triple cross product involving $\frac{\textrm{d} \vec{M}}{\textrm{d} t}$ can be rewritten using the relation $\vec{A}\times(\vec{B}\times\vec{C}) = (\vec{A}\cdot\vec{C})\vec{B} - (\vec{A}\cdot\vec{B})\vec{C}$:
+
+\begin{align}
+\label{eq:mag_triple_crossproduct}
+\vec{M}\times(\vec{M}\times\frac{\textrm{d} \vec{M}}{\textrm{d} t}) =  (\vec{M}\cdot\frac{\textrm{d} \vec{M}}{\textrm{d} t})\vec{M} - (\vec{M}\cdot\vec{M})\frac{\textrm{d} \vec{M}}{\textrm{d} t}.
+\end{align}
+
+The first term on the right hand side can be found by taking the scalar product of $\vec{M}$ and \eqref{eq:LLG_implicit}. It is easy to see that this is 0, as the entire right hand side of \eqref{eq:LLG_implicit} is perpendicular to $\vec{M}$. It is also worth noting that when $\vec{M}\cdot \frac{\textrm{d} \vec{M}}{\textrm{d} t} = 0$ the modulus $|\vec{M}| = M_s$ is a constant, as 
+
+\begin{align}
+\frac{\textrm{d}}{\textrm{d} t} (M_s^2) = \frac{\textrm{d}}{\textrm{d} t} (\vec{M}\cdot\vec{M}) = 2 \vec{M} \cdot \frac{\textrm{d} \vec{M}}{\textrm{d} t}.
+\end{align}
+
+This is in agreement with what we have discussed earlier. The second term on the right hand side in \eqref{eq:mag_triple_crossproduct} is just $-M_s^2 \frac{\textrm{d} \vec{M}}{\textrm{d} t}$. Combining the results of \eqref{eq:mtimesdmdt} and \eqref{eq:mag_triple_crossproduct} and inserting it into \eqref{eq:LLG_implicit}, we can simplify the expression to
+
+\begin{align}
+\label{eq:LLG_oldparam}
+\frac{\textrm{d} \vec{M}}{\textrm{d} t} = -\frac{\gamma}{1 + \gamma^2\eta^2 M_s^2}(\vec{M}\times\vec{H}_{eff} + \gamma\eta \vec{M} \times (\vec{M}\times\vec{H}_{eff})).
+\end{align}
+
+Comparing this to the Landau--Lifshitz equation in \eqref{eq:LL} we see that by letting
+
+\begin{align}
+\eta &= \frac{\alpha}{\gamma M_s}, \\
+\tilde{\gamma} &= \frac{\gamma}{1+\alpha^2},
+\end{align}
+
+\eqref{eq:LLG_oldparam} can be written on the form of the Landau--Lifshitz equation:
+
+\begin{align}
+\label{eq:LLG}
+\frac{\textrm{d} \vec{M}}{\textrm{d} t} = -\tilde{\gamma} (\vec{M} \times \vec{H}_{eff} + \frac{\alpha}{M_s} \vec{M}\times(\vec{M}\times\vec{H}_{eff})).
+\end{align}
+
+This is the explicit Landau--Lifshitz--Gilbert equation. The difference between the Landau--Lifshitz and the Landau--Lifshitz--Gilbert equation is that the gyromagnetic ratio in the LLG equation is redefined to include the dimensionless damping parameter $\alpha$. When $\alpha \ll 1$, the Landau--Lifshitz equation is a good approximation of the LLG equation, but as the damping parameter becomes larger the correction in the gyromagnetic ratio becomes significant. The LLG equation agrees better with experiments where the damping constant $\alpha$ is large \cite{GilbertKelly1955}.
 
 \section{Domain walls}
 
