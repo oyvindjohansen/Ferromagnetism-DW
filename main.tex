@@ -271,32 +271,20 @@ To find the total exchange energy in the magnet we integrate the energy density 
 E_E = -\int \d {^3}r \frac{JS^2}{2aM_s^2} \vec{M}(\vec{r})\nabla^2\vec{M}(\vec{r}).
 \end{align}
 
-The constant term in the energy has been ignored, and the factor $1/2$ has been introduced to account for the double counting of the interaction pairs. The energy in \eqref{eq:exchangeenergylaplace} can be rewritten to a more common form. Using that 
+The constant term in the energy has been ignored, and the factor $1/2$ has been introduced to account for the double counting of the interaction pairs. The energy in \eqref{eq:exchangeenergylaplace} can be rewritten to a more common form. Introducing the index notation and using the Einstein summation convention, we integrate \eqref{eq:exchangeenergylaplace} by parts: 
 
 \begin{align}
-\nabla(\vec{M} (\nabla\cdot\vec{M})) = (\nabla\cdot\vec{M})^2 + \vec{M}\nabla^2\vec{M},
+\int \d {^3}r \vec{M}(\vec{r})\cdot\partial_i \partial_i \vec{M}(\vec{r}) = \int \d S \vec{M}(\vec{r})\cdot \frac{\partial}{\partial \hat{n}}\vec{M}(\vec{r}) - \int \d {^3}r \partial_i  \vec{M}(\vec{r})\cdot\partial_i \vec{M}(\vec{r}).
 \end{align}
 
-and that
+As $\vec{M}(\vec{r})$ is a vector of constant length, any change $\delta \vec{M}(\vec{r})$ must be perpendicular to $\vec{M}(\vec{r})$. This means that $\vec{M}(\vec{r})\cdot \frac{\partial}{\partial \hat{n}}\vec{M}(\vec{r}) = 0$, and the first term on the right hand side vanishes. The energy in \eqref{eq:exchangeenergylaplace} then becomes
 
 \begin{align}
-\nabla M_s^2 = \nabla (\vec{M}\cdot\vec{M}) = 2\vec{M}(\nabla\cdot\vec{M}) = 0
-\end{align} 
-
-because $M_s$ is a constant, we find
-
-\begin{align}
-\vec{M}\nabla^2\vec{M} = - (\nabla\cdot\vec{M})^2.
+\label{eq:exchangeenergy}
+E_E = \int \d {^3}r \frac{A}{M_s^2} ((\frac{\partial}{\partial x}\vec{M}(\vec{r}))^2+(\frac{\partial}{\partial y}\vec{M}(\vec{r}))^2+(\frac{\partial}{\partial z}\vec{M}(\vec{r}))^2),
 \end{align}
 
-This means that the energy in \eqref{eq:exchangeenergylaplace} becomes
-
-\begin{align}
-\label{eq:exchangeenergydiv}
-E_E = \int \d {^3}r \frac{A}{M_s^2} (\nabla\cdot\vec{M}(\vec{r}))^2,
-\end{align}
-
-where we have introduced the exchange constant $A$. As one can see, the energy depends on the divergence of the magnetization squared, meaning the variation in the magnetization. Because the exchange constant $A$ is positive in a ferromagnet, the exchange energy is higher the more the magnetization varies. This can also easily be seen from \eqref{eq:heisenberg}, it costs energy when the spins are not aligned when $J>0$, which is the case in a ferromagnet. To minimize the exchange energy the magnetization therefore has to vary slowly. On short ranges this effect is much stronger than the demagnetization and magnetocrystalline anisotropy. This is why neighbouring spins have a tendency to align in a ferromagnet, while on longer ranges when the demagnetization effect becomes stronger than the exchange interaction the spins tend to be anti-aligned.
+where we have introduced the exchange constant $A$. As one can see the energy depends on the variation in the magnetization in all directions, and is independent of which direction the magnetization changes, it is only dependent on the magnitude by which it changes. Because the exchange constant $A$ is positive in a ferromagnet, the exchange energy is higher the more the magnetization varies. This can also easily be seen from \eqref{eq:heisenberg}, it costs energy when the spins are not aligned when $J>0$, which is the case in a ferromagnet. To minimize the exchange energy the magnetization therefore has to vary slowly. On short ranges this effect is much stronger than the demagnetization and magnetocrystalline anisotropy. This is why neighbouring spins have a tendency to align in a ferromagnet, while on longer ranges when the demagnetization effect becomes stronger than the exchange interaction the spins tend to be anti-aligned.
 
 \section{Landau--Lifshitz--Gilbert equation}
 The time evolution of the magnetization in a magnet is described by the Landau--Lifshitz--Gilbert (LLG) equation. To get an understanding of the origin of the equation, it is useful to look at the time evolution of spin, as the magnetic moment and therefore the magnetization is proportional to it. 
