@@ -227,6 +227,7 @@ E_D = \mu_0(N_{xx}M_x^2+N_{yy}M_y^2+N_{zz}M_z^2).
 
 This is the case for ellipsoidal bodies \cite{kruger2006current}. This form of the demagnetization energy is similar to that of the uniaxial anisotropic energy in \eqref{eq:uniaxialanisotropy}. This means that ellipsoidal magnetic particles cause shape anisotropy, assuming the magnetic particle is not spherical ($N_{xx} = N_{yy} = N_{zz}$).
 
+
 \subsection{Zeeman energy}
 The Zeeman energy describes the energy from the interaction between the magnetization of the magnet and an external field $\vec{H}_{Z}$. The Zeeman energy is on the same form as the demagnetization energy in \eqref{eq:demagenergy}, with the internally generated demagnetization field replaced by the external magnetic field:
 
@@ -440,6 +441,107 @@ Comparing this to the Landau--Lifshitz equation in \eqref{eq:LL} we see that by 
 This is the explicit Landau--Lifshitz--Gilbert equation. The difference between the Landau--Lifshitz and the Landau--Lifshitz--Gilbert equation is that the gyromagnetic ratio in the LLG equation is redefined to include the dimensionless damping parameter $\alpha$. When $\alpha \ll 1$, the Landau--Lifshitz equation is a good approximation of the LLG equation, but as the damping parameter becomes larger the correction in the gyromagnetic ratio becomes significant. The LLG equation agrees better with experiments where the damping constant $\alpha$ is large \cite{GilbertKelly1955}.
 
 \section{Domain walls}
+To minimize the energy a ferromagnet of a significant size will divide itself into domains. A domain is a region where the magnetization is uniform, and the domains in a magnet are separated by something called domain walls. These are regions where the magnetization in the material switches orientation between two domains with different direction in the magnetization. There are many different domain wall structures, but what they all have in common is that in the static case they have to satisfy \eqref{eq:LLG} with the left hand side being zero. It is easily seen that this is satisfied when the local magnetization is parallel to the effective field $\vec{H}_{eff}$ at that point. From the derivation of the effective field, we remember that $\vec{H}_{eff}$ and $\vec{M}$ were parallel when the system was at an equilibrium, meaning $\delta E = 0$. This will be an easier problem to solve, as we can write the energy in terms of scalar quantities such as the components of the magnetization. To study the nature of the domain walls we will at first only consider internal effects, and not consider the case where an external magnetic field is applied. A static domain wall is therefore a magnetization structure that minimizes the exchange energy, the anisotropic energy and the demagnetization energy simultaneousy.
+
+\subsection{The charge avoidance principle}
+In general, it's very hard to determine what configuration in the magnetization that will lead to a minimum in the demagnetization energy. For some magnetic particles we saw that it was possible to treat the demagnetization energy as an effective shape anisotropy, which makes the form of the energy easier to minimize, but this is not always possible. To make this task a little easier, it is useful to introduce magnetic charges. It is important to note that this is purely a mathematical concept, as magnetic monopoles have never been detected. This method is just a comparison to electric charges and fields. The Maxwell equations for the magnetic field in the magnetostatic limit are
+
+\begin{align}
+\nabla \times \vec{H} &= 0, \\
+\nabla \cdot \vec{B} &= 0.
+\end{align}
+
+Due to the form of the first equation it is possible to write the magnetic field $\vec{H}$ as a gradient of a potential: $\vec{H} = -\nabla U_M$. Using the second equation and the relation between the magnetic induction $\vec{B}$ and magnetic field $\vec{H}$, 
+
+\begin{align}
+\vec{B} = \mu_0(\vec{H}+\vec{M}),
+\end{align}
+
+one ends up with the Poisson equation for the magnetic potential $U_M$:
+
+\begin{align}
+\nabla^2 U_M = \nabla \cdot \vec{M}.
+\end{align}
+
+Comparing this to the Poisson equation for the electric potential $U_E$,
+
+\begin{align}
+\nabla^2 U_E = -\frac{\rho_f}{\epsilon},
+\end{align}
+
+we see that $-\nabla \cdot \vec{M}$ behaves as a free magnetic charge density, or a volume charge density. We therefore define
+
+\begin{align}
+\label{eq:magchargedensity}
+\rho_M = - \nabla \cdot \vec{M}.
+\end{align}
+
+At the boundary of a magnet there is a discontinuty in the magnetization $\vec{M}$, as it drops to zero outside the magnet. If we apply the divergence theorem to \eqref{eq:magchargedensity} where we integrate over a Gaussian pillbox that is infinitesimally thin and has one surface on the outside of the magnet and one on the inside, we find that
+
+\begin{align*}
+\int_{\Omega} \d V \rho_M  &= -\int_{\Omega} \d V \nabla \cdot \vec{M} \\
+&= -\int_{\partial \Omega} \d {\vec{S}}\cdot\vec{M} \\
+&= -A(\vec{M}_{out}\cdot\hat{n} - \vec{M}_{in} \cdot \hat{n}) \\
+&= A \vec{M} \cdot\hat{n}.
+\end{align*}
+
+Here $A$ is the area of the surfaces of the pillbox parallel to the surface of the magnet, and $\hat{n}$ is the unit vector pointing out of the surface of the magnet. The integral of $\rho_M$ over the volume of the magnet is just the total magnetic charge $Q_M$, we can therefore define a magnetic surface charge density
+
+\begin{align}
+\label{eq:magsurfacecharge}
+\sigma_M = \frac{Q_M}{A} = \vec{M}\cdot\hat{n}.
+\end{align}
+
+Both the magnetic volume charge density $\rho_M = -\nabla\cdot\vec{M}$ and surface charge density $\sigma_M = \vec{M}\cdot\hat{n}$ will act as sources in the magnetic potential $U_M$. To minimize the demagnetizing field $\vec{H}_D$ and thereby the demagnetization energy $E_D$, it is therefore desireable to avoid these magnetic charges in the material as much as possible. This is the charge avoidance principle \cite{Coey}. We see that physically this means that it costs energy if the magnetization of a magnet has a component perpendicular to its surface, or the divergence of the magnetization is different from zero inside the magnet.
+
+\subsection{Bloch walls}
+To simplify the calculation of the magnetization structure in domain walls we only consider the exchange and anisotropic energies. This has some merit as we can either assume that the demagnetization energy will be on the form of a uniaxial anisotropy, or we can evaluate how the solution does with regards to the charge avoidance principle.
+
+The first case we consider is a 1D chain of magnetic moments along the $x$-axis, with an easy axis along the $z$-axis and the magnetization being parallel to the easy axis at $x = \pm \infty$. The energy then can be written as
+
+\begin{align}
+E = \int \d V (\frac{A}{M_s^2}(\frac{\partial}{\partial x}\vec{M}(x))^2 - K \cos ^2 \theta (x)).
+\end{align}
+
+The magnetization vector can be written in terms of spherical coordinates, so that $\vec{M}(x) = M_s (\sin \theta (x) \cos \phi (x), \sin \theta (x) \sin \phi (x), \cos \theta (x))$. We see that if we let the $x$-component of $\vec{M}$ be zero, there will be no magnetic volume charges as $\nabla \cdot \vec{M}(x) = 0$. We therefore restrict the magnetization to be in the $yz$-plane by letting $\phi = \pi/2$. The first term in the integral can then be written as
+
+\begin{align}
+\frac{A}{M_s^2}(\frac{\partial}{\partial x}\vec{M}(\vec{r}))^2 = A(\cos\theta \frac{\partial \theta}{\partial x} \hat{y} - \sin\theta \frac{\partial \theta}{\partial x} \hat{z})^2 = A (\frac{\partial \theta}{\partial x})^2.
+\end{align}
+
+The energy then becomes
+
+\begin{align}
+E = \int \d A \int \d x (A (\frac{\partial \theta}{\partial x})^2- K \cos ^2 \theta (x)) = \int \d A \int \d x \epsilon(x, \theta, \frac{\partial \theta}{\partial x}).
+\end{align}
+
+For us to have equilibrium, $\delta E = 0$, the integrand $\epsilon$ must satisfy the Euler--Lagrrange equation:
+
+\begin{align}
+\frac{\partial \epsilon}{\partial \theta} - \frac{\textrm{d}}{\textrm{d} x} \frac{\partial \epsilon}{\partial (\frac{\partial \theta}{\partial x})} = 0.
+\end{align}
+
+Plugging in $\epsilon$, we get the second order differential equation
+
+\begin{align}
+\label{eq:BlochWall}
+K\sin \theta (x) \cos \theta (x) = A \frac{\partial^2 \theta}{\partial x^2}.
+\end{align} 
+
+From this equation one can see both the domain walls and the domains. The domains are regions where the magnetization is uniform, meaning $\theta$ is a constant. It can easily be seen that $\theta = n\pi/2$ ($n = 0, 1, 2, \ldots$) satisfies this equation, but one should note that only the solutions $\theta = n\pi$ are stable, as that is the solution that minimizes the anisotropic energy when we have chosen the easy axis to be in the $z$-direction. For the domain walls the magnetization is not uniform, meaning we also have to consider the differentiation term. To solve this equation we multiply \eqref{eq:BlochWall} by $\frac{\partial \theta}{\partial x}$,
+
+\begin{align*}
+K\sin \theta (x) \cos \theta (x) \frac{\partial \theta}{\partial x} = A \frac{\partial^2 \theta}{\partial x^2}\frac{\partial \theta}{\partial x},
+\end{align*}
+
+which is equivalent to
+
+\begin{align}
+\frac{\textrm{d}}{\textrm{d} x} (K \sin ^2 \theta - A (\frac{\partial \theta}{\partial x})^2) = 0.
+\end{align}
+
+\subsection{N\'{e}el walls}
+
 
 \section{Domain wall dynamics}
 
