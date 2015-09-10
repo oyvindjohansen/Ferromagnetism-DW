@@ -11,6 +11,8 @@
 \usepackage[output-decimal-marker = {,}]{siunitx}
 \usepackage[font=footnotesize,labelsep=period,labelfont=bf,margin=1cm]{caption}
 \usepackage{import}
+\usepackage{caption}
+\usepackage{subcaption}
 
 
 \setcounter{totalnumber}{5}
@@ -500,10 +502,11 @@ To simplify the calculation of the magnetization structure in domain walls we on
 The first case we consider is a 1D chain of magnetic moments along the $x$-axis, with an easy axis along the $z$-axis and the magnetization being parallel to the easy axis at $x = \pm \infty$. The energy then can be written as
 
 \begin{align}
+\label{eq:BlochEnergy}
 E = \int \d V (\frac{A}{M_s^2}(\frac{\partial}{\partial x}\vec{M}(x))^2 - K \cos ^2 \theta (x)).
 \end{align}
 
-The magnetization vector can be written in terms of spherical coordinates, so that $\vec{M}(x) = M_s (\sin \theta (x) \cos \phi (x), \sin \theta (x) \sin \phi (x), \cos \theta (x))$. We see that if we let the $x$-component of $\vec{M}$ be zero, there will be no magnetic volume charges as $\nabla \cdot \vec{M}(x) = 0$. We therefore restrict the magnetization to be in the $yz$-plane by letting $\phi = \pi/2$. The first term in the integral can then be written as
+$K$ is strictly positive in this case. The magnetization vector can be written in terms of spherical coordinates, so that $\vec{M}(x) = M_s (\sin \theta (x) \cos \phi (x), \sin \theta (x) \sin \phi (x), \cos \theta (x))$. We see that if we let the $x$-component of $\vec{M}$ be zero, there will be no magnetic volume charges as $\nabla \cdot \vec{M}(x) = 0$. We therefore restrict the magnetization to be in the $yz$-plane by letting $\phi = \pi/2$. The first term in the integral can then be written as
 
 \begin{align}
 \frac{A}{M_s^2}(\frac{\partial}{\partial x}\vec{M}(\vec{r}))^2 = A(\cos\theta \frac{\partial \theta}{\partial x} \hat{y} - \sin\theta \frac{\partial \theta}{\partial x} \hat{z})^2 = A (\frac{\partial \theta}{\partial x})^2.
@@ -515,7 +518,7 @@ The energy then becomes
 E = \int \d A \int \d x (A (\frac{\partial \theta}{\partial x})^2- K \cos ^2 \theta (x)) = \int \d A \int \d x \epsilon(x, \theta, \frac{\partial \theta}{\partial x}).
 \end{align}
 
-For us to have equilibrium, $\delta E = 0$, the integrand $\epsilon$ must satisfy the Euler--Lagrrange equation:
+For us to have equilibrium, $\delta E = 0$, the integrand $\epsilon$ must satisfy the Euler--Lagrange equation:
 
 \begin{align}
 \frac{\partial \epsilon}{\partial \theta} - \frac{\textrm{d}}{\textrm{d} x} \frac{\partial \epsilon}{\partial (\frac{\partial \theta}{\partial x})} = 0.
@@ -540,10 +543,111 @@ which is equivalent to
 \frac{\textrm{d}}{\textrm{d} x} (K \sin ^2 \theta - A (\frac{\partial \theta}{\partial x})^2) = 0.
 \end{align}
 
-\subsection{N\'{e}el walls}
+The expression inside the parantheses must therefore be a constant, and to determine what that constant is we have to use some boundary conditions. We want to describe the domain wall between two domains, meaning the domains are located at $x = \pm \infty$. Inside the domains there is no variation in the magnetization, so $\theta$ is a constant. The stable value of $\theta$ is either 0 or $\pi$, as discussed earlier. This means that the expression inside the parantheses is 0. We can then integrate and make the equation a first order differential equation:
 
+\begin{align*}
+K \sin ^2 \theta(x) &= A (\frac{\partial \theta(x)}{\partial x})^2 \\
+\implies \frac{\textrm{d} \theta}{\sin \theta} &= \pm \sqrt{\frac{K}{A}} \d x.
+\end{align*}
+
+For simplicity we choose the positive solution, which would correspond to $\theta = 0$ at $x = -\infty$. The negative solution will lead to the same answer as the positive, only with the domains switched, so that $\theta = \pi$ at $x = -\infty$. We note that both sides of the equation are dimensionless, and use that information to define a characteristic length $\delta_{DW}$ of the system, with
+
+\begin{align}
+\delta_{DW} = \sqrt{\frac{A}{K}}.
+\end{align}
+
+Using that
+
+\begin{align*}
+\int \frac{d\theta}{\sin\theta} = \ln \tan\frac{\theta}{2} + C,
+\end{align*}
+
+we find that
+
+\begin{align}
+\ln \tan\frac{\theta}{2} - \ln \tan\frac{\theta_0}{2} = \pm \frac{x-x_0}{\delta_{DW}}.
+\end{align}
+
+To get the final expression for $\theta(x)$, we must apply a last condition. As we want to describe a domain wall, the domains on the different sides of the wall are different. We've seen that the stable domains occur for $\theta = 0$ and $\theta = \pi$. It is then reasonable to assume that if the function $\theta (x)$ is smooth, it will take the value $\theta = \pi/2$ at some point in the domain wall. If we let that point be located at $x = 0$, we find that
+
+\begin{align}
+\label{eq:thetaBloch}
+\theta(x) = 2\arctan(\exp(\frac{x}{\delta_{DW}})).
+\end{align}
+
+Using the relations
+
+\begin{align*}
+\cos(2\arctan(x)) &= \frac{1-x^2}{1+x^2}, \\
+\sin(2\arctan(x)) &= \frac{2x}{1+x^2},
+\end{align*}
+
+it is easy to show that the magnetization components become
+
+\begin{align}
+M_z &= - M_s\tanh\frac{x}{\delta_{DW}}, \label{eq:BlochMagZ} \\
+M_y &= \frac{M_s}{\cosh\frac{x}{\delta_{DW}}}.
+\end{align}
+
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{Figures/BlochWallMz}
+  \caption{}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{Figures/BlochWallMy}
+  \caption{}
+\end{subfigure}
+\caption{The magnetization component in the $z$-direction (a) and in the $y$-direction (b) inside a Bloch domain wall.}
+\label{fig:BlochWall}
+\end{figure}
+
+The magnetization components are shown as a function of $x/\delta_{DW}$ in Figure \ref{fig:BlochWall}. This type of domain wall where the magnetization rotates out of the plane that is parallel to the magnetization in the domains is known as a Bloch wall. In the derivation of the expression for the Bloch wall we chose this direction of rotation as this magnetization structure did not create any magnetic volume charges $-\nabla\cdot\vec{M}$. To minimize the demagnetization energy we want to avoid both magnetic volume and surface charges. We see that surface charges can be created by the Bloch domain wall if the plane the domains are in is parallel and close to the surface of the magnet. This is because the Bloch domain wall rotates out of that plane, giving a component that is normal to the magnet's surface. If the domain wall is far away from a surface, however, there will not be any creation of a surface charge. Bloch domain walls are the most common domain walls in bulk materials. This is because of the thickness of the material makes it more energetically favorable to avoid volume charges than surface charges.
+
+\subsection{N\'{e}el walls}
+If the magnetic material has a large surface area, such as thin films, it may be more energetically favorable to avoid surface charges than to avoid volume charges. To have a domain wall that does this, we must require that the magnetization in the domain wall rotates in the plane of the domains, unlike the Bloch domain wall where the magnetization rotates out of that plane. If we look at a similar example as in the derivation of the Bloch domain wall, we must have a magnetization that rotates in the $xz$-plane rather than the $yz$-plane, as we let the $y$-direction be the direction normal to the magnet's surface. The easy axis in the material is kept to be along the $z$-axis. The energy expressions and the equation for $\theta (x)$ are exactly the same as for the Bloch domain wall, the only difference is that instead of forcing $\phi$ to be $\pi/2$ to avoid magnetic volume charges, we force $\phi$ to be 0 to let the $M_y$ component be 0 and thereby avoiding generating magnetic surface charges. The function $\theta(x)$ is therefore exactly the same as for the Bloch domain wall, given by \eqref{eq:thetaBloch}. The magnetization vector changes, however, from being $\vec{M} = M_s(0, \sin\theta, \cos\theta)$ for the Bloch domain wall to being $\vec{M} = M_s(\sin\theta, 0, \cos\theta)$ for our current domain wall. In other words, the magnetization component in the $x$- and $y$-directions just switch. The magnetization therefore looks the same as in Figure \ref{fig:BlochWall}, with $M_y \rightarrow M_x$ and $M_y=0$. This type of domain wall where the magnetization rotates in the plane of the domain magnetizations is known as a N\'{e}el domain wall. This type of domain wall does not generate any surface charges, assuming the domains are parallel to the surface of the magnet, but generates magnetic volume charges as the divergence of the magnetization is not zero. We can calculate the magnetic volume charge that the N\'{e}el wall generates:
+
+\begin{align*}
+\rho_M &= -\nabla\cdot\vec{M}(x) \\
+&= -M_s \frac{\partial}{\partial x} \sin \theta(x) \\
+&= -M_s \cos\theta(x) \frac{\partial \theta(x)}{\partial x} \\
+&= \frac{M_s}{\delta_{DW}}\frac{\tanh\frac{x}{\delta_{DW}}}{\cosh\frac{x}{\delta_{DW}}}.
+\end{align*}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{Figures/MagneticVolumeCharge.pdf} 
+\caption{The distribution of the magnetic volume charge inside a N\'{e}el domain wall.}
+\label{fig:magVolumeCharge} 
+\end{center}
+\end{figure}
+
+This magnetic volume charge distribution is shown in Figure \ref{fig:magVolumeCharge}. It is antisymmetric, and the total magnetic volume charge is zero. This magnetic volume charge therefore acts as a magnetic dipole.
+
+\subsection{Domain wall width and energy}
+To find the width of the domain wall separating the two domains, we need to define where the domain begins, as $M_z$ only approaches $\pm M_s$ asymptotically. One way to do that is to find the value of $x$ where $M_z$ has reached a certain percentage of $M_s$, and then let the domain wall width be twice that value as the domain wall is antisymmetric around $x=0$. This can be done by inverting \eqref{eq:BlochMagZ}. We then find that the width of the domain wall $\Delta_{DW}$ is
+
+\begin{align}
+\Delta_{DW} = 2\delta_{DW}\ln\sqrt{\frac{M_s+|M_z|}{M_s-|M_z|}}.
+\end{align}
+
+If we let the domains begin when $|M_z| = 0.99\cdot M_s$, we get that the domain wall width is $\Delta_{DW} \approx 5.3 \cdot \delta_{DW}$. This is true for both the Bloch domain walls and N\'{e}el domain walls we have derived earlier. Remembering that the characteristic length $\delta_{DW}$ was defined as $\delta_{DW} = \sqrt{A/K}$, we see that the width of the domain wall is determined by what is the more dominating term in the energy; the exchange interaction or the anisotropy. If the exchange interaction influences the energy much more than the anisotropy, the domain wall becomes very wide, as the magnetization wants to change very slowly to reduce the exchange energy. If the material is isotropic, meaning $K\rightarrow0$, the width of the domain wall becomes infinite. This is because when there is no anisotropy the stable energy state is when all spins are aligned. Anisotropy is therefore necessary for the existence of domain walls in this model where the demagnetization energy is not explicitly accounted for.
+
+Even though domain walls are stable states, they have an energy cost from the exchange interaction and the anisotropic energy compared to uniform domains. This energy cost can be found by first rewriting \eqref{eq:BlochEnergy} to remove the constant energy in the domains, and then plug in our domain wall solutions to do the integral over the domain wall. The integrand is $-K$ in our domains ($\theta = 0$ and $\theta = \pi$), so we add a constant term of $K$ to the integrand to let the domains have no energy contributions from anisotropy or the exchange interaction. We then integrate to find the energy per domain wall area:
+
+\begin{align*}
+\frac{\textrm{d} E_{DW}}{\textrm{d} A} &= \int_{-\infty}^{\infty} \d x (\frac{A}{M_s^2}(\frac{\partial}{\partial x}\vec{M}(x))^2 - K \cos ^2 \theta (x) + K) \\
+&= \int_{-\infty}^{\infty} \d x (\frac{A}{\delta_{DW}^2}\frac{1}{\cosh^2\frac{x}{\delta_{DW}}} + K \frac{1}{\cosh^2\frac{x}{\delta_{DW}}}) \\
+&= \int_{-\infty}^{\infty} \d x K \frac{2}{\cosh^2\frac{x}{\delta_{DW}}} \\
+&= 4K\delta_{DW} = 4\sqrt{AK}.
+\end{align*}
 
 \section{Domain wall dynamics}
+
+\subsection{Spin-transfer torque}
 
 \section{Skyrmions}
 
