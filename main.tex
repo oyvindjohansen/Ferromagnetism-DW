@@ -41,17 +41,13 @@
 \makeatother
 
 \begin{document}
-\begin{frontmatter}
 
-\title{Specialization project in physics}
+\title{Magnetization dynamics of domain walls and skyrmions in micromagnetics}
 \author{\O yvind Johansen}
 \date{\today}
 
-\begin{abstract}
-
-\end{abstract}
-
-\end{frontmatter}
+\maketitle
+\tableofcontents
 
 \section{Introduction}
 
@@ -708,7 +704,7 @@ The spin current density is a tensor of rank 2, defined by the vectors that desc
 \langle \hat{J}_{\textrm{adiabatic}} \rangle = -\frac{\mu_B P}{e} \vec{j}_e \otimes \frac{\vec{M}}{M_s}.
 \end{align}
 
-The factor $P$ describes the portion of the conduction electrons that are polarized in the direction of the local electrons, and $e$ is the elementary charge. The factors $\mu_B$ and $e$ are included to get the correct units. If one assumes a uniform electric current density $\vec{j}_e$, and that the non-adiabatic spin current is negligible (which is alright if the domain wall width is much greater than the transport length scale, see \cite{ZhangLi-04}), the spin current term becomes
+The factor $P$ describes the portion of the conduction electrons that are polarized in the direction of the local electrons, and $e$ is the elementary charge. The factors $\mu_B$ and $e$ are included to get the correct units. If one assumes a uniform charge current density $\vec{j}_e$, and that the non-adiabatic spin current is negligible (which is alright if the domain wall width is much greater than the transport length scale, see \cite{ZhangLi-04}), the spin current term becomes
 
 \begin{align}
 \nabla \langle \hat{J} \rangle = \nabla (-\frac{\mu_B P}{e} \vec{j}_e \otimes \frac{\vec{M}}{M_s}) = -\frac{\mu_B P}{e M_s} (\vec{j}_e \cdot \nabla) \vec{M}.
@@ -734,14 +730,14 @@ as $\vec{M} \times (\delta\vec{m}\times\vec{M}) = M_s^2\delta\vec{M}$. Inserting
 \delta\vec{m} = \frac{\tau_{ex}}{1+\xi^2}(-\frac{m_0\xi}{M_s}\frac{\partial \vec{M}}{\partial t} + \frac{\xi \mu_B P}{e M_s}(\vec{j}_e\cdot\nabla)\vec{M} - \frac{m_0}{M_s^2}\vec{M}\times \frac{\partial \vec{M}}{\partial t} + \frac{\mu_B P}{e M_s^2}\vec{M}\times((\vec{j}_e\cdot\nabla)\vec{M})),
 \end{align}
 
-with $\xi$ being defined as the ratio $\xi = \tau_{ex}/\tau_{sf}$. Inserting this into the expression for the spin-transfer torque given in \eqref{eq:STT}, we find that the spin-transfer torque $\vec{T}_{STT}$ as a function of the local magnetization $\vec{M}(\vec{r}, t)$ and the electric current density $\vec{j}_e$ is 
+with $\xi$ being defined as the ratio $\xi = \tau_{ex}/\tau_{sf}$. Inserting this into the expression for the spin-transfer torque given in \eqref{eq:STT}, we find that the spin-transfer torque $\vec{T}_{STT}$ as a function of the local magnetization $\vec{M}(\vec{r}, t)$ and the charge current density $\vec{j}_e$ is 
 
 \begin{align}
 \label{eq:STT_final}
 \vec{T}_{STT} = \frac{1}{1+\xi^2}(\frac{m_0\xi}{M_s}\vec{M}\times\frac{\partial \vec{M}}{\partial t} - \frac{\xi\mu_B P}{e M_s^2}\vec{M}\times(\vec{j}_e\cdot\nabla)\vec{M} - \frac{m_0}{M_s} \frac{\partial \vec{M}}{\partial t} - \frac{\mu_B P}{e M_s^3} \vec{M}\times (\vec{M}\times(\vec{j}_e\cdot\nabla)\vec{M})).
 \end{align}
 
-Here we have used that $\vec{M}\times(\vec{M}\times\frac{\partial \vec{M}}{\partial t}) = -M_s^2\frac{\partial \vec{M}}{\partial t}$ as $\vec{M}\cdot\frac{\partial \vec{M}}{\partial t} = 0$, and that $\tau_{ex} = \hbar/JS$. Using this result we can extend the LLG equation in \eqref{eq:LLG_implicit} to also include the spin-transfer torque effects from the electric current, by inserting $\vec{T}_{STT}$ into the right hand side. Looking at the implicit LLG equation we see that we already have terms that go as $\frac{\partial \vec{M}}{\partial t}$ and $\vec{M}\times\frac{\partial \vec{M}}{\partial t}$. These terms in the spin-transfer torque $\vec{T}_{STT}$ can therefore be incorporated into the LLG equation by redfining the gyromagnetic ratio $\gamma$ and the damping parameter $\eta$. If one inserts the terms in $\vec{T}_{STT}$ that do not depend on the current into \eqref{eq:LLG_implicit}, one finds that by letting
+Here we have used that $\vec{M}\times(\vec{M}\times\frac{\partial \vec{M}}{\partial t}) = -M_s^2\frac{\partial \vec{M}}{\partial t}$ as $\vec{M}\cdot\frac{\partial \vec{M}}{\partial t} = 0$, and that $\tau_{ex} = \hbar/JS$. Using this result we can extend the LLG equation in \eqref{eq:LLG_implicit} to also include the spin-transfer torque effects from the charge current, by inserting $\vec{T}_{STT}$ into the right hand side. Looking at the implicit LLG equation we see that we already have terms that go as $\frac{\partial \vec{M}}{\partial t}$ and $\vec{M}\times\frac{\partial \vec{M}}{\partial t}$. These terms in the spin-transfer torque $\vec{T}_{STT}$ can therefore be incorporated into the LLG equation by redfining the gyromagnetic ratio $\gamma$ and the damping parameter $\eta$. If one inserts the terms in $\vec{T}_{STT}$ that do not depend on the current into \eqref{eq:LLG_implicit}, one finds that by letting
 
 \begin{align}
 \beta &= \frac{m_0}{M_s}\frac{1}{1+\xi^2}, \\
@@ -765,7 +761,24 @@ c_J &= \xi b_J.
 
 By looking at the directions of the $b_J$ and $c_J$ terms in \eqref{eq:LLG_current}, one sees that the $b_J$ term is parallel to the direction along which the local magnetization varies, and that the $c_J$ term is perpendicular to the plane that the local magnetization and the change in the local magnetization constitute. If one considers the magnetization of a N\'{e}el wall in the $x$-direction and a flow of electrons in the positive $x$-direction, the direction of the charge current becomes $\hat{j}_e = -\hat{x}$. The minus sign is because there is a flow of negative charges. If one lets the magnetization of the N\'{e}el wall point along $\hat{z}$ at $x = -\infty$, and along $-\hat{z}$ at $x = \infty$, and let the magnetization of the conduction electrons follow the local magnetization mostly adiabatically, the $b_J$ term will point in the opposite direction of $\frac{\partial \vec{M}}{\partial x}$ and the $c_J$ term will point along $-\hat{y}$. The $b_J$ term is therefore known as the adiabatic spin-transfer torque as it adjusts the local magnetization in the opposite direction of the adiabatic motion of the magnetization of the conduction electrons. Similarly the $c_J$ term is known as the non-adiabatic spin-transfer torque as it adjusts the local magnetization perpendicularly to the adiabatic motion of the magnetization of the conduction electrons. 
 
-The form of the extended LLG equation in \eqref{eq:LLG_current} is implicit in $\frac{\textrm{d} \vec{M}}{\textrm{d} t}$. Like the implicit LLG equation, it can be transformed into an explicit form by taking the cross product of it with $\vec{M}$, to get a linear expression for $\vec{M}\times\frac{\textrm{d} \vec{M}}{\textrm{d} t}$ in $\frac{\textrm{d} \vec{M}}{\textrm{d} t}$.
+The form of the extended LLG equation in \eqref{eq:LLG_current} is implicit in $\frac{\textrm{d} \vec{M}}{\textrm{d} t}$. Like the implicit LLG equation, it can be transformed into an explicit form by taking the cross product of it with $\vec{M}$, to get a linear expression for $\vec{M}\times\frac{\textrm{d} \vec{M}}{\textrm{d} t}$ in $\frac{\textrm{d} \vec{M}}{\textrm{d} t}$. It is then easy to show that by choosing
+
+\begin{align}
+\tilde{\eta '} &= \frac{\alpha}{\gamma ' M_s}, \\
+\tilde{\gamma '} &= \frac{\gamma '}{1+\alpha^2},
+\end{align}
+
+with $\alpha$ being a dimensionless damping constant like in the Landau--Lifshitz equation, we get the explicit form of the extended LLG equation:
+
+\begin{align}
+\nonumber \frac{\textrm{d} \vec{M}}{\textrm{d} t} = &-\tilde{\gamma '} \vec{M} \times  (\vec{H}_{eff} + \frac{\alpha}{M_s} \vec{M}\times \vec{H}_{eff}) \\ 
+&- \frac{(1+\alpha\xi) b_J}{M_s^2(1+\alpha^2)} \vec{M}\times (\vec{M}\times(\hat{j}_e\cdot\nabla)\vec{M})) - \frac{(\xi-\alpha)b_J}{ M_s(1+\alpha^2)}\vec{M}\times(\hat{j}_e\cdot\nabla)\vec{M}.
+\label{eq:LLG_current_explicit}
+\end{align}
+
+From this equation one can easily see that there will always be an adiabatic spin-transfer torque when a charge current is propagating through a domain wall, but there will only be a non-adiabatic spin-transfer torque if $\xi \neq \alpha$. As $\xi = \tau_{ex}/\tau_{sf}$, with $\tau_{ex}$ being a time scale in the exchange interaction and $\tau_{sf}$ being an average relaxation time of the non-adiabatic electrons, $\xi$ describes a dimensionless damping parameter for the conduction electrons. There will therefore be a non-adiabatic spin-transfer torque when the damping of the local and the conduction electron spins are different. The non-adiabatic spin-transfer torque causes a rotation of the domain wall, as one of the spins will relax faster than the other.
+
+
 \subsection{Domain wall pinning}
 
 \subsection{The motion of domain walls}
