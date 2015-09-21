@@ -564,11 +564,11 @@ we find that
 \ln \tan\frac{\theta}{2} - \ln \tan\frac{\theta_0}{2} = \frac{x-x_0}{\delta_{DW}}.
 \end{align}
 
-To get the final expression for $\theta(x)$, we must apply a last condition. As we want to describe a domain wall, we choose the domains on the different sides of the wall to be different. This is not a necessity, as one can also have two parallel domains separated by a 360$^o$ domain wall. We've seen that the stable domains occur for $\theta = 0$ and $\theta = \pi$. It is then reasonable to assume that if the function $\theta (x)$ is smooth, it will take the value $\theta = \pi/2$ at some point in the domain wall. If we let that point be located at $x = 0$, we find that
+To get the final expression for $\theta(x)$, we must apply a last condition. As we want to describe a domain wall, we choose the domains on the different sides of the wall to be different. This is not a necessity, as one can also have two parallel domains separated by a 360$^o$ domain wall. We've seen that the stable domains occur for $\theta = 0$ and $\theta = \pi$. It is then reasonable to assume that if the function $\theta (x)$ is smooth, it will take the value $\theta = \pi/2$ at some point in the domain wall. If we let that point be located at $x = X$, we find that
 
 \begin{align}
 \label{eq:thetaBloch}
-\theta(x) = 2\arctan(\exp(\frac{x}{\delta_{DW}})).
+\theta(x) = 2\arctan(\exp(\frac{x-X}{\delta_{DW}})).
 \end{align}
 
 Using the relations
@@ -581,8 +581,8 @@ Using the relations
 it is easy to show that the magnetization components become
 
 \begin{align}
-M_z &= - M_s\tanh\frac{x}{\delta_{DW}}, \label{eq:BlochMagZ} \\
-M_y &= \frac{M_s}{\cosh\frac{x}{\delta_{DW}}}.
+M_z &= - M_s\tanh\frac{x-X}{\delta_{DW}}, \label{eq:BlochMagZ} \\
+M_y &= \frac{M_s}{\cosh\frac{x-X}{\delta_{DW}}}.
 \end{align}
 
 \begin{figure}[h!]
@@ -597,7 +597,7 @@ M_y &= \frac{M_s}{\cosh\frac{x}{\delta_{DW}}}.
   \includegraphics[width=1.0\linewidth]{Figures/BlochWallMy}
   \caption{}
 \end{subfigure}
-\caption{The magnetization component in the $z$-direction (a) and in the $y$-direction (b) inside a Bloch domain wall.}
+\caption{The magnetization component in the $z$-direction (a) and in the $y$-direction (b) inside a Bloch domain wall with $X = 0$.}
 \label{fig:BlochWall}
 \end{figure}
 
@@ -609,7 +609,7 @@ If the magnetic material has a large surface area, such as thin films, it may be
 \begin{align*}
 \rho_M &= -\nabla\cdot\vec{M}(x) \\
 &= -M_s \frac{\partial}{\partial x} \sin \theta(x) \\
-&= \frac{M_s}{\delta_{DW}}\frac{\tanh\frac{x}{\delta_{DW}}}{\cosh\frac{x}{\delta_{DW}}}.
+&= \frac{M_s}{\delta_{DW}}\frac{\tanh\frac{x-X}{\delta_{DW}}}{\cosh\frac{x-X}{\delta_{DW}}}.
 \end{align*}
 
 \begin{figure}[h!]
@@ -698,7 +698,7 @@ The first term on the right hand side is a torque acting on $\vec{m}$ from the i
 
 To determine the spin-transfer torque we must find an expression for $\delta\vec{m}$. This is done by solving \eqref{eq:spindensity_continuity}. To do that one has to make some basic assumptions. We assume that the relaxation of the non-adiabatic spins is proportional to the non-adiabatic component of $\vec{m}$. By letting the average spin-flip relaxation time be defined by $\tau_{sf}$, the last term in \eqref{eq:spindensity_continuity} becomes $\langle\Gamma(\vec{m})\rangle \approx \delta\vec{m}/\tau_{sf}$. 
 
-The spin current density is a tensor of rank 2, defined by the vectors that describe the current flow of the electrons and the local spin. As the spin and magnetization of an electron are anti-parallel, the adiabatic spin current density can then be written as
+The spin current density is a tensor of rank 2, defined by the vectors that describe the charge flow and the spin of the conduction electrons. As the spin and magnetization of an electron are anti-parallel, the adiabatic spin current density can then be written as
 
 \begin{align}
 \langle \hat{J}_{\textrm{adiabatic}} \rangle = -\frac{\mu_B P}{e} \vec{j}_e \otimes \frac{\vec{M}}{M_s}.
@@ -771,17 +771,33 @@ The form of the extended LLG equation in \eqref{eq:LLG_current} is implicit in $
 with $\alpha$ being a dimensionless damping constant like in the Landau--Lifshitz equation, we get the explicit form of the extended LLG equation:
 
 \begin{align}
-\nonumber \frac{\textrm{d} \vec{M}}{\textrm{d} t} = &-\tilde{\gamma '} \vec{M} \times  (\vec{H}_{eff} + \frac{\alpha}{M_s} \vec{M}\times \vec{H}_{eff}) \\ 
+\nonumber \frac{\partial \vec{M}}{\partial t} = &-\tilde{\gamma '} \vec{M} \times  (\vec{H}_{eff} + \frac{\alpha}{M_s} \vec{M}\times \vec{H}_{eff}) \\ 
 &- \frac{(1+\alpha\xi) b_J}{M_s^2(1+\alpha^2)} \vec{M}\times (\vec{M}\times(\hat{j}_e\cdot\nabla)\vec{M})) - \frac{(\xi-\alpha)b_J}{ M_s(1+\alpha^2)}\vec{M}\times(\hat{j}_e\cdot\nabla)\vec{M}.
 \label{eq:LLG_current_explicit}
 \end{align}
 
-From this equation one can easily see that there will always be an adiabatic spin-transfer torque when a charge current is propagating through a domain wall, but there will only be a non-adiabatic spin-transfer torque if $\xi \neq \alpha$. As $\xi = \tau_{ex}/\tau_{sf}$, with $\tau_{ex}$ being a time scale in the exchange interaction and $\tau_{sf}$ being an average relaxation time of the non-adiabatic electrons, $\xi$ describes a dimensionless damping parameter for the conduction electrons. There will therefore be a non-adiabatic spin-transfer torque when the damping of the local and the conduction electron spins are different. The non-adiabatic spin-transfer torque causes a rotation of the domain wall, as one of the spins will relax faster than the other.
+From this equation one can easily see that there will always be an adiabatic spin-transfer torque when a charge current is propagating through a domain wall, but there will only be a non-adiabatic spin-transfer torque if $\xi \neq \alpha$. As $\xi = \tau_{ex}/\tau_{sf}$, with $\tau_{ex}$ being a time scale in the exchange interaction and $\tau_{sf}$ being an average relaxation time of the non-adiabatic electrons, $\xi$ describes a dimensionless damping parameter for the conduction electrons \cite{kruger2006current}. There will therefore be a non-adiabatic spin-transfer torque when the damping of the local and the conduction electron spins are different. The non-adiabatic spin-transfer torque causes a rotation of the domain wall, as one of the spins will relax faster than the other.
 
+\subsection{Example: Domain wall advection}
+In the simplest case when we only have an adiabatic spin-transfer torque ($\xi = \alpha$), \eqref{eq:LLG_current_explicit} can be reduced considerably to
+
+\begin{align}
+\label{eq:dw_advection}
+\frac{\partial \vec{M}(\vec{r}, t)}{\partial t} - b_J(\hat{j}_e\cdot\nabla) M(\vec{r}, t) = 0.
+\end{align}
+
+To get this one assumes that the local magnetization is in equilibrium when the current is applied, so that the terms including the effective field vanish. One also assumes a homogeneous material so that $\vec{M}\cdot(\hat{j}_e\cdot\nabla)\vec{M}$ as $|\vec{M}(\vec{r}, t)| = M_s$ is a constant, meaning $\vec{M}\times (\vec{M}\times(\hat{j}_e\cdot\nabla)\vec{M})) = -M_s^2(\hat{j}_e\cdot\nabla)\vec{M}$. Comparing \eqref{eq:dw_advection} to the advection equation for a vector field $\vec{M}(\vec{r}, t)$ with an incompressible flow $\vec{v}$,
+
+\begin{align}
+\label{eq:advection}
+\frac{\partial \vec{M}(\vec{r}, t)}{\partial t} + (\vec{v}\cdot\nabla) M(\vec{r}, t) = 0,
+\end{align}
+
+one sees that the domain wall moves with a velocity $\vec{v} = -b_J \hat{j}_e$. As $\hat{j}_e$ points in the opposite direction of the electron flow, the domain wall moves in the same direction as the electrons with a speed $b_J$. The solution of the advection equation is $\vec{M}(\vec{r} - \vec{v} \cdot (t - t_0), t_0)$, with $\vec{M}(\vec{r}, t_0)$ having to satisfy the LLG equation per our assumptions. The simple case described by \eqref{eq:dw_advection} is then just an advection of a domain wall, such as a Bloch or N\'{e}el wall.
 
 \subsection{Domain wall pinning}
 
-\subsection{The motion of domain walls}
+\subsection{Critical current}
 
 \section{Skyrmions}
 
