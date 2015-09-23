@@ -22,6 +22,7 @@
 \renewcommand{\floatpagefraction}{0.35}
 \renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
 \setlength\parindent{0pt}
+\numberwithin{equation}{section}
 
 
 
@@ -529,9 +530,10 @@ K\sin \theta (x) \cos \theta (x) = A \frac{\partial^2 \theta}{\partial x^2}.
 
 From this equation one can see both the domain walls and the domains. The domains are regions where the magnetization is uniform, meaning $\theta$ is a constant. It can easily be seen that $\theta = n\pi/2$ ($n = 0, 1, 2, \ldots$) satisfies this equation, but one should note that only the solutions $\theta = n\pi$ are stable, as that is the solution that minimizes the anisotropic energy when we have chosen the easy axis to be in the $z$-direction. For the domain walls the magnetization is not uniform, meaning we also have to consider the differentiation term. To solve this equation we multiply \eqref{eq:BlochWall} by $\frac{\partial \theta}{\partial x}$,
 
-\begin{align*}
+\begin{align}
+\label{eq:theta_doublediff}
 K\sin \theta (x) \cos \theta (x) \frac{\partial \theta}{\partial x} = A \frac{\partial^2 \theta}{\partial x^2}\frac{\partial \theta}{\partial x},
-\end{align*}
+\end{align}
 
 which is equivalent to
 
@@ -778,7 +780,9 @@ with $\alpha$ being a dimensionless damping constant like in the Landau--Lifshit
 
 From this equation one can easily see that there will always be an adiabatic spin-transfer torque when a charge current is propagating through a domain wall, but there will only be a non-adiabatic spin-transfer torque if $\xi \neq \alpha$. As $\xi = \tau_{ex}/\tau_{sf}$, with $\tau_{ex}$ being a time scale in the exchange interaction and $\tau_{sf}$ being an average relaxation time of the non-adiabatic electrons, $\xi$ describes a dimensionless damping parameter for the conduction electrons \cite{kruger2006current}. There will therefore be a non-adiabatic spin-transfer torque when the damping of the local and the conduction electron spins are different. The non-adiabatic spin-transfer torque causes a rotation of the domain wall, as one of the spins will relax faster than the other.
 
-\subsection{Example: Domain wall advection}
+\subsection{Domain wall motion}
+
+\subsubsection{Example: Domain wall advection}
 In the simplest case when we only have an adiabatic spin-transfer torque ($\xi = \alpha$), \eqref{eq:LLG_current_explicit} can be reduced considerably to
 
 \begin{align}
@@ -790,10 +794,150 @@ To get this one assumes that the local magnetization is in equilibrium when the 
 
 \begin{align}
 \label{eq:advection}
-\frac{\partial \vec{M}(\vec{r}, t)}{\partial t} + (\vec{v}\cdot\nabla) M(\vec{r}, t) = 0,
+\frac{\partial \vec{M}(\vec{r}, t)}{\partial t} + (\vec{v}\cdot\nabla) \vec{M}(\vec{r}, t) = 0,
 \end{align}
 
 one sees that the domain wall moves with a velocity $\vec{v} = -b_J \hat{j}_e$. As $\hat{j}_e$ points in the opposite direction of the electron flow, the domain wall moves in the same direction as the electrons with a speed $b_J$. The solution of the advection equation is $\vec{M}(\vec{r} - \vec{v} \cdot (t - t_0), t_0)$, with $\vec{M}(\vec{r}, t_0)$ having to satisfy the LLG equation per our assumptions. The simple case described by \eqref{eq:dw_advection} is then just an advection of a domain wall, such as a Bloch or N\'{e}el wall.
+
+\subsubsection{Motion including the non-adiabatic spin-transfer torque}
+To solve the extended LLG equation, it will be useful to write the equation in spherical coordinates and use the solution for $\theta(x)$ we found earlier in \eqref{eq:thetaBloch}. To do this, we write the vectors in terms of their spherical components. An infitesimal change in the magnetization can then be written as
+
+\begin{align}
+\label{eq:dm_spherical}
+\d {\vec{M}} = \d M_s \hat{r} + M_s \d {\theta} \hat{\theta} + M_s\sin\theta\d {\phi} \hat{\phi},
+\end{align}
+
+which is easily seen from the geometry. Using that $\frac{\textrm{d} M_s}{\textrm{d} t} = 0$, we then find
+
+\begin{align}
+\frac{\partial \vec{M}}{\partial t} = M_s
+\begin{pmatrix}
+0 \\ 
+\dot{\theta} \\ 
+\sin\theta\dot{\phi}
+\end{pmatrix}.
+\end{align}
+
+Note here that the first component in the vector is the radial component, the second is the component along $\hat{\theta}$, and the last component is along $\hat{\phi}$. Using the definition of the effective field, we find in a similar manner that
+
+\begin{align}
+\vec{H}_{eff} = -\frac{1}{\mu_0} \frac{\delta \epsilon}{\delta \vec{M}} = -\frac{1}{\mu_0}
+\begin{pmatrix}
+\frac{\delta \epsilon}{\delta M_s} \\ 
+\frac{1}{M_s} \frac{\delta \epsilon}{\delta \theta} \\ 
+\frac{1}{M_s\sin\theta} \frac{\delta \epsilon}{\delta \phi}
+\end{pmatrix}.
+\end{align}
+
+For the current terms in \eqref{eq:LLG_current_explicit}, we note that $(\hat{j}_e\cdot\nabla)$ is a scalar operator, so that $(\hat{j}_e\cdot\nabla)\vec{M} = \sum_i c_i \frac{\textrm{d} \vec{M}}{\textrm{d} x_i}$. Using \eqref{eq:dm_spherical} we then easily see that we can write
+
+\begin{align}
+(\hat{j}_e\cdot\nabla)\vec{M} = M_s
+\begin{pmatrix}
+0 \\ 
+(\hat{j}_e\cdot\nabla)\theta \\ 
+\sin\theta(\hat{j}_e\cdot\nabla)\phi
+\end{pmatrix},
+\end{align}
+
+where we have also used that $\frac{\textrm{d} M_s}{\textrm{d} x_i} = 0$. The scalar operator $(\hat{j}_e\cdot\nabla)$ can be kept in cartesian coordinates, as we can have $\theta$ and $\phi$ as a function of $x$, $y$ and $z$. Finally, we use again that $\vec{M}\times (\vec{M}\times(\hat{j}_e\cdot\nabla)\vec{M})) = -M_s^2(\hat{j}_e\cdot\nabla)\vec{M}$. Combining all of this into \eqref{eq:LLG_current_explicit} and calculating the cross products yields the extended LLG equation in spherical coordinates:
+
+\begin{align}
+\nonumber \begin{pmatrix}
+0 \\ \dot{\theta} \\ \sin\theta\dot{\phi}
+\end{pmatrix} =
+&\frac{\tilde{\gamma '}}{\mu_0 M_s}
+\begin{pmatrix}
+0 \\ -\frac{1}{\sin\theta} \frac{\delta \epsilon}{\delta \phi} \\ \frac{\delta \epsilon}{\delta \theta}
+\end{pmatrix} - \frac{\tilde{\gamma '} \alpha}{\mu_0 M_s} 
+\begin{pmatrix}
+0 \\ \frac{\delta \epsilon}{\delta \theta} \\ \frac{1}{\sin\theta} \frac{\delta \epsilon}{\delta \phi}
+\end{pmatrix} + \frac{(1+\xi\alpha)b_J}{1+\alpha^2}
+\begin{pmatrix}
+0 \\ (\hat{j}_e\cdot\nabla)\theta \\ \sin\theta(\hat{j}_e\cdot\nabla)\phi
+\end{pmatrix} \\
+&+\frac{(\xi-\alpha)b_J}{1+\alpha^2}
+\begin{pmatrix}
+0 \\ \sin\theta(\hat{j}_e\cdot\nabla)\phi \\ -(\hat{j}_e\cdot\nabla)\theta
+\end{pmatrix}.
+\label{eq:LLG_current_explicit_spherical}
+\end{align}
+
+The radial equation is trivial, but we have two equations in $\theta$ and $\phi$. Now we use this equation to look at a similar case as the N\'{e}el wall described in the last section. We consider a material with an easy axis along the $z$-axis and a hard axis along the $y$-axis. The anisotropic energy density can then be written as
+
+\begin{align}
+\nonumber \epsilon_A &= K_{\perp} (\frac{\vec{M}\cdot\hat{y}}{M_s})^2 - K (\frac{\vec{M}\cdot\hat{z}}{M_s})^2 \\
+\nonumber &= K_{\perp}\sin^2\theta\sin^2\phi - K \cos^2\theta \\
+&\rightarrow (K + K_{\perp} \sin^2\phi)\sin^2\theta,
+\end{align}
+
+where we added a constant shift $K$ in the energy density at the end to simplify the expression. The constants $K$ and $K_{\perp}$ are strictly positive. Comparing this to the anisotropic energy density in the Bloch and N\'{e}el wall calculations previously, we see that they are the same when we let $K \rightarrow K + K_{\perp}\sin^2\phi$. For the N\'{e}el wall case we let $\phi = 0$ previously, but now instead we set $\phi = \phi (t)$. Spatially $\phi$ is a constant, but we allow it to vary in time due to the non-adiabatic spin-transfer torque from the applied current. As $\phi$ does not vary along the 1D chain of local magnetic moments, which we define to be along the $x$-axis as before, the exchange energy is unchanged from the example with the Bloch and N\'{e}el walls discussed earlier. If we let the demagnetization energy be incorporated into the anisotropic energy, the total energy density then becomes
+
+\begin{align}
+\label{eq:energydensity_ex_a}
+\epsilon = \epsilon_E + \epsilon_A = A (\frac{\partial \theta}{\partial x})^2 + K\sin^2\theta + K_{\perp} \sin^2\theta\sin^2\phi
+\end{align}
+
+This energy density is the same as the one we solved in the last section, when the substitution of $K$ mentioned above is done. Because of the applied current, the angle $\theta$ is now also a function of time, meaning $\theta = \theta(x,t)$. If we assume that the width of the domain wall does not change in time, we can use \eqref{eq:thetaBloch} to find the shape of the domain wall. The temporal part of $\theta(x,t)$ is made by letting the domain wall center $X$ be a time dependent position $X(t)$. As the length scale $\delta_{DW}$ depends on $K$, we define a new length scale $\lambda$ where we make the substitution for $K$, so that
+
+\begin{align}
+\label{eq:lambda_dw}
+\lambda = \sqrt{\frac{A}{K + K_{\perp}\sin^2\phi}}.
+\end{align}
+
+in the absence of an external magnetic field. Together, this gives us
+
+\begin{align}
+\label{eq:theta_current}
+\theta(x,t) = 2\arctan(\exp(\frac{x-X(t)}{\lambda})).
+\end{align}
+
+We now have the parameters that describe the motion of the domain wall: $X(t)$ and $\phi(t)$. The former describes a translational motion of the domain wall, and the latter describes a rotation. For low energies these parameters fully describe the domain wall dynamics, under the criterion that
+
+\begin{align}
+K_{\perp} \ll K.
+\end{align}
+
+If this is not the case, then the $K_{\perp}$ term may lead to deformations of the domain wall, making our assumption of a static shape of the wall invalid. To describe the dynamics of a deformed wall one must use other parameters \cite{TataraKohnoShibata2008}. Assuming that we are in the situation where we can describe the motion of the domain wall with $X(t)$ and $\phi(t)$, we want to rewrite \eqref{eq:LLG_current_explicit_spherical} using these parameters. First we can calculate $\frac{\delta \epsilon}{\delta \theta}$ and $\frac{\delta \epsilon}{\delta \phi}$ by using \eqref{eq:energydensity_ex_a}:
+
+\begin{align}
+\frac{\delta \epsilon}{\delta \phi} &= \frac{\partial \epsilon}{\partial \phi} - \frac{\textrm{d}}{\textrm{d} x} \frac{\partial \epsilon}{\partial (\frac{\partial \phi}{\partial x})} = 2K_{\perp}\sin^2 \theta\sin\phi\cos\phi, \\
+\frac{\delta \epsilon}{\delta \theta} &= 2(K+K_{\perp} \sin^2 \phi)\sin\theta\cos\theta - 2A\frac{\partial^2 \theta}{\partial x^2}.
+\end{align}
+
+We then use \eqref{eq:theta_doublediff} and \eqref{eq:theta_current}  to find
+
+\begin{align}
+\frac{\partial \theta}{\partial x} &=  \frac{1}{\lambda\cosh\frac{x-X}{\lambda}} = \frac{\sin\theta}{\lambda}, \\
+\frac{\partial^2 \theta}{\partial x^2} &=  -\frac{\tanh\frac{x-X}{\lambda}}{\lambda^2\cosh\frac{x-X}{\lambda}} = \frac{\sin\theta\cos\theta}{\lambda^2}, \\
+\frac{\textrm{d} \theta}{\textrm{d} t} &= -\frac{\dot{X}}{\lambda\cosh\frac{x-X}{\lambda}} = -\frac{\dot{X}}{\lambda}\sin\theta.
+\end{align}
+
+This means that $\frac{\delta \epsilon}{\delta \theta} = 0$. Inserting this into \eqref{eq:LLG_current_explicit_spherical} gives us the two equations
+
+\begin{align*}
+\begin{pmatrix}
+\sin\theta\dot{X} \\ \sin\theta\dot{\phi}
+\end{pmatrix}
+=
+\begin{pmatrix}
+\frac{\lambda \tilde{\gamma '}}{\mu_0 M_s} 2 K_{\perp} \sin\theta\sin\phi\cos\phi + \frac{(1+\xi\alpha)b_J}{1+\alpha^2}\sin\theta \\
+-\frac{\tilde{\gamma '}\alpha}{\mu_0 M_s}2 K_{\perp} \sin\theta\sin\phi\cos\phi + \frac{(\xi-\alpha)b_J}{\lambda(1+\alpha^2)}\sin\theta
+\end{pmatrix}.
+\end{align*}
+
+We see that $\sin\theta$ is included in all the terms, meaning the domains where $\theta = 0$, $\theta = \pi$ automatically satisfy the equations. As $\sin\theta \neq 0$ except at $x = \pm \infty$, we can safely divide both the equations with $\sin\theta$:
+
+\begin{align}
+\begin{pmatrix}
+\dot{X} \\ \dot{\phi}
+\end{pmatrix}
+=
+\begin{pmatrix}
+\frac{\lambda \tilde{\gamma '}}{\mu_0 M_s} K_{\perp} \sin2\phi + \frac{(1+\xi\alpha)b_J}{1+\alpha^2} \\
+-\frac{\tilde{\gamma '}\alpha}{\mu_0 M_s} K_{\perp} \sin2\phi + \frac{(\xi-\alpha)b_J}{\lambda(1+\alpha^2)}
+\end{pmatrix}.
+\end{align}
 
 \subsection{Domain wall pinning}
 
