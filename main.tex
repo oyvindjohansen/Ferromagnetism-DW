@@ -895,6 +895,7 @@ in the absence of an external magnetic field. Together, this gives us
 We now have the parameters that describe the motion of the domain wall: $X(t)$ and $\phi(t)$. The former describes a translational motion of the domain wall, and the latter describes a rotation. For low energies these parameters fully describe the domain wall dynamics, under the criterion that
 
 \begin{align}
+\label{eq:kperp_ll_k}
 K_{\perp} \ll K.
 \end{align}
 
@@ -926,9 +927,10 @@ This means that $\frac{\delta \epsilon}{\delta \theta} = 0$. Inserting this into
 \end{pmatrix}.
 \end{align*}
 
-We see that $\sin\theta$ is included in all the terms, meaning the domains where $\theta = 0$, $\theta = \pi$ automatically satisfy the equations. As $\sin\theta \neq 0$ except at $x = \pm \infty$, we can safely divide both the equations with $\sin\theta$:
+We see that $\sin\theta$ is included in all the terms, meaning the domains where $\theta = 0$, $\theta = \pi$ automatically satisfy the equations. As $\sin\theta \neq 0$ except at $x = \pm \infty$, we can safely divide both the equations with $\sin\theta$ when considering the domain wall region:
 
 \begin{align}
+\label{eq:xdot_phidot}
 \begin{pmatrix}
 \dot{X} \\ \dot{\phi}
 \end{pmatrix}
@@ -939,9 +941,85 @@ We see that $\sin\theta$ is included in all the terms, meaning the domains where
 \end{pmatrix}.
 \end{align}
 
-\subsection{Domain wall pinning}
+Note that $\lambda$ is a function of $\phi$, but due to the criterion in \eqref{eq:kperp_ll_k} $\lambda$ varies very little as $\phi$ changes. It is therefore alright to assume that $\lambda$ is a constant in the equations. As a cross-check of the validity of \eqref{eq:xdot_phidot} we can see what happens if there is no applied current, meaning $b_J = 0$. We easily see that the domain wall is static if $\dot{X} = \dot{\phi} = 0$, which requires that $\sin2\phi = 0$. This agrees with our solutions earlier, as we have a N\'{e}el wall when $\phi = 0, \pi$ and a Bloch wall when $\phi = \pi/2, 3\pi/2$. Because we are considering a system with a hard axis along the $y$-axis the stable solutions are N\'{e}el walls, so we set $\phi(0) = 0$ in our example. Then we can see that the initial speed of the domain wall is
 
-\subsection{Critical current}
+\begin{align}
+\dot{X}(0) = \frac{1+\xi\alpha}{1+\alpha^2}b_J.
+\end{align}
+
+We also have $\dot{\phi}(0) \neq 0$ if $\xi \neq \alpha$, so that the wall rotates slightly. For small currents $j_e$, eventually $\phi(t)$ will obtain a value such that $\dot{\phi}(t) = 0$. If one then solves for $\sin2\phi$ in the second line of \eqref{eq:xdot_phidot} and substitutes into the first line, one then finds that the final domain wall speed becomes
+
+\begin{align}
+\label{eq:xdot_undercrit}
+\dot{X}(t\rightarrow\infty) = \frac{\xi}{\alpha} b_J.
+\end{align}
+
+The final speed of the domain wall is therefore decided by the damping factor $\xi$ of the itinerant spins. Note that this is only true up to a certain critical current, as when the current passes a certain threshold $\dot{\phi} = 0$ is no longer a solution. As $\sin2\phi$ can maximum be 1, we then find that the critical current $j_c$ is given by the relations
+
+\begin{align}
+b_{JC} &= \frac{1}{1+\xi^2}\frac{\mu_B P}{e M_s} j_c, \\
+j_c &= \frac{\alpha(1+\xi^2)}{\xi-\alpha}\frac{\lambda e \gamma ' K_{\perp}}{\mu_0\mu_B P}.
+\end{align}
+
+Defining a time scale $T$ for the system,
+
+\begin{align}
+T = \frac{\mu_0 M_s}{\tilde{\gamma '} \alpha K_{\perp}},
+\end{align}
+
+one can write the equations for $\dot{X}$ and $\dot{\phi}$ as
+
+\begin{align}
+\label{eq:xdot_phidot_v2}
+\begin{pmatrix}
+\dot{X} \\ \dot{\phi}
+\end{pmatrix}
+=
+\begin{pmatrix}
+\frac{\lambda}{\alpha T} \sin2\phi + \frac{\lambda}{T}\frac{(1+\xi\alpha)}{\xi - \alpha} \cdot \frac{j_e}{j_c} \\
+-\frac{1}{T}  \sin2\phi + \frac{1}{T}\cdot\frac{j_e}{j_c}
+\end{pmatrix}.
+\end{align}
+
+It can be shown that the solution of $\phi(t)$ is
+
+\begin{align}
+\phi(t) = \arctan(\frac{1+\sqrt{(j_e/j_c)^2-1}\tan(\sqrt{(j_e/j_c)^2-1}(t/T+C))}{(j_e/j_c)}),
+\end{align}
+
+with $C$ being an integration constant. As $\sin2\phi(t)$ is now oscillating in time without reaching a stable value, $\dot{X}$ will always be an oscillating function in time. From now on we will therefore consider the time averaged translational domain wall speed $\langle \dot{X} \rangle$. Using the expression for $\phi(t)$, we find that
+
+\begin{align}
+\langle\sin2\phi(t)\rangle = \frac{1}{\frac{\pi}{\sqrt{(j_e/j_c)^2-1}}} \int_0^{\frac{\pi}{\sqrt{(j_e/j_c)^2-1}}} \d t \sin2\phi(t) = \frac{j_e}{j_c}-\sqrt{1-(\frac{j_c}{j_e})^2}.
+\end{align}
+
+Inserting this result into the equation for $\dot{X}$, we find that when $j_e > j_c$
+
+\begin{align}
+\label{eq:xdot_av_abovecrit}
+\nonumber \langle\dot{X}\rangle &= \frac{\lambda}{T}\left[\frac{1}{\alpha}(\frac{j_e}{j_c}-\sqrt{1-(\frac{j_c}{j_e})^2}) + \frac{1+\xi\alpha}{\xi-\alpha}\cdot\frac{j_e}{j_c}\right] \\
+&= \frac{\xi-\alpha}{1+\alpha^2} \left[\frac{1}{\alpha}(\frac{j_e}{j_c}-\sqrt{1-(\frac{j_c}{j_e})^2}) + \frac{1+\xi\alpha}{\xi-\alpha}\cdot\frac{j_e}{j_c}\right] b_{JC}.
+\end{align}
+
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{Figures/walkerBreakdown}
+  \caption{}
+  \label{fig:walkerBreakdown}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{Figures/criticalCurrentXdot}
+  \caption{}
+  \label{fig:criticalCurrent}
+\end{subfigure}
+\caption{The translational speed of the domain wall with a high damping parameter $\xi$ of the itinerant electrons (a) and without damping of the itinerant electrons (b) with $\alpha = 1$.}
+\label{fig:Xdot_afo_current}
+\end{figure}
+
+\subsection{Domain wall pinning}
 
 \section{Skyrmions}
 
