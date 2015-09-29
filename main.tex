@@ -783,7 +783,7 @@ From this equation one can easily see that there will always be an adiabatic spi
 \subsection{Domain wall motion}
 
 \subsubsection{Example: Domain wall advection}
-In the simplest case when we only have an adiabatic spin-transfer torque ($\xi = \alpha$), \eqref{eq:LLG_current_explicit} can be reduced considerably to
+In the simplest case when the damping of the itinerant and local spins are equal ($\xi = \alpha$), \eqref{eq:LLG_current_explicit} can be reduced considerably to
 
 \begin{align}
 \label{eq:dw_advection}
@@ -885,7 +885,7 @@ This energy density is the same as the one we solved in the last section, when t
 \lambda = \sqrt{\frac{A}{K + K_{\perp}\sin^2\phi}}.
 \end{align}
 
-in the absence of an external magnetic field. Together, this gives us
+Together, this gives us
 
 \begin{align}
 \label{eq:theta_current}
@@ -906,7 +906,7 @@ If this is not the case, then the $K_{\perp}$ term may lead to deformations of t
 \frac{\delta \epsilon}{\delta \theta} &= 2(K+K_{\perp} \sin^2 \phi)\sin\theta\cos\theta - 2A\frac{\partial^2 \theta}{\partial x^2}.
 \end{align}
 
-We then use \eqref{eq:theta_doublediff} and \eqref{eq:theta_current}  to find
+We then use \eqref{eq:theta_current}  to find
 
 \begin{align}
 \frac{\partial \theta}{\partial x} &=  \frac{1}{\lambda\cosh\frac{x-X}{\lambda}} = \frac{\sin\theta}{\lambda}, \\
@@ -944,6 +944,7 @@ We see that $\sin\theta$ is included in all the terms, meaning the domains where
 Note that $\lambda$ is a function of $\phi$, but due to the criterion in \eqref{eq:kperp_ll_k} $\lambda$ varies very little as $\phi$ changes. It is therefore alright to assume that $\lambda$ is a constant in the equations. As a cross-check of the validity of \eqref{eq:xdot_phidot} we can see what happens if there is no applied current, meaning $b_J = 0$. We easily see that the domain wall is static if $\dot{X} = \dot{\phi} = 0$, which requires that $\sin2\phi = 0$. This agrees with our solutions earlier, as we have a N\'{e}el wall when $\phi = 0, \pi$ and a Bloch wall when $\phi = \pi/2, 3\pi/2$. Because we are considering a system with a hard axis along the $y$-axis the stable solutions are N\'{e}el walls, so we set $\phi(0) = 0$ in our example. Then we can see that the initial speed of the domain wall is
 
 \begin{align}
+\label{eq:Xdot0}
 \dot{X}(0) = \frac{1+\xi\alpha}{1+\alpha^2}b_J.
 \end{align}
 
@@ -958,7 +959,7 @@ The final speed of the domain wall is therefore decided by the damping factor $\
 
 \begin{align}
 b_{JC} &= \frac{1}{1+\xi^2}\frac{\mu_B P}{e M_s} j_c, \\
-j_c &= \frac{\alpha(1+\xi^2)}{\xi-\alpha}\frac{\lambda e \gamma ' K_{\perp}}{\mu_0\mu_B P}.
+j_c &= \frac{\alpha(1+\xi^2)}{\xi-\alpha}\frac{\lambda e \gamma ' K_{\perp}}{\mu_0\mu_B P}. \label{eq:critical_current}
 \end{align}
 
 Defining a time scale $T$ for the system,
@@ -1015,8 +1016,26 @@ Inserting this result into the equation for $\dot{X}$, we find that when $j_e > 
   \caption{}
   \label{fig:criticalCurrent}
 \end{subfigure}
-\caption{The translational speed of the domain wall with a high damping parameter $\xi$ of the itinerant electrons (a) and without damping of the itinerant electrons (b) with $\alpha = 1$.}
+\caption{The translational speed of the domain wall with a high damping parameter $\xi$ of the itinerant electrons (a) and with a small damping of the itinerant electrons (b) as a function of applied current.}
 \label{fig:Xdot_afo_current}
+\end{figure}
+
+Combining the results in \eqref{eq:xdot_undercrit} and \eqref{eq:xdot_av_abovecrit} we can plot the translational speed of the domain wall as a function of the applied current for different values of $\xi$, as shown in Figure \ref{fig:Xdot_afo_current}. In Figure \ref{fig:walkerBreakdown} we see a drop in the speed when the applied current exceeds the critical current in the case that $\xi > \alpha$. This is known as a Walker breakdown \cite{SchryerWalker1974}. Above the critical current there is no stable solution of $\phi$, meaning there will be an energy loss to the rotational excitation of the domain wall motion as shown in Figure \ref{fig:phidot_afo_current}. In the limits $j_e/j_c < 1$ and $j_e/j_c \gg 1$ the translational speed $\dot{X}$ is a linear function of $j_e/j_c$. The slope of the function is much steeper for low charge currents, as in this region we don't get any permanent rotational motion of the domain wall. To get a high translational speed at an efficient energy cost through the applied current, it is best to apply a current equal to the critical current. As the correlation between the translational speed of the domain wall and the current is linear, we want a high critical current. It is easily seen from \eqref{eq:critical_current} that the critical current reaches its maximum when $\xi \rightarrow \alpha^+$. In regards to materialistic properties, one can increase the critical current by making $\lambda K_{\perp}$ large. As 
+
+\begin{align}
+\lambda K_{\perp} = \sqrt{\frac{AK_{\perp}}{\frac{K}{K_{\perp}}+\sin^2\phi}},
+\end{align}
+
+this is not that easy due to the condition in \eqref{eq:kperp_ll_k}. One can see, however, that the critical current is larger in strongly ferromagnetic materials with large coupling constants $A$.
+
+When the itinerant spins have a low damping parameter compared to the local spins ($\xi<\alpha$), the translational speed of the domain wall increases when the applied current is greater than the critical current, as shown in \ref{fig:criticalCurrent}. It is worth noting that the domain wall does not get a final translational speed when the applied current is below the critical current, in the case when $\xi=0$. There will be some initial movement as seen from \eqref{eq:Xdot0}, but this eventually drops off. Below this threshold the added energy from the current is absorbed by the perpendicular anisotropic energy along the hard axis. 
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{Figures/criticalCurrentPhidot.pdf} 
+\caption{The rotational speed of the domain wall as a function of applied current.}
+\label{fig:phidot_afo_current} 
+\end{center}
 \end{figure}
 
 \subsection{Domain wall pinning}
