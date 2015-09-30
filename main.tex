@@ -1040,6 +1040,14 @@ Inserting this result into the equation for $\dot{X}$, we find that when $j_e > 
 \label{fig:Xdot_afo_current}
 \end{figure}
 
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{Figures/criticalCurrentPhidot.pdf} 
+\caption{The rotational speed of the domain wall as a function of applied current.}
+\label{fig:phidot_afo_current} 
+\end{center}
+\end{figure}
+
 Combining the results in \eqref{eq:xdot_undercrit} and \eqref{eq:xdot_av_abovecrit} we can plot the translational speed of the domain wall as a function of the applied current for different values of $\xi$, as shown in Figure \ref{fig:Xdot_afo_current}. In Figure \ref{fig:walkerBreakdown} we see a drop in the speed when the applied current exceeds the critical current in the case that $\xi > \alpha$. This is known as a Walker breakdown \cite{SchryerWalker1974}. Above the critical current there is no stable solution of $\phi$, meaning there will be an energy loss to the rotational excitation of the domain wall motion as shown in Figure \ref{fig:phidot_afo_current}. In the limits $j_e/j_c < 1$ and $j_e/j_c \gg 1$ the translational speed $\dot{X}$ is a linear function of $j_e/j_c$. The slope of the function is much steeper for low charge currents, as in this region we do not get any permanent rotational motion of the domain wall. To get a high translational speed at an efficient energy cost through the applied current, it is best to apply a current equal to the critical current. As the correlation between the translational speed of the domain wall and the current is linear, we want a high critical current. It is easily seen from \eqref{eq:critical_current} that the critical current diverges when $\xi \rightarrow \alpha$. If $\xi=\alpha$ there will not be any Walker breakdown. The cause for this is easily seen from Figure \ref{fig:Neel_NonAdSTT_GD}, as when $\xi=\alpha$ the Gilbert damping torque and the non-adiabatic spin-transfer torque cancel each other out, meaning there is no rotational motion of the domain wall. In regards to materialistic properties, one can increase the critical current by making $\lambda K_{\perp}$ large. As 
 
 \begin{align}
@@ -1048,14 +1056,25 @@ Combining the results in \eqref{eq:xdot_undercrit} and \eqref{eq:xdot_av_abovecr
 
 this is not that easy due to the condition in \eqref{eq:kperp_ll_k}. One can see, however, that the critical current is larger in strongly ferromagnetic materials with large coupling constants $A$.
 
-When the itinerant spins have a low damping parameter compared to the local spins ($\xi<\alpha$), the translational speed of the domain wall increases when the applied current is greater than the critical current, as shown in \ref{fig:criticalCurrent}. It is worth noting that the domain wall does not get a final translational speed when the applied current is below the critical current, in the case when $\xi=0$. There will be some initial movement as seen from \eqref{eq:Xdot0}, but this eventually drops off. The reason why there is an increase in the translational speed of the domain wall when $j_e/j_c>1$ in the case of $\xi<\alpha$ is that the non-adiabatic spin-transfer torque could not compensate for the Gilbert damping when there was a stable solution of $\phi$. Below $j_e/j_c$ the added energy from the current was absorbed by the perpendicular anisotropic energy along the hard axis, but as there is a limit to how much anisotropic energy can be absorbed more energy is available to the translational motion of the domain wall when $j_e>j_c$. This is the opposite of the case when $\xi>\alpha$, where there was a decrease in the translational speed when $j_e>j_c$. As $\xi>\alpha$, the non-adiabatic spin-transfer torque was able to compensate the Gilbert damping and the anisotropic energy cost, therefore more energy was available to the translational motion.
+When the itinerant spins have a low damping parameter compared to the local spins ($\xi<\alpha$), the translational speed of the domain wall increases when the applied current is greater than the critical current, as shown in \ref{fig:criticalCurrent}. It is worth noting that the domain wall does not get a final translational speed when the applied current is below the critical current, in the case when $\xi=0$. There will be some initial movement as seen from \eqref{eq:Xdot0}, but this eventually drops off. The reason why there is an increase in the translational speed of the domain wall when $j_e/j_c>1$ in the case of $\xi<\alpha$ is that the non-adiabatic spin-transfer torque could not compensate for the Gilbert damping when there was a stable solution of $\phi$. Below $j_e/j_c$ the added energy from the current was absorbed by the perpendicular anisotropic energy along the hard axis, but as there is a limit to how much anisotropic energy can be absorbed more energy is available to the translational motion of the domain wall when $j_e>j_c$. This is the opposite of the case when $\xi>\alpha$, where there was a decrease in the translational speed when $j_e>j_c$. As $\xi>\alpha$, the non-adiabatic spin-transfer torque was able to compensate the Gilbert damping and the anisotropic energy cost, therefore more energy was available to the translational motion.\\
 
+As an example one can plot the expectation values of the domain wall for a case when $j_e>j_c$. An example is shown in Figure \ref{fig:DW_JeGTJc} with $j_e = 1.1j_c$. One can see in Figure \ref{fig:Neel_NonAdSTT_GD_JeGTJc} that the domain wall has been tilted out of the original plane of the initial N\'{e}el wall, and the domain wall has now mixed qualities between a N\'{e}el and a Bloch wall. When studied closely it can be seen that the Gilbert damping and the non-adiabatic spin-transfer torque are not completely anti-parallel anymore, but the main components still point in opposite directions. The reason for this offset is that the rotational motion comes into play in the Gilbert damping term that is proportional to $\vec{M}\times\frac{\textrm{d} \vec{M}}{\textrm{d} t}$, while the non-adiabatic spin-transfer torque is proportional to $\vec{M}\times\frac{\partial \vec{M}}{\partial x}$. The Gilbert damping term contains the temporal change, while the non-adiabatic spin-transfer torque contains the spatial change. When there is a rotation ($\dot{\phi} \neq 0$) and not simply a translation of the domain wall these will in general be different, unlike the initial case without rotation in Figure \ref{fig:Neel_NonAdSTT_GD}.
 \begin{figure}[h!]
-\begin{center}
-\includegraphics[width=0.8\textwidth]{Figures/criticalCurrentPhidot.pdf} 
-\caption{The rotational speed of the domain wall as a function of applied current.}
-\label{fig:phidot_afo_current} 
-\end{center}
+\centering
+\begin{subfigure}{\textwidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{Figures/NeelJeGTJcAdSTTMS.png}
+  \caption{}
+  \label{fig:Neel_AdSTT_Heff_JeGTJc}
+\end{subfigure}
+\begin{subfigure}{\textwidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{Figures/NeelJeGTJcNonAdSTTGD.png}
+  \caption{}
+  \label{fig:Neel_NonAdSTT_GD_JeGTJc}
+\end{subfigure}
+\caption{The shape of the domain wall different torques acting on it with an applied current $j_e=1.1j_c$. Expectation values are assumed. The blue vectors represent the domain wall magnetization in both figures. In (a) the red vectors represent the adiabatic spin-transfer torque and the green vectors the magnetostatic torque from the effective field. In (b) the red vectors represent the non-adiabatic spin-transfer torque and the green vectors the Gilbert damping torque. The magnitude of the torques are not to scale.}
+\label{fig:DW_JeGTJc}
 \end{figure}
 
 \subsubsection{Motion due to external field}
