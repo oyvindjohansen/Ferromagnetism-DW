@@ -13,6 +13,7 @@
 \usepackage{import}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{lipsum}
 
 
 \setcounter{totalnumber}{5}
@@ -69,7 +70,7 @@ E_A = V \sum_{i=0}^{\infty} K_i (\frac{\vec{M}\cdot\hat{n}}{M_s})^{2i}
 if there is to be no preferential direction with respect to energy along the axis. Here $V$ is the volume, $M_s = |\vec{M}|$ the saturation magnetization and $K_i$ are the anisotropy constants. By only considering the lowest order in the anisotropic energy it becomes
 
 \begin{align}
-\label{eq:uniaxialanisotropy}
+\label{eq:uniaxialanisotropy_v2}
 E_A = K V (\frac{\vec{M}\cdot\hat{n}}{M_s})^2
 \end{align}
 
@@ -224,7 +225,7 @@ Something worth noting is that if the demagnetization tensor $\bar{N}(\vec{r}-\v
 E_D = \mu_0(N_{xx}M_x^2+N_{yy}M_y^2+N_{zz}M_z^2).
 \end{align}
 
-This is the case for ellipsoidal bodies \cite{kruger2006current}. This form of the demagnetization energy is similar to that of the uniaxial anisotropic energy in \eqref{eq:uniaxialanisotropy}. This means that ellipsoidal magnetic particles cause shape anisotropy, assuming the magnetic particle is not spherical ($N_{xx} = N_{yy} = N_{zz}$).
+This is the case for ellipsoidal bodies \cite{kruger2006current}. This form of the demagnetization energy is similar to that of the uniaxial anisotropic energy in \eqref{eq:uniaxialanisotropy_v2}. This means that ellipsoidal magnetic particles cause shape anisotropy, assuming the magnetic particle is not spherical ($N_{xx} = N_{yy} = N_{zz}$).
 
 
 \subsection{Zeeman energy}
@@ -371,7 +372,7 @@ The last term depends on what kind of anisotropy there is in the material. For a
 
 \begin{align}
 \label{eq:effielduniaxialani}
--\frac{1}{\mu_0}\frac{\delta \epsilon_A[\vec{M}]}{\delta \vec{M}(\vec{r})} = -\frac{2K_1}{M_s^2}(\vec{M}(\vec{r})\cdot\hat{n})\hat{n} - \frac{4K_2}{M_s^4}(\vec{M}(\vec{r})\cdot\hat{n})^3\hat{n}
+-\frac{1}{\mu_0}\frac{\delta \epsilon_A[\vec{M}]}{\delta \vec{M}(\vec{r})} = -\frac{2K_1}{M_s^2}(\vec{M}(\vec{r})\cdot\hat{n})\hat{n} - \frac{4K_2}{M_s^4}(\vec{M}(\vec{r})\cdot\hat{n})^3\hat{n} - \ldots
 \end{align}
 
 up to fourth order in the directional cosine. For a cubic anisotropy the energy density $\epsilon_A$ becomes the integrand in \eqref{eq:cubicanisotropy} instead.
@@ -782,7 +783,7 @@ From this equation one can easily see that there will always be an adiabatic spi
 
 \subsection{Domain wall motion}
 
-\subsubsection{Example: Domain wall advection}
+\subsubsection{Advection}
 In the simplest case when the damping of the itinerant and local spins are equal ($\xi = \alpha$), \eqref{eq:LLG_current_explicit} can be reduced considerably to
 
 \begin{align}
@@ -914,7 +915,26 @@ We then use \eqref{eq:theta_current}  to find
 \frac{\textrm{d} \theta}{\textrm{d} t} &= -\frac{\dot{X}}{\lambda\cosh\frac{x-X}{\lambda}} = -\frac{\dot{X}}{\lambda}\sin\theta.
 \end{align}
 
-This means that $\frac{\delta \epsilon}{\delta \theta} = 0$. Inserting this into \eqref{eq:LLG_current_explicit_spherical} gives us the two equations
+This means that $\frac{\delta \epsilon}{\delta \theta} = 0$. By using this we can look at how the different terms in the extended LLG equation acts on the domain wall. Looking at \eqref{eq:LLG_current_explicit_spherical}, we see that the equation for $\dot{\theta}$ is decided by the first and third term on the right hand side, as $\frac{\delta \epsilon}{\delta \theta} =  (\hat{j}_e\cdot\nabla)\phi = 0$. The first term is the magnetostatic torque from the effective field, and the third is the adiabatic spin-transfer torque. The in-plane motion of the domain wall is therefore decided by the balance of these two torques; the adiabatic torque will cause a translational movement of the domain wall, which causes the local magnetization to be moved away from equilibrium. This in turn generates an effective field that will attempt to reverse the motion of the domain wall to return to equilibrium. The resulting torques are shown in Figure \ref{fig:Neel_AdSTT_Heff}. In the equation for $\dot{\phi}$ in \eqref{eq:LLG_current_explicit_spherical}, we only get a contribution from the second and fourth terms on the right hand side. These are the Gilbert damping term and the non-adiabatic spin-transfer torque term respectively, which is seen by comparing \eqref{eq:LLG_current_explicit_spherical} to \eqref{eq:LLG_current}. The Gilbert-damping term rotates the N\'{e}el domain wall out of plane, which causes an increase in the anisotropic energy as the hard axis is perpendicular to the domain wall plane. The non-adiabatic spin-transfer torque acts as a counterpart to this rotation, and attempts to rotate the domain wall in the other direction, as seen in Figure \ref{fig:Neel_NonAdSTT_GD}. 
+
+\begin{figure}[h!]
+\centering
+\begin{subfigure}{\textwidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{Figures/NeelWallAdSTTHeff.png}
+  \caption{}
+  \label{fig:Neel_AdSTT_Heff}
+\end{subfigure}
+\begin{subfigure}{\textwidth}
+  \centering
+  \includegraphics[width=1.0\linewidth]{Figures/NeelWallNonAdSTTGD.png}
+  \caption{}
+  \label{fig:Neel_NonAdSTT_GD}
+\end{subfigure}
+\caption{The different torques acting on the initial N\'{e}el domain wall. The blue vectors are the N\'{e}el domain wall magnetization in both figures. In (a) the red vectors represent the adiabatic spin-transfer torque and the green vectors the magnetostatic torque from the effective field. In (b) the red vectors represent the non-adiabatic spin-transfer torque and the green vectors the Gilbert damping torque. The magnitude of the torques are not to scale.}
+\end{figure}
+
+If we insert the calculated differentials into \eqref{eq:LLG_current_explicit_spherical} it gives us the two equations
 
 \begin{align*}
 \begin{pmatrix}
@@ -955,7 +975,7 @@ We also have $\dot{\phi}(0) \neq 0$ if $\xi \neq \alpha$, so that the wall rotat
 \dot{X}(t\rightarrow\infty) = \frac{\xi}{\alpha} b_J.
 \end{align}
 
-The final speed of the domain wall is therefore decided by the damping factor $\xi$ of the itinerant spins. Note that this is only true up to a certain critical current, as when the current passes a certain threshold $\dot{\phi} = 0$ is no longer a solution. As $\sin2\phi$ can maximum be 1, we then find that the critical current $j_c$ is given by the relations
+The final speed of the domain wall is therefore decided by the non-adiabatic spin-transfer torque. Note that this relation is only true up to a certain critical current, as when the current passes a certain threshold $\dot{\phi} = 0$ is no longer a solution. As $\sin2\phi$ can maximum be 1, we then find that the critical current $j_c$ is given by the relations
 
 \begin{align}
 b_{JC} &= \frac{1}{1+\xi^2}\frac{\mu_B P}{e M_s} j_c, \\
@@ -991,15 +1011,15 @@ It can be shown that the solution of $\phi(t)$ is
 with $C$ being an integration constant. As $\sin2\phi(t)$ is now oscillating in time without reaching a stable value, $\dot{X}$ will always be an oscillating function in time. From now on we will therefore consider the time averaged translational domain wall speed $\langle \dot{X} \rangle$. Using the expression for $\phi(t)$, we find that
 
 \begin{align}
-\langle\sin2\phi(t)\rangle = \frac{1}{\frac{\pi}{\sqrt{(j_e/j_c)^2-1}}} \int_0^{\frac{\pi}{\sqrt{(j_e/j_c)^2-1}}} \d t \sin2\phi(t) = \frac{j_e}{j_c}-\sqrt{1-(\frac{j_c}{j_e})^2}.
+\langle\sin2\phi(t)\rangle = \frac{1}{\frac{\pi T}{\sqrt{(j_e/j_c)^2-1}}} \int_0^{\frac{\pi T}{\sqrt{(j_e/j_c)^2-1}}} \d t \sin2\phi(t) = \frac{j_e}{j_c}-\sqrt{(\frac{j_e}{j_c})^2-1}.
 \end{align}
 
 Inserting this result into the equation for $\dot{X}$, we find that when $j_e > j_c$
 
 \begin{align}
 \label{eq:xdot_av_abovecrit}
-\nonumber \langle\dot{X}\rangle &= \frac{\lambda}{T}\left[\frac{1}{\alpha}(\frac{j_e}{j_c}-\sqrt{1-(\frac{j_c}{j_e})^2}) + \frac{1+\xi\alpha}{\xi-\alpha}\cdot\frac{j_e}{j_c}\right] \\
-&= \frac{\xi-\alpha}{1+\alpha^2} \left[\frac{1}{\alpha}(\frac{j_e}{j_c}-\sqrt{1-(\frac{j_c}{j_e})^2}) + \frac{1+\xi\alpha}{\xi-\alpha}\cdot\frac{j_e}{j_c}\right] b_{JC}.
+\nonumber \langle\dot{X}\rangle &= \frac{\lambda}{T}\left[\frac{1}{\alpha}(\frac{j_e}{j_c}-\sqrt{(\frac{j_e}{j_c})^2-1}) + \frac{1+\xi\alpha}{\xi-\alpha}\cdot\frac{j_e}{j_c}\right] \\
+&= \frac{\xi-\alpha}{1+\alpha^2} \left[\frac{1}{\alpha}(\frac{j_e}{j_c}-\sqrt{(\frac{j_e}{j_c})^2-1}) + \frac{1+\xi\alpha}{\xi-\alpha}\cdot\frac{j_e}{j_c}\right] b_{JC}.
 \end{align}
 
 \begin{figure}[h!]
@@ -1020,7 +1040,7 @@ Inserting this result into the equation for $\dot{X}$, we find that when $j_e > 
 \label{fig:Xdot_afo_current}
 \end{figure}
 
-Combining the results in \eqref{eq:xdot_undercrit} and \eqref{eq:xdot_av_abovecrit} we can plot the translational speed of the domain wall as a function of the applied current for different values of $\xi$, as shown in Figure \ref{fig:Xdot_afo_current}. In Figure \ref{fig:walkerBreakdown} we see a drop in the speed when the applied current exceeds the critical current in the case that $\xi > \alpha$. This is known as a Walker breakdown \cite{SchryerWalker1974}. Above the critical current there is no stable solution of $\phi$, meaning there will be an energy loss to the rotational excitation of the domain wall motion as shown in Figure \ref{fig:phidot_afo_current}. In the limits $j_e/j_c < 1$ and $j_e/j_c \gg 1$ the translational speed $\dot{X}$ is a linear function of $j_e/j_c$. The slope of the function is much steeper for low charge currents, as in this region we don't get any permanent rotational motion of the domain wall. To get a high translational speed at an efficient energy cost through the applied current, it is best to apply a current equal to the critical current. As the correlation between the translational speed of the domain wall and the current is linear, we want a high critical current. It is easily seen from \eqref{eq:critical_current} that the critical current reaches its maximum when $\xi \rightarrow \alpha^+$. In regards to materialistic properties, one can increase the critical current by making $\lambda K_{\perp}$ large. As 
+Combining the results in \eqref{eq:xdot_undercrit} and \eqref{eq:xdot_av_abovecrit} we can plot the translational speed of the domain wall as a function of the applied current for different values of $\xi$, as shown in Figure \ref{fig:Xdot_afo_current}. In Figure \ref{fig:walkerBreakdown} we see a drop in the speed when the applied current exceeds the critical current in the case that $\xi > \alpha$. This is known as a Walker breakdown \cite{SchryerWalker1974}. Above the critical current there is no stable solution of $\phi$, meaning there will be an energy loss to the rotational excitation of the domain wall motion as shown in Figure \ref{fig:phidot_afo_current}. In the limits $j_e/j_c < 1$ and $j_e/j_c \gg 1$ the translational speed $\dot{X}$ is a linear function of $j_e/j_c$. The slope of the function is much steeper for low charge currents, as in this region we do not get any permanent rotational motion of the domain wall. To get a high translational speed at an efficient energy cost through the applied current, it is best to apply a current equal to the critical current. As the correlation between the translational speed of the domain wall and the current is linear, we want a high critical current. It is easily seen from \eqref{eq:critical_current} that the critical current diverges when $\xi \rightarrow \alpha$. If $\xi=\alpha$ there will not be any Walker breakdown. The cause for this is easily seen from Figure \ref{fig:Neel_NonAdSTT_GD}, as when $\xi=\alpha$ the Gilbert damping torque and the non-adiabatic spin-transfer torque cancel each other out, meaning there is no rotational motion of the domain wall. In regards to materialistic properties, one can increase the critical current by making $\lambda K_{\perp}$ large. As 
 
 \begin{align}
 \lambda K_{\perp} = \sqrt{\frac{AK_{\perp}}{\frac{K}{K_{\perp}}+\sin^2\phi}},
@@ -1028,7 +1048,7 @@ Combining the results in \eqref{eq:xdot_undercrit} and \eqref{eq:xdot_av_abovecr
 
 this is not that easy due to the condition in \eqref{eq:kperp_ll_k}. One can see, however, that the critical current is larger in strongly ferromagnetic materials with large coupling constants $A$.
 
-When the itinerant spins have a low damping parameter compared to the local spins ($\xi<\alpha$), the translational speed of the domain wall increases when the applied current is greater than the critical current, as shown in \ref{fig:criticalCurrent}. It is worth noting that the domain wall does not get a final translational speed when the applied current is below the critical current, in the case when $\xi=0$. There will be some initial movement as seen from \eqref{eq:Xdot0}, but this eventually drops off. Below this threshold the added energy from the current is absorbed by the perpendicular anisotropic energy along the hard axis. 
+When the itinerant spins have a low damping parameter compared to the local spins ($\xi<\alpha$), the translational speed of the domain wall increases when the applied current is greater than the critical current, as shown in \ref{fig:criticalCurrent}. It is worth noting that the domain wall does not get a final translational speed when the applied current is below the critical current, in the case when $\xi=0$. There will be some initial movement as seen from \eqref{eq:Xdot0}, but this eventually drops off. The reason why there is an increase in the translational speed of the domain wall when $j_e/j_c>1$ in the case of $\xi<\alpha$ is that the non-adiabatic spin-transfer torque could not compensate for the Gilbert damping when there was a stable solution of $\phi$. Below $j_e/j_c$ the added energy from the current was absorbed by the perpendicular anisotropic energy along the hard axis, but as there is a limit to how much anisotropic energy can be absorbed more energy is available to the translational motion of the domain wall when $j_e>j_c$. This is the opposite of the case when $\xi>\alpha$, where there was a decrease in the translational speed when $j_e>j_c$. As $\xi>\alpha$, the non-adiabatic spin-transfer torque was able to compensate the Gilbert damping and the anisotropic energy cost, therefore more energy was available to the translational motion.
 
 \begin{figure}[h!]
 \begin{center}
@@ -1038,10 +1058,79 @@ When the itinerant spins have a low damping parameter compared to the local spin
 \end{center}
 \end{figure}
 
-\subsection{Domain wall pinning}
+\subsubsection{Motion due to external field}
+Instead of applying a current to move domain walls, one can also apply an external magnetic field. Let us now consider the same system as before when we applied the current, but instead we apply a general magnetic field. This causes a change in the energy density, as we now also get a contribution from the Zeeman energy. From the expression of the Zeeman energy in \eqref{eq:zeemanenergy}, one sees that the total energy density of the system becomes
+
+\begin{align}
+\nonumber \epsilon&=\epsilon_E+\epsilon_A+\epsilon_Z=A (\frac{\partial \theta}{\partial x})^2 + K\sin^2\theta + K_{\perp} \sin^2\theta\sin^2\phi-\mu_0\vec{M}\cdot\vec{H} \\
+&= A (\frac{\partial \theta}{\partial x})^2 + K\sin^2\theta + K_{\perp} \sin^2\theta\sin^2\phi-\mu_0M_s\left[(H_x\cos\phi+H_y\sin\phi)\sin\theta+ H_z\cos\theta\right].
+\end{align}
+
+This gives us
+
+\begin{align}
+\frac{\delta \epsilon}{\delta \theta} &= \mu_0M_s\left[H_z\sin\theta - (H_x\cos\phi+H_y\sin\phi)\cos\theta \right], \\
+\frac{\delta \epsilon}{\delta \phi} &= K_{\perp}\sin^2\theta\sin2\phi + \mu_0M_s\sin\theta(H_x\sin\phi-H_y\cos\phi).
+\end{align}
+
+If we insert these results into \eqref{eq:LLG_current_explicit_spherical} and let $j_e=0$, we get the equations of motion
+
+\begin{align}
+\label{eq:xdot_phidot_hfield}
+\begin{pmatrix}
+\dot{X} \\ \dot{\phi}
+\end{pmatrix} = 
+\begin{pmatrix}
+\frac{\lambda \tilde{\gamma '}}{\mu_0M_s} K_{\perp} \sin2\phi  + \tilde{\gamma '}\lambda\alpha H_z - \lambda\tilde{\gamma '}\left[H_x(\alpha\frac{\cos\phi}{\tan\theta}-\frac{\sin\phi}{\sin\theta}) + H_y(\frac{\alpha\sin\phi}{\tan\theta}-\frac{\cos\phi}{\sin\theta}) \right] \\
+-\frac{\alpha\tilde{\gamma '}}{\mu_0M_s} K_{\perp}\sin2\phi + \tilde{\gamma '} H_z - \tilde{\gamma '}\left[H_x(\frac{\cos\phi}{\tan\theta}+\frac{\alpha\sin\phi}{\sin\theta}) + H_y(\frac{\sin\phi}{\tan\theta}-\frac{\alpha\cos\phi}{\sin\theta}) \right]
+\end{pmatrix}.
+\end{align}
+
+As one can see, if there is an external magnetic field perpendicular to the easy axis ($z$-axis in this example), the equations of motion will depend on $x$ as $\theta = \theta(x,t)$ and we will get a distortion of the domain wall. As discussed earlier, this motion cannot be described by the variables $X$ and $\phi$. We also see that if we set $H_x = H_y = 0$, so that $H_z = H$, the equations become independent of $x$ and we get a motion of the domain wall where the shape is conserved. Doing this, \eqref{eq:xdot_phidot_hfield} gets a similar form as the equations with an applied current in \eqref{eq:xdot_phidot_v2}. By the same argument, there is a critical field strength $H_c$ above which there is no stable solution of $\phi$. This is the field strength $H$ when $\dot{\phi}=0$ and $\sin2\phi=1$, 
+
+\begin{align}
+\label{eq:Hcrit}
+H_c = \frac{\alpha K_{\perp}}{\mu_0 M_s}.
+\end{align}
+
+We can then rewrite the equation to
+
+\begin{align}
+\label{eq:xdot_phidot_hz}
+\begin{pmatrix}
+\dot{X} \\ \dot{\phi}
+\end{pmatrix} = 
+\begin{pmatrix}
+\frac{\lambda}{T} \sin2\phi  + \frac{\lambda}{T} \alpha \frac{H}{H_c} \\
+-\frac{1}{T}\sin2\phi + \frac{1}{T}\frac{H}{H_c}
+\end{pmatrix}.
+\end{align}
+
+In the case that $\dot{\phi}=0$ we substitute $\sin2\phi$ from the second equation into the first, and find that
+
+\begin{align}
+\dot{X}(H\leq H_c) = \frac{\lambda}{T}(1+\alpha) \frac{H}{H_c}.
+\end{align}
+
+As the equation for $\dot{\phi}$ is on the exact same form as \eqref{eq:xdot_phidot_v2} with $j_e/j_c \rightarrow H/H_c$, we can use the result that $\langle\sin2\phi\rangle = (H/H_c)- \sqrt{(H/H_c)^2-1}$ when $\dot{\phi} \neq 0$. The translational speed of the domain wall then becomes
+
+\begin{align}
+\langle\dot{X}\rangle (H\geq H_c) = \frac{\lambda}{T} \left[(1+\alpha) \frac{H}{H_c} - \sqrt{(\frac{H}{H_c})^2-1} \right].
+\end{align}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{Figures/criticalField.pdf} 
+\caption{The translational speed of the domain wall as a function of applied magnetic field along the easy axis for different damping parameters $\alpha$.}
+\label{fig:criticalField} 
+\end{center}
+\end{figure}
+
+This result is shown in Figure \ref{fig:criticalField}. We see that we also get a Walker breakdown in the case of an applied magnetic field. The rotational speed of the domain wall is entirely equivalent with that of the case with an applied current, as shown in Figure \ref{fig:phidot_afo_current} (with $j_e/j_c \rightarrow H/H_c$). There is always a decrease in the translational velocity right after the Walker breakdown at $H=H_c$ as the Gilbert damping torque does not have a counterpart like in the motion due to a current, and there is a loss to the rotational motion once there is no longer a stable value for $\phi$.
+
+The reason behind the motion of the domain wall because of a magnetic field parallel to the easy axis is quite easy to understand phenemenologically. As the domains in the magnet are either parallel or anti-parallel to the applied magnetic field, the domain that is parallel will want to grow to minimize the energy. This comes at the cost of the anti-parallel domain, and the domain wall moves into the anti-parallel domain as a consequence.
 
 \section{Skyrmions}
-
 \section{References}
 \bibliography{main}
 \bibliographystyle{unsrt}
