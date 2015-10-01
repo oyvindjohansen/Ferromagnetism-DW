@@ -1100,8 +1100,8 @@ If we insert these results into \eqref{eq:LLG_current_explicit_spherical} and le
 \dot{X} \\ \dot{\phi}
 \end{pmatrix} = 
 \begin{pmatrix}
-\frac{\lambda \tilde{\gamma '}}{\mu_0M_s} K_{\perp} \sin2\phi  + \tilde{\gamma '}\lambda\alpha H_z - \lambda\tilde{\gamma '}\left[H_x(\alpha\frac{\cos\phi}{\tan\theta}-\frac{\sin\phi}{\sin\theta}) + H_y(\frac{\alpha\sin\phi}{\tan\theta}-\frac{\cos\phi}{\sin\theta}) \right] \\
--\frac{\alpha\tilde{\gamma '}}{\mu_0M_s} K_{\perp}\sin2\phi + \tilde{\gamma '} H_z - \tilde{\gamma '}\left[H_x(\frac{\cos\phi}{\tan\theta}+\frac{\alpha\sin\phi}{\sin\theta}) + H_y(\frac{\sin\phi}{\tan\theta}-\frac{\alpha\cos\phi}{\sin\theta}) \right]
+\frac{\lambda \tilde{\gamma}}{\mu_0M_s} K_{\perp} \sin2\phi  + \tilde{\gamma}\lambda\alpha H_z - \lambda\tilde{\gamma}\left[H_x(\frac{\alpha\cos\phi}{\tan\theta}-\frac{\sin\phi}{\sin\theta}) + H_y(\frac{\alpha\sin\phi}{\tan\theta}-\frac{\cos\phi}{\sin\theta}) \right] \\
+-\frac{\alpha\tilde{\gamma}}{\mu_0M_s} K_{\perp}\sin2\phi + \tilde{\gamma} H_z - \tilde{\gamma}\left[H_x(\frac{\cos\phi}{\tan\theta}+\frac{\alpha\sin\phi}{\sin\theta}) + H_y(\frac{\sin\phi}{\tan\theta}-\frac{\alpha\cos\phi}{\sin\theta}) \right]
 \end{pmatrix}.
 \end{align}
 
@@ -1120,7 +1120,7 @@ We can then rewrite the equation to
 \dot{X} \\ \dot{\phi}
 \end{pmatrix} = 
 \begin{pmatrix}
-\frac{\lambda}{T} \sin2\phi  + \frac{\lambda}{T} \alpha \frac{H}{H_c} \\
+\frac{\lambda}{\alpha T} \sin2\phi  + \frac{\lambda}{T} \alpha \frac{H}{H_c} \\
 -\frac{1}{T}\sin2\phi + \frac{1}{T}\frac{H}{H_c}
 \end{pmatrix}.
 \end{align}
@@ -1128,13 +1128,13 @@ We can then rewrite the equation to
 In the case that $\dot{\phi}=0$ we substitute $\sin2\phi$ from the second equation into the first, and find that
 
 \begin{align}
-\dot{X}(H\leq H_c) = \frac{\lambda}{T}(1+\alpha) \frac{H}{H_c}.
+\dot{X}(H\leq H_c) = \frac{\lambda}{T}(\frac{1}{\alpha}+\alpha) \frac{H}{H_c}.
 \end{align}
 
 As the equation for $\dot{\phi}$ is on the exact same form as \eqref{eq:xdot_phidot_v2} with $j_e/j_c \rightarrow H/H_c$, we can use the result that $\langle\sin2\phi\rangle = (H/H_c)- \sqrt{(H/H_c)^2-1}$ when $\dot{\phi} \neq 0$. The translational speed of the domain wall then becomes
 
 \begin{align}
-\langle\dot{X}\rangle (H\geq H_c) = \frac{\lambda}{T} \left[(1+\alpha) \frac{H}{H_c} - \sqrt{(\frac{H}{H_c})^2-1} \right].
+\langle\dot{X}\rangle (H\geq H_c) = \frac{\lambda}{T} \left[(\frac{1}{\alpha}+\alpha) \frac{H}{H_c} - \frac{1}{\alpha}\sqrt{(\frac{H}{H_c})^2-1} \right].
 \end{align}
 
 \begin{figure}[h!]
@@ -1145,7 +1145,7 @@ As the equation for $\dot{\phi}$ is on the exact same form as \eqref{eq:xdot_phi
 \end{center}
 \end{figure}
 
-This result is shown in Figure \ref{fig:criticalField}. We see that we also get a Walker breakdown in the case of an applied magnetic field. The rotational speed of the domain wall is entirely equivalent with that of the case with an applied current, as shown in Figure \ref{fig:phidot_afo_current} (with $j_e/j_c \rightarrow H/H_c$). There is always a decrease in the translational velocity right after the Walker breakdown at $H=H_c$ as the Gilbert damping torque does not have a counterpart like in the motion due to a current, and there is a loss to the rotational motion once there is no longer a stable value for $\phi$.
+This result is shown in Figure \ref{fig:criticalField}. We see that we also get a Walker breakdown in the case of an applied magnetic field. The rotational speed of the domain wall is entirely equivalent with that of the case with an applied current, as shown in Figure \ref{fig:phidot_afo_current} (with $j_e/j_c \rightarrow H/H_c$). Below the critical field strength the translational speed is proportional to $\alpha^{-1}$, while the critical field strength is proportional to $\alpha$. This means it is possible to achieve high speeds with a relatively weak applied field if the damping parameter $\alpha$ is small. When the damping is small, the magnetization is initially tilted out of the plane, making the component perpendicular to the external field larger. This in turn increases the precession rate of the magnetization. As the damping is proportional to $\alpha$ and $|\frac{\textrm{d} \vec{M}}{\textrm{d} t}|$ the precession rate is allowed to grow significantly before the damping becomes large enough to stop it from increasing further. There is always a decrease in the translational velocity right after the Walker breakdown at $H=H_c$ as the Gilbert damping torque does not have a counterpart like in the motion due to a current, and there is a loss to the rotational motion once there is no longer a stable value for $\phi$. As $H\gg H_c$ the average speed becomes proportional to $\alpha$. For small $\alpha$ it is therefore best to apply a field $H$ equal to the critical field strength $H_c$ to obtain the highest translational speed of the domain wall.
 
 The reason behind the motion of the domain wall because of a magnetic field parallel to the easy axis is quite easy to understand phenemenologically. As the domains in the magnet are either parallel or anti-parallel to the applied magnetic field, the domain that is parallel will want to grow to minimize the energy. This comes at the cost of the anti-parallel domain, and the domain wall moves into the anti-parallel domain as a consequence.
 
