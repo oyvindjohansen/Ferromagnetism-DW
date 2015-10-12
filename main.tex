@@ -14,6 +14,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{lipsum}
+\usepackage[numbers]{natbib}
 
 
 \setcounter{totalnumber}{5}
@@ -22,6 +23,7 @@
 \renewcommand{\bottomfraction}{0.95}
 \renewcommand{\floatpagefraction}{0.35}
 \renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\DeclareRobustCommand{\orderof}{\ensuremath{\mathcal{O}}}
 \setlength\parindent{0pt}
 \numberwithin{equation}{section}
 
@@ -377,7 +379,7 @@ The last term depends on what kind of anisotropy there is in the material. For a
 
 up to fourth order in the directional cosine. For a cubic anisotropy the energy density $\epsilon_A$ becomes the integrand in \eqref{eq:cubicanisotropy} instead.
 
-Looking at the effective field in \eqref{eq:effectivefield} we see that it consists of the external magnetic field and the demagnetizing field, as one would expect, and two effective field terms that originate from quantum mechanical effects. The exchange interaction between the magnetic moments cause an effective field that points in the direction that is the average rate of change in the magnetization $\vec{M}(\vec{r})$ at a point $\vec{r}$. If the magnetization is uniform or varies very slowly in space, the effective field from the exchange interaction is very small or non-existent. If the magnetization varies at a significant rate, the effective field from the exchange interaction will point in a direction that will try to decrease this rate of change, thereby minimizing the exchange energy. If one studies the effective field from the anisotropic energy, one finds that the field will try to align the magnetization with the easy axis, or move the magnetization away from the hard axis, depending on the axes in the material. For a uniaxial anisotropy, the effective field is described by \eqref{eq:effielduniaxialani}. We discussed earlier that the direction $\hat{n}$ was parallel to the easy axis if the anisotropy constants $K_i$ were $<0$, and it was parallel to the hard axis if the anisotropy constants were $>0$. Considering the case of $\hat{n}$ being parallel to te easy axis first, we see that the effective field will point in the direction that the component of $\vec{M}(\vec{r})$ has along the easy axis. This is regardless of which of the two directions the component points in, as we only have odd powers of $(\vec{M}(\vec{r})\cdot\hat{n})$ in the field. If $\hat{n}$ is parallel to the hard axis, the constants $K_i$ are positive, and the field points in the opposite direction that the component of $\vec{M}(\vec{r})$ has along the hard axis. The effective field then tries to reduce the component along the hard axis, to minimize the anisotropic energy.
+Looking at the effective field in \eqref{eq:effectivefield} we see that it consists of the external magnetic field and the demagnetizing field, as one would expect, and two effective field terms that originate from quantum mechanical effects. The exchange interaction between the magnetic moments cause an effective field that points in the direction that is the average rate of change in the magnetization $\vec{M}(\vec{r})$ at a point $\vec{r}$. If the magnetization is uniform or varies very slowly in space, the effective field from the exchange interaction is very small or non-existent. If the magnetization varies at a significant rate, the effective field from the exchange interaction will point in a direction that will try to decrease this rate of change, thereby minimizing the exchange energy. If one studies the effective field from the anisotropic energy, one finds that the field will try to align the magnetization with the easy axis, or move the magnetization away from the hard axis, depending on the axes in the material. For a uniaxial anisotropy, the effective field is described by \eqref{eq:effielduniaxialani}. We discussed earlier that the direction $\hat{n}$ was parallel to the easy axis if the anisotropy constants $K_i$ were $<0$, and it was parallel to the hard axis if the anisotropy constants were $>0$. Considering the case of $\hat{n}$ being parallel to the easy axis first, we see that the effective field will point in the direction that the component of $\vec{M}(\vec{r})$ has along the easy axis. This is regardless of which of the two directions the component points in, as we only have odd powers of $(\vec{M}(\vec{r})\cdot\hat{n})$ in the field. If $\hat{n}$ is parallel to the hard axis, the constants $K_i$ are positive, and the field points in the opposite direction that the component of $\vec{M}(\vec{r})$ has along the hard axis. The effective field then tries to reduce the component along the hard axis, to minimize the anisotropic energy.
 
 \subsection{Damping and the Landau--Lifshitz equation}
 The time evolution in \eqref{eq:mag_undamped} only describes the precession of the magnetization around a field $\vec{H}$. This system is not in equilibrium unless the magnetization is parallel to the field. In a physical system the magnetization will eventually relax to equilibrium. To model this, Landau and Lifshitz introduced a damping term that is perpendicular to the magnetization and the direction of the precession around the field \cite{LandauLifshitz1935}. The damping term will point in a direction as to attempt to align the magnetization with the field, \eqref{eq:mag_undamped} therefore becomes
@@ -397,7 +399,7 @@ The Landau-Lifshitz equation agrees with experiments for low damping constants $
 \frac{\textrm{d} \vec{M}}{\textrm{d} t} = -\gamma \vec{M} \times (\vec{H}_{eff} - \eta \frac{\textrm{d} \vec{M}}{\textrm{d} t}),
 \end{align}
 
-with $\eta$ being a damping parameter. This equation is implicit in $\frac{\textrm{d} \vec{M}}{\textrm{d} t}$. It can be shown that \eqref{eq:LLG_implicit} and \eqref{eq:LL} are mathematically equivalent by rewriting it to an explicit form in $\frac{\textrm{d} \vec{M}}{\textrm{d} t}$. To rewrite \eqref{eq:LLG_implicit} we must find an expression for $\vec{M}\times\frac{\textrm{d} \vec{M}}{\textrm{d} t}$ that does not involve a cross-product. To do this we can just take the cross product of \eqref{eq:LLG_implicit} with $\vec{M}$ from the left:
+with $\eta$ being a damping parameter. This equation is implicit in $\frac{\textrm{d} \vec{M}}{\textrm{d} t}$. It can be shown that \eqref{eq:LLG_implicit} and \eqref{eq:LL} are mathematically equivalent by rewriting it to an explicit form in $\frac{\textrm{d} \vec{M}}{\textrm{d} t}$. To rewrite \eqref{eq:LLG_implicit} we must find an expression for $\vec{M}\times\frac{\textrm{d} \vec{M}}{\textrm{d} t}$ that does not involve a cross-product in $\frac{\textrm{d} \vec{M}}{\textrm{d} t}$. To do this we can just take the cross product of \eqref{eq:LLG_implicit} with $\vec{M}$ from the left:
 
 \begin{align}
 \label{eq:mtimesdmdt}
@@ -441,7 +443,7 @@ Comparing this to the Landau--Lifshitz equation in \eqref{eq:LL} we see that by 
 This is the explicit Landau--Lifshitz--Gilbert equation. The difference between the Landau--Lifshitz and the Landau--Lifshitz--Gilbert equation is that the gyromagnetic ratio in the LLG equation is redefined to include the dimensionless damping parameter $\alpha$. When $\alpha \ll 1$, the Landau--Lifshitz equation is a good approximation of the LLG equation, but as the damping parameter becomes larger the correction in the gyromagnetic ratio becomes significant. The LLG equation agrees better with experiments where the damping constant $\alpha$ is large \cite{GilbertKelly1955}.
 
 \section{Domain walls}
-To minimize the energy a ferromagnet of a significant size will divide itself into domains. A domain is a region where the magnetization is uniform, and the domains in a magnet are separated by something called domain walls. These are regions where the magnetization in the material switches orientation between two domains with different direction in the magnetization. There are many different domain wall structures, but what they all have in common is that in the static case they have to satisfy \eqref{eq:LLG} with the left hand side being zero. It is easily seen that this is satisfied when the local magnetization is parallel to the effective field $\vec{H}_{eff}$ at that point. From the derivation of the effective field, we remember that $\vec{H}_{eff}$ and $\vec{M}$ were parallel when the system was at an equilibrium, meaning $\delta E = 0$. This will be an easier problem to solve, as we can write the energy in terms of scalar quantities such as the components of the magnetization. To study the nature of the domain walls we will at first only consider internal effects, and not consider the case where an external magnetic field is applied. A static domain wall is therefore a magnetization structure that minimizes the exchange energy, the anisotropic energy and the demagnetization energy simultaneousy.
+To minimize the energy a ferromagnet of a significant size will divide itself into domains. A domain is a region where the magnetization is uniform, and the domains in a magnet are separated by something called domain walls. These are regions where the magnetization in the material switches orientation between two domains. There are many different domain wall structures, but what they all have in common is that in the static case they have to satisfy \eqref{eq:LLG} with the left hand side being zero. It is easily seen that this is satisfied when the local magnetization is parallel to the effective field $\vec{H}_{eff}$ at that point. From the derivation of the effective field, we remember that $\vec{H}_{eff}$ and $\vec{M}$ were parallel when the system was at an equilibrium, meaning $\delta E = 0$. This will be an easier problem to solve, as we can write the energy in terms of scalar quantities such as the components of the magnetization. To study the nature of the domain walls we will at first only consider internal effects, and not consider the case where an external magnetic field is applied. A static domain wall is therefore a magnetization structure that minimizes the exchange energy, the anisotropic energy and the demagnetization energy simultaneousy.
 
 \subsection{The charge avoidance principle}
 In general, it's very hard to determine what configuration in the magnetization that will lead to a minimum in the demagnetization energy. For some magnetic particles we saw that it was possible to treat the demagnetization energy as an effective shape anisotropy, which makes the form of the energy easier to minimize, but this is not always possible. To make this task a little easier, it is useful to introduce magnetic charges. It is important to note that this is purely a mathematical concept, as magnetic monopoles have never been detected. This method is just a comparison to electric charges and fields. The Maxwell equations for the magnetic field in the magnetostatic limit are
@@ -800,7 +802,7 @@ To get this one assumes that the local magnetization is in equilibrium when the 
 
 one sees that the domain wall moves with a velocity $\vec{v} = -b_J \hat{j}_e$. As $\hat{j}_e$ points in the opposite direction of the electron flow, the domain wall moves in the same direction as the electrons with a speed $b_J$. The solution of the advection equation is $\vec{M}(\vec{r} - \vec{v} \cdot (t - t_0), t_0)$, with $\vec{M}(\vec{r}, t_0)$ having to satisfy the LLG equation per our assumptions. The simple case described by \eqref{eq:dw_advection} is then just an advection of a domain wall, such as a Bloch or N\'{e}el wall.
 
-\subsubsection{Motion including the non-adiabatic spin-transfer torque}
+\subsubsection{Spin-transfer torque}
 To solve the extended LLG equation, it will be useful to write the equation in spherical coordinates and use the solution for $\theta(x)$ we found earlier in \eqref{eq:thetaBloch}. To do this, we write the vectors in terms of their spherical components. An infitesimal change in the magnetization can then be written as
 
 \begin{align}
@@ -1077,7 +1079,7 @@ As an example one can plot the expectation values of the domain wall for a case 
 \label{fig:DW_JeGTJc}
 \end{figure}
 
-\subsubsection{Motion due to external field}
+\subsubsection{External magnetic field}
 Instead of applying a current to move domain walls, one can also apply an external magnetic field. Let us now consider the same system as before when we applied the current, but instead we apply a general magnetic field. This causes a change in the energy density, as we now also get a contribution from the Zeeman energy. From the expression of the Zeeman energy in \eqref{eq:zeemanenergy}, one sees that the total energy density of the system becomes
 
 \begin{align}
@@ -1145,11 +1147,73 @@ As the equation for $\dot{\phi}$ is on the exact same form as \eqref{eq:xdot_phi
 \end{center}
 \end{figure}
 
-This result is shown in Figure \ref{fig:criticalField}. We see that we also get a Walker breakdown in the case of an applied magnetic field. The rotational speed of the domain wall is entirely equivalent with that of the case with an applied current, as shown in Figure \ref{fig:phidot_afo_current} (with $j_e/j_c \rightarrow H/H_c$). Below the critical field strength the translational speed is proportional to $\alpha^{-1}$, while the critical field strength is proportional to $\alpha$. This means it is possible to achieve high speeds with a relatively weak applied field if the damping parameter $\alpha$ is small. When the damping is small, the magnetization is initially tilted out of the plane, making the component perpendicular to the external field larger. This in turn increases the precession rate of the magnetization. As the damping is proportional to $\alpha$ and $|\frac{\textrm{d} \vec{M}}{\textrm{d} t}|$ the precession rate is allowed to grow significantly before the damping becomes large enough to stop it from increasing further. There is always a decrease in the translational velocity right after the Walker breakdown at $H=H_c$ as the Gilbert damping torque does not have a counterpart like in the motion due to a current, and there is a loss to the rotational motion once there is no longer a stable value for $\phi$. As $H\gg H_c$ the average speed becomes proportional to $\alpha$. For small $\alpha$ it is therefore best to apply a field $H$ equal to the critical field strength $H_c$ to obtain the highest translational speed of the domain wall.
+This result is shown in Figure \ref{fig:criticalField}. We see that we also get a Walker breakdown in the case of an applied magnetic field. The rotational speed of the domain wall is entirely equivalent with that of the case with an applied current, as shown in Figure \ref{fig:phidot_afo_current} (with $j_e/j_c \rightarrow H/H_c$). Below the critical field strength the translational speed is proportional to $\alpha^{-1}$, while the critical field strength is proportional to $\alpha$. This means it is possible to achieve high speeds with a relatively weak applied field if the damping parameter $\alpha$ is small. When the damping is small, the magnetization is initially tilted out of the plane, making the component perpendicular to the external field larger. This in turn increases the precession rate of the magnetization. As the damping is proportional to $\alpha$ and $|\frac{\textrm{d} \vec{M}}{\textrm{d} t}|$ the precession rate is allowed to grow significantly before the damping becomes large enough to stop it from increasing further. There is always a decrease in the translational velocity right after the Walker breakdown at $H=H_c$ as the Gilbert damping torque does not have a counterpart like in the motion due to a current, and there is a loss to the rotational motion once there is no longer a stable value for $\phi$. As $H\gg H_c$ the average translational speed becomes proportional to $\alpha$. For small $\alpha$ it is therefore best to apply a field $H$ equal to the critical field strength $H_c$ to obtain the highest translational speed of the domain wall.
 
-The reason behind the motion of the domain wall because of a magnetic field parallel to the easy axis is quite easy to understand phenemenologically. As the domains in the magnet are either parallel or anti-parallel to the applied magnetic field, the domain that is parallel will want to grow to minimize the energy. This comes at the cost of the anti-parallel domain, and the domain wall moves into the anti-parallel domain as a consequence.
+The reason behind the motion of the domain wall because of a magnetic field parallel to the easy axis is quite easy to understand phenemenologically. As the domains in the magnet are either parallel or anti-parallel to the applied magnetic field, the domain that is parallel will want to grow to minimize the Zeeman energy. This comes at the cost of the anti-parallel domain, and the domain wall moves into the anti-parallel domain as a consequence.
 
 \section{Skyrmions}
+
+\subsection{The Rashba effect and the Dzyaloshinskii-Moriya interaction}
+When the inversion symmetry in a crystal is broken, the spin-orbit coupling in the plane perpendicular to the axis lacking inversion symmetry leads to something known as the Rashba effect. The inversion symmetry can be broken by the crystal structure, for example by having two atoms close together in the basis of a crystal structure that has inversion symmetry (like a cubic crystal), or it can be broken at the surface between two materials. In general, the inversion symmetry causes a gradient in the electrostatic potential as $V(\vec{r}) \neq V(-\vec{r})$. This leads to a non-zero electric field inside the material along the axis where the inversion symmetry is broken. In the restframe of an electron moving in the plane perpendicular to this electric field a magnetic field is observed that couples to the spin of the electron, meaning we get a spin-orbit coupling. The magnetic field observed by the electron is proportional to $\vec{p}\times\vec{E}$. The Rashba Hamiltonian is then given by
+
+\begin{align}
+\label{eq:RashbaH}
+H_R = \alpha_R (\vec{\sigma} \times \vec{k})\cdot \hat{n} = \frac{\alpha_R}{\hbar} \vec{\sigma}\cdot(\vec{p}\times\hat{n}),
+\end{align}
+
+with $\vec{\sigma}$ being a vector of the Pauli matrices, $\alpha_R$ the Rashba parameter, $\vec{p}$ the momentum localized in a plane and $\hat{n}$ a unit vector perpendicular to that plane \cite{BychovRashba1984}. The physics that describes the manner in which the inversion symmetry is broken lies in the Rashba parameter $\alpha_R$, which can be both positive and negative. If we consider electrons under the influence of the Rashba effect and the exchange interaction between their spins, the total Hamiltonian can be written as
+
+\begin{align}
+\label{eq:RashbaModel}
+H = H_{kin} + H_R + H_E = \frac{\vec{p}^2}{2m_e} + \frac{\alpha_R}{\hbar} \vec{\sigma}\cdot(\vec{p}\times\hat{n}) + J \vec{\sigma}\cdot\hat{M}.
+\end{align}
+
+Following the derivation by Kim et al. in \cite{DMIfromRashba_Kim}, the Hamiltonian $H$ can be written as $H'=H_{kin}+H_E'+\orderof(\alpha_R^2)$ by performing a unitary transformation of the Hamiltonian such that $H' = U^{\dagger}HU$. This unitary transformation is defined by
+
+\begin{align}
+U = \exp{\left[-i \frac{k_R}{2}\vec{\sigma}\cdot(\vec{r}\times\hat{n})\right]},
+\end{align}
+
+with
+
+\begin{align}
+k_R = \frac{2\alpha_R m_e}{\hbar^2}.
+\end{align}
+
+The transformation $U$ can be rewritten to
+
+\begin{align}
+U = \exp{(-i\vec{\sigma}\cdot(\hat{r}\times\hat{n}) \frac{\phi}{2})} = \cos{\frac{\phi}{2}} - i\vec{\sigma}\cdot(\hat{r}\times\hat{n})\sin{\frac{\phi}{2}}
+\end{align}
+
+with the angle $\phi$ being defined by
+
+\begin{align}
+\phi &= k_R |\vec{r}|.
+\end{align}
+
+The unitary transformation is therefore just a rotation of the spin around the direction $(\hat{r}\times\hat{n})$ by an angle $\phi$. This rotation makes the Rashba effect term in \eqref{eq:RashbaModel} vanish. The transformed exchange interaction Hamiltonian can then be written as $H_E' = J\sigma\cdot\hat{M}'$, with $\hat{M}'$ being the rotated magnetization direction. Remembering that the exchange energy density $\epsilon_E$ can be written as $\epsilon_E = A \partial_i \hat{M} \partial_i \hat{M}$ with summation over repeated indices, the transformed exchange energy density can then be written in the same manner with $\hat{M} \rightarrow \hat{M}'$. As $\hat{M}' = R^{-1}\hat{M}$ with $R$ being an equivalent rotation transformation as $U$ acting on a classical vector, the differential operators will also act on the rotation matrix $R^{-1}$. In the supplementary information to \cite{DMIfromRashba_Kim} it is shown that
+
+\begin{align}
+\partial_i (R^{-1}\hat{M}) &= R^{-1}\tilde{\partial_i} \hat{M} \\
+&= R^{-1} (\partial_i\hat{M} + k_R(\hat{n}\times\hat{i})\times\hat{M}),
+\end{align}
+
+with $\hat{i}$ being a unit vector in the $i$-direction. This means that the transformed exchange energy density becomes
+
+\begin{align}
+\nonumber \epsilon_E' &= A\partial_i \hat{M} \partial_i \hat{M} + 2k_RA(\partial_i\hat{M})\left[(\hat{n}\times\hat{i})\times\hat{M}\right] + \orderof(\alpha_R^2) \\
+&= A\partial_i \hat{M} \partial_i \hat{M} + D (\hat{n}\times\hat{i}) \cdot (\hat{M}\times\partial_i\hat{M}) + \orderof(\alpha_R^2) \label{eq:exchEnDensDM}
+\end{align}
+
+with $D = 2k_RA$, where we have used that $\vec{A}\cdot(\vec{B}\times\vec{C}) = \vec{B}\cdot(\vec{C}\times\vec{A})$. Remember that there is an implicit sum over $i$. As one can see, the exchange energy density contains a symmetric term like before, and an antisymmetric term that comes from the transformation we had to perform to get rid of the Rashba-term in the Hamiltonian. The antisymmetric term is also known as the Dzyaloshinskii-Moriya interaction, which can also be written as
+
+\begin{align}
+\vec{D}_{ij}\cdot(\vec{S}_i\times\vec{S}_j).
+\end{align}
+
+The form of the interaction in \eqref{eq:exchEnDensDM} comes from our assumptions of a slowly varying magnetization, making the magnetization a continuous function. This interaction term favors a slight canting of the spins, the direction of which depends on the sign of $D$. The lowest exchange energy of the spins is therefore not when the spins are perfectly aligned or anti-alligned, if this interaction is of a significant order. For this to be the case, the material must have a strong spin-orbit coupling and a broken inversion symmetry.
+
 \section{References}
 \bibliography{main}
 \bibliographystyle{unsrt}
