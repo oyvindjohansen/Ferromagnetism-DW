@@ -240,7 +240,7 @@ E_Z = -\mu_0\int \d {^3}r \vec{M}(\vec{r})\cdot\vec{H}_{Z}(\vec{r}).
 
 The factor 1/2 in the demagnetization energy is to account for double counting of the dipole interactions, and is therefore not included in the Zeeman energy as the magnetic moments only interact with an external field. The Zeeman energy is at its minimum when the magnetization is aligned with the external field.
 
-\subsection{Exchange energy}
+\subsection{Symmetric exchange energy}
 Spins on a lattice will have an exchange energy with their nearest neighbors, as given by the Heisenberg Hamiltonian
 
 \begin{align}
@@ -248,7 +248,7 @@ Spins on a lattice will have an exchange energy with their nearest neighbors, as
 H = -J\sum_{<i, j>} \vec{S}_i\cdot\vec{S}_j = -\frac{J S^2}{M_s^2}\sum_{<i, j>} \vec{M}_i\cdot\vec{M}_j,
 \end{align}
 
-with $J$ being the exchange integral and $\vec{S}_{i,j}$ the dimensionless spins. For a ferromagnet the lowest exchange energy is when the spins are aligned, meaning $J>0$. In the Hamiltonian we sum over each nearest neighbor pair $<i, j>$. To perform the sum we look at the magnetization in the continuum limit, with a slowly varying magnetization. It is then possible to do a Taylor expansion around the magnetization $\vec{M}_i$. If one only looks at a Taylor expansion in the $x$-direction, it can be written as
+with $J$ being the exchange integral and $\vec{S}_{i,j}$ the dimensionless spins. This interaction between the spins is symmetric due to the properties of the dot product. For a ferromagnet the lowest exchange energy is when the spins are aligned, meaning $J>0$. In the Hamiltonian we sum over each nearest neighbor pair $<i, j>$. To perform the sum we look at the magnetization in the continuum limit, with a slowly varying magnetization. It is then possible to do a Taylor expansion around the magnetization $\vec{M}_i$. If one only looks at a Taylor expansion in the $x$-direction, it can be written as
 
 \begin{align}
 \label{eq:taylormag}
@@ -288,6 +288,116 @@ E_E = \int \d {^3}r \frac{A}{M_s^2} ((\frac{\partial}{\partial x}\vec{M}(\vec{r}
 \end{align}
 
 where we have introduced the exchange constant $A$. As one can see the energy depends on the variation in the magnetization in all directions, and is independent of which direction the magnetization changes, it is only dependent on the magnitude by which it changes. Because the exchange constant $A$ is positive in a ferromagnet, the exchange energy is higher the more the magnetization varies. This can also easily be seen from \eqref{eq:heisenberg}, it costs energy when the spins are not aligned when $J>0$, which is the case in a ferromagnet. To minimize the exchange energy the magnetization therefore has to vary slowly. On short ranges this effect is much stronger than the demagnetization and magnetocrystalline anisotropy. This is why neighbouring spins have a tendency to align in a ferromagnet, while on longer ranges when the demagnetization effect becomes stronger than the exchange interaction the spins tend to be anti-aligned.
+
+\subsection{Antisymmetric exchange energy}
+Certain magnetic materials also exhibit an antisymmetric exchange interaction between the spins in addition to the symmetric interaction. This is also known as the Dzyaloshinskii--Moriya interaction (DMI), and is given by the Hamiltonian
+
+\begin{align}
+\label{eq:DMI_Hamiltonian_S}
+H_{DM} = \sum_{\langle i,j \rangle} \vec{D}_{ij} \cdot (\vec{S}_i\times\vec{S}_j),
+\end{align}
+
+where $\vec{D}_{ij}$ is a vector that depends on the symmetry of the material. This interaction favors a canting of the spins, unlike the symmetric exchange interaction where the favorable configurations were either parallel or antiparallel neighboring spins. It was first proposed by a phenemenological reasoning by Dzyaloshinskii \cite{Dzyaloshinskii1958}, and then Moriya later related this interaction to the spin-orbit coupling interaction \cite{Moriya1960}. If we absorb some constants into the magnitude of $\vec{D}_{ij}$, the Hamiltonian can also be written as
+
+\begin{align}
+\label{eq:DMI_Hamiltonian_M}
+H_{DM} = \sum_{\langle i,j \rangle} \vec{D}_{ij} \cdot (\vec{M}_i\times\vec{M}_j),
+\end{align}
+
+as the magnetization is proportional to the spin. To get a continuum form of the interaction energy in the micromagnetic limit, we follow the same procedure as for the symmetric exchange energy by performing a Taylor expansion in the different directions. Expanding in the $x$-direction we get
+
+\begin{align}
+\vec{M}_{i+1} \approx \vec{M}_i + a\frac{\partial \vec{M}_i}{\partial x},
+\end{align}
+
+with $a$ again being the lattice constant. As the form of the Hamiltonian is antisymmetric because of the properties of the cross product, we only look at the interaction pairs in one direction along a given axis. In cartesian coordinates the energy density then becomes
+
+\begin{align}
+\epsilon_{DM} = \sum_i\vec{D}_{x_i}a_i\cdot(\vec{M}\times\frac{\partial \vec{M}}{\partial x_i}).
+\end{align}
+
+$\vec{D}_{x_i}$ is here a vector defined by the symmetry of the problem for the interaction pair in the $x_i$ direction ($x_i = x, y, z$). We will now consider different symmetries to see how this affects the antisymmetric interaction. Following the results provided by Moriya in \cite{Moriya1960}, we see that $\vec{D} = 0$ if there is a center of inversion symmetry. For the antisymmetric exchange interaction to be present, it is therefore necessary for the inversion symmetry to be broken. If there is an $n$-fold axis (where $n\geq2$) along the axis between the interaction pair, $\vec{D}$ will be parallel to that axis. If we then consider such a case where $\vec{D}_{x_i} = -\frac{D}{a_i} \hat{x}_i$, we find that
+
+\begin{align}
+\nonumber \epsilon_{DM} &= -D \left[ \hat{x}\cdot(\vec{M}\times\frac{\partial\vec{M}}{\partial x}) + \hat{y}\cdot(\vec{M}\times\frac{\partial\vec{M}}{\partial y}) + \hat{z}\cdot (\vec{M}\times\frac{\partial\vec{M}}{\partial z})\right] \\
+\nonumber &= D\left[M_x(\frac{\partial M_z}{\partial y} - \frac{\partial M_y}{\partial z}) + M_y(\frac{\partial M_x}{\partial z} - \frac{\partial M_z}{\partial x}) + M_z(\frac{\partial M_x}{\partial y} - \frac{\partial M_y}{\partial x})\right] \\
+&= D \vec{M}\cdot(\nabla\times\vec{M}).
+\end{align}
+
+This is also known as the bulk form of the DMI energy density as we were considering a similar DMI in all spatial directions.\\
+Let us now consider a case where the antisymmetric exchange interaction between two particles of the same type is transferred by a third particle of a different type. This can for example happen at an interface between two materials. According to Moriya the direction of $\vec{D}$ will then be parallel to the trigonal axis. If we consider an interface with a surface normal along the $z$ direction, the vectors $\vec{D}_{x_i}$ become
+
+\begin{align}
+\vec{D}_x &= \frac{D}{a_x} \hat{y}, \\
+\vec{D}_y &= - \frac{D}{a_y} \hat{x}, \\
+\vec{D}_z &= 0,
+\end{align}
+
+where $D$ can be both positive and negative. This gives us the energy density
+
+\begin{align}
+\label{eq:InterfaceDMIe}
+\epsilon_{DM} &= D\left[ \hat{y} \cdot(\vec{M}\times\frac{\partial\vec{M}}{\partial x}) - \hat{x} \cdot(\vec{M}\times\frac{\partial\vec{M}}{\partial y})\right] \\
+&= D\left[ M_z (\nabla\cdot\vec{M}) - (\vec{M}\cdot\nabla)M_z\right]. 
+\end{align}
+
+This is also known as the interface form of the DMI energy density. \\
+As the DMI only occurs in select magnetic materials, we will not consider this contribution to the energy unless stated otherwise. It turns out, however, that this interaction is an important contribution to the form of magnetic skyrmions. This is because it allows a lowering of the energy by having the neighboring spins be slightly canted, so that a vortex state is possible as a ground state in the system.
+
+\subsubsection{The Dzyaloshinskii--Moriya interaction from the Rashba effect}
+To get a better understanding of the physical origin of the Dzyaloshinskii--Moriya interaction, we take a look at an example. When the inversion symmetry in a crystal is broken, the spin-orbit coupling in the plane perpendicular to the axis lacking inversion symmetry leads to something known as the Rashba effect. The inversion symmetry can be broken by the crystal structure, for example by having two atoms close together in the basis of a crystal structure that has inversion symmetry (like a cubic crystal), or it can be broken at the surface between two materials. In general, the inversion symmetry causes a gradient in the electrostatic potential as $V(\vec{r}) \neq V(-\vec{r})$. This leads to a non-zero electric field inside the material along the axis where the inversion symmetry is broken. In the restframe of an electron moving in the plane perpendicular to this electric field a magnetic field is observed that couples to the spin of the electron, meaning we get a spin-orbit coupling. The magnetic field observed by the electron is proportional to $\vec{p}\times\vec{E}$. The Rashba Hamiltonian is then given by
+
+\begin{align}
+\label{eq:RashbaH}
+H_R = \alpha_R (\vec{\sigma} \times \vec{k})\cdot \hat{n} = \frac{\alpha_R}{\hbar} \vec{\sigma}\cdot(\vec{p}\times\hat{n}),
+\end{align}
+
+with $\vec{\sigma}$ being a vector of the Pauli matrices, $\alpha_R$ the Rashba parameter, $\vec{p}$ the momentum localized in a plane and $\hat{n}$ a unit vector perpendicular to that plane \cite{BychovRashba1984}. The physics that describes the manner in which the inversion symmetry is broken lies in the Rashba parameter $\alpha_R$, which can be both positive and negative. If we consider electrons under the influence of the Rashba effect and the exchange interaction between their spins, the total Hamiltonian can be written as
+
+\begin{align}
+\label{eq:RashbaModel}
+H = H_{kin} + H_R + H_E = \frac{\vec{p}^2}{2m_e} + \frac{\alpha_R}{\hbar} \vec{\sigma}\cdot(\vec{p}\times\hat{n}) + J \vec{\sigma}\cdot\hat{M}.
+\end{align}
+
+Following the derivation by Kim et al. in \cite{DMIfromRashba_Kim}, the Hamiltonian $H$ can be written as $H'=H_{kin}+H_E'+\orderof(\alpha_R^2)$ by performing a unitary transformation of the Hamiltonian such that $H' = U^{\dagger}HU$. This unitary transformation is defined by
+
+\begin{align}
+U = \exp{\left[-i \frac{k_R}{2}\vec{\sigma}\cdot(\vec{r}\times\hat{n})\right]},
+\end{align}
+
+with
+
+\begin{align}
+k_R = \frac{2\alpha_R m_e}{\hbar^2}.
+\end{align}
+
+The transformation $U$ can be rewritten to
+
+\begin{align}
+U = \exp{(-i\vec{\sigma}\cdot(\hat{r}\times\hat{n}) \frac{\phi}{2})} = \cos{\frac{\phi}{2}} - i\vec{\sigma}\cdot(\hat{r}\times\hat{n})\sin{\frac{\phi}{2}}
+\end{align}
+
+with the angle $\phi$ being defined by
+
+\begin{align}
+\phi &= k_R |\vec{r}|.
+\end{align}
+
+The unitary transformation is therefore just a rotation of the spin around the direction $(\hat{r}\times\hat{n})$ by an angle $\phi$. This rotation makes the Rashba effect term in \eqref{eq:RashbaModel} vanish. The transformed exchange interaction Hamiltonian can then be written as $H_E' = J\sigma\cdot\hat{M}'$, with $\hat{M}'$ being the rotated magnetization direction. Remembering that the exchange energy density $\epsilon_E$ can be written as $\epsilon_E = A \partial_i \hat{M} \partial_i \hat{M}$ with summation over repeated indices, the transformed exchange energy density can then be written in the same manner with $\hat{M} \rightarrow \hat{M}'$. As $\hat{M}' = R^{-1}\hat{M}$ with $R$ being an equivalent rotation transformation as $U$ acting on a classical vector, the differential operators will also act on the rotation matrix $R^{-1}$. In the supplementary information to \cite{DMIfromRashba_Kim} it is shown that
+
+\begin{align}
+\partial_i (R^{-1}\hat{M}) &= R^{-1}\tilde{\partial_i} \hat{M} \\
+&= R^{-1} (\partial_i\hat{M} + k_R(\hat{n}\times\hat{i})\times\hat{M}),
+\end{align}
+
+with $\hat{i}$ being a unit vector in the $i$-direction. This means that the transformed exchange energy density becomes
+
+\begin{align}
+\nonumber \epsilon_E' &= A\partial_i \hat{M} \partial_i \hat{M} + 2k_RA(\partial_i\hat{M})\left[(\hat{n}\times\hat{i})\times\hat{M}\right] + \orderof(\alpha_R^2) \\
+&= A\partial_i \hat{M} \partial_i \hat{M} + D (\hat{n}\times\hat{i}) \cdot (\hat{M}\times\partial_i\hat{M}) + \orderof(\alpha_R^2) \label{eq:exchEnDensDM}
+\end{align}
+
+with $D = 2k_RA$, where we have used that $\vec{A}\cdot(\vec{B}\times\vec{C}) = \vec{B}\cdot(\vec{C}\times\vec{A})$. Remember that there is an implicit sum over $i$. As one can see, the exchange energy density contains a symmetric term like before, and an antisymmetric term that comes from the transformation we had to perform to get rid of the Rashba-term in the Hamiltonian. We recognize this antisymmetric term as the interface DMI energy density in \eqref{eq:InterfaceDMIe} with $\hat{n} = \hat{z}$.
 
 \section{Landau--Lifshitz--Gilbert equation}
 The time evolution of the magnetization in a magnet is described by the Landau--Lifshitz--Gilbert (LLG) equation. To get an understanding of the origin of the equation, it is useful to look at the time evolution of spin, as the magnetic moment and therefore the magnetization is proportional to it. 
@@ -1153,66 +1263,15 @@ The reason behind the motion of the domain wall because of a magnetic field para
 
 \section{Skyrmions}
 
-\subsection{The Rashba effect and the Dzyaloshinskii-Moriya interaction}
-When the inversion symmetry in a crystal is broken, the spin-orbit coupling in the plane perpendicular to the axis lacking inversion symmetry leads to something known as the Rashba effect. The inversion symmetry can be broken by the crystal structure, for example by having two atoms close together in the basis of a crystal structure that has inversion symmetry (like a cubic crystal), or it can be broken at the surface between two materials. In general, the inversion symmetry causes a gradient in the electrostatic potential as $V(\vec{r}) \neq V(-\vec{r})$. This leads to a non-zero electric field inside the material along the axis where the inversion symmetry is broken. In the restframe of an electron moving in the plane perpendicular to this electric field a magnetic field is observed that couples to the spin of the electron, meaning we get a spin-orbit coupling. The magnetic field observed by the electron is proportional to $\vec{p}\times\vec{E}$. The Rashba Hamiltonian is then given by
+%\subsection{Skyrmion profile}
 
-\begin{align}
-\label{eq:RashbaH}
-H_R = \alpha_R (\vec{\sigma} \times \vec{k})\cdot \hat{n} = \frac{\alpha_R}{\hbar} \vec{\sigma}\cdot(\vec{p}\times\hat{n}),
-\end{align}
+%\begin{align}
+%\epsilon = \left(A\left[ (\frac{\partial \theta}{\partial \rho})^2+\frac{\sin^2\theta}{\rho^2}\right] - |D|(\frac{\partial\theta}{\partial\rho} + \frac{\sin 2\theta}{2\rho}) + K\cos^2\theta\right)\rho
+%\end{align}
 
-with $\vec{\sigma}$ being a vector of the Pauli matrices, $\alpha_R$ the Rashba parameter, $\vec{p}$ the momentum localized in a plane and $\hat{n}$ a unit vector perpendicular to that plane \cite{BychovRashba1984}. The physics that describes the manner in which the inversion symmetry is broken lies in the Rashba parameter $\alpha_R$, which can be both positive and negative. If we consider electrons under the influence of the Rashba effect and the exchange interaction between their spins, the total Hamiltonian can be written as
-
-\begin{align}
-\label{eq:RashbaModel}
-H = H_{kin} + H_R + H_E = \frac{\vec{p}^2}{2m_e} + \frac{\alpha_R}{\hbar} \vec{\sigma}\cdot(\vec{p}\times\hat{n}) + J \vec{\sigma}\cdot\hat{M}.
-\end{align}
-
-Following the derivation by Kim et al. in \cite{DMIfromRashba_Kim}, the Hamiltonian $H$ can be written as $H'=H_{kin}+H_E'+\orderof(\alpha_R^2)$ by performing a unitary transformation of the Hamiltonian such that $H' = U^{\dagger}HU$. This unitary transformation is defined by
-
-\begin{align}
-U = \exp{\left[-i \frac{k_R}{2}\vec{\sigma}\cdot(\vec{r}\times\hat{n})\right]},
-\end{align}
-
-with
-
-\begin{align}
-k_R = \frac{2\alpha_R m_e}{\hbar^2}.
-\end{align}
-
-The transformation $U$ can be rewritten to
-
-\begin{align}
-U = \exp{(-i\vec{\sigma}\cdot(\hat{r}\times\hat{n}) \frac{\phi}{2})} = \cos{\frac{\phi}{2}} - i\vec{\sigma}\cdot(\hat{r}\times\hat{n})\sin{\frac{\phi}{2}}
-\end{align}
-
-with the angle $\phi$ being defined by
-
-\begin{align}
-\phi &= k_R |\vec{r}|.
-\end{align}
-
-The unitary transformation is therefore just a rotation of the spin around the direction $(\hat{r}\times\hat{n})$ by an angle $\phi$. This rotation makes the Rashba effect term in \eqref{eq:RashbaModel} vanish. The transformed exchange interaction Hamiltonian can then be written as $H_E' = J\sigma\cdot\hat{M}'$, with $\hat{M}'$ being the rotated magnetization direction. Remembering that the exchange energy density $\epsilon_E$ can be written as $\epsilon_E = A \partial_i \hat{M} \partial_i \hat{M}$ with summation over repeated indices, the transformed exchange energy density can then be written in the same manner with $\hat{M} \rightarrow \hat{M}'$. As $\hat{M}' = R^{-1}\hat{M}$ with $R$ being an equivalent rotation transformation as $U$ acting on a classical vector, the differential operators will also act on the rotation matrix $R^{-1}$. In the supplementary information to \cite{DMIfromRashba_Kim} it is shown that
-
-\begin{align}
-\partial_i (R^{-1}\hat{M}) &= R^{-1}\tilde{\partial_i} \hat{M} \\
-&= R^{-1} (\partial_i\hat{M} + k_R(\hat{n}\times\hat{i})\times\hat{M}),
-\end{align}
-
-with $\hat{i}$ being a unit vector in the $i$-direction. This means that the transformed exchange energy density becomes
-
-\begin{align}
-\nonumber \epsilon_E' &= A\partial_i \hat{M} \partial_i \hat{M} + 2k_RA(\partial_i\hat{M})\left[(\hat{n}\times\hat{i})\times\hat{M}\right] + \orderof(\alpha_R^2) \\
-&= A\partial_i \hat{M} \partial_i \hat{M} + D (\hat{n}\times\hat{i}) \cdot (\hat{M}\times\partial_i\hat{M}) + \orderof(\alpha_R^2) \label{eq:exchEnDensDM}
-\end{align}
-
-with $D = 2k_RA$, where we have used that $\vec{A}\cdot(\vec{B}\times\vec{C}) = \vec{B}\cdot(\vec{C}\times\vec{A})$. Remember that there is an implicit sum over $i$. As one can see, the exchange energy density contains a symmetric term like before, and an antisymmetric term that comes from the transformation we had to perform to get rid of the Rashba-term in the Hamiltonian. The antisymmetric term is also known as the Dzyaloshinskii-Moriya interaction, which can also be written as
-
-\begin{align}
-\vec{D}_{ij}\cdot(\vec{S}_i\times\vec{S}_j).
-\end{align}
-
-The form of the interaction in \eqref{eq:exchEnDensDM} comes from our assumptions of a slowly varying magnetization, making the magnetization a continuous function. This interaction term favors a slight canting of the spins, the direction of which depends on the sign of $D$. The lowest exchange energy of the spins is therefore not when the spins are perfectly aligned or anti-alligned, if this interaction is of a significant order. For this to be the case, the material must have a strong spin-orbit coupling and a broken inversion symmetry.
+%\begin{align}
+%\left[A(\frac{\partial^2\theta}{\partial\rho^2} + \frac{1}{\rho}\frac{\partial\theta}{\partial\rho} - \frac{\sin\theta\cos\theta}{\rho^2})-|D|\frac{\sin^2\theta}{\rho}+K\sin\theta\cos\theta\right]\rho = 0
+%\end{align}
 
 \section{References}
 \bibliography{main}
