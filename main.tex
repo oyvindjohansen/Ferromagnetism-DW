@@ -301,7 +301,7 @@ where $\vec{D}_{ij}$ is a vector that depends on the symmetry of the material. T
 
 \begin{align}
 \label{eq:DMI_Hamiltonian_M}
-H_{DM} = \sum_{\langle i,j \rangle} \vec{D}_{ij} \cdot (\vec{M}_i\times\vec{M}_j),
+H_{DM} = \frac{1}{M_s^2}\sum_{\langle i,j \rangle} \vec{D}_{ij} \cdot (\vec{M}_i\times\vec{M}_j),
 \end{align}
 
 as the magnetization is proportional to the spin. To get a continuum form of the interaction energy in the micromagnetic limit, we follow the same procedure as for the symmetric exchange energy by performing a Taylor expansion in the different directions. Expanding in the $x$-direction we get
@@ -313,32 +313,32 @@ as the magnetization is proportional to the spin. To get a continuum form of the
 with $a$ again being the lattice constant. As the form of the Hamiltonian is antisymmetric because of the properties of the cross product, we only look at the interaction pairs in one direction along a given axis. In cartesian coordinates the energy density then becomes
 
 \begin{align}
-\epsilon_{DM} = \sum_i\vec{D}_{x_i}a_i\cdot(\vec{M}\times\frac{\partial \vec{M}}{\partial x_i}).
+\epsilon_{DM} = \frac{1}{M_s^2}\sum_i\vec{D}_{x_i}a_i\cdot(\vec{M}\times\frac{\partial \vec{M}}{\partial x_i}).
 \end{align}
 
 $\vec{D}_{x_i}$ is here a vector defined by the symmetry of the problem for the interaction pair in the $x_i$ direction ($x_i = x, y, z$). We will now consider different symmetries to see how this affects the antisymmetric interaction. Following the results provided by Moriya in \cite{Moriya1960}, we see that $\vec{D} = 0$ if there is a center of inversion symmetry. For the antisymmetric exchange interaction to be present, it is therefore necessary for the inversion symmetry to be broken. If there is an $n$-fold axis (where $n\geq2$) along the axis between the interaction pair, $\vec{D}$ will be parallel to that axis. If we then consider such a case where $\vec{D}_{x_i} = -\frac{D}{a_i} \hat{x}_i$, we find that
 
 \begin{align}
-\nonumber \epsilon_{DM} &= -D \left[ \hat{x}\cdot(\vec{M}\times\frac{\partial\vec{M}}{\partial x}) + \hat{y}\cdot(\vec{M}\times\frac{\partial\vec{M}}{\partial y}) + \hat{z}\cdot (\vec{M}\times\frac{\partial\vec{M}}{\partial z})\right] \\
-\nonumber &= D\left[M_x(\frac{\partial M_z}{\partial y} - \frac{\partial M_y}{\partial z}) + M_y(\frac{\partial M_x}{\partial z} - \frac{\partial M_z}{\partial x}) + M_z(\frac{\partial M_x}{\partial y} - \frac{\partial M_y}{\partial x})\right] \\
-&= D \vec{M}\cdot(\nabla\times\vec{M}).
+\nonumber \epsilon_{DM} &= -\frac{D}{M_s^2} \left[ \hat{x}\cdot(\vec{M}\times\frac{\partial\vec{M}}{\partial x}) + \hat{y}\cdot(\vec{M}\times\frac{\partial\vec{M}}{\partial y}) + \hat{z}\cdot (\vec{M}\times\frac{\partial\vec{M}}{\partial z})\right] \\
+\nonumber &= \frac{D}{M_s^2}\left[M_x(\frac{\partial M_z}{\partial y} - \frac{\partial M_y}{\partial z}) + M_y(\frac{\partial M_x}{\partial z} - \frac{\partial M_z}{\partial x}) + M_z(\frac{\partial M_x}{\partial y} - \frac{\partial M_y}{\partial x})\right] \\
+&= \frac{D}{M_s^2} \vec{M}\cdot(\nabla\times\vec{M}). \label{eq:BulkDMI}
 \end{align}
 
 This is also known as the bulk form of the DMI energy density as we were considering a similar DMI in all spatial directions.\\
 Let us now consider a case where the antisymmetric exchange interaction between two particles of the same type is transferred by a third particle of a different type. This can for example happen at an interface between two materials. According to Moriya the direction of $\vec{D}$ will then be parallel to the trigonal axis. If we consider an interface with a surface normal along the $z$ direction, the vectors $\vec{D}_{x_i}$ become
 
 \begin{align}
-\vec{D}_x &= \frac{D}{a_x} \hat{y}, \\
-\vec{D}_y &= - \frac{D}{a_y} \hat{x}, \\
-\vec{D}_z &= 0,
+\vec{D}_x = \frac{D}{a_x} \hat{y}, \hspace{10mm}
+\vec{D}_y = - \frac{D}{a_y} \hat{x}, \hspace{10mm}
+\vec{D}_z = 0,
 \end{align}
 
 where $D$ can be both positive and negative. This gives us the energy density
 
 \begin{align}
 \label{eq:InterfaceDMIe}
-\epsilon_{DM} &= D\left[ \hat{y} \cdot(\vec{M}\times\frac{\partial\vec{M}}{\partial x}) - \hat{x} \cdot(\vec{M}\times\frac{\partial\vec{M}}{\partial y})\right] \\
-&= D\left[ M_z (\nabla\cdot\vec{M}) - (\vec{M}\cdot\nabla)M_z\right]. 
+\epsilon_{DM} &= \frac{D}{M_s^2}\left[ \hat{y} \cdot(\vec{M}\times\frac{\partial\vec{M}}{\partial x}) - \hat{x} \cdot(\vec{M}\times\frac{\partial\vec{M}}{\partial y})\right] \\
+&= \frac{D}{M_s^2}\left[ M_z (\nabla\cdot\vec{M}) - (\vec{M}\cdot\nabla)M_z\right]. \label{eq:IntDMI}
 \end{align}
 
 This is also known as the interface form of the DMI energy density. \\
@@ -1043,7 +1043,7 @@ This means that $\frac{\delta \epsilon}{\delta \theta} = 0$. By using this we ca
   \caption{}
   \label{fig:Neel_NonAdSTT_GD}
 \end{subfigure}
-\caption{The different torques acting on the initial N\'{e}el domain wall. The blue vectors are the N\'{e}el domain wall magnetization in both figures. In (a) the red vectors represent the adiabatic spin-transfer torque and the green vectors the magnetostatic torque from the effective field. In (b) the red vectors represent the non-adiabatic spin-transfer torque and the green vectors the Gilbert damping torque. The magnitude of the torques are not to scale.}
+\caption{The different torques acting on the initial N\'{e}el domain wall. The blue vectors are the N\'{e}el domain wall magnetization in both figures. In (a) the red vectors represent the adiabatic spin-transfer torque and the green vectors the magnetostatic torque from the effective field. In (b) the red vectors represent the non-adiabatic spin-transfer torque and the green vectors the Gilbert damping torque. The magnitude of the torques are not to scale. The electrons in the applied current move from the domain with spin up to the domain with spin down.}
 \end{figure}
 
 If we insert the calculated differentials into \eqref{eq:LLG_current_explicit_spherical} it gives us the two equations
@@ -1185,7 +1185,7 @@ As an example one can plot the expectation values of the domain wall for a case 
   \caption{}
   \label{fig:Neel_NonAdSTT_GD_JeGTJc}
 \end{subfigure}
-\caption{The shape of the domain wall different torques acting on it with an applied current $j_e=1.1j_c$. Expectation values are assumed. The blue vectors represent the domain wall magnetization in both figures. In (a) the red vectors represent the adiabatic spin-transfer torque and the green vectors the magnetostatic torque from the effective field. In (b) the red vectors represent the non-adiabatic spin-transfer torque and the green vectors the Gilbert damping torque. The magnitude of the torques are not to scale.}
+\caption{The shape of the domain wall different torques acting on it with an applied current $j_e=1.1j_c$. Expectation values are assumed. The blue vectors represent the domain wall magnetization in both figures. In (a) the red vectors represent the adiabatic spin-transfer torque and the green vectors the magnetostatic torque from the effective field. In (b) the red vectors represent the non-adiabatic spin-transfer torque and the green vectors the Gilbert damping torque. The magnitude of the torques are not to scale. The electrons in the applied current move from the domain with spin up to the domain with spin down.}
 \label{fig:DW_JeGTJc}
 \end{figure}
 
@@ -1263,7 +1263,44 @@ The reason behind the motion of the domain wall because of a magnetic field para
 
 \section{Skyrmions}
 
-%\subsection{Skyrmion profile}
+\subsection{Skyrmion profile}
+Skyrmions are stable vortex-like magnetization configurations that appear in materials such as chiral magnets, where the before-mentioned Dzyaloshinskii-Moriya interaction allows the energy of the magnet be lowered by having a slight canting of the neighboring spins. Other interactions may also cause stable skyrmions in a magnet, such as long-ranged magnetic dipolar interactions, frustrated exchange interactions or four-spin exchange interactions. These will typically create skyrmions of a different size than the Dzyaloshinskii-Moriya interaction, which creates skyrmions on a typical length scale of 5-\SI{100}{nm} \cite{Nagaosa2013}. Only skyrmions created by the Dzyaloshinskii-Moriya interaction will be considered here. \\
+To describe the profile of skyrmions, we make an ansatz based on the following: the skyrmion is located in a plane, the out-of-plane magnetization component is azimutally symmetric about the center of the skyrmion, and the in-plane magnetization component is linearly related to the angle in the plane of the skyrmion. Together, this means that the magnetization of the skyrmion can be written as
+
+\begin{align}
+\label{eq:SkyrmionMVec}
+\vec{M}(\rho, \phi) = M_s
+\begin{pmatrix}
+\cos\Phi(\phi)\sin\theta(\rho) \\ \sin\Phi(\phi)\sin\theta(\rho) \\ \cos\theta(\rho)
+\end{pmatrix}.
+\end{align}
+
+Here $\rho$ and $\phi$ denote the in-plane distance from the skyrmion core and the in-plane angle, respectively. The angles $\theta$ and $\Phi$ describe the out-of-plane and in-plane components of the magnetization, with $\theta = \frac{\pi}{2}$ being in-plane and the angle $\Phi$ is related to the in-plane angle of the coordinate system $\phi$ by
+
+\begin{align}
+\label{eq:SkyrmionPhi}
+\Phi = m\phi + \psi.
+\end{align}
+
+Here $m$ is restricted to be an integer due to the symmetry of the problem, and is known as the vorticity of the skyrmion. The absolute value of $m$ tells us how many full rotations the in-plane magnetization makes in the skyrmion plane, while the sign of $m$ tells us if the magnetization rotates clockwise or anti-clockwise. In the special cases $m=1$ and $m=-1$ we get a vortex and an anti-vortex, respectively. The constant phase shift $\psi$ between $\Phi$ and $\phi$ is known as the helicity of the skyrmion. We can then use this ansatz to find an expression for the DMI energy density. Plugging \eqref{eq:SkyrmionMVec} into the bulk form of the DMI energy density in \eqref{eq:BulkDMI} and keeping in mind that
+\begin{align}
+\frac{\partial \theta}{\partial x} = \cos\phi \frac{\partial\theta}{\partial\rho}, \hspace{5mm}
+\frac{\partial \theta}{\partial y} = \sin\phi \frac{\partial\theta}{\partial\rho}, \hspace{5mm}
+\frac{\partial \Phi}{\partial x} = -\frac{m}{\rho}\sin\phi, \hspace{5mm}
+\frac{\partial \Phi}{\partial y} = \frac{m}{\rho}\cos\phi,
+\end{align}
+we find that
+\begin{align}
+\nonumber \epsilon_{DM}^{(\text{bulk})} &= \frac{D}{M_s^2} \vec{M}\cdot(\nabla\times\vec{M}) \\
+\nonumber &= D\left(\sin\Phi\cos\phi-\cos\Phi\sin\phi\right)\left[\frac{\partial\theta}{\partial\rho}+\frac{m}{\rho}\sin\theta\cos\theta\right] \\
+&= D\sin((m-1)\phi+\psi)\left[\frac{\partial\theta}{\partial\rho}+\frac{m}{\rho}\sin\theta\cos\theta\right].
+\end{align}
+We then choose the degrees of freedom $m$ and $psi$ that the skyrmion has to minimize the antisymmetric exchange energy. If there is a dependence on $\phi$, the average antisymmetric exchange energy over the plane becomes zero as the function is harmonic. Setting $m=1$ makes this dependence vanish, however, allowing us to have a net negative energy contribution. The choice of $\psi$ is limited to $\pm \frac{\pi}{2}$, with a sign that depends on the sign of $D$ and the profile $\theta(\rho)$. Assuming the expression inside the bracket is negative, the helicity is $\psi = \frac{\pi}{2}$ if $D>0$, and $\psi = -\frac{\pi}{2}$ if $D<0$. We can also perform the same calculation for the interface form of the DMI energy density by plugging our ansatz into \eqref{eq:IntDMI},
+\begin{align}
+\nonumber \epsilon_{DM}^{(\text{interface})} &= \frac{D}{M_s^2}\left[ M_z (\nabla\cdot\vec{M}) - (\vec{M}\cdot\nabla)M_z\right] \\
+\nonumber &= D\left(\sin\Phi\sin\phi+\cos\Phi\cos\phi\right)\left[\frac{\partial\theta}{\partial\rho}+\frac{m}{\rho}\sin\theta\cos\theta\right] \\
+&= D\cos((m-1)\phi+\psi)\left[\frac{\partial\theta}{\partial\rho}+\frac{m}{\rho}\sin\theta\cos\theta\right].
+\end{align}
 
 %\begin{align}
 %\epsilon = \left(A\left[ (\frac{\partial \theta}{\partial \rho})^2+\frac{\sin^2\theta}{\rho^2}\right] - |D|(\frac{\partial\theta}{\partial\rho} + \frac{\sin 2\theta}{2\rho}) + K\cos^2\theta\right)\rho
