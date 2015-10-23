@@ -1364,37 +1364,42 @@ where we have introduced the dimensionless $\tilde{\rho} = \frac{A}{D}\rho$. For
 \frac{\partial^2\theta}{\partial\tilde{\rho}^2} + \frac{1}{\tilde{\rho}}\frac{\partial\theta}{\partial\tilde{\rho}} - \frac{\sin\theta\cos\theta}{\tilde{\rho}^2}+\cos\psi\frac{\sin^2\theta}{\tilde{\rho}}+\frac{AK}{D^2}\sin\theta\cos\theta = 0.
 \end{align}
 
-With exception of the trivial solutions $\theta = n\pi$ ($n = 0, 1, 2 \ldots$), \eqref{eq:ODEthetaBulk} and \eqref{eq:ODEthetaFilm} cannot be solved analytically. The trivial solutions are of no interest as the system can reach a lower energy state by having $\frac{\partial\theta}{\partial\rho}\neq 0$ due to the Dzyaloshinskii--Moriya interaction. For the thin film case the trivial solutions are also not stable, as the magnetization will be in the plane of the film far away from the skyrmion core ($\theta=\frac{\pi}{2}$). As this not a solution of \eqref{eq:ODEthetaFilm} we see that in the thin-film case it is necessary to have an out-of-plane magnetization component near the skyrmion core. To find the radial profile of the out-of-plane magnetization of the skyrmion one must therefore either solve the equations numerically or use a variational approach to estimate the function $\theta(\rho)$. We solve the equations numerically first in MATLAB, imposing the boundary conditions $\theta(0) = 0$ ($\theta(0) = \pi$) and $\theta(\infty) = \pi$ ($\theta(\infty) = 0$) for the bulk case in \eqref{eq:ODEthetaBulk}, and for the interface case in \eqref{eq:ODEthetaFilm} we impose $\theta(0) = 0$ ($\theta(0) = \pi$) and $\theta(\infty) = \pi/2$. For the bulk case we used that the magnetization inside the skyrmion core and the magnetization far away from the core should be parallel to the easy-axis in the $z$-direction, and anti-parallel to each other. For the interface case we imagine a thin film where the magnetization is in the plane far away from the core, and points out of the plane in the core. We have listed two possible boundary conditions for each case that satiesfies this. Which of boundary conditions we use depends on the value of $\psi$, as the solutions acquired numerically only makes sense for one of the boundary conditions. The numerical solutions are shown in Figure \ref{fig:ThetaRho}. As one can see, the different solutions for the two helicities $\psi_1$ and $\psi_2$ are related to each other by $\theta_{\psi_1}(\rho) = \pi - \theta_{\psi_2}(\rho)$. This relation can also be directly seen from \eqref{eq:ODEthetaBulk} and \eqref{eq:ODEthetaFilm}. This means that the solutions for the different values of $\psi$ are simply a mirror image of each other with the mirror being in the skyrmion plane. It should be noted that the accuracy of the acquired numerical solutions were rather poor, and they are therefore not guaranteed to be fully correct. It is assumed, however, that they show the important qualities of the radial profile.
+With exception of the trivial solutions $\theta = n\pi$ ($n = 0, 1, 2 \ldots$), \eqref{eq:ODEthetaBulk} and \eqref{eq:ODEthetaFilm} cannot be solved analytically. The trivial solutions are of no interest as the system can reach a lower energy state by having $\frac{\partial\theta}{\partial\rho}\neq 0$ due to the Dzyaloshinskii--Moriya interaction. For the thin film case the trivial solutions are also not stable, as the magnetization will be in the plane of the film far away from the skyrmion core ($\theta=\frac{\pi}{2}$). As this not a solution of \eqref{eq:ODEthetaFilm} we see that in the thin-film case it is necessary to have an out-of-plane magnetization component near the skyrmion core. To find the radial profile of the out-of-plane magnetization of the skyrmion one must therefore either solve the equations numerically or use a variational approach to estimate the function $\theta(\rho)$. We solve the equations numerically first in MATLAB, imposing the boundary conditions $\theta(0) = 0$ ($\theta(0) = \pi$) and $\theta(\infty) = \pi$ ($\theta(\infty) = 0$) for the bulk case in \eqref{eq:ODEthetaBulk}, and for the interface case in \eqref{eq:ODEthetaFilm} we impose $\theta(0) = 0$ ($\theta(0) = \pi$) and $\theta(\infty) = \pi/2$. For the bulk case we used that the magnetization inside the skyrmion core and the magnetization far away from the core should be parallel to the easy-axis in the $z$-direction, and anti-parallel to each other. For the interface case we imagine a thin film where the magnetization is in the plane far away from the core, and points out of the plane in the core. We have listed two possible boundary conditions for each case that satiesfies this. Which of boundary conditions we use depends on the value of $\psi$, as the solutions acquired numerically only makes sense for one of the boundary conditions. From \eqref{eq:ODEthetaBulk} and \eqref{eq:ODEthetaFilm} one can also see that the solutions for the two different helicities are related to each other by $\theta_{\psi_1}(\rho) = \pi - \theta_{\psi_2}(\rho)$, as the term involving $\psi$ switches sign when the other helicity is chosen, and $\sin(\pi-\theta) = \sin\theta$, $\cos(\pi-\theta) = -\cos\theta$. This means that the solutions for the different values of $\psi$ are simply a mirror image of each other with the mirror being in the skyrmion plane. The numerical solutions for one choice of $\psi$ for both the bulk and interface DMI cases are shown in Figure \ref{fig:ThetaRho}. The initial guesses of the solutions used as an input in the numerics were
+\begin{align}
+\theta^{\text{(interface)}}(\rho) &= \arctan\tilde{\rho}, \\
+\theta^{\text{(bulk)}}(\rho) &= \pi \frac{\text{Ai}(\tilde{\rho})}{\text{Ai}(0)},
+\end{align}
+with Ai($x$) being the first Airy function.
 
 \begin{figure}[h!]
 \centering
 \begin{subfigure}{.49\textwidth}
   \centering
-  \includegraphics[width=\linewidth]{Figures/ThetaRhoIntPsi0.png}
+  \includegraphics[width=\linewidth]{Figures/ThetaRhoBulk.png}
   \caption{}
-  \label{fig:ThetaIntPsi0}
+  \label{fig:ThetaBulk}
 \end{subfigure}
 \begin{subfigure}{.49\textwidth}
   \centering
-  \includegraphics[width=\linewidth]{Figures/ThetaRhoIntPsiPi.png}
+  \includegraphics[width=\linewidth]{Figures/ThetaRhoInterface.png}
   \caption{}
-  \label{fig:ThetaIntPsiPi}
+  \label{fig:ThetaInt}
 \end{subfigure}
-
-\begin{subfigure}{.49\textwidth}
-  \centering
-  \includegraphics[width=\linewidth]{Figures/ThetaRhoBulkPosPsi.png}
-  \caption{}
-  \label{fig:ThetaBulkPosPsi}
-\end{subfigure}
-\begin{subfigure}{.49\textwidth}
-  \centering
-  \includegraphics[width=\linewidth]{Figures/ThetaRhoBulkNegPsi.png}
-  \caption{}
-  \label{fig:ThetaBulkNegPsi}
-\end{subfigure}
-\caption{The radial profile of the out-of-plane magnetization component of the skyrmion $\theta(\tilde{\rho})$ for the different helicities $\psi$ and forms of the DMI. $C$ is defined as the variable constant $AK/D^2$ in the differential equation.}
+\caption{The radial profile of the out-of-plane magnetization component of the skyrmion $\theta(\tilde{\rho})$ for the different forms of the DMI. For the other possible choice of $\psi$ the solution is given by $\pi - \theta(\tilde{\rho})$. $C$ is defined as the variable constant $AK/D^2$ in the differential equation.}
 \label{fig:ThetaRho}
+\end{figure}
+
+It is desired to find an analytical function to approximate the numerical solutions with that we can use further in analytical calculations. For the interface case shown in Figure \ref{fig:ThetaInt} the solutions resemble an $\arctan\tilde{\rho}$ function. A comparison of this function to the real solutions is shown in Figure \ref{fig:ThetaArcTan}. As one can see, for small $\tilde{\rho}$ the $\arctan\tilde{\rho}$ function is the same as the $C = 2$ solution, while for large $\tilde{\rho}$ it is the same as the $C = 1$ solution. This function can not describe either of the solutions fully, but it is a simple approximation that describes the property of the solutions reasonably well. For the interface case the solution is therefore approximated with
+\begin{align}
+\theta^{\text{(interface)}}(\rho) = \arctan(a\tilde{\rho}),
+\end{align}
+with $a$ being a variational parameter chosen to get a minimum in the energy.
+
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=.6\linewidth]{Figures/ThetaRhoArcTan.png}
+\caption{The interface DMI solutions of $\theta(\tilde{\rho})$ with $\psi = \pi$ and $C = 1,2$ compared to an $\arctan\tilde{\rho}$ approximation.}
+\label{fig:ThetaArcTan}
 \end{figure}
 
 \section{References}
