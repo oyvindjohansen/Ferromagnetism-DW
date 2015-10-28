@@ -871,7 +871,7 @@ the LLG equation keeps its original form. As $m_0\ll M_s$, we also get $\beta \l
 with $\hat{j}_e$ being the unit vector along the electring current, and $b_J$ and $c_J$ being defined by
 
 \begin{align}
-b_J &= \frac{1}{1+\xi^2} \frac{\mu_B j_e P}{e M_s}, \\
+\label{eq:bJ} b_J &= \frac{1}{1+\xi^2} \frac{\mu_B j_e P}{e M_s}, \\
 c_J &= \xi b_J.
 \end{align}
 
@@ -880,14 +880,14 @@ By looking at the directions of the $b_J$ and $c_J$ terms in \eqref{eq:LLG_curre
 The form of the extended LLG equation in \eqref{eq:LLG_current} is implicit in $\frac{\textrm{d} \vec{M}}{\textrm{d} t}$. Like the implicit LLG equation, it can be transformed into an explicit form by taking the cross product of it with $\vec{M}$, to get a linear expression for $\vec{M}\times\frac{\textrm{d} \vec{M}}{\textrm{d} t}$ in $\frac{\textrm{d} \vec{M}}{\textrm{d} t}$. It is then easy to show that by choosing
 
 \begin{align}
-\tilde{\eta '} &= \frac{\alpha}{\gamma ' M_s}, \\
-\tilde{\gamma '} &= \frac{\gamma '}{1+\alpha^2},
+\tilde{\eta}' &= \frac{\alpha}{\gamma ' M_s}, \\
+\tilde{\gamma}' &= \frac{\gamma '}{1+\alpha^2},
 \end{align}
 
 with $\alpha$ being a dimensionless damping constant like in the Landau--Lifshitz equation, we get the explicit form of the extended LLG equation:
 
 \begin{align}
-\nonumber \frac{\partial \vec{M}}{\partial t} = &-\tilde{\gamma '} \vec{M} \times  (\vec{H}_{eff} + \frac{\alpha}{M_s} \vec{M}\times \vec{H}_{eff}) \\ 
+\nonumber \frac{\partial \vec{M}}{\partial t} = &-\tilde{\gamma}' \vec{M} \times  (\vec{H}_{eff} + \frac{\alpha}{M_s} \vec{M}\times \vec{H}_{eff}) \\ 
 &- \frac{(1+\alpha\xi) b_J}{M_s^2(1+\alpha^2)} \vec{M}\times (\vec{M}\times(\hat{j}_e\cdot\nabla)\vec{M})) - \frac{(\xi-\alpha)b_J}{ M_s(1+\alpha^2)}\vec{M}\times(\hat{j}_e\cdot\nabla)\vec{M}.
 \label{eq:LLG_current_explicit}
 \end{align}
@@ -960,10 +960,10 @@ where we have also used that $\frac{\textrm{d} M_s}{\textrm{d} x_i} = 0$. The sc
 \nonumber \begin{pmatrix}
 0 \\ \dot{\theta} \\ \sin\theta\dot{\phi}
 \end{pmatrix} =
-&\frac{\tilde{\gamma '}}{\mu_0 M_s}
+&\frac{\tilde{\gamma}'}{\mu_0 M_s}
 \begin{pmatrix}
 0 \\ -\frac{1}{\sin\theta} \frac{\delta \epsilon}{\delta \phi} \\ \frac{\delta \epsilon}{\delta \theta}
-\end{pmatrix} - \frac{\tilde{\gamma '} \alpha}{\mu_0 M_s} 
+\end{pmatrix} - \frac{\tilde{\gamma}' \alpha}{\mu_0 M_s} 
 \begin{pmatrix}
 0 \\ \frac{\delta \epsilon}{\delta \theta} \\ \frac{1}{\sin\theta} \frac{\delta \epsilon}{\delta \phi}
 \end{pmatrix} + \frac{(1+\xi\alpha)b_J}{1+\alpha^2}
@@ -1016,7 +1016,7 @@ K_{\perp} \ll K.
 If this is not the case, then the $K_{\perp}$ term may lead to deformations of the domain wall, making our assumption of a static shape of the wall invalid. To describe the dynamics of a deformed wall one must use other parameters \cite{TataraKohnoShibata2008}. Assuming that we are in the situation where we can describe the motion of the domain wall with $X(t)$ and $\phi(t)$, we want to rewrite \eqref{eq:LLG_current_explicit_spherical} using these parameters. First we can calculate $\frac{\delta \epsilon}{\delta \theta}$ and $\frac{\delta \epsilon}{\delta \phi}$ by using \eqref{eq:energydensity_ex_a}:
 
 \begin{align}
-\frac{\delta \epsilon}{\delta \phi} &= \frac{\partial \epsilon}{\partial \phi} - \frac{\textrm{d}}{\textrm{d} x} \frac{\partial \epsilon}{\partial (\frac{\partial \phi}{\partial x})} = 2K_{\perp}\sin^2 \theta\sin\phi\cos\phi, \\
+\frac{\delta \epsilon}{\delta \phi} &= \frac{\partial \epsilon}{\partial \phi} - \frac{\textrm{d}}{\textrm{d} t} \frac{\partial \epsilon}{\partial (\frac{\partial \phi}{\partial t})} = 2K_{\perp}\sin^2 \theta\sin\phi\cos\phi, \\
 \frac{\delta \epsilon}{\delta \theta} &= 2(K+K_{\perp} \sin^2 \phi)\sin\theta\cos\theta - 2A\frac{\partial^2 \theta}{\partial x^2}.
 \end{align}
 
@@ -1028,7 +1028,7 @@ We then use \eqref{eq:theta_current}  to find
 \frac{\textrm{d} \theta}{\textrm{d} t} &= -\frac{\dot{X}}{\lambda\cosh\frac{x-X}{\lambda}} = -\frac{\dot{X}}{\lambda}\sin\theta.
 \end{align}
 
-This means that $\frac{\delta \epsilon}{\delta \theta} = 0$. By using this we can look at how the different terms in the extended LLG equation acts on the domain wall. Looking at \eqref{eq:LLG_current_explicit_spherical}, we see that the equation for $\dot{\theta}$ is decided by the first and third term on the right hand side, as $\frac{\delta \epsilon}{\delta \theta} =  (\hat{j}_e\cdot\nabla)\phi = 0$. The first term is the magnetostatic torque from the effective field, and the third is the adiabatic spin-transfer torque. The in-plane motion of the domain wall is therefore decided by the balance of these two torques; the adiabatic torque will cause a translational movement of the domain wall, which causes the local magnetization to be moved away from equilibrium. This in turn generates an effective field that will attempt to reverse the motion of the domain wall to return to equilibrium. The resulting torques are shown in Figure \ref{fig:Neel_AdSTT_Heff}. In the equation for $\dot{\phi}$ in \eqref{eq:LLG_current_explicit_spherical}, we only get a contribution from the second and fourth terms on the right hand side. These are the Gilbert damping term and the non-adiabatic spin-transfer torque term respectively, which is seen by comparing \eqref{eq:LLG_current_explicit_spherical} to \eqref{eq:LLG_current}. The Gilbert-damping term rotates the N\'{e}el domain wall out of plane, which causes an increase in the anisotropic energy as the hard axis is perpendicular to the domain wall plane. The non-adiabatic spin-transfer torque acts as a counterpart to this rotation, and attempts to rotate the domain wall in the other direction, as seen in Figure \ref{fig:Neel_NonAdSTT_GD}. 
+This means that $\frac{\delta \epsilon}{\delta \theta} = 0$, which was the condition we used to determine the function $\theta(x)$ in the first place. By using this we can look at how the different terms in the extended LLG equation acts on the domain wall. Looking at \eqref{eq:LLG_current_explicit_spherical}, we see that the equation for $\dot{\theta}$ is decided by the first and third term on the right hand side, as $\frac{\delta \epsilon}{\delta \theta} =  (\hat{j}_e\cdot\nabla)\phi = 0$. The first term is the magnetostatic torque from the effective field, and the third is the adiabatic spin-transfer torque. The in-plane motion of the domain wall is therefore decided by the balance of these two torques; the adiabatic torque will cause a translational movement of the domain wall, which causes the local magnetization to be moved away from equilibrium. This in turn generates an effective field that will attempt to reverse the motion of the domain wall to return to equilibrium. The resulting torques are shown in Figure \ref{fig:Neel_AdSTT_Heff}. In the equation for $\dot{\phi}$ in \eqref{eq:LLG_current_explicit_spherical}, we only get a contribution from the second and fourth terms on the right hand side. These are the Gilbert damping term and the non-adiabatic spin-transfer torque term respectively, which is seen by comparing \eqref{eq:LLG_current_explicit_spherical} to \eqref{eq:LLG_current}. The Gilbert-damping term rotates the N\'{e}el domain wall out of plane, which causes an increase in the anisotropic energy as the hard axis is perpendicular to the domain wall plane. The non-adiabatic spin-transfer torque acts as a counterpart to this rotation, and attempts to rotate the domain wall in the other direction, as seen in Figure \ref{fig:Neel_NonAdSTT_GD}. 
 
 \begin{figure}[h!]
 \centering
@@ -1055,8 +1055,8 @@ If we insert the calculated differentials into \eqref{eq:LLG_current_explicit_sp
 \end{pmatrix}
 =
 \begin{pmatrix}
-\frac{\lambda \tilde{\gamma '}}{\mu_0 M_s} 2 K_{\perp} \sin\theta\sin\phi\cos\phi + \frac{(1+\xi\alpha)b_J}{1+\alpha^2}\sin\theta \\
--\frac{\tilde{\gamma '}\alpha}{\mu_0 M_s}2 K_{\perp} \sin\theta\sin\phi\cos\phi + \frac{(\xi-\alpha)b_J}{\lambda(1+\alpha^2)}\sin\theta
+\frac{\lambda \tilde{\gamma}'}{\mu_0 M_s} 2 K_{\perp} \sin\theta\sin\phi\cos\phi + \frac{(1+\xi\alpha)b_J}{1+\alpha^2}\sin\theta \\
+-\frac{\tilde{\gamma}'\alpha}{\mu_0 M_s}2 K_{\perp} \sin\theta\sin\phi\cos\phi + \frac{(\xi-\alpha)b_J}{\lambda(1+\alpha^2)}\sin\theta
 \end{pmatrix}.
 \end{align*}
 
@@ -1069,8 +1069,8 @@ We see that $\sin\theta$ is included in all the terms, meaning the domains where
 \end{pmatrix}
 =
 \begin{pmatrix}
-\frac{\lambda \tilde{\gamma '}}{\mu_0 M_s} K_{\perp} \sin2\phi + \frac{(1+\xi\alpha)b_J}{1+\alpha^2} \\
--\frac{\tilde{\gamma '}\alpha}{\mu_0 M_s} K_{\perp} \sin2\phi + \frac{(\xi-\alpha)b_J}{\lambda(1+\alpha^2)}
+\frac{\lambda \tilde{\gamma}'}{\mu_0 M_s} K_{\perp} \sin2\phi + \frac{(1+\xi\alpha)b_J}{1+\alpha^2} \\
+-\frac{\tilde{\gamma}'\alpha}{\mu_0 M_s} K_{\perp} \sin2\phi + \frac{(\xi-\alpha)b_J}{\lambda(1+\alpha^2)}
 \end{pmatrix}.
 \end{align}
 
@@ -1098,7 +1098,7 @@ j_c &= \frac{\alpha(1+\xi^2)}{\xi-\alpha}\frac{\lambda e \gamma ' K_{\perp}}{\mu
 Defining a time scale $T$ for the system,
 
 \begin{align}
-T = \frac{\mu_0 M_s}{\tilde{\gamma '} \alpha K_{\perp}},
+T = \frac{\mu_0 M_s}{\tilde{\gamma}' \alpha K_{\perp}},
 \end{align}
 
 one can write the equations for $\dot{X}$ and $\dot{\phi}$ as
@@ -1402,6 +1402,40 @@ with $a$ being a variational parameter chosen to get a minimum in the energy.
 \label{fig:ThetaArcTan}
 \end{figure}
 
+\subsection{Motion of skyrmions}
+To see how skyrmions move under an applied electrical current or an external magnetic field, we use our previous result with the LLG equation in spherical coordinates given by \eqref{eq:LLG_current_explicit_spherical}. As we removed the dependence of $\phi$ in the energy density by setting $m=1$, we have that $\frac{\delta \epsilon}{\delta \phi} = 0$. We also used the condition $\frac{\delta\epsilon}{\delta\theta}=0$ to determine $\theta(\rho)$, a condition that still holds in the absence of an external magnetic field. Our equations of motion then reduce to: 
+\begin{align}
+\nonumber \begin{pmatrix}
+\dot{\theta} \\ \sin\theta\dot{\phi}
+\end{pmatrix} =
+\frac{(1+\xi\alpha)b_J}{1+\alpha^2}
+\begin{pmatrix}
+(\hat{j}_e\cdot\nabla)\theta \\ \sin\theta(\hat{j}_e\cdot\nabla)\phi
+\end{pmatrix}
++\frac{(\xi-\alpha)b_J}{1+\alpha^2}
+\begin{pmatrix}
+\sin\theta(\hat{j}_e\cdot\nabla)\phi \\ -(\hat{j}_e\cdot\nabla)\theta
+\end{pmatrix}.
+\label{eq:LLG_skyrmion_current}
+\end{align}
+If the position of the skyrmion core at a time $t$ in the $xy$-plane is given by $\left(\rho_0(t)\cos\phi(t), \rho_0(t)\sin\phi(t)\right)$, the angle $\theta$ can be written as $\theta(\rho-\rho_0(t))$ and the terms $(\hat{j}_e\cdot\nabla)\phi(t)$ vanish as $\phi$ only depends on time. If we apply a uniform current in the $x$-direction, the equations of motion become
+\begin{align}
+\dot{\rho_0} &= - \frac{(1+\xi\alpha)b_J}{1+\alpha^2}\cos\phi, \\
+\sin\theta\dot{\phi} &= -\frac{(\xi-\alpha)b_J}{1+\alpha^2} \cos\phi \frac{\partial \theta}{\partial \rho}.
+\end{align}
+In the exception of a special case with $\xi = \alpha$, this will lead to a deformation of the domain wall as the equations of motion are dependent on position. In the special case with $\xi = \alpha$, however, we get $\dot{\phi} = 0$ and the motion of the skyrmion is therefore just a translational motion. As $\cos\phi\hat{\rho} = \hat{x}$, the velocity of the skyrmion becomes $\vec{v} = -b_J\hat{x}$. Remember that $b_J$ is a velocity that scales linearly with the current, defined in \eqref{eq:bJ}. The electrons go in the opposite direction of the electrical current, meaning that the skyrmion follows the motion of the electrons with a velocity $b_J$.\\
+If we instead turn off the electrical current and apply an external magnetic field in the $z$-direction, we will now get a non-zero contribution from $\frac{\delta\epsilon}{\delta\theta}$ due to the Zeeman energy. The Zeeman energy density is given by $\epsilon_Z = -\mu_0M_sH\cos\theta$. This leads to the equations of motion in a magnetic field:
+\begin{align}
+\nonumber \begin{pmatrix}
+\dot{\theta} \\ \sin\theta\dot{\phi}
+\end{pmatrix} =
+\tilde{\gamma}'
+\begin{pmatrix}
+-\alpha H\sin\theta \\ H\sin\theta
+\end{pmatrix}.
+\label{eq:LLG_skyrmion_Hz}
+\end{align}
+For non-zero $\alpha$ this will also lead to a deformation of the skyrmion. If $(\tilde{\gamma}'\alpha H)^{-1}$ is large compared to the time-scale on which the system changes, however, this deformation is negligible. The effect of the magnetic field in the $z$-direction is therefore a rotation of the in-plane magnetization of the skyrmion with a precession rate $\dot{\phi} = \tilde{\gamma}'H$.
 \section{References}
 \bibliography{main}
 \bibliographystyle{unsrt}
