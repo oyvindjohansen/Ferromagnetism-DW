@@ -1418,12 +1418,21 @@ To see how skyrmions move under an applied electrical current or an external mag
 \end{pmatrix}.
 \label{eq:LLG_skyrmion_current}
 \end{align}
-If the position of the skyrmion core at a time $t$ in the $xy$-plane is given by $\left(\rho_0(t)\cos\beta(t), \rho_0(t)\sin\beta(t)\right)$, the angle $\theta$ can be written as $\theta(\rho-\rho_0(t))$ and the terms including $(\hat{j}_e\cdot\nabla)\phi$ vanish as $\phi$ only depends on time. If we apply a uniform current in the $x$-direction, the equations of motion become
+If the position of the skyrmion core at a time $t$ in the $xy$-plane is given by $\vec{\rho}_0(t) = \left( x_0(t), y_0(t)\right)$, the angle $\theta$ can be written as $\theta(|\vec{\rho}-\vec{\rho}_0(t)|)$. The in-plane angle $\phi$ will be given by
 \begin{align}
-\dot{\rho_0} &= - \frac{(1+\xi\alpha)b_J}{1+\alpha^2}\cos\phi, \\
-\sin\theta\dot{\phi} &= -\frac{(\xi-\alpha)b_J}{1+\alpha^2} \cos\phi \frac{\partial \theta}{\partial \rho}.
+\tan\phi = \frac{y-y_0(t)}{x-x_0(t)}.
 \end{align}
-In the exception of a special case with $\xi = \alpha$, this will lead to a deformation of the domain wall as the equations of motion are dependent on position. In the special case with $\xi = \alpha$, however, we get $\dot{\phi} = 0$ and the motion of the skyrmion is therefore just a translational motion. As $\cos\phi(0)\hat{\rho} = \hat{x}$, the velocity of the skyrmion becomes $\vec{v} = -b_J\hat{x}$. Remember that $b_J$ is a velocity that scales linearly with the current, defined in \eqref{eq:bJ}. The electrons go in the opposite direction of the electrical current, meaning that the skyrmion follows the motion of the electrons with a velocity $b_J$.\\
+If we apply a uniform current in the $x$-direction, the equations of motion become
+\begin{align}
+(\cos\phi\dot{x}_0+\sin\phi\dot{y}_0)\frac{\partial \theta}{\partial r} &= - \frac{(1+\xi\alpha)b_J}{1+\alpha^2}\cos\phi\frac{\partial\theta}{\partial r} + \frac{(\xi-\alpha)b_J}{1+\alpha^2}\frac{\sin\theta}{r}\sin\phi, \\
+(\sin\phi\dot{x}_0-\cos\phi\dot{y}_0)\frac{\sin\theta}{r} &= -\frac{(1+\xi\alpha)b_J}{1+\alpha^2}\frac{\sin\theta}{r}\sin\phi-\frac{(\xi-\alpha)b_J}{1+\alpha^2} \cos\phi \frac{\partial \theta}{\partial r},
+\end{align}
+where we have introduced $r = |\vec{\rho}-\vec{\rho}_0(t)|$. It is easily verified that the equations can be separated into first order ODEs for $x_0(t)$ and $y_0(t)$:
+\begin{align}
+\dot{x}_0 &= - \frac{(1+\xi\alpha)b_J}{1+\alpha^2} + \frac{(\xi-\alpha)b_J}{1+\alpha^2}\sin\phi\cos\phi \left( \frac{\sin\theta}{r \cdot \frac{\partial \theta}{\partial r}} - \frac{r}{\sin\theta}\frac{\partial\theta}{\partial r}\right), \\
+\dot{y}_0 &= \frac{(\xi-\alpha)b_J}{1+\alpha^2}\left(\sin^2\phi \frac{\sin\theta}{r \cdot \frac{\partial \theta}{\partial r}} +\cos^2\phi \frac{r}{\sin\theta}\frac{\partial\theta}{\partial r}\right).
+\end{align}
+In the exception of a special case with $\xi = \alpha$, this will lead to a deformation of the domain wall as the equations of motion are dependent on position. In the special case with $\xi = \alpha$, however, we get $\dot{y}_0 = 0$ and the motion of the skyrmion is therefore just a translational motion parallel to the motion of the current in the $x$-direction. The velocity of the skyrmion is given by $\vec{v} = -b_J\hat{x}$. Remember that $b_J$ is a velocity that scales linearly with the current, defined in \eqref{eq:bJ}. The electrons go in the opposite direction of the electrical current, meaning that the skyrmion follows the motion of the electrons.\\
 If we instead turn off the electrical current and apply an external magnetic field in the $z$-direction, we will now get a non-zero contribution from $\frac{\delta\epsilon}{\delta\theta}$ due to the Zeeman energy. The Zeeman energy density is given by $\epsilon_Z = -\mu_0M_sH\cos\theta$. This leads to the equations of motion in a magnetic field:
 \begin{align}
 \nonumber \begin{pmatrix}
