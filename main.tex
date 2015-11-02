@@ -880,7 +880,7 @@ By looking at the directions of the $b_J$ and $c_J$ terms in \eqref{eq:LLG_curre
 The form of the extended LLG equation in \eqref{eq:LLG_current} is implicit in $\frac{\textrm{d} \vec{M}}{\textrm{d} t}$. Like the implicit LLG equation, it can be transformed into an explicit form by taking the cross product of it with $\vec{M}$, to get a linear expression for $\vec{M}\times\frac{\textrm{d} \vec{M}}{\textrm{d} t}$ in $\frac{\textrm{d} \vec{M}}{\textrm{d} t}$. It is then easy to show that by choosing
 
 \begin{align}
-\tilde{\eta}' &= \frac{\alpha}{\gamma ' M_s}, \\
+\eta' &= \frac{\alpha}{\gamma ' M_s}, \\
 \tilde{\gamma}' &= \frac{\gamma '}{1+\alpha^2},
 \end{align}
 
@@ -1401,6 +1401,65 @@ with $a$ being a variational parameter chosen to get a minimum in the energy.
 \caption{The interface DMI solutions of $\theta(\tilde{\rho})$ with $\psi = \pi$ and $C = 1,2$ compared to an $\arctan\tilde{\rho}$ approximation.}
 \label{fig:ThetaArcTan}
 \end{figure}
+
+\subsection{The Thiele equation}
+To describe the motion of a magnetization pattern that does not deform during its motion, we can apply the Thiele equation. In \cite{Thiele1973} Thiele recognized that if the magnetization can be written as $\vec{M}(\vec{r}-\vec{R}(t))$, meaning the magnetization pattern moves uniformly, the time derivative can be written as
+\begin{align}
+\frac{\textrm{d} \vec{M}}{\textrm{d} t} = \frac{\partial \vec{R}}{\partial t}\frac{\partial \vec{M}}{\partial \vec{R}} = \frac{\partial \vec{R}}{\partial t} (-\frac{\partial \vec{M}}{\partial \vec{r}}) = -(\vec{v}\cdot\nabla)\vec{M},
+\end{align}
+with $\vec{v}$ being the velocity of the magnetization pattern. This can then be substituted into the implicit LLG equation in \eqref{eq:LLG_current} to simplify it. 
+Another simplification one can make is setting the effective field $\vec{H}_{\text{eff}}$ equal to an external magnetic field $\vec{H}$. This is easily verified as one finds that the skyrmion minimizes the energy from internal effects, meaning $\frac{\delta\epsilon}{\delta\theta}$ and $\frac{\delta\epsilon}{\delta\phi}$ are zero in the absence of an external magnetic field. Together, this means that the LLG equation can be written as
+\begin{align}
+\gamma'\vec{M}\times\vec{H} - ((\vec{v}+b_J\hat{j}_e)\cdot\nabla)\vec{M} + \frac{1}{M_s}\vec{M}\times((\alpha\vec{v}+\xi b_J\hat{j}_e)\cdot\nabla)\vec{M} = 0.
+\end{align}
+If one takes the cross-product of this equation with $\vec{M}$ from the left, multiply the $k$-th component of it by $-\mu_0\sum_k\nabla\vec{M}_k$ and integrate over the plane of the skyrmion, one gets the Thiele equation. A detailed derivation of this is shown in \cite{krugerDissertation}. The Thiele equation reads as
+\begin{align}
+\label{eq:Thiele}
+\vec{F} + \vec{G}\times(\vec{v}+b_J\hat{j}_e) + \bar{D}(\alpha\vec{v}+\xi b_J\hat{j}_e) = 0.
+\end{align}
+$\vec{F}$ is the force vector acting on the magnetization pattern, $\vec{G}$ is the gyrovector, and $\bar{D}$ is the dissipation tensor. These have the following definitions:
+\begin{align}
+\vec{F} &= -\mu_0 \int\d A \left[(\nabla\theta)\frac{\partial}{\partial \theta} + (\nabla\phi)\frac{\partial}{\partial \phi}\right] (\vec{H}\cdot\vec{M}),\label{eq:ThieleForce} \\
+\vec{G} &= \frac{2\pi M_s\mu_0}{\gamma'}\left[\cos\theta\right]_{\theta(\rho = 0)}^{\theta(\rho=\infty)} \hat{z} = G_0 \hat{z}, \label{eq:ThieleGyro} \\
+\bar{D} &= -\frac{\pi M_s\mu_0}{\gamma'}\int_0^{\infty}\d \rho (\rho (\frac{\partial \theta}{\partial \rho})^2+\frac{\sin^2\theta}{\rho})(\hat{x}\otimes\hat{x}+\hat{y}\otimes\hat{y}). \label{eq:ThieleDissipation}
+\end{align}
+
+\subsection{Motion of skyrmion due to an applied current}
+Using the Thiele equation \eqref{eq:Thiele} one can find an expression for the velocity $\vec{v}$ of the skyrmion. We do not consider the case with an external field, and therefore the force vector $\vec{F} = \vec{0}$. Following the derivation by Kr\"{u}ger in \cite{krugerDissertation} we take the cross product of \eqref{eq:Thiele} by $\vec{G}$ from the left and subtract \eqref{eq:Thiele} multiplied by $D_0\alpha$ ($D_0=D_{xx}=D_{yy}$). As $\vec{v}$ and $\hat{j}_e$ are vectors in the $xy$-plane, this yields
+\begin{align*}
+-(G_0^2+D_0^2\alpha^2)\vec{v} - (G_0^2+D_0^2\alpha\xi)b_J\hat{j}_e + (D_0\alpha-D_0\alpha)\vec{G}\times\vec{v} + D_0b_J(\xi-\alpha)\vec{G}\times\hat{j}_e = 0.
+\end{align*}
+If we let $\hat{j}_e = \hat{x}$, we find that $\vec{G}\times\hat{j}_e = G_0\hat{y}$, and can now solve for $\vec{v}$:
+\begin{align}
+\nonumber \vec{v} &= -\frac{G_0^2+D_0^2\alpha\xi}{G_0^2+D_0^2\alpha^2}b_J\hat{x} + \frac{(\xi-\alpha)D_0G_0}{G_0^2+D_0^2\alpha^2}b_J\hat{y} \\
+&= -\frac{1+\Gamma^2\alpha\xi}{1+\Gamma^2\alpha^2}b_J\hat{x} + \frac{(\xi-\alpha)\Gamma}{1+\Gamma^2\alpha^2}b_J\hat{y},
+\end{align}
+where we have introduced
+\begin{align}
+\Gamma = \frac{D_0}{G_0} = -\frac{1}{2[\cos\theta(0)-\cos\theta(\infty)]}\int_0^{\infty}\d \rho (\rho (\frac{\partial \theta}{\partial \rho})^2+\frac{\sin^2\theta}{\rho}).
+\end{align}
+For the thin film case we have $\theta(0) = 0$ and $\theta(\infty)=\pi/2$, and as the integrand then becomes proportional to $\rho^{-1}$ as $\rho$ becomes large, the integral and therefore $\Gamma$ diverges. The thin film form of the skyrmion therefore has a velocity that is approximately
+\begin{align}
+\vec{v} \approx -\frac{\xi}{\alpha}b_J\hat{x}.
+\end{align}
+This result is equivalent to the result for the motion of the 1D domain wall when an electrical current below the critical current is applied.\\
+\begin{table}[h!]
+	\centering
+		\caption{Values of the integral $I_C$ in the dissipation tensor $\bar{D}$ for different values of $C$, using the bulk solution of $\theta(\rho)$.} 
+	\begin{tabular}{l l} \hline
+	$C$ & $I_C$\\ \hline
+	0.75  & 6.5118\\
+ 	1.00  & 5.1355\\
+ 	2.00  & 5.3793 \\ 
+ 	3.00  & 5.6452 \\ \hline
+	\end{tabular}
+	\label{tab:C_I}
+\end{table}
+For the bulk case we have $\theta(0) = \pi$ and $\theta(\infty) = 0$. In this case the integral converges to a value $I_C$ ($\Gamma=I_C/4$) that has to be found numerically. A few example values of $I_C$ are shown in Table \ref{tab:C_I} for different values of $C$. The resulting velocity becomes
+\begin{align}
+\vec{v} = -\frac{16+I_C^2\alpha\xi}{16+I_C^2\alpha^2}b_J\hat{x} + \frac{4(\xi-\alpha)I_C}{16+I_C^2\alpha^2}b_J\hat{y}.
+\end{align}
+As we can see we also have a velocity component in the $y$-direction when $\xi\neq\alpha$. This component perpendicular to the direction of the current originates from the skyrmion Hall effect.
 
 \subsection{Motion of skyrmions}
 To see how skyrmions move under an applied electrical current or an external magnetic field, we use our previous result with the LLG equation in spherical coordinates given by \eqref{eq:LLG_current_explicit_spherical}. As we removed the dependence of $\phi$ in the energy density by setting $m=1$, we have that $\frac{\delta \epsilon}{\delta \phi} = 0$. We also used the condition $\frac{\delta\epsilon}{\delta\theta}=0$ to determine $\theta(\rho)$, a condition that still holds in the absence of an external magnetic field. Our equations of motion then reduce to: 
