@@ -1436,7 +1436,7 @@ If we let $\hat{j}_e = \hat{x}$, we find that $\vec{G}\times\hat{j}_e = G_0\hat{
 \end{align}
 where we have introduced
 \begin{align}
-\Gamma = \frac{D_0}{G_0} = -\frac{1}{2[\cos\theta(0)-\cos\theta(\infty)]}\int_0^{\infty}\d \rho (\rho (\frac{\partial \theta}{\partial \rho})^2+\frac{\sin^2\theta}{\rho}).
+\Gamma = \frac{D_0}{G_0} = \frac{1}{2[\cos\theta(0)-\cos\theta(\infty)]}\int_0^{\infty}\d \rho (\rho (\frac{\partial \theta}{\partial \rho})^2+\frac{\sin^2\theta}{\rho}).
 \end{align}
 For the thin film case we have $\theta(0) = 0$ and $\theta(\infty)=\pi/2$, and as the integrand then becomes proportional to $\rho^{-1}$ as $\rho$ becomes large, the integral and therefore $\Gamma$ diverges. The thin film form of the skyrmion therefore has a velocity that is approximately
 \begin{align}
@@ -1462,36 +1462,115 @@ For the bulk case we have $\theta(0) = \pi$ and $\theta(\infty) = 0$. In this ca
 As we can see we also have a velocity component in the $y$-direction when $\xi\neq\alpha$. This component perpendicular to the direction of the current originates from the skyrmion Hall effect.
 
 \subsection{Motion of skyrmions}
-To see how skyrmions move under an applied electrical current or an external magnetic field, we use our previous result with the LLG equation in spherical coordinates given by \eqref{eq:LLG_current_explicit_spherical}. As we removed the dependence of $\phi$ in the energy density by setting $m=1$, we have that $\frac{\delta \epsilon}{\delta \phi} = 0$. We also used the condition $\frac{\delta\epsilon}{\delta\theta}=0$ to determine $\theta(\rho)$, a condition that still holds in the absence of an external magnetic field. Our equations of motion then reduce to: 
+To see how skyrmions move under an applied electrical current or an external magnetic field, we use the implicit LLG equation in spherical coordinates, similar to our approach for the domain wall motion when we used the explicit form given by \eqref{eq:LLG_current_explicit_spherical}. The implicit equation is aquired by making a small modification of the explicit equation. The term $-\frac{\tilde{\gamma}'\alpha}{M_s}\vec{M}\times(\vec{M}\times\vec{H}_{\text{eff}})$ is replaced by $\frac{\alpha}{M_s}\vec{M}\times\frac{\textrm{d}\vec{M}}{\textrm{d}t}$, leading to the equations
 \begin{align}
 \nonumber \begin{pmatrix}
-\dot{\theta} \\ \sin\theta\dot{\phi}
+0 \\ \dot{\theta} \\ \sin\theta\dot{\phi}
 \end{pmatrix} =
-\frac{(1+\xi\alpha)b_J}{1+\alpha^2}
+&\frac{\gamma'}{\mu_0 M_s}
 \begin{pmatrix}
-(\hat{j}_e\cdot\nabla)\theta \\ \sin\theta(\hat{j}_e\cdot\nabla)\phi
-\end{pmatrix}
-+\frac{(\xi-\alpha)b_J}{1+\alpha^2}
+0 \\ -\frac{1}{\sin\theta} \frac{\delta \epsilon}{\delta \phi} \\ \frac{\delta \epsilon}{\delta \theta}
+\end{pmatrix} + \alpha
 \begin{pmatrix}
-\sin\theta(\hat{j}_e\cdot\nabla)\phi \\ -(\hat{j}_e\cdot\nabla)\theta
+0 \\ -\sin\theta\dot{\phi} \\ \dot{\theta}
+\end{pmatrix} + b_J
+\begin{pmatrix}
+0 \\ (\hat{j}_e\cdot\nabla)\theta \\ \sin\theta(\hat{j}_e\cdot\nabla)\phi
+\end{pmatrix} \\
+&+\xi b_J
+\begin{pmatrix}
+0 \\ \sin\theta(\hat{j}_e\cdot\nabla)\phi \\ -(\hat{j}_e\cdot\nabla)\theta
 \end{pmatrix}.
-\label{eq:LLG_skyrmion_current}
+\label{eq:LLG_current_implicit_spherical}
 \end{align}
-If the position of the skyrmion core at a time $t$ in the $xy$-plane is given by $\vec{\rho}_0(t) = \left( x_0(t), y_0(t)\right)$, the angle $\theta$ can be written as $\theta(|\vec{\rho}-\vec{\rho}_0(t)|)$. The in-plane angle $\phi$ will be given by
+To describe the motion of a non-deforming skyrmion, we use our ansatz that $\theta = \theta(|\vec{\rho}-\vec{\rho}_0(t)|)$ with both $\vec{\rho}$ and $\vec{\rho}_0(t)$ being in the $xy$-plane and $\vec{\rho}_0(t)$ describing the position of the skyrmion core. For the azimuthal angle $\phi$ defined as the angle between the angle between the $x$-axis and the line intersecting a point in the $xy$-plane and the skyrmion core, we use the ansatz
 \begin{align}
 \tan\phi = \frac{y-y_0(t)}{x-x_0(t)}.
 \end{align}
-If we apply a uniform current in the $x$-direction, the equations of motion become
+Note that in a more general approach we would also let the helicity $\psi$ in the in-plane magnetization angle $\Phi$ also be dependent on time, but as we only have two non-trivial equations to solve and already have two variables $\dot{x}_0$ and $\dot{y}_0$ this is not feasible. \\
+As we removed the dependency on $\phi$ in the energy density by setting $m=1$, we have that $\frac{\delta \epsilon}{\delta \phi} = 0$. We also used the condition $\frac{\delta\epsilon}{\delta\theta}=0$ to determine $\theta(\rho)$, a condition that still holds in the absence of an external magnetic field. The effective field term in \eqref{eq:LLG_current_implicit_spherical} therefore reduces to an external field under the assumption that the skyrmion is not deformed during its motion.
+
+\subsubsection{Spin-transfer torque}
+First we consider the motion of a skyrmion due to the spin-transfer torque from a uniformly applied current in the $x$-direction. As we do not consider the case with an external magnetic field yet, the effective field term vanishes altogether. Defining $r = |\vec{\rho}-\vec{\rho}_0(t)|$, we find the derivatives of $\theta$ and $\phi$ using our ansatz:
 \begin{align}
-(\cos\phi\dot{x}_0+\sin\phi\dot{y}_0)\frac{\partial \theta}{\partial r} &= - \frac{(1+\xi\alpha)b_J}{1+\alpha^2}\cos\phi\frac{\partial\theta}{\partial r} + \frac{(\xi-\alpha)b_J}{1+\alpha^2}\frac{\sin\theta}{r}\sin\phi, \\
-(\sin\phi\dot{x}_0-\cos\phi\dot{y}_0)\frac{\sin\theta}{r} &= -\frac{(1+\xi\alpha)b_J}{1+\alpha^2}\frac{\sin\theta}{r}\sin\phi-\frac{(\xi-\alpha)b_J}{1+\alpha^2} \cos\phi \frac{\partial \theta}{\partial r},
+\dot{\theta} &= -\frac{\partial\theta}{\partial r}(\cos\phi\dot{x}_0+\sin\phi\dot{y}_0), \\
+\dot{\phi} &= \frac{1}{r}(\sin\phi\dot{x}_0-\cos\phi\dot{y}_0), \\
+\frac{\partial \theta}{\partial x} &= \frac{\partial\theta}{\partial r} \cos\phi,\\
+\frac{\partial\phi}{\partial x} &= -\frac{\sin\phi}{r}.
 \end{align}
-where we have introduced $r = |\vec{\rho}-\vec{\rho}_0(t)|$. It is easily verified that the equations can be separated into first order ODEs for $x_0(t)$ and $y_0(t)$:
+Plugging these into \eqref{eq:LLG_current_implicit_spherical} and rearranging the terms gives us the following equations:
 \begin{align}
-\dot{x}_0 &= - \frac{(1+\xi\alpha)b_J}{1+\alpha^2} + \frac{(\xi-\alpha)b_J}{1+\alpha^2}\sin\phi\cos\phi \left( \frac{\sin\theta}{r \cdot \frac{\partial \theta}{\partial r}} - \frac{r}{\sin\theta}\frac{\partial\theta}{\partial r}\right), \\
-\dot{y}_0 &= \frac{(\xi-\alpha)b_J}{1+\alpha^2}\left(\sin^2\phi \frac{\sin\theta}{r \cdot \frac{\partial \theta}{\partial r}} +\cos^2\phi \frac{r}{\sin\theta}\frac{\partial\theta}{\partial r}\right).
+(\alpha\frac{\sin\theta}{r}\sin\phi-\frac{\partial\theta}{\partial r}\cos\phi)\dot{x}_0 - (\alpha\frac{\sin\theta}{r}\cos\phi+\frac{\partial\theta}{\partial r}\sin\phi)\dot{y}_0 &= b_J \frac{\partial\theta}{\partial r}\cos\phi - \xi b_J \frac{\sin\theta}{r}\sin\phi, \label{eq:skyrmion_llg_eq1}\\
+(\alpha\frac{\partial\theta}{\partial r}\cos\phi + \frac{\sin\theta}{r}\sin\phi)\dot{x}_0 + (\alpha\frac{\partial\theta}{\partial r}\sin\phi - \frac{\sin\theta}{r}\cos\phi)\dot{y}_0 &= -b_J\frac{\sin\theta}{r}\sin\phi - \xi b_J \frac{\partial\theta}{\partial r}\cos\phi. \label{eq:skyrmion_llg_eq2}
 \end{align}
-In the exception of a special case with $\xi = \alpha$, this will lead to a deformation of the domain wall as the equations of motion are dependent on position. In the special case with $\xi = \alpha$, however, we get $\dot{y}_0 = 0$ and the motion of the skyrmion is therefore just a translational motion parallel to the motion of the current in the $x$-direction. The velocity of the skyrmion is given by $\vec{v} = -b_J\hat{x}$. Remember that $b_J$ is a velocity that scales linearly with the current, defined in \eqref{eq:bJ}. The electrons go in the opposite direction of the electrical current, meaning that the skyrmion follows the motion of the electrons.\\
+We then proceed by considering linear combinations of these equations. First we multiply \eqref{eq:skyrmion_llg_eq1} by $\frac{\sin\theta}{r \pi}\sin\phi$ and add it to \eqref{eq:skyrmion_llg_eq2} multiplied by $\frac{1}{\pi}\frac{\partial\theta}{\partial r}\cos\phi$. The resulting equation becomes
+\begin{align}
+\nonumber \alpha\left[ (\frac{\partial\theta}{\partial r})^2\frac{\cos^2\phi}{\pi} + \frac{\sin^2\theta}{r^2}\frac{\sin^2\phi}{\pi}\right] &\dot{x}_0 - \frac{\sin\theta}{r \pi}\frac{\partial\theta}{\partial r}\dot{y}_0 \\
++ \alpha \left[(\frac{\partial\theta}{\partial r})^2-\frac{\sin^2\theta}{r^2}\right]\frac{\sin\phi\cos\phi}{\pi}\dot{y}_0
+&= -b_J\xi\left[ (\frac{\partial\theta}{\partial r})^2\frac{\cos^2\phi}{\pi} + \frac{\sin^2\theta}{r^2}\frac{\sin^2\phi}{\pi}\right]
+\end{align}
+We then simplify our problem further and assume that the velocity components $\dot{x}_0$ an $\dot{y}_0$ are independent of position. We can therefore integrate over the skyrmion plane to get rid of the dependency on $\phi$ and $r$. As the term proportional to $\alpha\dot{y}_0$ drops out due to the integration over $\phi$, we are left with
+\begin{align}
+\alpha I_C \dot{x}_0 - 2\dot{y}_0\int_0^{\infty}\d r \sin\theta\frac{\partial\theta}{\partial r} = -b_J\xi I_C,
+\end{align}
+where we have defined $I_C$ as the integral
+\begin{align}
+I_C = \int_0^{\infty} \d r \left[ r(\frac{\partial\theta}{\partial r})^2 + \frac{\sin^2\theta}{r}\right] .
+\end{align}
+The remaining integral can be performed analytically as
+\begin{align}
+\int_0^{\infty}\d r \sin\theta \frac{\partial\theta}{\partial r} = \int_{\theta(\rho =0)}^{\theta(\rho = \infty)}\d \theta \sin\theta = \cos\theta(\rho = 0) - \cos\theta (\rho = \infty).
+\end{align}
+If we then define $\Gamma$ as
+\begin{align}
+\label{eq:Gamma}
+\Gamma = \frac{1}{2[\cos\theta(0)-\cos\theta(\infty)]}\int_0^{\infty}\d \rho (\rho (\frac{\partial \theta}{\partial \rho})^2+\frac{\sin^2\theta}{\rho}).
+\end{align}
+we are left with the equation
+\begin{align}
+\label{eq:skyrmion_xy_eq1}
+\alpha\Gamma \dot{x}_0 - \dot{y}_0 = -b_J\xi\Gamma.
+\end{align}
+We need another equation for $\dot{x}_0$ and $\dot{y}_0$ to find their solutions. To do that we make a different linear combination of \eqref{eq:skyrmion_llg_eq1} and \eqref{eq:skyrmion_llg_eq2}, a linear combination that has to be independent of the first one. This time we multiply \eqref{eq:skyrmion_llg_eq1} by $\frac{\sin\theta}{r \pi}\cos\phi$ and subtract it from \eqref{eq:skyrmion_llg_eq2} multiplied by $\frac{1}{\pi}\frac{\partial\theta}{\partial r}\sin\phi$. The equation we get then is
+\begin{align}
+\nonumber \alpha\left[ (\frac{\partial\theta}{\partial r})^2\frac{\sin^2\phi}{\pi} + \frac{\sin^2\theta}{r^2}\frac{\cos^2\phi}{\pi}\right] &\dot{y}_0 + \frac{\sin\theta}{r \pi}\frac{\partial\theta}{\partial r}\dot{x}_0 \\
++ \alpha \left[(\frac{\partial\theta}{\partial r})^2-\frac{\sin^2\theta}{r^2}\right]\frac{\sin\phi\cos\phi}{\pi}\dot{x}_0
+&= -b_J\xi\left[ (\frac{\partial\theta}{\partial r})^2 - \frac{\sin^2\theta}{r^2}\right]\frac{\sin\phi\cos\phi}{\pi} - b_J\frac{\sin\theta}{\pi}\frac{\partial\theta}{\partial r}.
+\end{align}
+Integrating this equation over the skyrmion plane and making the same definitions as before, we finally end up with the equation
+\begin{align}
+\label{eq:skyrmion_xy_eq2}
+\alpha\Gamma\dot{y}_0 + \dot{x}_0 = -b_J.
+\end{align}
+Solving \eqref{eq:skyrmion_xy_eq1} and \eqref{eq:skyrmion_xy_eq2} for $\dot{x}_0$ and $\dot{y}_0$ we end up with the final expressions for the velocity components of the skyrmion:
+\begin{align}
+\dot{x}_0 &= -\frac{1+\Gamma^2\alpha\xi}{1+\Gamma^2\alpha^2}b_J, \label{eq:skyrmion_xdot} \\
+\dot{y}_0 &= \frac{\Gamma(\xi-\alpha)}{1+\Gamma^2\alpha^2}b_J. \label{eq:skyrmion_ydot}
+\end{align}
+For the thin film case we have $\theta(0) = 0$ and $\theta(\infty)=\pi/2$, and as the integrand in $I_C$ then becomes proportional to $\rho^{-1}$ as $\rho$ becomes large, the integral and therefore $\Gamma$ diverges. The thin film form of the skyrmion therefore has a velocity that is approximately
+\begin{align}
+\vec{v} \approx -\frac{\xi}{\alpha}b_J\hat{x}.
+\end{align}
+This result is equivalent to the result for the motion of the 1D domain wall when an electrical current below the critical current is applied.\\
+\begin{table}[h!]
+	\centering
+		\caption{Values of the integral $I_C$ in the dissipation tensor $\bar{D}$ for different values of $C$, using the bulk solution of $\theta(\rho)$.} 
+	\begin{tabular}{l l} \hline
+	$C$ & $I_C$\\ \hline
+	0.75  & 6.5118\\
+ 	1.00  & 5.1355\\
+ 	2.00  & 5.3793 \\ 
+ 	3.00  & 5.6452 \\ \hline
+	\end{tabular}
+	\label{tab:C_I}
+\end{table}
+For the bulk case we have $\theta(0) = \pi$ and $\theta(\infty) = 0$. In this case the integral $I_C$ converges to a value that has to be found numerically. A few example values of $I_C$ are shown in Table \ref{tab:C_I} for different values of $C$. Using that $\Gamma = -I_C/4$ the resulting velocity becomes
+\begin{align}
+\vec{v} = -\frac{16+I_C^2\alpha\xi}{16+I_C^2\alpha^2}b_J\hat{x} + \frac{4(\alpha-\xi)I_C}{16+I_C^2\alpha^2}b_J\hat{y}.
+\end{align}
+As we can see we also have a velocity component in the $y$-direction when $\xi\neq\alpha$. This component perpendicular to the direction of the current originates from the skyrmion Hall effect \cite{Nagaosa2013}.
+
+\subsubsection{External magnetic field}
 If we instead turn off the electrical current and apply an external magnetic field in the $z$-direction, we will now get a non-zero contribution from $\frac{\delta\epsilon}{\delta\theta}$ due to the Zeeman energy. The Zeeman energy density is given by $\epsilon_Z = -\mu_0M_sH\cos\theta$. This leads to the equations of motion in a magnetic field:
 \begin{align}
 \nonumber \begin{pmatrix}
