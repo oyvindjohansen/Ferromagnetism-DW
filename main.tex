@@ -1,5 +1,5 @@
-\documentclass[1p]{elsarticle}		% 5p gir 2 kolonner pr side. 1p gir 1 kolonne pr side.
-\journal{students}
+\documentclass[12pt, a4paper]{article}		% 5p gir 2 kolonner pr side. 1p gir 1 kolonne pr side.
+%\journal{students}
 \usepackage[T1]{fontenc} 						% Vise norske tegn.
 % \usepackage[latin1]{inputenc}		% Velger tengsettet i dette dokumentet			
 \usepackage[english]{babel}		
@@ -13,6 +13,7 @@
 \usepackage{import}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage[margin=2.5cm]{geometry}
 \usepackage{lipsum}
 \usepackage[numbers]{natbib}
 
@@ -46,11 +47,73 @@
 
 \begin{document}
 
-\title{Magnetization dynamics of domain walls and skyrmions in micromagnetics}
-\author{\O yvind Johansen}
-\date{\today}
+\begin{titlepage}
 
-\maketitle
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE Norwegian University of \\ \vspace{0.3cm} Science and Technology}\\[1.5cm] % Name of your university/college
+%\textsc{\Large Major Heading}\\[0.5cm] % Major heading such as course name
+%\textsc{\large Minor Heading}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Magnetization dynamics of domain walls and skyrmions in micromagnetics}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+\O yvind \textsc{Johansen} % Your name
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Supervisor:} \\
+Jacob \textsc{Linder} % Supervisor's Name
+\end{flushright}
+\end{minipage}\\[4cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%\Large \emph{Author:}\\
+%John \textsc{Smith}\\[3cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+\includegraphics[width=0.5\textwidth]{Figures/ntnu-logo.png} % Include a department/university logo - this will require the graphicx package
+ 
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+%\title{Magnetization dynamics of domain walls and skyrmions in micromagnetics}
+%\author{\O yvind Johansen}
+%\date{\today}
+
+%\maketitle
 \tableofcontents
 
 \section{Introduction}
@@ -1403,7 +1466,7 @@ with $a$ being a variational parameter chosen to get a minimum in the energy.
 \end{figure}
 
 \subsection{Motion of skyrmions}
-To see how skyrmions move under an applied electrical current or an external magnetic field, we use the implicit LLG equation in spherical coordinates, similar to our approach for the domain wall motion when we used the explicit form given by \eqref{eq:LLG_current_explicit_spherical}. The implicit equation is aquired by making a small modification of the explicit equation. The term $-\frac{\tilde{\gamma}'\alpha}{M_s}\vec{M}\times(\vec{M}\times\vec{H}_{\text{eff}})$ is replaced by $\frac{\alpha}{M_s}\vec{M}\times\frac{\textrm{d}\vec{M}}{\textrm{d}t}$, leading to the equations
+To see how skyrmions move under an applied electrical current or an external magnetic field, we use the implicit LLG equation in spherical coordinates, similar to our approach for the domain wall motion when we used the explicit form given by \eqref{eq:LLG_current_explicit_spherical}. The implicit equation is aquired by a similar procedure as the explicit equation was aquired, but now using \eqref{eq:LLG_current} as a starting point. The end result is the following equations:
 \begin{align}
 \nonumber \begin{pmatrix}
 0 \\ \dot{\theta} \\ \sin\theta\dot{\phi}
@@ -1428,7 +1491,7 @@ To describe the motion of a non-deforming skyrmion, we use our ansatz that $\the
 \begin{align}
 \tan\phi = \frac{y-y_0(t)}{x-x_0(t)}.
 \end{align}
-Note that in a more general approach we would also let the helicity $\psi$ in the in-plane magnetization angle $\Phi$ also be dependent on time, but as we only have two non-trivial equations to solve and already have two variables $\dot{x}_0$ and $\dot{y}_0$ this is not feasible. \\
+Note that in a more general approach we would also let the helicity $\psi$ in the in-plane magnetization angle $\Phi$ also be dependent on time, but as we only have two non-trivial equations to solve and already have the two variables $\dot{x}_0$ and $\dot{y}_0$ this is not feasible. \\
 As we removed the dependency on $\phi$ in the energy density by setting $m=1$, we have that $\frac{\delta \epsilon}{\delta \phi} = 0$. We also used the condition $\frac{\delta\epsilon}{\delta\theta}=0$ to determine $\theta(\rho)$, a condition that still holds in the absence of an external magnetic field. The effective field term in \eqref{eq:LLG_current_implicit_spherical} therefore reduces to an external field under the assumption that the skyrmion is not deformed during its motion.
 
 \subsubsection{Spin-transfer torque}
@@ -1465,7 +1528,7 @@ The remaining integral can be performed analytically as
 If we then define $\Gamma$ as
 \begin{align}
 \label{eq:Gamma}
-\Gamma = \frac{1}{2[\cos\theta(0)-\cos\theta(\infty)]}\int_0^{\infty}\d \rho (\rho (\frac{\partial \theta}{\partial \rho})^2+\frac{\sin^2\theta}{\rho}).
+\Gamma = \frac{I_C}{2[\cos\theta(0)-\cos\theta(\infty)]},
 \end{align}
 we are left with the equation
 \begin{align}
@@ -1505,7 +1568,7 @@ This result is equivalent to the result for the motion of the 1D domain wall whe
 	\end{tabular}
 	\label{tab:C_I}
 \end{table}
-For the bulk case we have $\theta(0) = \pi$ and $\theta(\infty) = 0$. In this case the integral $I_C$ converges to a value that has to be found numerically. A few example values of $I_C$ are shown in Table \ref{tab:C_I} for different values of $C$. Using that $\Gamma = -I_C/4$ the resulting velocity becomes
+For the bulk case we have $\theta(0) = \pi$ and $\theta(\infty) = 0$. In this case the integral $I_C$ converges to a value that has to be found numerically. A few example values of $I_C$ are shown in Table \ref{tab:C_I} for different values of $C = AK/D^2$. Using that $\Gamma = -I_C/4$ the resulting velocity becomes
 \begin{align}
 \vec{v} = -\frac{16+I_C^2\alpha\xi}{16+I_C^2\alpha^2}b_J\hat{x} + \frac{4(\alpha-\xi)I_C}{16+I_C^2\alpha^2}b_J\hat{y}.
 \end{align}
@@ -1517,13 +1580,12 @@ If we instead turn off the electrical current and apply an external magnetic fie
 \nonumber \begin{pmatrix}
 \dot{\theta} \\ \sin\theta\dot{\phi}
 \end{pmatrix} =
-\tilde{\gamma}'
 \begin{pmatrix}
--\alpha H\sin\theta \\ H\sin\theta
+-\alpha \sin\theta\dot{\phi} \\ \gamma' H\sin\theta + \alpha\dot{\theta}
 \end{pmatrix}.
 \label{eq:LLG_skyrmion_Hz}
 \end{align}
-For non-zero $\alpha$ this will also lead to a deformation of the skyrmion. If $(\tilde{\gamma}'\alpha H)^{-1}$ is large compared to the time-scale on which the system changes, however, this deformation is negligible. The effect of the magnetic field in the $z$-direction is therefore a rotation of the in-plane magnetization of the skyrmion with a precession rate $\dot{\phi} = \tilde{\gamma}'H$.
+For non-zero $\alpha$ this will lead to a deformation of the skyrmion. Unlike the case with an applied current, $\dot{\theta}$ does not represent a motion of the skyrmion core. An external magnetic field perpendicular to the skyrmion plane can not move the skyrmion core, as there is no other location that is more energetically favorable. Instead, $\dot{\theta}$ represents a change in the radial profile of the skyrmion, as the initial profile no longer minimizes the energy when an external field is applied. If $(\gamma'\alpha H)^{-1}$ is large compared to the time-scale on which the system changes, however, this deformation is negligible. The effect of the magnetic field in the $z$-direction is therefore a rotation of the in-plane magnetization of the skyrmion with a precession rate $\dot{\phi} \approx \gamma'H$.
 \section{References}
 \bibliography{main}
 \bibliographystyle{unsrt}
