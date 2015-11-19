@@ -1184,17 +1184,6 @@ To find the radial profile of the out-of-plane magnetization of the skyrmion one
 \caption{The radial profile of the out-of-plane magnetization component of the skyrmion $\theta(\tilde{\rho})$ for the different forms of the DMI. For the other possible choice of $\psi$ the solution is given by $\pi - \theta(\tilde{\rho})$. $C$ is defined as the variable constant $AK/D^2$ in the differential equation.}
 \label{fig:ThetaRho}
 \end{figure}
-It is desired to find an analytical function to approximate the numerical solutions with that we can use further in analytical calculations. For the interface case shown in Figure \ref{fig:ThetaInt} the solutions resemble an $\arctan\tilde{\rho}$ function. A comparison of this function to the real solutions is shown in Figure \ref{fig:ThetaArcTan}. As one can see, for small $\tilde{\rho}$ the $\arctan\tilde{\rho}$ function is the same as the $C = 2$ solution, while for large $\tilde{\rho}$ it is the same as the $C = 1$ solution. This function can not describe either of the solutions fully, but it is a simple approximation that describes the property of the solutions reasonably well. For the interface case the solution is therefore approximated with
-\begin{align}
-\theta^{\text{(interface)}}(\rho) = \arctan(a\tilde{\rho}),
-\end{align}
-with $a$ being a variational parameter chosen to get a minimum in the energy.
-\begin{figure}[h!]
-\centering
-  \includegraphics[width=.6\linewidth]{Figures/ThetaRhoArcTan.png}
-\caption{The interface DMI solutions of $\theta(\tilde{\rho})$ with $\psi = \pi$ and $C = 1,2$ compared to an $\arctan\tilde{\rho}$ approximation.}
-\label{fig:ThetaArcTan}
-\end{figure}
 
 \subsection{Motion of skyrmions}
 To see how skyrmions move under an applied electrical current or an external magnetic field, we use the implicit LLG equation in spherical coordinates, similar to our approach for the domain wall motion when we used the explicit form given by \eqref{eq:LLG_current_explicit_spherical}. The implicit equation is aquired by a similar procedure as the explicit equation was aquired, but now using \eqref{eq:LLG_current} as a starting point. The end result is the following equations:
