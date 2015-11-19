@@ -1193,7 +1193,7 @@ To see how skyrmions move under an applied electrical current or an external mag
 \end{pmatrix} =
 &\frac{\gamma'}{\mu_0 M_s}
 \begin{pmatrix}
-0 \\ -\frac{1}{\sin\theta} \frac{\delta \epsilon}{\delta \phi} \\ \frac{\delta \epsilon}{\delta \theta}
+0 \\ -\frac{1}{\sin\theta} \frac{\delta \epsilon}{\delta \Phi} \\ \frac{\delta \epsilon}{\delta \theta}
 \end{pmatrix} + \alpha
 \begin{pmatrix}
 0 \\ -\sin\theta\dot{\Phi} \\ \dot{\theta}
@@ -1211,8 +1211,9 @@ To describe the motion of a non-deforming skyrmion, we use our ansatz that\\ $\t
 \begin{align}
 \tan\phi = \frac{y-y_0(t)}{x-x_0(t)}.
 \end{align}
-Note that in a more general approach we would also let the helicity $\psi$ in the in-plane magnetization angle $\Phi$ also be dependent on time, but as we only have two non-trivial equations to solve and already have the two variables $\dot{x}_0$ and $\dot{y}_0$ this is not feasible. \\
-As we removed the dependency on $\phi$ in the energy density by setting $m=1$, we have that $\frac{\delta \epsilon}{\delta \phi} = 0$. We also used the condition $\frac{\delta\epsilon}{\delta\theta}=0$ to determine $\theta(\rho)$, a condition that still holds in the absence of an external magnetic field. The effective field term in \eqref{eq:LLG_current_implicit_spherical} therefore reduces to an external field under the assumption that the skyrmion is not deformed during its motion.
+Note that in a more general approach we would also let the helicity $\psi$ in the in-plane magnetization angle $\Phi$ also be dependent on time, but as we only have two non-trivial equations to solve and already have the two variables $\dot{x}_0$ and $\dot{y}_0$ this is not feasible.
+
+As we removed the dependency on $\phi$ in the energy density by setting $m=1$, we have that $\frac{\delta \epsilon}{\delta \Phi} = 0$. We also used the condition $\frac{\delta\epsilon}{\delta\theta}=0$ to determine $\theta(\rho)$, a condition that still holds in the absence of an external magnetic field. The effective field term in \eqref{eq:LLG_current_implicit_spherical} therefore reduces to an external field under the assumption that the skyrmion is not deformed during its motion.
 
 \subsubsection{Spin-transfer torque}
 First we consider the motion of a skyrmion due to the spin-transfer torque from a uniformly applied current in the $x$-direction. As we do not consider the case with an external magnetic field yet, the effective field term vanishes altogether. Defining $r = |\vec{\rho}-\vec{\rho}_0(t)|$, we find the derivatives of $\theta$ and $\phi$ using our ansatz:
