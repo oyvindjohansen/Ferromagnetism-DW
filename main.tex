@@ -25,7 +25,7 @@
 \renewcommand{\floatpagefraction}{0.35}
 \renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
 \DeclareRobustCommand{\orderof}{\ensuremath{\mathcal{O}}}
-\setlength\parindent{0pt}
+\setlength\parindent{24pt}
 \numberwithin{equation}{section}
 
 
@@ -57,8 +57,8 @@
 %	HEADING SECTIONS
 %----------------------------------------------------------------------------------------
 
-\textsc{\LARGE Norwegian University of \\ \vspace{0.3cm} Science and Technology}\\[1.5cm] % Name of your university/college
-%\textsc{\Large Major Heading}\\[0.5cm] % Major heading such as course name
+%\textsc{\LARGE Norwegian University of \\ \vspace{0.3cm} Science and Technology}\\[1.5cm] % Name of your university/college
+\textsc{\Large Specialization project in theoretical physics}\\[0.5cm] % Major heading such as course name
 %\textsc{\large Minor Heading}\\[0.5cm] % Minor heading such as course title
 
 %----------------------------------------------------------------------------------------
@@ -83,7 +83,7 @@
 \begin{minipage}{0.4\textwidth}
 \begin{flushright} \large
 \emph{Supervisor:} \\
-Jacob \textsc{Linder} % Supervisor's Name
+Prof. Jacob \textsc{Linder} % Supervisor's Name
 \end{flushright}
 \end{minipage}\\[4cm]
 
@@ -115,12 +115,27 @@ Jacob \textsc{Linder} % Supervisor's Name
 
 %\maketitle
 \section*{Summary}
-In this project we study the origin of different magnetization patterns such as magnetic domain walls and magnetic skyrmions. These magnetic structures are found by minimizing the micromagnetic energy, where the exchange energy, anisotropic energy and demagnetization energy are considered. In the case of magnetic skyrmions the energy contribution from the Dzyaloshinskii--Moriya interaction is also taken into account. The extended Landau--Lifshitz--Gilbert equation is then presented and used to describe the motion of the magnetization patterns when a spin-polarized current or an external magnetic field is applied. For the motion of the magnetic domain walls it is found that the relation between the translational speed of the domain wall and the strength of the applied current or magnetic field is linear up to some critical value. If the currents or fields are stronger than the critical value it is shown that a Walker breakdown occurs. For the motion of skyrmions it is shown that the velocity of the skyrmion is linearly related to the strength of the applied current. There are found to be two velocity components; one parallel to the direction of the motion of the conduction electrons, and a velocity component perpendicular to the direction of the applied current which originates from the skyrmion Hall effect. The translational speed of the skyrmion is also found to be dependent on the skyrmion profile. In the case of an applied magnetic field it is discovered that the skyrmion rotates and changes its profile compared to the equilibirum profile in the absence of a magnetic field.
+In this project we study the origin of different magnetization patterns such as magnetic domain walls and magnetic skyrmions. These magnetic structures are found by minimizing the micromagnetic energy, where the exchange energy, anisotropic energy and demagnetization energy are considered. In the case of magnetic skyrmions the energy contribution from the Dzyaloshinskii--Moriya interaction is also taken into account. The extended Landau--Lifshitz--Gilbert equation is then presented and used to describe the motion of the magnetization patterns when a spin-polarized current or an external magnetic field is applied. For the motion of the magnetic domain walls it is found that the relation between the translational speed of the domain wall and the strength of the applied current or magnetic field is linear up to some critical value. If the currents or fields are stronger than the critical value it is shown that a Walker breakdown occurs. For the motion of skyrmions it is shown that the velocity of the skyrmion is linearly related to the strength of the applied current for small currents. There are found to be two velocity components; one parallel to the direction of the motion of the conduction electrons, and a velocity component perpendicular to the direction of the applied current which originates from the skyrmion Hall effect. The translational speed of the skyrmion is also found to be dependent on the skyrmion profile. In the case of an applied magnetic field it is discovered that the skyrmion rotates and changes its profile compared to the equilibirum profile in the absence of a magnetic field.
 \newpage
 
 \tableofcontents
 
+\newpage
+
 \section{Introduction}
+Electronics has for a long time been the most commonly used science in information technology. In the recent decades, however, a contender has emerged in spintronics, where the intrinsic spin of the electron is utilized instead of its electric charge. Spintronics is closely related to magnetic materials, a good example of which is shown by an experiment performed by Johnson and Silsbee in 1985 \cite{JohnsonSilsbee1985}, where an electric current passing through a ferromagnet was seen to have the same spin-polarization as the magnetic material. The spins in an electric current therefore interact with the magnetic moments in a magnet.
+
+Magnetic materials have been studied closely over the last century. Magnets are today known to be divided into smaller regions of a uniform magnetization, known as magnetic domains. These magnetic domains are separated by solitons called domain walls. These solitons have different structures, one of which was shown by Bloch in 1932 \cite{Bloch1932}. 
+
+The magnetic solitons occur as to minimize the energy in the magnetic material, and is therefore an equilibrium effect. As magnetic moments interact with magnetic fields, the solitons can move away from equilibrium and gain dynamical properties. The time evolution of these solitons was first described by an equation of motion proposed by Landau and Lifshitz in 1935 \cite{LandauLifshitz1935}, which was based on a damped precession around an effective magnetic field that included internal and external effects. The damping term in the equation proposed by Landau and Lifshitz was then replaced by Gilbert in 1955 \cite{Gilbert2004Classics} to include the time derivative, which agreed better with experiments. This equation was then extended by Slonczewski in 1996 to include the interaction between the spins in an electric current and the local magnetization in the magnet \cite{Slonczewski1996}.
+
+The magnetic solitons can be used for information storage in form of bits. An example of this that is widely used in hard drives and magnetoresistive random-access-memory today is the giant magnetoresistance (GMR) effect discovered independently by Fert and Gr\"{u}nberg in 1988 \cite{Fert1988} \cite{Grunberg1989}, which they won the Nobel prize in physics for in 2007. This effect occurs in a system with three different layers; a fixed magnetic layer, a non-magnetic layer, and a magnetic layer with reversable magnetization. If the last magnetic layer has the same magnetization direction as the fixed layer, there is a low resistance to an electrical current passing through the system. If the last layer has the opposite magnetization direction of the fixed layer, however, the resistance increases significantly. This is therefore suitable to describe a bit, which has two possible values. The magnetization direction in the last layer can be manipulated by either applying a spin-polarized current, or an external magnetic field. This corresponds to moving the magnetic domain wall separating the two different magnetic domains (parallel and anti-parallel to the fixed layer), and can be used to write and rewrite information. In this project we will study the dynamical properties of this magnetic soliton as a function of current and external magnetic field.
+
+In the last decade, another type of magnetic soliton known as a magnetic skyrmion has been of a considerable interest as a new possibility as an information carrier in spintronics. The name skyrmion stems from the phycicist Tony Skyrme, who described baryons and mesons as topological solitons in 1962 \cite{Skyrme1962}. The magnetic skyrmion is a two-dimensional topologically-protected object found in chiral magnets, and has a vortex-like structure. The magnetic skyrmion was observed experimentally in 2009 \cite{Muhlbauer2009}. As the magnetic skyrmion is topologically protected, it is a stable magnetization configuration and behaves as a quasiparticle. 
+
+The interest in magnetic skyrmion as information carriers was increased when it was shown that these quasiparticles can be manipulated by a current density of several orders magnitude less than that which was required to manipulate magnetic domain walls \cite{Jonietz2010}. In this project the profile of the magnetic skyrmion is studied, as well as its dynamical properties when a spin-polarized current is applied.
+
+\newpage
 
 \section{Energy terms in micromagnetics}
 \subsection{Anisotropic energy}
