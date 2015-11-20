@@ -17,6 +17,8 @@
 \usepackage{lipsum}
 \usepackage[numbers]{natbib}
 \usepackage[nottoc,numbib]{tocbibind}
+\usepackage{titlesec}
+\newcommand{\sectionbreak}{\clearpage}
 
 
 \setcounter{totalnumber}{5}
@@ -119,6 +121,21 @@ Prof. Jacob \textsc{Linder} % Supervisor's Name
 In this project we study the origin of different magnetization patterns such as magnetic domain walls and magnetic skyrmions. These magnetic structures are found by minimizing the micromagnetic energy, where the exchange energy, anisotropic energy and demagnetization energy are considered. In the case of magnetic skyrmions the energy contribution from the Dzyaloshinskii--Moriya interaction is also taken into account. The extended Landau--Lifshitz--Gilbert equation is then presented and used to describe the motion of the magnetization patterns when a spin-polarized current or an external magnetic field is applied. For the motion of the magnetic domain walls it is found that the relation between the translational speed of the domain wall and the strength of the applied current or magnetic field is linear up to some critical value. If the currents or fields are stronger than the critical value it is shown that a Walker breakdown occurs. For the motion of skyrmions it is shown that the velocity of the skyrmion is linearly related to the strength of the applied current for small currents. There are found to be two velocity components; one parallel to the direction of the motion of the conduction electrons, and a velocity component perpendicular to the direction of the applied current which originates from the skyrmion Hall effect. The translational speed of the skyrmion is also found to be dependent on the skyrmion profile. In the case of an applied magnetic field it is discovered that the skyrmion rotates and changes its profile compared to the equilibirum profile in the absence of a magnetic field.
 \newpage
 
+\section*{Preface}
+This thesis is the end result of a specialization project in quantum condensed matter theory and is part of a five year integrated Master's programme at the Norwegian University of Science and Technology. Its purpose is to gain knowledge and insight in a special field in physics as a preparation for the master thesis.
+
+I would like to thank my supervisor Jacob Linder for providing helpful information and valuable input throughout this project.\\
+
+\begin{minipage}{0.95\textwidth}
+\begin{flushright}
+\O yvind Johansen \\
+Trondheim, Norway \\
+November 2014
+\end{flushright}
+\end{minipage}\\[4cm]
+
+\newpage
+
 \tableofcontents
 
 \newpage
@@ -136,9 +153,7 @@ In the last decade, another type of magnetic soliton known as a magnetic skyrmio
 
 The interest in magnetic skyrmion as information carriers was increased when it was shown that these quasiparticles can be manipulated by a current density of several orders magnitude less than that which was required to manipulate magnetic domain walls \cite{Jonietz2010}. In this project the profile of the magnetic skyrmion is studied, as well as its dynamical properties when a spin-polarized current is applied.
 
-\newpage
-
-\section{Energy terms in micromagnetics}
+\section{Energy terms in micromagnetics}\label{sec:MicromagneticEnergy}
 \subsection{Anisotropic energy}
 Magnetic materials may be anisotropic, meaning that certain directions of the magnetization in the material are more energetically favorable than others. This stands in contrast to isotropic materials where the energy is independent of the direction of the magnetization, assuming uniform magnetization. There are several possible causes for anisotropy in a material, the most common one being the crystalline structure in the material. One of the most important causes of magnetocrystalline anisotropy is the spin-orbit coupling interaction. This interaction arises from the fact that in the restframe of the electron, the proton is orbiting the electron, thereby creating a varying electric field. Since the electric field is varying, Maxwell's equations say that there will also be a corresponding magnetic field. This magnetic field is proportional to the angular momentum $\vec{L}$ of the electron. The electron also has a magnetic moment $\vec{\mu}$, proportional to its spin $\vec{S}$, that will interact with the magnetic field. The energy is lowest when the magnetic moment and field are aligned, which we will see when discussing the Zeeman energy later. Combining the spin--orbit interaction with the orientation of the atoms in the lattice it is possible that some directions in the material are easier magnetized than others. This is magnetocrystalline anisotropy. The shape of the magnetic particles may also cause anistropy in the material, which will be briefly discussed in the section on the demagnetization energy. 
 
@@ -404,7 +419,7 @@ with $\hat{i}$ being a unit vector in the $i$-direction. This means that the tra
 \end{align}
 with $D = 2k_RA$, where we have used that $\vec{A}\cdot(\vec{B}\times\vec{C}) = \vec{B}\cdot(\vec{C}\times\vec{A})$. Remember that there is an implicit sum over $i$. As one can see, the exchange energy density contains a symmetric term like before, and an antisymmetric term that comes from the transformation we had to perform to get rid of the Rashba-term in the Hamiltonian. We recognize this antisymmetric term as the interface DMI energy density in \eqref{eq:InterfaceDMIe} with $\hat{n} = \hat{z}$.
 
-\section{Landau--Lifshitz--Gilbert equation}
+\section{Landau--Lifshitz--Gilbert equation} \label{sec:LLG}
 The time evolution of the magnetization in a magnet is described by the Landau--Lifshitz--Gilbert (LLG) equation. To get an understanding of the origin of the equation, it is useful to look at the time evolution of spin, as the magnetic moment and therefore the magnetization is proportional to it. 
 
 \subsection{Larmor precession}
@@ -517,7 +532,7 @@ Comparing this to the Landau--Lifshitz equation in \eqref{eq:LL} we see that by 
 \end{align}
 This is the explicit Landau--Lifshitz--Gilbert equation. The difference between the Landau--Lifshitz and the Landau--Lifshitz--Gilbert equation is that the gyromagnetic ratio in the LLG equation is redefined to include the dimensionless damping parameter $\alpha$. When $\alpha \ll 1$, the Landau--Lifshitz equation is a good approximation of the LLG equation, but as the damping parameter becomes larger the correction in the gyromagnetic ratio becomes significant. The LLG equation agrees better with experiments where the damping constant $\alpha$ is large \cite{GilbertKelly1955}.
 
-\section{Domain walls}
+\section{Domain walls} \label{sec:DW}
 To minimize the energy a ferromagnet of a significant size will divide itself into domains. A domain is a region where the magnetization is uniform, and the domains in a magnet are separated by something called domain walls. These are regions where the magnetization in the material switches orientation between two domains. There are many different domain wall structures, but what they all have in common is that in the static case they have to satisfy \eqref{eq:LLG} with the left hand side being zero. It is easily seen that this is satisfied when the local magnetization is parallel to the effective field $\vec{H}_{eff}$ at that point. From the derivation of the effective field, we remember that $\vec{H}_{eff}$ and $\vec{M}$ were parallel when the system was at an equilibrium, meaning $\delta E = 0$. This will be an easier problem to solve, as we can write the energy in terms of scalar quantities such as the components of the magnetization. To study the nature of the domain walls we will at first only consider internal effects, and not consider the case where an external magnetic field is applied. A static domain wall is therefore a magnetization structure that minimizes the exchange energy, the anisotropic energy and the demagnetization energy simultaneousy.
 
 \subsection{The charge avoidance principle}
@@ -670,7 +685,7 @@ Even though domain walls are stable states, they have an energy cost from the ex
 &= 4K\delta_{DW} = 4\sqrt{AK}.
 \end{align}
 
-\section{Domain wall dynamics}
+\section{Domain wall dynamics} \label{sec:DWDynamics}
 Domain walls can be moved by applying an electric current to the magnetic material. This is done either by a momentum transfer or spin transfer between the local electrons and the conduction electrons. A momentum transfer would correspond to actual movement of the electrons in the domain wall, so that the domain wall moves with them, while a spin transfer corresponds to a shift in the local magnetization due to the exchange interaction with the conduction electrons. Here only the domain wall moves, and the position of the electrons in the domain wall is unchanged. For domain walls where the magnetization does not change abruptly, so that the spin of the conduction electron can follow the local magnetization more or less adiabatically, the spin transfer effect will be the dominant cause of the domain wall motion \cite{KohnoTatara-04}. 
 
 \subsection{Spin-transfer torque}
@@ -1070,8 +1085,8 @@ This result is shown in Figure \ref{fig:criticalField}. We see that we also get 
 
 The reason behind the motion of the domain wall because of a magnetic field parallel to the easy axis is quite easy to understand phenemenologically. As the domains in the magnet are either parallel or anti-parallel to the applied magnetic field, the domain that is parallel will want to grow to minimize the Zeeman energy. This comes at the cost of the anti-parallel domain, and the domain wall moves into the anti-parallel domain as a consequence.
 
-\section{Skyrmions}
-\subsection{Skyrmion profile}
+\section{Skyrmions} \label{sec:Skyrmions}
+\subsection{Skyrmion profile} \label{sec:SkyrmionProfile}
 Skyrmions are stable vortex-like magnetization configurations that appear in materials such as chiral magnets, where the before-mentioned Dzyaloshinskii-Moriya interaction allows the energy of the magnet be lowered by having a slight canting of the neighboring spins. Other interactions may also cause stable skyrmions in a magnet, such as long-ranged magnetic dipolar interactions, frustrated exchange interactions or four-spin exchange interactions. These will typically create skyrmions of a different size than the Dzyaloshinskii-Moriya interaction, which creates skyrmions on a typical length scale of 5-\SI{100}{nm} \cite{Nagaosa2013}. Only skyrmions created by the Dzyaloshinskii-Moriya interaction will be considered here.
 
 To describe the profile of skyrmions, we make an ansatz based on the following: the skyrmion is located in a plane, the out-of-plane magnetization component is azimutally symmetric about the center of the skyrmion, and the in-plane magnetization component is linearly related to the angle in the plane of the skyrmion. Together, this means that the magnetization of the skyrmion can be written as
@@ -1185,7 +1200,7 @@ To find the radial profile of the out-of-plane magnetization of the skyrmion one
 \label{fig:ThetaRho}
 \end{figure}
 
-\subsection{Motion of skyrmions}
+\subsection{Motion of skyrmions} \label{sec:SkyrmionMotion}
 To see how skyrmions move under an applied electrical current or an external magnetic field, we use the implicit LLG equation in spherical coordinates, similar to our approach for the domain wall motion when we used the explicit form given by \eqref{eq:LLG_current_explicit_spherical}. The implicit equation is aquired by a similar procedure as the explicit equation was aquired, but now using \eqref{eq:LLG_current} as a starting point. The end result is the following equations:
 \begin{align}
 \nonumber \begin{pmatrix}
@@ -1300,14 +1315,19 @@ As we can see we also have a velocity component in the $y$-direction when $\xi\n
 If we instead turn off the electrical current and apply an external magnetic field in the $z$-direction, we will now get a non-zero contribution from $\frac{\delta\epsilon}{\delta\theta}$ due to the Zeeman energy. The Zeeman energy density is given by $\epsilon_Z = -\mu_0M_sH\cos\theta$. This leads to the equations of motion in a magnetic field:
 \begin{align}
 \nonumber \begin{pmatrix}
-\dot{\theta} \\ \sin\theta\dot{\phi}
+\dot{\theta} \\ \sin\theta\dot{\Phi}
 \end{pmatrix} =
 \begin{pmatrix}
--\alpha \sin\theta\dot{\phi} \\ \gamma' H\sin\theta + \alpha\dot{\theta}
+-\alpha \sin\theta\dot{\Phi} \\ \gamma' H\sin\theta + \alpha\dot{\theta}
 \end{pmatrix}.
 \label{eq:LLG_skyrmion_Hz}
 \end{align}
-For non-zero $\alpha$ this will lead to a deformation of the skyrmion. Unlike the case with an applied current, $\dot{\theta}$ does not represent a motion of the skyrmion core. The ansatz $\theta = \theta(|\vec{\rho}-\vec{\rho}_0(t)|)$ does not hold anymore. An external magnetic field perpendicular to the skyrmion plane cannot move the skyrmion core, as there is no other location that is more energetically favorable. Instead, $\dot{\theta}$ represents a change in the radial profile of the skyrmion, as the initial profile no longer minimizes the energy when an external field is applied. If $(\gamma'\alpha H)^{-1}$ is large compared to the time-scale on which the system changes, however, this deformation is negligible. The effect of the magnetic field in the $z$-direction is therefore a rotation of the in-plane magnetization of the skyrmion with a precession rate $\dot{\phi} \approx \gamma'H$.
+For non-zero $\alpha$ this will lead to a deformation of the skyrmion. Unlike the case with an applied current, $\dot{\theta}$ does not represent a motion of the skyrmion core. The ansatz $\theta = \theta(|\vec{\rho}-\vec{\rho}_0(t)|)$ does not hold anymore. An external magnetic field perpendicular to the skyrmion plane cannot move the skyrmion core, as there is no other location that is more energetically favorable. Instead, $\dot{\theta}$ represents a change in the radial profile of the skyrmion, as the initial profile no longer minimizes the energy when an external field is applied. If $(\gamma'\alpha H)^{-1}$ is large compared to the time-scale on which the system changes, however, this deformation is negligible. The effect of the magnetic field in the $z$-direction is therefore a rotation of the in-plane magnetization of the skyrmion with a precession rate $\dot{\Phi} \approx \gamma'H$.
+
+\section{Conclusion}
+In this thesis we have derived the extended Landau--Lifshitz--Gilbert equation that describes the time evolution of a magnetization structure. This has then been applied to describe the dynamics of different magnetic solitons. These magnetic solitons include magnetic domain walls, as described in chapter \ref{sec:DW}, and magnetic skyrmions, as described in chapter \ref{sec:SkyrmionProfile}. The structure of these magnetic solitons were derived from the micromagnetic energy terms in chapter \ref{sec:MicromagneticEnergy}. For the motion of magnetic domain walls it was discovered in chapter \ref{sec:DWDynamics} that there was a linear relation between the translational speed of the domain wall and the strength of the applied current or magnetic field up to a critical value, after which a Walker breakdown occured. In chapter \ref{sec:SkyrmionMotion} we found that for a weak current the translational speed of a magnetic skyrmion was linearly related to the strength of the applied current. In the case of different damping between the local and itinerant electrons it was also discovered that we get a velocity component perpendicular to the direction of the applied current due to the skyrmion Hall effect.
+
+This thesis exclusively focused on the effects of an electric current or a magnetic field on magnetic solitons. In the future, it may also be of interest to study the effects that an applied electric field may have on the skyrmion, as it can couple to the magnetization via spin-orbit coupling. This can lead to different equilibrium and dynamical properties of the magnetic skyrmion.
 
 \bibliography{main}
 \bibliographystyle{unsrt}
