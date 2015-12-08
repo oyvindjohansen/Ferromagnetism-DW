@@ -1,4 +1,4 @@
-\documentclass[12pt, a4paper]{article}		% 5p gir 2 kolonner pr side. 1p gir 1 kolonne pr side.
+\documentclass[12pt, a4paper, twoside, openright]{article}		% 5p gir 2 kolonner pr side. 1p gir 1 kolonne pr side.
 %\journal{students}
 \usepackage[T1]{fontenc} 						% Vise norske tegn.
 % \usepackage[latin1]{inputenc}		% Velger tengsettet i dette dokumentet			
@@ -18,7 +18,16 @@
 \usepackage[numbers]{natbib}
 \usepackage[nottoc,numbib]{tocbibind}
 \usepackage{titlesec}
+\usepackage{emptypage}
+\let\oldsection\section
+\def\section{\cleardoublepage\oldsection}
 \newcommand{\sectionbreak}{\clearpage}
+\usepackage{afterpage}
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
 
 
 \setcounter{totalnumber}{5}
@@ -117,6 +126,9 @@ Prof. Jacob \textsc{Linder} % Supervisor's Name
 %\date{\today}
 
 %\maketitle
+\afterpage{\blankpage}
+\pagenumbering{roman}
+
 \section*{Summary}
 In this project we study the origin of different magnetization patterns such as magnetic domain walls and magnetic skyrmions. These magnetic structures are found by minimizing the micromagnetic energy, where the exchange energy, anisotropic energy and demagnetization energy are considered. In the case of magnetic skyrmions the energy contribution from the Dzyaloshinskii--Moriya interaction is also taken into account. The extended Landau--Lifshitz--Gilbert equation is then presented and used to describe the motion of the magnetization patterns when a spin-polarized current or an external magnetic field is applied. For the motion of the magnetic domain walls it is found that the relation between the translational speed of the domain wall and the strength of the applied current or magnetic field is linear up to some critical value. If the currents or fields are stronger than the critical value it is shown that a Walker breakdown occurs. For the motion of skyrmions it is shown that the velocity of the skyrmion is linearly related to the strength of the applied current for small currents. There are found to be two velocity components; one parallel to the direction of the motion of the conduction electrons, and a velocity component perpendicular to the direction of the applied current which originates from the skyrmion Hall effect. The translational speed of the skyrmion is also found to be dependent on the skyrmion profile. In the case of an applied magnetic field it is discovered that the skyrmion rotates and changes its profile compared to the equilibirum profile in the absence of a magnetic field.
 \newpage
@@ -130,7 +142,7 @@ I would like to thank my supervisor Jacob Linder for providing helpful informati
 \begin{flushright}
 \O yvind Johansen \\
 Trondheim, Norway \\
-November 2014
+November 2015
 \end{flushright}
 \end{minipage}\\[4cm]
 
@@ -139,6 +151,9 @@ November 2014
 \tableofcontents
 
 \newpage
+\afterpage{\blankpage}
+
+\pagenumbering{arabic}
 
 \section{Introduction}
 Electronics has for a long time been the most commonly used science in information technology. In the recent decades, however, a contender has emerged in spintronics, where the intrinsic spin of the electron is utilized instead of its electric charge. Spintronics is closely related to magnetic materials, a good example of which is shown by an experiment performed by Johnson and Silsbee in 1985 \cite{JohnsonSilsbee1985}, where an electric current passing through a ferromagnet was seen to have the same spin-polarization as the magnetic material. The spins in an electric current therefore interact with the magnetic moments in a magnet.
@@ -151,7 +166,7 @@ The magnetic solitons can be used for information storage in form of bits. An ex
 
 In the last decade, another type of magnetic soliton known as a magnetic skyrmion has been of a considerable interest as a new possibility as an information carrier in spintronics. The name skyrmion stems from the phycicist Tony Skyrme, who described baryons and mesons as topological solitons in 1962 \cite{Skyrme1962}. The magnetic skyrmion is a two-dimensional topologically-protected object found in chiral magnets, and has a vortex-like structure. The magnetic skyrmion was observed experimentally in 2009 \cite{Muhlbauer2009}. As the magnetic skyrmion is topologically protected, it is a stable magnetization configuration and behaves as a quasiparticle. 
 
-The interest in magnetic skyrmion as information carriers was increased when it was shown that these quasiparticles can be manipulated by a current density of several orders magnitude less than that which was required to manipulate magnetic domain walls \cite{Jonietz2010}. In this project the profile of the magnetic skyrmion is studied, as well as its dynamical properties when a spin-polarized current is applied.
+The interest in magnetic skyrmion as information carriers was increased when it was shown that these "quasiparticles" can be manipulated by a current density of several orders magnitude less than that which was required to manipulate magnetic domain walls \cite{Jonietz2010}. In this project the profile of the magnetic skyrmion is studied, as well as its dynamical properties when a spin-polarized current is applied. To set the stage for this, we first study the more well known magnetic domain walls. This way any difference in the dynamical properties between the domain walls and skyrmions become more clear: we can see if the phenomena that occur in domain wall motion also apply for skyrmions, or if we have any new phenomena in the skyrmion case.
 
 \section{Energy terms in micromagnetics}\label{sec:MicromagneticEnergy}
 \subsection{Anisotropic energy}
@@ -160,15 +175,15 @@ Magnetic materials may be anisotropic, meaning that certain directions of the ma
 In anisotropic magnetic materials one defines different axes; the easy, intermediate and hard axes. If the magnetization is oriented along the easy axis, the anisotropic energy is at its minimum value. Similarly, if the magnetization is oriented along the hard axis the anisotropic energy is at its maximum value. The intermediate axis is the direction along which there is a saddlepoint in the anisotropic energy. In most materials the anisotropic energy is the same for both possible orientations of the magnetization along the axes. When this is the case, the terms in the anisotropic energy can only contain even powers of the components in the magnetization vector.
 
 \subsubsection{Uniaxial anisotropy}
-The simplest form of anisotropy is the case where there is only one axis that the anisotropic energy varies with. This is known as uniaxial anisotropy. This can often be found in crystal structures with a single principal axis, such as the hexagonal and simple tetragonal lattices. If we consider a uniform magnetization $\vec{M} = \left[M_x, M_y, M_z\right]$ and let one of the directions along the axis in the material that the anisotropic energy varies be the unit vector $\hat{n}$, the anisotropic energy must be on the form
+The simplest form of anisotropy is the case where there is only one axis that the anisotropic energy varies with. This is known as uniaxial anisotropy. This can often be found in crystal structures with a single principal axis, such as the hexagonal and simple tetragonal lattices. If we consider a uniform magnetization $\vec{M} = \left[M_x, M_y, M_z\right]$ and let one of the two directions along the axis in the material that the anisotropic energy varies be the unit vector $\hat{n}$ (for example, if we have a uniaxial anisotropy along the $z$-axis $\hat{n}$ can be $\pm\hat{z}$), the anisotropic energy must be on the form
 \begin{align}
 \label{eq:uniaxialanisotropy}
-E_A = V \sum_{i=0}^{\infty} K_i (\frac{\vec{M}\cdot\hat{n}}{M_s})^{2i}
+E_A = V \sum_{i=0}^{\infty} K_i \left(\frac{\vec{M}\cdot\hat{n}}{M_s}\right)^{2i}
 \end{align}
-if there is to be no preferential direction with respect to energy along the axis. Here $V$ is the volume, $M_s = |\vec{M}|$ the saturation magnetization and $K_i$ are the anisotropy constants. By only considering the lowest order in the anisotropic energy it becomes
+if there is to be no preferential direction with respect to energy along the axis. This can be seen as we restrict ourselves to even powers, so both of the possible choices $\hat{n}=\pm\hat{z}$ lead to the same anisotropic energy $E_A$ in the case of a uniaxial anisotropy along the $z$-axis. In the equation above $V$ is the volume, $M_s = |\vec{M}|$ the saturation magnetization and $K_i$ are the anisotropy constants. By only considering the lowest order in the anisotropic energy it becomes
 \begin{align}
 \label{eq:uniaxialanisotropy_v2}
-E_A = K V (\frac{\vec{M}\cdot\hat{n}}{M_s})^2
+E_A = K V \left(\frac{\vec{M}\cdot\hat{n}}{M_s}\right)^2
 \end{align}
 by ignoring the constant energy term as that only leads to a constant shift in the energy. If $K < 0$ the axis that $\hat{n}$ points along is then the easy axis, and if $K > 0$ the axis is the hard axis. Note that if we have a non-uniform magnetization we let
 
@@ -245,8 +260,8 @@ Using the Einstein summation convention and the Levi--Civita tensor $\varepsilon
 \begin{align*}
 B_i &= \varepsilon_{ijk} \partial_j A_k \\
 &= \varepsilon_{kij}\varepsilon_{klm} \frac{\mu_0}{4\pi}\partial_j\frac{M_l r_m}{r^3} \\
-&= (\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl})\frac{\mu_0}{4\pi}(\frac{M_l\delta_{jm}}{r^3}-\frac{3M_lr_mr_j}{r^5}) \\
-&= \frac{\mu_0}{4\pi}(\frac{3(\vec{M}\cdot\vec{r})r_i}{r^5}-\frac{M_i}{r^3}).
+&= (\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl})\frac{\mu_0}{4\pi}\left(\frac{M_l\delta_{jm}}{r^3}-\frac{3M_lr_mr_j}{r^5}\right) \\
+&= \frac{\mu_0}{4\pi}\left(\frac{3(\vec{M}\cdot\vec{r})r_i}{r^5}-\frac{M_i}{r^3}\right).
 \end{align*}
 This means that the magnetic field strength of the demagnetization field generated by the entire magnet at a position $\vec{r}$ is
 \begin{align}
@@ -270,9 +285,9 @@ The integrand in \eqref{eq:demagenergy_mag} can be rewritten in a tensor form \c
 \begin{align}
 \partial_i \frac{1}{|\vec{r}-\vec{r'}|} = -\frac{r_i-r_i'}{|\vec{r}-\vec{r'}|^3}
 \end{align}
-it is easy to see that
+it can be verified that
 \begin{align*}
-\partial_i\partial_j \frac{1}{|\vec{r}-\vec{r'}|} &= \partial_i(-\frac{r_j-r_j'}{|\vec{r}-\vec{r'}|^3}) \\
+\partial_i\partial_j \frac{1}{|\vec{r}-\vec{r'}|} &= \partial_i\left(-\frac{r_j-r_j'}{|\vec{r}-\vec{r'}|^3}\right) \\
 &= -\frac{\delta_{ij}}{|\vec{r}-\vec{r'}|^3}+3\frac{(r_i-r_i')(r_j-r_j')}{|\vec{r}-\vec{r'}|^5}.
 \end{align*}
 Defining the continuous demagnetization tensor to be
@@ -318,7 +333,7 @@ with $a$ being the lattice constant and $\vec{M}_{i+1}$ the magnetization at the
 \end{align*}
 Doing the same calculation for the nearest neighbors in the $y$- and $z$-directions we get that the exchange energy density from the magnetization at one site and its nearest neighbors is
 \begin{align}
-\epsilon_i = -\frac{JS^2}{a^3}(6+\frac{a^2}{M_s^2}\vec{M}_i\nabla^2\vec{M}_i).
+\epsilon_i = -\frac{JS^2}{a^3}\left(6+\frac{a^2}{M_s^2}\vec{M}_i\nabla^2\vec{M}_i\right).
 \end{align}
 To find the total exchange energy in the magnet we integrate the energy density over the volume of the magnet, so that
 \begin{align}
@@ -333,7 +348,7 @@ The constant term in the energy has been ignored, and the factor $1/2$ has been 
 As $\vec{M}(\vec{r})$ is a vector of constant length, any change $\delta \vec{M}(\vec{r})$ must be perpendicular to $\vec{M}(\vec{r})$. This means that $\vec{M}(\vec{r})\cdot \frac{\partial}{\partial \hat{n}}\vec{M}(\vec{r}) = 0$, and the first term on the right hand side vanishes. The energy in \eqref{eq:exchangeenergylaplace} then becomes
 \begin{align}
 \label{eq:exchangeenergy}
-E_E = \int \d {^3}r \frac{A}{M_s^2} ((\frac{\partial}{\partial x}\vec{M}(\vec{r}))^2+(\frac{\partial}{\partial y}\vec{M}(\vec{r}))^2+(\frac{\partial}{\partial z}\vec{M}(\vec{r}))^2),
+E_E = \int \d {^3}r \frac{A}{M_s^2} \left((\frac{\partial}{\partial x}\vec{M}(\vec{r}))^2+(\frac{\partial}{\partial y}\vec{M}(\vec{r}))^2+(\frac{\partial}{\partial z}\vec{M}(\vec{r}))^2\right),
 \end{align}
 where we have introduced the exchange stiffness $A$. As one can see the energy depends on the variation in the magnetization in all directions, and is independent of which direction the magnetization changes, it is only dependent on the magnitude by which it changes. Because the exchange stiffness $A$ is positive in a ferromagnet, the exchange energy is higher the more the magnetization varies. To minimize the exchange energy the magnetization therefore has to vary slowly. On short ranges this effect is much stronger than the demagnetization and magnetocrystalline anisotropy. This is why neighbouring spins have a tendency to align in a ferromagnet, while on longer ranges when the demagnetization effect becomes stronger than the exchange interaction the spins tend to be anti-aligned.
 
@@ -380,8 +395,8 @@ This is also known as the interface form of the DMI energy density.
 
 As the DMI only occurs in select magnetic materials, we will not consider this contribution to the energy unless stated otherwise. It turns out, however, that this interaction is an important contribution to the form of magnetic skyrmions. This is because it allows a lowering of the energy by having the neighboring spins be slightly canted, so that a vortex state is possible as a ground state in the system.
 
-\subsubsection{The Dzyaloshinskii--Moriya interaction from the Rashba effect}
-To get a better understanding of the physical origin of the Dzyaloshinskii--Moriya interaction, we take a look at an example. When the inversion symmetry in a crystal is broken, the spin-orbit coupling in the plane perpendicular to the axis lacking inversion symmetry leads to something known as the Rashba effect. The inversion symmetry can be broken by the crystal structure, for example by having two atoms close together in the basis of a crystal structure that has inversion symmetry (like a cubic crystal), or it can be broken at the surface between two materials. In general, the inversion symmetry causes a gradient in the electrostatic potential as $V(\vec{r}) \neq V(-\vec{r})$. This leads to a non-zero electric field inside the material along the axis where the inversion symmetry is broken. In the restframe of an electron moving in the plane perpendicular to this electric field a magnetic field is observed that couples to the spin of the electron, meaning we get a spin-orbit coupling. The magnetic field observed by the electron is proportional to $\vec{p}\times\vec{E}$. The Rashba Hamiltonian is then given by
+\subsection{The Dzyaloshinskii--Moriya interaction from the Rashba effect}
+To get a better understanding of the physical origin of the Dzyaloshinskii--Moriya interaction, we take a look at an example. When the inversion symmetry in a crystal is broken, the spin-orbit coupling in the plane perpendicular to the axis lacking inversion symmetry leads to something known as the Rashba effect. The inversion symmetry can be broken by the crystal structure, for example by having a crystal structure with inversion symmetry (like a cubic crystal) and then add another atom to the unit cell that lies off the inversion center, thereby breaking the inversion symmetry in the crystal. It can also be broken at the surface between two materials. In general, the inversion symmetry causes a gradient in the electrostatic potential as $V(\vec{r}) \neq V(-\vec{r})$. This leads to a non-zero electric field inside the material along the axis where the inversion symmetry is broken. In the restframe of an electron moving in the plane perpendicular to this electric field a magnetic field is observed that couples to the spin of the electron, meaning we get a spin-orbit coupling. The magnetic field observed by the electron is proportional to $\vec{p}\times\vec{E}$. The Rashba Hamiltonian is then given by
 \begin{align}
 \label{eq:RashbaH}
 H_R = \alpha_R (\vec{\sigma} \times \vec{k})\cdot \hat{n} = \frac{\alpha_R}{\hbar} \vec{\sigma}\cdot(\vec{p}\times\hat{n}),
@@ -391,7 +406,7 @@ with $\vec{\sigma}$ being a vector of the Pauli matrices, $\alpha_R$ the Rashba 
 \label{eq:RashbaModel}
 H = H_{kin} + H_R + H_E = \frac{\vec{p}^2}{2m_e} + \frac{\alpha_R}{\hbar} \vec{\sigma}\cdot(\vec{p}\times\hat{n}) + J \vec{\sigma}\cdot\hat{M}.
 \end{align}
-Following the derivation by Kim et al. in \cite{DMIfromRashba_Kim}, the Hamiltonian $H$ can be written as $H'=H_{kin}+H_E'+\orderof(\alpha_R^2)$ by performing a unitary transformation of the Hamiltonian such that $H' = U^{\dagger}HU$. This unitary transformation is defined by
+Following the derivation by Kim et al. in \cite{DMIfromRashba_Kim}, the Hamiltonian $H$ can be written as $H'=H_{kin}+H_E'+\orderof(\alpha_R^2)$ by performing a unitary transformation of the Hamiltonian such that $H' = U^{\dagger}HU$. Performing a unitary transformation of the Hamiltonian will not change the eigenvalues, and thereby the physics of the problem remains unchanged. It will, however, give the Hamiltonian a simpler form as the Rashba term vanishes, making it easier for us to find the eigenvalues. This unitary transformation is defined by
 \begin{align}
 U = \exp{\left[-i \frac{k_R}{2}\vec{\sigma}\cdot(\vec{r}\times\hat{n})\right]},
 \end{align}
@@ -401,16 +416,16 @@ k_R = \frac{2\alpha_R m_e}{\hbar^2}.
 \end{align}
 The transformation $U$ can be rewritten to
 \begin{align}
-U = \exp{(-i\vec{\sigma}\cdot(\hat{r}\times\hat{n}) \frac{\phi}{2})} = \cos{\frac{\phi}{2}} - i\vec{\sigma}\cdot(\hat{r}\times\hat{n})\sin{\frac{\phi}{2}}
+U = \exp{\left(-i\vec{\sigma}\cdot(\hat{r}\times\hat{n}) \frac{\phi}{2}\right)} = \cos{\frac{\phi}{2}} - i\vec{\sigma}\cdot(\hat{r}\times\hat{n})\sin{\frac{\phi}{2}}
 \end{align}
 with the angle $\phi$ being defined by
 \begin{align}
 \phi &= k_R |\vec{r}|.
 \end{align}
-The unitary transformation is therefore just a rotation of the spin around the direction $(\hat{r}\times\hat{n})$ by an angle $\phi$. This rotation makes the Rashba effect term in \eqref{eq:RashbaModel} vanish. The transformed exchange interaction Hamiltonian can then be written as $H_E' = J\sigma\cdot\hat{M}'$, with $\hat{M}'$ being the rotated magnetization direction. Remembering that the exchange energy density $\epsilon_E$ can be written as $\epsilon_E = A \partial_i \hat{M} \partial_i \hat{M}$ with summation over repeated indices, the transformed exchange energy density can then be written in the same manner with $\hat{M} \rightarrow \hat{M}'$. As $\hat{M}' = R^{-1}\hat{M}$ with $R$ being an equivalent rotation transformation as $U$ acting on a classical vector, the differential operators will also act on the rotation matrix $R^{-1}$. In the supplementary information to \cite{DMIfromRashba_Kim} it is shown that
+The unitary transformation is therefore just a rotation of the spin around the direction $(\hat{r}\times\hat{n})$ by an angle $\phi$. The transformed exchange interaction Hamiltonian can then be written as $H_E' = J\sigma\cdot\hat{M}'$, with $\hat{M}'$ being the rotated magnetization direction. Remembering that the exchange energy density $\epsilon_E$ can be written as $\epsilon_E = A \partial_i \hat{M} \partial_i \hat{M}$ with summation over repeated indices, the transformed exchange energy density can then be written in the same manner with $\hat{M} \rightarrow \hat{M}'$. As $\hat{M}' = R^{-1}\hat{M}$ with $R$ being an equivalent rotation transformation as $U$ acting on a classical vector, the differential operators will also act on the rotation matrix $R^{-1}$. In the supplementary information to \cite{DMIfromRashba_Kim} it is shown that
 \begin{align}
 \partial_i (R^{-1}\hat{M}) &= R^{-1}\tilde{\partial_i} \hat{M} \\
-&= R^{-1} (\partial_i\hat{M} + k_R(\hat{n}\times\hat{i})\times\hat{M}),
+&= R^{-1} \left(\partial_i\hat{M} + k_R(\hat{n}\times\hat{i})\times\hat{M}\right),
 \end{align}
 with $\hat{i}$ being a unit vector in the $i$-direction. This means that the transformed exchange energy density becomes
 \begin{align}
@@ -457,7 +472,7 @@ or by replacing the spin with the magnetization using that $\vec{S}$ is proporti
 If the magnetic moments were free, meaning they did not interact with each other, the field $\vec{H}$ in \eqref{eq:mag_undamped} would just be the magnetic field in the material. The magnetic field is the sum of any external field and the internal demagnetizing field discussed earlier. The magnetic moments are not free, however, as we have effects such as exchange interaction between the magnetic moments and magnetic anisotropy. Landau and Lifshitz introduced an effective field $\vec{H}_{eff}$ that replaced the magnetic field $\vec{H}$ in \eqref{eq:mag_undamped} that would minimize the energy in the system at equilibrium \cite{LandauLifshitz1935}. The terms in the micromagnetic energy discussed earlier were the anisotropic energy, demagnetization energy, the Zeeman energy and the exchange energy. Using the results derived earlier, we can write the total energy in the system as
 \begin{align}
 \label{eq:micromagneticenergy}
-E(\vec{M}) = \int \d {^3} r (\epsilon_A(\vec{M}) + \epsilon_D(\vec{M}) + \epsilon_Z(\vec{M}) + \epsilon_E(\vec{M})),
+E(\vec{M}) = \int \d {^3} r \left(\epsilon_A(\vec{M}) + \epsilon_D(\vec{M}) + \epsilon_Z(\vec{M}) + \epsilon_E(\vec{M})\right),
 \end{align}
 where the $\epsilon$'s are the energy densities of the different terms. In equilibrium we must require that $\delta E=0$, with $\delta E$ being defined by
 \begin{align}
@@ -491,7 +506,7 @@ Looking at the effective field in \eqref{eq:effectivefield} we see that it consi
 The time evolution in \eqref{eq:mag_undamped} only describes the precession of the magnetization around a field $\vec{H}$. This system is not in equilibrium unless the magnetization is parallel to the field. In a physical system the magnetization will eventually relax to equilibrium. To model this, Landau and Lifshitz introduced a damping term that is perpendicular to the magnetization and the direction of the precession around the field \cite{LandauLifshitz1935}. The damping term will point in a direction as to attempt to align the magnetization with the field, \eqref{eq:mag_undamped} therefore becomes
 \begin{align}
 \label{eq:LL}
-\frac{\textrm{d} \vec{M}}{\textrm{d} t} = -\gamma (\vec{M} \times \vec{H}_{eff} + \frac{\alpha}{M_s} \vec{M}\times(\vec{M}\times\vec{H}_{eff})),
+\frac{\textrm{d} \vec{M}}{\textrm{d} t} = -\gamma \left(\vec{M} \times \vec{H}_{eff} + \frac{\alpha}{M_s} \vec{M}\times(\vec{M}\times\vec{H}_{eff})\right),
 \end{align}
 with $\alpha > 0$ being a dimensionless damping constant. This is known as the Landau--Lifshitz equation.
 
@@ -518,7 +533,7 @@ The first term on the right hand side can be found by taking the scalar product 
 This is in agreement with what we have discussed earlier. The second term on the right hand side in \eqref{eq:mag_triple_crossproduct} is just $-M_s^2 \frac{\textrm{d} \vec{M}}{\textrm{d} t}$. Combining the results of \eqref{eq:mtimesdmdt} and \eqref{eq:mag_triple_crossproduct} and inserting it into \eqref{eq:LLG_implicit}, we can simplify the expression to
 \begin{align}
 \label{eq:LLG_oldparam}
-\frac{\textrm{d} \vec{M}}{\textrm{d} t} = -\frac{\gamma}{1 + \gamma^2\eta^2 M_s^2}(\vec{M}\times\vec{H}_{eff} + \gamma\eta \vec{M} \times (\vec{M}\times\vec{H}_{eff})).
+\frac{\textrm{d} \vec{M}}{\textrm{d} t} = -\frac{\gamma}{1 + \gamma^2\eta^2 M_s^2}\left(\vec{M}\times\vec{H}_{eff} + \gamma\eta \vec{M} \times (\vec{M}\times\vec{H}_{eff})\right).
 \end{align}
 Comparing this to the Landau--Lifshitz equation in \eqref{eq:LL} we see that by letting
 \begin{align}
@@ -528,7 +543,7 @@ Comparing this to the Landau--Lifshitz equation in \eqref{eq:LL} we see that by 
 \eqref{eq:LLG_oldparam} can be written on the form of the Landau--Lifshitz equation:
 \begin{align}
 \label{eq:LLG}
-\frac{\textrm{d} \vec{M}}{\textrm{d} t} = -\tilde{\gamma} (\vec{M} \times \vec{H}_{eff} + \frac{\alpha}{M_s} \vec{M}\times(\vec{M}\times\vec{H}_{eff})).
+\frac{\textrm{d} \vec{M}}{\textrm{d} t} = -\tilde{\gamma} \left(\vec{M} \times \vec{H}_{eff} + \frac{\alpha}{M_s} \vec{M}\times(\vec{M}\times\vec{H}_{eff})\right).
 \end{align}
 This is the explicit Landau--Lifshitz--Gilbert equation. The difference between the Landau--Lifshitz and the Landau--Lifshitz--Gilbert equation is that the gyromagnetic ratio in the LLG equation is redefined to include the dimensionless damping parameter $\alpha$. When $\alpha \ll 1$, the Landau--Lifshitz equation is a good approximation of the LLG equation, but as the damping parameter becomes larger the correction in the gyromagnetic ratio becomes significant. The LLG equation agrees better with experiments where the damping constant $\alpha$ is large \cite{GilbertKelly1955}.
 
@@ -578,15 +593,15 @@ To simplify the calculation of the magnetization structure in domain walls we on
 The first case we consider is a 1D chain of magnetic moments along the $x$-axis, with an easy axis along the $z$-axis and the magnetization being parallel to the easy axis at $x = \pm \infty$. The energy then can be written as
 \begin{align}
 \label{eq:BlochEnergy}
-E = \int \d V (\frac{A}{M_s^2}(\frac{\partial}{\partial x}\vec{M}(x))^2 - K \cos ^2 \theta (x)).
+E = \int \d V \left[\frac{A}{M_s^2}\left(\frac{\partial}{\partial x}\vec{M}(x)\right)^2 - K \cos ^2 \theta (x)\right].
 \end{align}
 $K$ is strictly positive in this case. The magnetization vector can be written in terms of spherical coordinates, so that $\vec{M}(x) = M_s (\sin \theta (x) \cos \phi (x), \sin \theta (x) \sin \phi (x), \cos \theta (x))$. We see that if we let the $x$-component of $\vec{M}$ be zero, there will be no magnetic volume charges as $\nabla \cdot \vec{M}(x) = 0$. We therefore restrict the magnetization to be in the $yz$-plane by letting $\phi = \pi/2$. The first term in the integral can then be written as
 \begin{align}
-\frac{A}{M_s^2}(\frac{\partial}{\partial x}\vec{M}(\vec{r}))^2 = A(\cos\theta \frac{\partial \theta}{\partial x} \hat{y} - \sin\theta \frac{\partial \theta}{\partial x} \hat{z})^2 = A (\frac{\partial \theta}{\partial x})^2.
+\frac{A}{M_s^2}\left(\frac{\partial}{\partial x}\vec{M}(\vec{r})\right)^2 = A\left(\cos\theta \frac{\partial \theta}{\partial x} \hat{y} - \sin\theta \frac{\partial \theta}{\partial x} \hat{z}\right)^2 = A \left(\frac{\partial \theta}{\partial x}\right)^2.
 \end{align}
 The energy then becomes
 \begin{align}
-E = \int \d A \int \d x (A (\frac{\partial \theta}{\partial x})^2- K \cos ^2 \theta (x)) = \int \d A \int \d x \epsilon(x, \theta, \frac{\partial \theta}{\partial x}).
+E = \int \d A \int \d x \left(A \left(\frac{\partial \theta}{\partial x}\right)^2- K \cos ^2 \theta (x)\right) = \int \d A \int \d x \epsilon(x, \theta, \frac{\partial \theta}{\partial x}).
 \end{align}
 For us to have equilibrium, $\delta E = 0$, the integrand $\epsilon$ must satisfy the Euler--Lagrange equation:
 \begin{align}
@@ -604,11 +619,11 @@ K\sin \theta (x) \cos \theta (x) \frac{\partial \theta}{\partial x} = A \frac{\p
 \end{align}
 which is equivalent to
 \begin{align}
-\frac{\textrm{d}}{\textrm{d} x} (K \sin ^2 \theta - A (\frac{\partial \theta}{\partial x})^2) = 0.
+\frac{\textrm{d}}{\textrm{d} x} \left(K \sin ^2 \theta - A (\frac{\partial \theta}{\partial x})^2\right) = 0.
 \end{align}
 The expression inside the parantheses must therefore be a constant, and to determine what that constant is we have to use some boundary conditions. We want to describe the domain wall between two domains, meaning the domains are located at $x = \pm \infty$. Inside the domains there is no variation in the magnetization, so $\theta$ is a constant. The stable value of $\theta$ is either 0 or $\pi$, as discussed earlier. This means that the expression inside the parantheses is 0. We can then integrate and make the equation a first order differential equation:
 \begin{align*}
-K \sin ^2 \theta(x) &= A (\frac{\partial \theta(x)}{\partial x})^2 \\
+K \sin ^2 \theta(x) &= A \left(\frac{\partial \theta(x)}{\partial x}\right)^2 \\
 \implies \frac{\textrm{d} \theta}{\sin \theta} &= \pm \sqrt{\frac{K}{A}} \d x.
 \end{align*}
 For simplicity we choose the positive solution, which would correspond to $\theta = 0$ at $x = -\infty$. The negative solution will lead to the same answer as the positive, only with the domains switched, so that $\theta = \pi$ at $x = -\infty$. We note that both sides of the equation are dimensionless, and use that information to define a characteristic length $\delta_{DW}$ of the system, with
@@ -626,14 +641,14 @@ we find the solution
 To get the final expression for $\theta(x)$, we must apply a last condition. As we want to describe a domain wall, we choose the domains on the different sides of the wall to be different. This is not a necessity, as one can also have two parallel domains separated by a 360$^o$ domain wall. We have seen that the stable domains occur for $\theta = 0$ and $\theta = \pi$. It is then reasonable to assume that if the function $\theta (x)$ is smooth, it will take the value $\theta = \pi/2$ at some point in the domain wall. If we let that point be located at $x = X$, we find that
 \begin{align}
 \label{eq:thetaBloch}
-\theta(x) = 2\arctan(\exp(\frac{x-X}{\delta_{DW}})).
+\theta(x) = 2\arctan\left(\exp(\frac{x-X}{\delta_{DW}})\right).
 \end{align}
 Using the relations
 \begin{align*}
 \cos(2\arctan(x)) &= \frac{1-x^2}{1+x^2}, \\
 \sin(2\arctan(x)) &= \frac{2x}{1+x^2},
 \end{align*}
-it is easy to show that the magnetization components become
+it can be shown that the magnetization components become
 \begin{align}
 M_z &= - M_s\tanh\frac{x-X}{\delta_{DW}}, \label{eq:BlochMagZ} \\
 M_y &= \frac{M_s}{\cosh\frac{x-X}{\delta_{DW}}}.
@@ -680,8 +695,8 @@ If we let the domains begin when $|M_z| = 0.99\cdot M_s$, we get that the domain
 
 Even though domain walls are stable states, they have an energy cost from the exchange interaction and the anisotropic energy compared to uniform domains. This energy cost can be found by first rewriting \eqref{eq:BlochEnergy} to remove the constant energy in the domains, and then plug in our domain wall solutions to do the integral over the domain wall. The integrand is $-K$ in our domains ($\theta = 0$ and $\theta = \pi$), so we add a constant term of $K$ to the integrand to let the domains have no energy contributions from anisotropy or the exchange interaction. We then integrate to find the energy per domain wall area:
 \begin{align}
-\nonumber\frac{\textrm{d} E_{DW}}{\textrm{d} A} &= \int_{-\infty}^{\infty} \d x (\frac{A}{M_s^2}(\frac{\partial}{\partial x}\vec{M}(x))^2 - K \cos ^2 \theta (x) + K) \\
-\nonumber&= \int_{-\infty}^{\infty} \d x (\frac{A}{\delta_{DW}^2}\frac{1}{\cosh^2\frac{x}{\delta_{DW}}} + K \frac{1}{\cosh^2\frac{x}{\delta_{DW}}}) \\
+\nonumber\frac{\textrm{d} E_{DW}}{\textrm{d} A} &= \int_{-\infty}^{\infty} \d x \left(\frac{A}{M_s^2}(\frac{\partial}{\partial x}\vec{M}(x))^2 - K \cos ^2 \theta (x) + K\right) \\
+\nonumber&= \int_{-\infty}^{\infty} \d x \left(\frac{A}{\delta_{DW}^2}\frac{1}{\cosh^2\frac{x}{\delta_{DW}}} + K \frac{1}{\cosh^2\frac{x}{\delta_{DW}}}\right) \\
 &= 4K\delta_{DW} = 4\sqrt{AK}.
 \end{align}
 
@@ -735,7 +750,7 @@ The spin current density is a tensor of rank 2, defined by the vectors that desc
 \end{align}
 The factor $P$ describes the portion of the conduction electrons that are polarized in the direction of the local electrons, and $e$ is the elementary charge. The factors $\mu_B$ and $e$ are included to get the correct units. If one assumes a uniform charge current density $\vec{j}_e$, and that the non-adiabatic spin current is negligible (which is alright if the domain wall width is much greater than the transport length scale, see \cite{ZhangLi-04}), the spin current term becomes
 \begin{align}
-\nabla \langle \hat{J} \rangle = \nabla (-\frac{\mu_B P}{e} \vec{j}_e \otimes \frac{\vec{M}}{M_s}) = -\frac{\mu_B P}{e M_s} (\vec{j}_e \cdot \nabla) \vec{M}.
+\nabla \langle \hat{J} \rangle = \nabla \left(-\frac{\mu_B P}{e} \vec{j}_e \otimes \frac{\vec{M}}{M_s}\right) = -\frac{\mu_B P}{e M_s} (\vec{j}_e \cdot \nabla) \vec{M}.
 \end{align}
 Remembering that we have an adiabatic component of $\vec{m}$ that is much greater than the non-adiabatic component $\delta\vec{m}$, we ignore the term $\frac{\partial \delta\vec{m}}{\partial t}$, which is necessary to obtain an analytical solution of $\delta \vec{m}$. Combining all of these assumptions and inserting them into \eqref{eq:spindensity_continuity}, the equation becomes 
 \begin{align}
@@ -744,17 +759,17 @@ Remembering that we have an adiabatic component of $\vec{m}$ that is much greate
 \end{align}
 where we have introduced the spin exchange relaxation timescale $\tau_{ex} = \hbar/JS$. This equation can be solved explicitly for $\delta\vec{m}$ in the same manner that we transformed the LLG equation from the implicit form to the explicit Landau--Lifshitz form. To do that we took the cross product of the equation with $\vec{M}$ from the left. Doing that, we find that the term $\delta\vec{m}\times\vec{M}$ can be written linearly in $\delta\vec{m}$ as
 \begin{align}
-\delta\vec{m} \times \vec{M} = \tau_{sf} (\frac{m_0}{M_s} \vec{M} \times \frac{\partial \vec{M}}{\partial t} - \frac{\mu_B P}{e M_s} \vec{M}\times((\vec{j}_e\cdot\nabla)\vec{M}) + \frac{M_s}{\tau_{ex}} \delta\vec{m}),
+\delta\vec{m} \times \vec{M} = \tau_{sf} \left(\frac{m_0}{M_s} \vec{M} \times \frac{\partial \vec{M}}{\partial t} - \frac{\mu_B P}{e M_s} \vec{M}\times((\vec{j}_e\cdot\nabla)\vec{M}) + \frac{M_s}{\tau_{ex}} \delta\vec{m}\right),
 \end{align}
 as $\vec{M} \times (\delta\vec{m}\times\vec{M}) = M_s^2\delta\vec{M}$. Inserting this result back into \eqref{eq:dm_implicit} and solving for $\delta\vec{m}$, we find the explicit expression
 \begin{align}
 \label{eq:dm_explicit}
-\delta\vec{m} = \frac{\tau_{ex}}{1+\xi^2}(-\frac{m_0\xi}{M_s}\frac{\partial \vec{M}}{\partial t} + \frac{\xi \mu_B P}{e M_s}(\vec{j}_e\cdot\nabla)\vec{M} - \frac{m_0}{M_s^2}\vec{M}\times \frac{\partial \vec{M}}{\partial t} + \frac{\mu_B P}{e M_s^2}\vec{M}\times((\vec{j}_e\cdot\nabla)\vec{M})),
+\delta\vec{m} = \frac{\tau_{ex}}{1+\xi^2}\left(-\frac{m_0\xi}{M_s}\frac{\partial \vec{M}}{\partial t} + \frac{\xi \mu_B P}{e M_s}(\vec{j}_e\cdot\nabla)\vec{M} - \frac{m_0}{M_s^2}\vec{M}\times \frac{\partial \vec{M}}{\partial t} + \frac{\mu_B P}{e M_s^2}\vec{M}\times((\vec{j}_e\cdot\nabla)\vec{M})\right),
 \end{align}
 with $\xi$ being defined as the ratio $\xi = \tau_{ex}/\tau_{sf}$. Inserting this into the expression for the spin-transfer torque given in \eqref{eq:STT}, we find that the spin-transfer torque $\vec{T}_{STT}$ as a function of the local magnetization $\vec{M}(\vec{r}, t)$ and the charge current density $\vec{j}_e$ is 
 \begin{align}
-\nonumber\vec{T}_{STT} = &\frac{1}{1+\xi^2} (\frac{m_0\xi}{M_s}\vec{M}\times\frac{\partial \vec{M}}{\partial t} - \frac{\xi\mu_B P}{e M_s^2}\vec{M}\times(\vec{j}_e\cdot\nabla)\vec{M} \\
-&- \frac{m_0}{M_s} \frac{\partial \vec{M}}{\partial t} - \frac{\mu_B P}{e M_s^3} \vec{M}\times (\vec{M}\times(\vec{j}_e\cdot\nabla)\vec{M})).\label{eq:STT_final}
+\nonumber\vec{T}_{STT} = &\frac{1}{1+\xi^2} \bigg(\frac{m_0\xi}{M_s}\vec{M}\times\frac{\partial \vec{M}}{\partial t} - \frac{\xi\mu_B P}{e M_s^2}\vec{M}\times(\vec{j}_e\cdot\nabla)\vec{M} \\
+&- \frac{m_0}{M_s} \frac{\partial \vec{M}}{\partial t} - \frac{\mu_B P}{e M_s^3} \vec{M}\times (\vec{M}\times(\vec{j}_e\cdot\nabla)\vec{M})\bigg).\label{eq:STT_final}
 \end{align}
 Here we have used that $\vec{M}\times(\vec{M}\times\frac{\partial \vec{M}}{\partial t}) = -M_s^2\frac{\partial \vec{M}}{\partial t}$ as $\vec{M}\cdot\frac{\partial \vec{M}}{\partial t} = 0$, and that $\tau_{ex} = \hbar/JS$. Using this result we can extend the LLG equation in \eqref{eq:LLG_implicit} to also include the spin-transfer torque effects from the charge current, by inserting $\vec{T}_{STT}$ into the right hand side. Looking at the implicit LLG equation we see that we already have terms that go as $\frac{\partial \vec{M}}{\partial t}$ and $\vec{M}\times\frac{\partial \vec{M}}{\partial t}$. These terms in the spin-transfer torque $\vec{T}_{STT}$ can therefore be incorporated into the LLG equation by redfining the gyromagnetic ratio $\gamma$ and the damping parameter $\eta$. If one inserts the terms in $\vec{T}_{STT}$ that do not depend on the current into \eqref{eq:LLG_implicit}, one finds that by letting
 \begin{align}
@@ -781,7 +796,7 @@ The form of the extended LLG equation in \eqref{eq:LLG_current} is implicit in $
 \end{align}
 with $\alpha$ being a dimensionless damping constant like in the Landau--Lifshitz equation, we get the explicit form of the extended LLG equation:
 \begin{align}
-\nonumber \frac{\partial \vec{M}}{\partial t} = &-\tilde{\gamma}' \vec{M} \times  (\vec{H}_{eff} + \frac{\alpha}{M_s} \vec{M}\times \vec{H}_{eff}) \\ 
+\nonumber \frac{\partial \vec{M}}{\partial t} = &-\tilde{\gamma}' \vec{M} \times  \left(\vec{H}_{eff} + \frac{\alpha}{M_s} \vec{M}\times \vec{H}_{eff}\right) \\ 
 &- \frac{(1+\alpha\xi) b_J}{M_s^2(1+\alpha^2)} \vec{M}\times (\vec{M}\times(\hat{j}_e\cdot\nabla)\vec{M})) - \frac{(\xi-\alpha)b_J}{ M_s(1+\alpha^2)}\vec{M}\times(\hat{j}_e\cdot\nabla)\vec{M}.
 \label{eq:LLG_current_explicit}
 \end{align}
@@ -857,14 +872,14 @@ where we have also used that $\frac{\textrm{d} M_s}{\textrm{d} x_i} = 0$. The sc
 \end{align}
 The radial equation is trivial, but we have two equations in $\theta$ and $\phi$. Now we use this equation to look at a similar case as the N\'{e}el wall described in the last section. We consider a material with an easy axis along the $z$-axis and a hard axis along the $y$-axis. The anisotropic energy density can then be written as
 \begin{align}
-\nonumber \epsilon_A &= K_{\perp} (\frac{\vec{M}\cdot\hat{y}}{M_s})^2 - K (\frac{\vec{M}\cdot\hat{z}}{M_s})^2 \\
+\nonumber \epsilon_A &= K_{\perp} \left(\frac{\vec{M}\cdot\hat{y}}{M_s}\right)^2 - K \left(\frac{\vec{M}\cdot\hat{z}}{M_s}\right)^2 \\
 \nonumber &= K_{\perp}\sin^2\theta\sin^2\phi - K \cos^2\theta \\
 &\rightarrow (K + K_{\perp} \sin^2\phi)\sin^2\theta,
 \end{align}
 where we added a constant shift $K$ in the energy density at the end to simplify the expression. The constants $K$ and $K_{\perp}$ are strictly positive. Comparing this to the anisotropic energy density in the Bloch and N\'{e}el wall calculations previously, we see that they are the same when we let $K \rightarrow K + K_{\perp}\sin^2\phi$. For the N\'{e}el wall case we let $\phi = 0$ previously, but now instead we set $\phi = \phi (t)$. Spatially $\phi$ is a constant, but we allow it to vary in time due to the non-adiabatic spin-transfer torque from the applied current. As $\phi$ does not vary along the 1D chain of local magnetic moments, which we define to be along the $x$-axis as before, the exchange energy is unchanged from the example with the Bloch and N\'{e}el walls discussed earlier. If we let the demagnetization energy be incorporated into the anisotropic energy, the total energy density then becomes
 \begin{align}
 \label{eq:energydensity_ex_a}
-\epsilon = \epsilon_E + \epsilon_A = A (\frac{\partial \theta}{\partial x})^2 + K\sin^2\theta + K_{\perp} \sin^2\theta\sin^2\phi
+\epsilon = \epsilon_E + \epsilon_A = A \left(\frac{\partial \theta}{\partial x}\right)^2 + K\sin^2\theta + K_{\perp} \sin^2\theta\sin^2\phi
 \end{align}
 This energy density is the same as the one we solved in the last section, when the substitution of $K$ mentioned above is done. Because of the applied current, the angle $\theta$ is now also a function of time, meaning $\theta = \theta(x,t)$. If we assume that the width of the domain wall does not change in time, we can use \eqref{eq:thetaBloch} to find the shape of the domain wall. The temporal part of $\theta(x,t)$ is made by letting the domain wall center $X$ be a time dependent position $X(t)$. As the length scale $\delta_{DW}$ depends on $K$, we define a new length scale $\lambda$ where we make the substitution for $K$, so that
 \begin{align}
@@ -874,7 +889,7 @@ This energy density is the same as the one we solved in the last section, when t
 Together, this gives us
 \begin{align}
 \label{eq:theta_current}
-\theta(x,t) = 2\arctan(\exp(\frac{x-X(t)}{\lambda})).
+\theta(x,t) = 2\arctan\left(\exp(\frac{x-X(t)}{\lambda})\right).
 \end{align}
 We now have the parameters that describe the motion of the domain wall: $X(t)$ and $\phi(t)$. The former describes a translational motion of the domain wall, and the latter describes a rotation. For low energies these parameters fully describe the domain wall dynamics, under the criterion that
 \begin{align}
@@ -969,13 +984,13 @@ It can be shown that the solution of $\phi(t)$ is
 \end{align}
 with $C$ being an integration constant. As $\sin2\phi(t)$ is now oscillating in time without reaching a stable value, $\dot{X}$ will always be an oscillating function in time. From now on we will therefore consider the time averaged translational domain wall speed $\langle \dot{X} \rangle$. Using the expression for $\phi(t)$, we find that
 \begin{align}
-\langle\sin2\phi(t)\rangle = \frac{1}{\frac{\pi T}{\sqrt{(j_e/j_c)^2-1}}} \int_0^{\frac{\pi T}{\sqrt{(j_e/j_c)^2-1}}} \d t \sin2\phi(t) = \frac{j_e}{j_c}-\sqrt{(\frac{j_e}{j_c})^2-1}.
+\langle\sin2\phi(t)\rangle = \frac{1}{\frac{\pi T}{\sqrt{(j_e/j_c)^2-1}}} \int_0^{\frac{\pi T}{\sqrt{(j_e/j_c)^2-1}}} \d t \sin2\phi(t) = \frac{j_e}{j_c}-\sqrt{\left(\frac{j_e}{j_c}\right)^2-1}.
 \end{align}
 Inserting this result into the equation for $\dot{X}$, we find that when $j_e > j_c$
 \begin{align}
 \label{eq:xdot_av_abovecrit}
-\nonumber \langle\dot{X}\rangle &= \frac{\lambda}{T}\left[\frac{1}{\alpha}(\frac{j_e}{j_c}-\sqrt{(\frac{j_e}{j_c})^2-1}) + \frac{1+\xi\alpha}{\xi-\alpha}\cdot\frac{j_e}{j_c}\right] \\
-&= \frac{\xi-\alpha}{1+\alpha^2} \left[\frac{1}{\alpha}(\frac{j_e}{j_c}-\sqrt{(\frac{j_e}{j_c})^2-1}) + \frac{1+\xi\alpha}{\xi-\alpha}\cdot\frac{j_e}{j_c}\right] b_{JC}.
+\nonumber \langle\dot{X}\rangle &= \frac{\lambda}{T}\left[\frac{1}{\alpha}\left(\frac{j_e}{j_c}-\sqrt{(\frac{j_e}{j_c})^2-1}\hspace{1mm}\right) + \frac{1+\xi\alpha}{\xi-\alpha}\cdot\frac{j_e}{j_c}\right] \\
+&= \frac{\xi-\alpha}{1+\alpha^2} \left[\frac{1}{\alpha}\left(\frac{j_e}{j_c}-\sqrt{(\frac{j_e}{j_c})^2-1}\hspace{1mm}\right) + \frac{1+\xi\alpha}{\xi-\alpha}\cdot\frac{j_e}{j_c}\right] b_{JC}.
 \end{align}
 \begin{figure}[h!]
 \centering
@@ -1007,9 +1022,9 @@ Combining the results in \eqref{eq:xdot_undercrit} and \eqref{eq:xdot_av_abovecr
 \end{align}
 this is not that easy due to the condition in \eqref{eq:kperp_ll_k}. One can see, however, that the critical current is larger in strongly ferromagnetic materials with large exchange stiffness $A$.
 
-When the itinerant spins have a low damping parameter compared to the local spins ($\xi<\alpha$), the translational speed of the domain wall increases when the applied current is greater than the critical current, as shown in \ref{fig:criticalCurrent}. It is worth noting that the domain wall does not get a final translational speed when the applied current is below the critical current, in the case when $\xi=0$. There will be some initial movement as seen from \eqref{eq:Xdot0}, but this eventually drops off. The reason why there is an increase in the translational speed of the domain wall when $j_e/j_c>1$ in the case of $\xi<\alpha$ is that the non-adiabatic spin-transfer torque could not compensate for the Gilbert damping when there was a stable solution of $\phi$. Below $j_e/j_c$ the added energy from the current was absorbed by the perpendicular anisotropic energy along the hard axis, but as there is a limit to how much anisotropic energy can be absorbed more energy is available to the translational motion of the domain wall when $j_e>j_c$. This is the opposite of the case when $\xi>\alpha$, where there was a decrease in the translational speed when $j_e>j_c$. As $\xi>\alpha$, the non-adiabatic spin-transfer torque was able to compensate the Gilbert damping and the anisotropic energy cost, therefore more energy was available to the translational motion.
+When the itinerant spins have a low damping parameter compared to the local spins ($\xi<\alpha$), the translational speed of the domain wall increases when the applied current is greater than the critical current, as shown in \ref{fig:criticalCurrent}. It is worth noting that the domain wall does not get a final translational speed when the applied current is below the critical current, in the case when $\xi=0$. There will be some initial movement as seen from \eqref{eq:Xdot0}, but this eventually drops off. The reason why there is an increase in the translational speed of the domain wall when $j_e/j_c>1$ in the case of $\xi<\alpha$ is that the non-adiabatic spin-transfer torque could not compensate for the Gilbert damping when there was a stable solution of $\phi$. Below $j_e/j_c$ the added energy from the current was absorbed by the perpendicular anisotropic energy along the hard axis, but as there is a limit to how much anisotropic energy can be absorbed more energy is available to the translational motion of the domain wall when $j_e>j_c$. This is the opposite of the case when $\xi>\alpha$, where there was a decrease in the translational speed when $j_e>j_c$. As $\xi>\alpha$, the non-adiabatic spin-transfer torque was able to compensate the Gilbert damping and the anisotropic energy cost, therefore more energy was available to the translational motion below the critical current $j_c$. Above $j_c$ some of this energy goes to the rotational motion of the domain wall as mentioned earlier, causing a decrease in the energy available to the translational speed.
 
-As an example one can plot the expectation values of the domain wall for a case when $j_e>j_c$. An example is shown in Figure \ref{fig:DW_JeGTJc} with $j_e = 1.1j_c$. One can see in Figure \ref{fig:Neel_NonAdSTT_GD_JeGTJc} that the domain wall has been tilted out of the original plane of the initial N\'{e}el wall, and the domain wall has now mixed qualities between a N\'{e}el and a Bloch wall. When studied closely it can be seen that the Gilbert damping and the non-adiabatic spin-transfer torque are not completely anti-parallel anymore, but the main components still point in opposite directions. The reason for this offset is that the rotational motion comes into play in the Gilbert damping term that is proportional to $\vec{M}\times\frac{\textrm{d} \vec{M}}{\textrm{d} t}$, while the non-adiabatic spin-transfer torque is proportional to $\vec{M}\times\frac{\partial \vec{M}}{\partial x}$. The Gilbert damping term contains the temporal change, while the non-adiabatic spin-transfer torque contains the spatial change. When there is a rotation ($\dot{\phi} \neq 0$) and not simply a translation of the domain wall these will in general be different, unlike the initial case without rotation in Figure \ref{fig:Neel_NonAdSTT_GD}.
+As an example one can plot the expectation values of the domain wall for a case when $j_e>j_c$. An example is shown in Figure \ref{fig:DW_JeGTJc} with $j_e = 1.1j_c$. One can see in Figure \ref{fig:Neel_NonAdSTT_GD_JeGTJc} that the domain wall has been tilted out of the original plane of the initial N\'{e}el wall, and the domain wall has now mixed qualities between a N\'{e}el and a Bloch wall. When studied closely it can be seen that the Gilbert damping and the non-adiabatic spin-transfer torque are not completely anti-parallel anymore, but the main components still point in opposite directions. The reason for this offset is that the rotational motion comes into play in the Gilbert damping term that is proportional to $\vec{M}\times\frac{\textrm{d} \vec{M}}{\textrm{d} t}$, while the non-adiabatic spin-transfer torque is proportional to $\vec{M}\times\frac{\partial \vec{M}}{\partial x}$. The Gilbert damping term contains the temporal change, while the non-adiabatic spin-transfer torque contains the spatial change. When there is a rotation ($\dot{\phi} \neq 0$) and not simply a translation of the domain wall these will in general be different, unlike the initial case without rotation 1in Figure \ref{fig:Neel_NonAdSTT_GD}.
 \begin{figure}[h!]
 \centering
 \begin{subfigure}{\textwidth}
@@ -1031,8 +1046,8 @@ As an example one can plot the expectation values of the domain wall for a case 
 \subsubsection{External magnetic field}
 Instead of applying a current to move domain walls, one can also apply an external magnetic field. Let us now consider the same system as before when we applied the current, but instead we apply a general magnetic field. This causes a change in the energy density, as we now also get a contribution from the Zeeman energy. From the expression of the Zeeman energy in \eqref{eq:zeemanenergy}, one sees that the total energy density of the system becomes
 \begin{align}
-\nonumber \epsilon&=\epsilon_E+\epsilon_A+\epsilon_Z=A (\frac{\partial \theta}{\partial x})^2 + K\sin^2\theta + K_{\perp} \sin^2\theta\sin^2\phi-\mu_0\vec{M}\cdot\vec{H} \\
-&= A (\frac{\partial \theta}{\partial x})^2 + K\sin^2\theta + K_{\perp} \sin^2\theta\sin^2\phi-\mu_0M_s\left[(H_x\cos\phi+H_y\sin\phi)\sin\theta+ H_z\cos\theta\right].
+\nonumber \epsilon&=\epsilon_E+\epsilon_A+\epsilon_Z=A \left(\frac{\partial \theta}{\partial x}\right)^2 + K\sin^2\theta + K_{\perp} \sin^2\theta\sin^2\phi-\mu_0\vec{M}\cdot\vec{H} \\
+&= A \left(\frac{\partial \theta}{\partial x}\right)^2 + K\sin^2\theta + K_{\perp} \sin^2\theta\sin^2\phi-\mu_0M_s\left[(H_x\cos\phi+H_y\sin\phi)\sin\theta+ H_z\cos\theta\right].
 \end{align}
 This gives us
 \begin{align}
@@ -1068,11 +1083,11 @@ We can then rewrite the equation to
 \end{align}
 In the case that $\dot{\phi}=0$ we substitute $\sin2\phi$ from the second equation into the first, and find that
 \begin{align}
-\dot{X}(H\leq H_c) = \frac{\lambda}{T}(\frac{1}{\alpha}+\alpha) \frac{H}{H_c}.
+\dot{X}(H\leq H_c) = \frac{\lambda}{T}\left(\frac{1}{\alpha}+\alpha\right) \frac{H}{H_c}.
 \end{align}
 As the equation for $\dot{\phi}$ is on the exact same form as \eqref{eq:xdot_phidot_v2} with $j_e/j_c \rightarrow H/H_c$, we can use the result that $\langle\sin2\phi\rangle = (H/H_c)- \sqrt{(H/H_c)^2-1}$ when $\dot{\phi} \neq 0$. The translational speed of the domain wall then becomes
 \begin{align}
-\langle\dot{X}\rangle (H\geq H_c) = \frac{\lambda}{T} \left[(\frac{1}{\alpha}+\alpha) \frac{H}{H_c} - \frac{1}{\alpha}\sqrt{(\frac{H}{H_c})^2-1} \right].
+\langle\dot{X}\rangle (H\geq H_c) = \frac{\lambda}{T} \left[\left(\frac{1}{\alpha}+\alpha\right) \frac{H}{H_c} - \frac{1}{\alpha}\sqrt{\left(\frac{H}{H_c}\right)^2-1} \right].
 \end{align}
 \begin{figure}[h!]
 \begin{center}
@@ -1154,8 +1169,8 @@ The interface DMI energy density has the same form as the bulk DMI energy densit
 The degrees of freedom of the in-plane magnetization profile have now been determined. To fully describe the profile of the skyrmion all that is left is to find the radial function of the out-of-plane component described by $\theta(\rho)$. This is done by requiring a minimum in the energy, meaning $\frac{\delta E}{\delta\theta} = 0$. As the magnetization is now a function in cylindrical coordinates, we must first find an expression for the symmetric exchange interaction energy density given our ansatz in \eqref{eq:SkyrmionMVec}. Using our previous result in \eqref{eq:exchangeenergyDiv2} and plugging in our ansatz, we find that
 \begin{align}
 \nonumber\epsilon_E &= \sum_i (\nabla_i\vec{M})\cdot(\nabla_i\vec{M}) \\
-\nonumber&= (\frac{\partial \vec{M}}{\partial\rho})^2+\frac{1}{\rho^2}(\frac{\partial\vec{M}}{\partial\phi})^2+(\frac{\partial\vec{M}}{\partial z})^2\\
-&= (\frac{\partial \theta}{\partial\rho})^2+\frac{\sin^2\theta}{\rho^2}, \label{eq:SymExchCylindrical}
+\nonumber&= \left(\frac{\partial \vec{M}}{\partial\rho}\right)^2+\frac{1}{\rho^2}\left(\frac{\partial\vec{M}}{\partial\phi}\right)^2+\left(\frac{\partial\vec{M}}{\partial z}\right)^2\\
+&= \left(\frac{\partial \theta}{\partial\rho}\right)^2+\frac{\sin^2\theta}{\rho^2}, \label{eq:SymExchCylindrical}
 \end{align}
 where we have used that $(\frac{\partial\Phi}{\partial\phi})^2=m^2=1$. The total energy can then be written as
 \begin{align}
@@ -1240,8 +1255,8 @@ First we consider the motion of a skyrmion due to the spin-transfer torque from 
 \end{align}
 Plugging these into \eqref{eq:LLG_current_implicit_spherical} and rearranging the terms gives us the following equations:
 \begin{align}
-(\alpha\frac{\sin\theta}{r}\sin\phi-\frac{\partial\theta}{\partial r}\cos\phi)\dot{x}_0 - (\alpha\frac{\sin\theta}{r}\cos\phi+\frac{\partial\theta}{\partial r}\sin\phi)\dot{y}_0 &= b_J \frac{\partial\theta}{\partial r}\cos\phi - \xi b_J \frac{\sin\theta}{r}\sin\phi, \label{eq:skyrmion_llg_eq1}\\
-(\alpha\frac{\partial\theta}{\partial r}\cos\phi + \frac{\sin\theta}{r}\sin\phi)\dot{x}_0 + (\alpha\frac{\partial\theta}{\partial r}\sin\phi - \frac{\sin\theta}{r}\cos\phi)\dot{y}_0 &= -b_J\frac{\sin\theta}{r}\sin\phi - \xi b_J \frac{\partial\theta}{\partial r}\cos\phi. \label{eq:skyrmion_llg_eq2}
+\left(\alpha\frac{\sin\theta}{r}\sin\phi-\frac{\partial\theta}{\partial r}\cos\phi\right)\dot{x}_0 - \left(\alpha\frac{\sin\theta}{r}\cos\phi+\frac{\partial\theta}{\partial r}\sin\phi\right)\dot{y}_0 &= b_J \frac{\partial\theta}{\partial r}\cos\phi - \xi b_J \frac{\sin\theta}{r}\sin\phi, \label{eq:skyrmion_llg_eq1}\\
+\left(\alpha\frac{\partial\theta}{\partial r}\cos\phi + \frac{\sin\theta}{r}\sin\phi\right)\dot{x}_0 + \left(\alpha\frac{\partial\theta}{\partial r}\sin\phi - \frac{\sin\theta}{r}\cos\phi\right)\dot{y}_0 &= -b_J\frac{\sin\theta}{r}\sin\phi - \xi b_J \frac{\partial\theta}{\partial r}\cos\phi. \label{eq:skyrmion_llg_eq2}
 \end{align}
 We then proceed by considering linear combinations of these equations. First we multiply \eqref{eq:skyrmion_llg_eq1} by $\frac{\sin\theta}{r \pi}\sin\phi$ and add it to \eqref{eq:skyrmion_llg_eq2} multiplied by $\frac{1}{\pi}\frac{\partial\theta}{\partial r}\cos\phi$. The resulting equation becomes
 \begin{align}
@@ -1294,7 +1309,7 @@ For the thin film case we have $\theta(0) = 0$ and $\theta(\infty)=\pi/2$, and a
 This result is equivalent to the result for the motion of the 1D domain wall when an electrical current below the critical current is applied.\\
 \begin{table}[h!]
 	\centering
-		\caption{Values of the integral $I_C$ in the dissipation tensor $\bar{D}$ for different values of $C$, using the bulk solution of $\theta(\rho)$.} 
+		\caption{Values of the integral $I_C$ for different values of $C$, using the bulk solution of $\theta(\rho)$.} 
 	\begin{tabular}{l l} \hline
 	$C$ & $I_C$\\ \hline
 	0.75  & 6.5118\\
