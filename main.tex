@@ -396,7 +396,7 @@ This is also known as the interface form of the DMI energy density.
 As the DMI only occurs in select magnetic materials, we will not consider this contribution to the energy unless stated otherwise. It turns out, however, that this interaction is an important contribution to the form of magnetic skyrmions. This is because it allows a lowering of the energy by having the neighboring spins be slightly canted, so that a vortex state is possible as a ground state in the system.
 
 \subsection{The Dzyaloshinskii--Moriya interaction from the Rashba effect}
-To get a better understanding of the physical origin of the Dzyaloshinskii--Moriya interaction, we take a look at an example. When the inversion symmetry in a crystal is broken, the spin-orbit coupling in the plane perpendicular to the axis lacking inversion symmetry leads to something known as the Rashba effect. The inversion symmetry can be broken by the crystal structure, for example by having a crystal structure with inversion symmetry (like a cubic crystal) and then add another atom to the unit cell that lies off the inversion center, thereby breaking the inversion symmetry in the crystal. It can also be broken at the surface between two materials. In general, the inversion symmetry causes a gradient in the electrostatic potential as $V(\vec{r}) \neq V(-\vec{r})$. This leads to a non-zero electric field inside the material along the axis where the inversion symmetry is broken. In the restframe of an electron moving in the plane perpendicular to this electric field a magnetic field is observed that couples to the spin of the electron, meaning we get a spin-orbit coupling. The magnetic field observed by the electron is proportional to $\vec{p}\times\vec{E}$. The Rashba Hamiltonian is then given by
+To get a better understanding of the physical origin of the Dzyaloshinskii--Moriya interaction, we take a look at an example. When the inversion symmetry in a crystal is broken, the spin-orbit coupling in the plane perpendicular to the axis lacking inversion symmetry leads to something known as the Rashba effect. The inversion symmetry can be broken by the crystal structure, for example by having a crystal structure with inversion symmetry (like a cubic crystal) and then add another atom to the unit cell that lies off the inversion center, thereby breaking the inversion symmetry in the crystal. It can also be broken at the surface between two materials \cite{Heide2006}. In general, the inversion symmetry causes a gradient in the electrostatic potential as $V(\vec{r}) \neq V(-\vec{r})$. This leads to a non-zero electric field inside the material along the axis where the inversion symmetry is broken. In the restframe of an electron moving in the plane perpendicular to this electric field a magnetic field is observed that couples to the spin of the electron, meaning we get a spin-orbit coupling. The magnetic field observed by the electron is proportional to $\vec{p}\times\vec{E}$. The Rashba Hamiltonian is then given by
 \begin{align}
 \label{eq:RashbaH}
 H_R = \alpha_R (\vec{\sigma} \times \vec{k})\cdot \hat{n} = \frac{\alpha_R}{\hbar} \vec{\sigma}\cdot(\vec{p}\times\hat{n}),
@@ -1326,13 +1326,31 @@ This result is equivalent to the result for the motion of the 1D domain wall whe
 For the bulk case we have $\theta(0) = \pi$ and $\theta(\infty) = 0$. In this case the integral $I_C$ converges to a value that has to be found numerically. A few example values of $I_C$ are shown in Table \ref{tab:C_I} for different values of $C = AK/D^2$. Using that $\Gamma = -I_C/4$ the resulting velocity becomes
 \begin{align}
 \vec{v} = -\frac{16+I_C^2\alpha\xi}{16+I_C^2\alpha^2}b_J\hat{x} + \frac{4(\alpha-\xi)I_C}{16+I_C^2\alpha^2}b_J\hat{y}.
+\label{eq:SkyrmionV}
 \end{align}
-As we can see we also have a velocity component in the $y$-direction when $\xi\neq\alpha$. This component perpendicular to the direction of the current originates from the skyrmion Hall effect \cite{Nagaosa2013}.
+As we can see we also have a velocity component in the $y$-direction when $\xi\neq\alpha$. This component perpendicular to the direction of the current originates from the skyrmion Hall effect \cite{Nagaosa2013}\cite{Zang2011}. The skyrmion Hall effect can be understood by the emergent electromagnetic field that arises due to the non-trivial topology of the skyrmion. The skyrmion profile creates an effective magnetic flux \cite{Nagaosa2012}, given by
+\begin{align}
+\vec{b}_e = \left[\frac{\hbar}{2 e} \hat{M} \cdot \left( \frac{\partial \hat{M}}{\partial x} \times \frac{\partial \hat{M}}{\partial y}\right)\right]\hat{z}.
+\end{align}
+The total magnetic flux of the skyrmion can be written as a constant times the skyrmion number, defined by \cite{Heinze2011}
+\begin{align}
+N_{\textrm{sk}} = \frac{1}{4\pi}\int \hat{M}\cdot\left(\frac{\partial \hat{M}}{\partial x} \times \frac{\partial \hat{M}}{\partial y}\right) \d x \d y.
+\end{align}
+The skyrmion number is only non-zero for non-trivial topological magnetization structures. For the bulk form of the skyrmion profile it can be shown that the skyrmion number is $N_{\textrm{sk}} = 1$ \cite{Nagaosa2013}. Since the skyrmion carries with it a magnetic field, there will also be an emergent electric field $\vec{e}_e$ \cite{Schulz2012} that will balance out the Lorentz force 
+\begin{align}
+\label{eq:LorentzForce}
+\vec{F}_{\textrm{Lorentz}} = q\left[\vec{e}_e + \vec{v}\times\vec{b}_e\right],
+\end{align}
+meaning the resulting emergent electric field becomes
+\begin{align}
+\vec{e}_e = -\vec{v}\times\vec{b}_e.
+\end{align}
+This emergent electric field will then generate a current, and as the field lies in the skyrmion plane and is perpendicular to the direction of the external applied current it accounts for the velocity component we get in the $y$-direction.
 
 \subsubsection{External magnetic field}
 If we instead turn off the electrical current and apply an external magnetic field in the $z$-direction, we will now get a non-zero contribution from $\frac{\delta\epsilon}{\delta\theta}$ due to the Zeeman energy. The Zeeman energy density is given by $\epsilon_Z = -\mu_0M_sH\cos\theta$. This leads to the equations of motion in a magnetic field:
 \begin{align}
-\nonumber \begin{pmatrix}
+\begin{pmatrix}
 \dot{\theta} \\ \sin\theta\dot{\Phi}
 \end{pmatrix} =
 \begin{pmatrix}
@@ -1341,6 +1359,34 @@ If we instead turn off the electrical current and apply an external magnetic fie
 \label{eq:LLG_skyrmion_Hz}
 \end{align}
 For non-zero $\alpha$ this will lead to a deformation of the skyrmion. Unlike the case with an applied current, $\dot{\theta}$ does not represent a motion of the skyrmion core. The ansatz $\theta = \theta(|\vec{\rho}-\vec{\rho}_0(t)|)$ does not hold anymore. An external magnetic field perpendicular to the skyrmion plane cannot move the skyrmion core, as there is no other location that is more energetically favorable. Instead, $\dot{\theta}$ represents a change in the radial profile of the skyrmion, as the initial profile no longer minimizes the energy when an external field is applied. If $(\gamma'\alpha H)^{-1}$ is large compared to the time-scale on which the system changes, however, this deformation is negligible. The effect of the magnetic field in the $z$-direction is therefore a rotation of the in-plane magnetization of the skyrmion with a precession rate $\dot{\Phi} \approx \gamma'H$.
+
+\subsection{The Thiele equation}
+Magnetization patterns that do not deform during their motion, like the motion of the skyrmion due to a spin-polarized current as shown earlier, can be described by an equation known as the Thiele equation. In \cite{Thiele1973} Thiele recognized that if the magnetization can be written as $\vec{M}(\vec{r}-\vec{R}(t))$, meaning the magnetization pattern moves uniformly, the time derivative can be written as
+\begin{align}
+\label{eq:ThieleRelation}
+\frac{\textrm{d} \vec{M}}{\textrm{d} t} = \frac{\partial \vec{R}}{\partial t}\frac{\partial \vec{M}}{\partial \vec{R}} = \frac{\partial \vec{R}}{\partial t} (-\frac{\partial \vec{M}}{\partial \vec{r}}) = -(\vec{v}\cdot\nabla)\vec{M},
+\end{align}
+with $\vec{v}$ being the velocity of the magnetization pattern. Here we have used that since the magnetization exclusively depends on the difference between $\vec{r}$ and $\vec{R}(t)$, a small spatial change in $\vec{R}(t)$ can be replaced by a small spatial change in $\vec{r}$ in the opposite direction. This result can then be substituted into the implicit LLG equation in \eqref{eq:LLG_current} to simplify it. 
+Another simplification one can make is setting the effective field $\vec{H}_{\text{eff}}$ equal to an external magnetic field $\vec{H}$. This is easily verified as one finds that the skyrmion minimizes the energy from internal effects, meaning $\frac{\delta\epsilon}{\delta\theta}$ and $\frac{\delta\epsilon}{\delta\phi}$ are zero in the absence of an external magnetic field. Together, this means that the LLG equation can be written as
+\begin{align}
+\gamma'\vec{M}\times\vec{H} - ((\vec{v}+b_J\hat{j}_e)\cdot\nabla)\vec{M} + \frac{1}{M_s}\vec{M}\times((\alpha\vec{v}+\xi b_J\hat{j}_e)\cdot\nabla)\vec{M} = 0.
+\end{align}
+After a considerable amount of manipulation and rewriting of the equation above, one finally ends up with the Thiele equation:
+\begin{align}
+\label{eq:Thiele}
+\vec{F} + \vec{G}\times(\vec{v}+b_J\hat{j}_e) + \bar{D}(\alpha\vec{v}+\xi b_J\hat{j}_e) = 0.
+\end{align}
+$\vec{F}$ is the force vector acting on the magnetization pattern, $\vec{G}$ is the gyrovector, and $\bar{D}$ is the dissipation tensor. These have the following definitions:
+\begin{align}
+\vec{F} &= -\mu_0 \int\d A \left[(\nabla\theta)\frac{\partial}{\partial \theta} + (\nabla\phi)\frac{\partial}{\partial \phi}\right] (\vec{H}\cdot\vec{M}),\label{eq:ThieleForce} \\
+\vec{G} &= \frac{2\pi M_s\mu_0}{\gamma'}\left[\cos\theta\right]_{\theta(\rho = 0)}^{\theta(\rho=\infty)} \hat{z} = G_0 \hat{z}, \label{eq:ThieleGyro} \\
+\bar{D} &= -\frac{\pi M_s\mu_0}{\gamma'}\int_0^{\infty}\d \rho \left(\rho \left(\frac{\partial \theta}{\partial \rho}\right)^2+\frac{\sin^2\theta}{\rho}\right)(\hat{x}\otimes\hat{x}+\hat{y}\otimes\hat{y}). \label{eq:ThieleDissipation}
+\end{align}
+A detailed derivation of how to obtain the Thiele equation from the LLG equation using Thiele's relation in \eqref{eq:ThieleRelation} is provided by Kr\"{u}ger in \cite{krugerDissertation}. If one solves the Thiele equation for our example of skyrmion motion due to a spin-polarized current, the end result becomes the same as the one we got by solving the LLG equation directly. This solution will not be shown here, but a simplification of Kr\"{u}ger's solution to our case without finite size effects of the film reduces to the result in \eqref{eq:SkyrmionV}.
+
+The advantage of using the Thiele equation over the LLG equation is that once the profile of the skyrmion is known, the Thiele equation becomes an implicit vector equation for the velocity. The LLG equation, however, is a set of coupled equations in the velocity components. For cases where the skyrmion profile does not change during its motion, it is therefore easier to find the velocity of the skyrmion by using the Thiele equation than the LLG equation, especially as the complexity of the problem increases (for example when including finite film size effects as discussed by Kr\"{u}ger).
+
+\subsection{Research on skyrmions}
 
 \section{Conclusion}
 In this thesis we have derived the extended Landau--Lifshitz--Gilbert equation that describes the time evolution of a magnetization structure. This has then been applied to describe the dynamics of different magnetic solitons. These magnetic solitons include magnetic domain walls, as described in chapter \ref{sec:DW}, and magnetic skyrmions, as described in chapter \ref{sec:SkyrmionProfile}. The structure of these magnetic solitons were derived from the micromagnetic energy terms in chapter \ref{sec:MicromagneticEnergy}. For the motion of magnetic domain walls it was discovered in chapter \ref{sec:DWDynamics} that there was a linear relation between the translational speed of the domain wall and the strength of the applied current or magnetic field up to a critical value, after which a Walker breakdown occured. In chapter \ref{sec:SkyrmionMotion} we found that for a weak current the translational speed of a magnetic skyrmion was linearly related to the strength of the applied current. In the case of different damping between the local and itinerant electrons it was also discovered that we get a velocity component perpendicular to the direction of the applied current due to the skyrmion Hall effect.
