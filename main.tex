@@ -175,7 +175,7 @@ Magnetic materials may be anisotropic, meaning that certain directions of the ma
 In anisotropic magnetic materials one defines different axes; the easy, intermediate and hard axes. If the magnetization is oriented along the easy axis, the anisotropic energy is at its minimum value. Similarly, if the magnetization is oriented along the hard axis the anisotropic energy is at its maximum value. The intermediate axis is the direction along which there is a saddlepoint in the anisotropic energy. In most materials the anisotropic energy is the same for both possible orientations of the magnetization along the axes. When this is the case, the terms in the anisotropic energy can only contain even powers of the components in the magnetization vector.
 
 \subsubsection{Uniaxial anisotropy}
-The simplest form of anisotropy is the case where there is only one axis that the anisotropic energy varies with. This is known as uniaxial anisotropy. This can often be found in crystal structures with a single principal axis, such as the hexagonal and simple tetragonal lattices. If we consider a uniform magnetization $\vec{M} = \left[M_x, M_y, M_z\right]$ and let one of the two directions along the axis in the material that the anisotropic energy varies be the unit vector $\hat{n}$ (for example, if we have a uniaxial anisotropy along the $z$-axis $\hat{n}$ can be $\pm\hat{z}$), the anisotropic energy must be on the form
+The simplest form of anisotropy is the case where there is only one axis that the anisotropic energy varies with. This is known as uniaxial anisotropy. This can often be found in crystal structures with a single principal axis, such as the hexagonal and simple tetragonal lattices. The uniaxial anisotropic energy is determined by the component of the unit vector of the magnetization that points parallel to the axis in the material that is the easiest (or hardest) direction to magnetize the material. If we consider a uniform magnetization $\vec{M} = \left[M_x, M_y, M_z\right]$ and let one of the two directions along the axis in the material that defines an extremal value in the anisotropic energy be the unit vector $\hat{n}$ (for example, if we have a uniaxial anisotropy along the $z$-axis, $\hat{n}$ can be $\pm\hat{z}$), the anisotropic energy must be on the form
 \begin{align}
 \label{eq:uniaxialanisotropy}
 E_A = V \sum_{i=0}^{\infty} K_i \left(\frac{\vec{M}\cdot\hat{n}}{M_s}\right)^{2i}
@@ -185,7 +185,7 @@ if there is to be no preferential direction with respect to energy along the axi
 \label{eq:uniaxialanisotropy_v2}
 E_A = K V \left(\frac{\vec{M}\cdot\hat{n}}{M_s}\right)^2
 \end{align}
-by ignoring the constant energy term as that only leads to a constant shift in the energy. If $K < 0$ the axis that $\hat{n}$ points along is then the easy axis, and if $K > 0$ the axis is the hard axis. Note that if we have a non-uniform magnetization we let
+by ignoring the constant energy term as that only leads to a constant shift in the energy. If $K < 0$ the axis that $\hat{n}$ points along is then the easy axis as the system is in a lower energy state when the magnetization points along $\pm\hat{n}$, and if $K > 0$ the axis is the hard axis as the system is then in a higher energy state when the magnetization points along $\pm\hat{n}$. Note that if we have a non-uniform magnetization we let
 
 \begin{align*}
 \vec{M} &\rightarrow \vec{M}(\vec{r}), \\
@@ -434,7 +434,7 @@ with $\hat{i}$ being a unit vector in the $i$-direction. This means that the tra
 \end{align}
 with $D = 2k_RA$, where we have used that $\vec{A}\cdot(\vec{B}\times\vec{C}) = \vec{B}\cdot(\vec{C}\times\vec{A})$. Remember that there is an implicit sum over $i$. As one can see, the exchange energy density contains a symmetric term like before, and an antisymmetric term that comes from the transformation we had to perform to get rid of the Rashba-term in the Hamiltonian. We recognize this antisymmetric term as the interface DMI energy density in \eqref{eq:InterfaceDMIe} with $\hat{n} = \hat{z}$.
 
-\section{Landau--Lifshitz--Gilbert equation} \label{sec:LLG}
+\section{The Landau--Lifshitz--Gilbert equation} \label{sec:LLG}
 The time evolution of the magnetization in a magnet is described by the Landau--Lifshitz--Gilbert (LLG) equation. To get an understanding of the origin of the equation, it is useful to look at the time evolution of spin, as the magnetic moment and therefore the magnetization is proportional to it. 
 
 \subsection{Larmor precession}
@@ -484,7 +484,7 @@ The functional derivative $\frac{\delta E[\vec{M}]}{\delta \vec{M}(\vec{r})}$ is
 \label{eq:functionaldiff}
 \frac{\delta E[\vec{M}]}{\delta \vec{M}(\vec{r})} = \frac{\partial E[\vec{M}]}{\partial \vec{M}(\vec{r})} - \frac{\partial}{\partial x} \frac{\partial E[\vec{M}]}{\partial (\frac{\partial \vec{M}}{\partial x})} - \frac{\partial}{\partial y} \frac{\partial E[\vec{M}]}{\partial (\frac{\partial \vec{M}}{\partial y})} - \frac{\partial}{\partial z} \frac{\partial E[\vec{M}]}{\partial (\frac{\partial \vec{M}}{\partial z})}.
 \end{align}
-As $|\vec{M}| = M_s$ is a constant, $\delta \vec{M}$ must be perpendicular to $\vec{M}$. Because of this, $\frac{\delta E[\vec{M}]}{\delta \vec{M}(\vec{r})}$ must be parallel to $\vec{M}$ for $\delta E$ to be 0 for arbitrary choices of $a$ and $b$. In \eqref{eq:mag_undamped} one can see that the system is in equilibrium if the effective field $\vec{H}_{eff}$ is parallel to $\vec{M}$, therefore the effective field must also be parallel to $\frac{\delta E[\vec{M}]}{\delta \vec{M}(\vec{r})}$. It is reasonable to assume that one of the terms in the effective field will be the external magnetic field $\vec{H}_Z$. We can therefore look at $\epsilon_Z$, the energy density in \eqref{eq:zeemanenergy}, to find the proportionality constant. It is easy to see that by letting
+As $|\vec{M}| = M_s$ is a constant, $\delta \vec{M}$ must be perpendicular to $\vec{M}$. Because of this, $\frac{\delta E[\vec{M}]}{\delta \vec{M}(\vec{r})}$ must be parallel to $\vec{M}$ for $\delta E$ to be 0 for arbitrary choices of $a$ and $b$. In \eqref{eq:mag_undamped} one can see that the system is in equilibrium if the effective field $\vec{H}_{eff}$ is parallel to $\vec{M}$, therefore the effective field must also be parallel to $\frac{\delta E[\vec{M}]}{\delta \vec{M}(\vec{r})}$. It is reasonable to assume that one of the terms in the effective field will be the external magnetic field $\vec{H}_Z$. We can therefore look at $\epsilon_Z$, the energy density in \eqref{eq:zeemanenergy}, to find the proportionality constant. One can verify that by letting
 \begin{align}
 \vec{H}_{eff} = -\frac{1}{\mu_0}\frac{\delta \epsilon[\vec{M}]}{\delta \vec{M}(\vec{r})},
 \end{align}
@@ -496,7 +496,7 @@ one of the terms in the effective field will be the external field $\vec{H}_Z$ (
 The last term depends on what kind of anisotropy there is in the material. For a uniaxial anisotropy as in \eqref{eq:uniaxialanisotropy}, the effective field term becomes 
 \begin{align}
 \label{eq:effielduniaxialani}
--\frac{1}{\mu_0}\frac{\delta \epsilon_A[\vec{M}]}{\delta \vec{M}(\vec{r})} = -\frac{2K_1}{M_s^2}(\vec{M}(\vec{r})\cdot\hat{n})\hat{n} - \frac{4K_2}{M_s^4}(\vec{M}(\vec{r})\cdot\hat{n})^3\hat{n} - \ldots
+-\frac{1}{\mu_0}\frac{\delta \epsilon_A[\vec{M}]}{\delta \vec{M}(\vec{r})} = -\frac{2K_1}{\mu_0 M_s^2}(\vec{M}(\vec{r})\cdot\hat{n})\hat{n} - \frac{4K_2}{\mu_0 M_s^4}(\vec{M}(\vec{r})\cdot\hat{n})^3\hat{n} - \ldots
 \end{align}
 up to fourth order in the directional cosine. For a cubic anisotropy the energy density $\epsilon_A$ becomes the integrand in \eqref{eq:cubicanisotropy} instead.
 
@@ -1358,7 +1358,7 @@ If we instead turn off the electrical current and apply an external magnetic fie
 \end{pmatrix}.
 \label{eq:LLG_skyrmion_Hz}
 \end{align}
-For non-zero $\alpha$ this will lead to a deformation of the skyrmion. Unlike the case with an applied current, $\dot{\theta}$ does not represent a motion of the skyrmion core. The ansatz $\theta = \theta(|\vec{\rho}-\vec{\rho}_0(t)|)$ does not hold anymore. An external magnetic field perpendicular to the skyrmion plane cannot move the skyrmion core, as there is no other location that is more energetically favorable. Instead, $\dot{\theta}$ represents a change in the radial profile of the skyrmion, as the initial profile no longer minimizes the energy when an external field is applied. If $(\gamma'\alpha H)^{-1}$ is large compared to the time-scale on which the system changes, however, this deformation is negligible. The effect of the magnetic field in the $z$-direction is therefore a rotation of the in-plane magnetization of the skyrmion with a precession rate $\dot{\Phi} \approx \gamma'H$.
+For non-zero $\alpha$ this will lead to a deformation of the skyrmion. Unlike the case with an applied current, $\dot{\theta}$ does not represent a motion of the skyrmion core. The ansatz $\theta = \theta(|\vec{\rho}-\vec{\rho}_0(t)|)$ does not hold anymore. An external magnetic field perpendicular to the skyrmion plane cannot move the skyrmion core, as there is no other location that is more energetically favorable. Instead, $\dot{\theta}$ represents a change in the radial profile of the skyrmion, as the initial profile no longer minimizes the energy when an external field is applied. If $(\gamma'\alpha H)^{-1}$ is large compared to the time-scale on which the system changes, however, this deformation is negligible. The effect of the magnetic field in the $z$-direction is therefore a rotation of the in-plane magnetization of the skyrmion with a precession rate $\dot{\Phi} \approx \gamma'H$. If the applied magnetic field is of a strength so that the deformation is no longer negligible, the skyrmion profile will change towards an equilibrium profile in an external magnetic field (the Zeeman energy is taken into account when determining the $\theta (\rho)$ profile) if the field is applied adiabatically. This means that if one applies an alternating magnetic field perpendicular to the skyrmion plane, one can excite a breathing mode in the skyrmion like in the domain wall case, where the skyrmion core expands and shrinks periodically with the magnetic field \cite{Mochizuki2012}.
 
 \subsection{The Thiele equation}
 Magnetization patterns that do not deform during their motion, like the motion of the skyrmion due to a spin-polarized current as shown earlier, can be described by an equation known as the Thiele equation. In \cite{Thiele1973} Thiele recognized that if the magnetization can be written as $\vec{M}(\vec{r}-\vec{R}(t))$, meaning the magnetization pattern moves uniformly, the time derivative can be written as
