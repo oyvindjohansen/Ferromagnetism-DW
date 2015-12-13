@@ -161,26 +161,21 @@ Electronics has for a long time been the most commonly used science in informati
 
 Magnetic materials have been studied closely over the last century. Magnets are today known to be divided into smaller regions of a uniform magnetization, known as magnetic domains. These magnetic domains are separated by solitons called domain walls. These solitons have different structures, one of which was shown by Bloch in 1932 \cite{Bloch1932}. The magnetic solitons occur as to minimize the energy in the magnetic material, and is therefore an equilibrium effect. As magnetic moments interact with magnetic fields, the solitons can move away from equilibrium and gain dynamical properties. The time evolution of these solitons was first described by an equation of motion proposed by Landau and Lifshitz in 1935 \cite{LandauLifshitz1935}, which was based on a damped precession around an effective magnetic field that included internal and external effects. The damping term in the equation proposed by Landau and Lifshitz was then replaced by Gilbert in 1955 \cite{Gilbert2004Classics} to include the time derivative, which agreed better with experiments. This equation was then extended by Slonczewski in 1996 to include the interaction between the spins in an electric current and the local magnetization in the magnet \cite{Slonczewski1996}.
 
-The magnetic solitons can be used for information storage in form of bits. An example of this is the giant magnetoresistance (GMR) effect discovered independently by Fert and Gr\"{u}nberg in 1988 \cite{Fert1988} \cite{Grunberg1989}, which they won the Nobel prize in physics for in 2007. GMR is widely used today in hard drives and magnetoresistive random-access-memory (MRAM). This effect occurs in a system with three different layers; a fixed magnetic layer, a non-magnetic layer, and a magnetic layer with reversable magnetization. If the last magnetic layer has the same magnetization direction as the fixed layer, there is a low resistance to an electrical current passing through the system. If the last layer has the opposite magnetization direction of the fixed layer, however, the resistance increases significantly. This is therefore suitable to describe a bit, which has two possible values. The magnetization direction in the last layer can be manipulated by either applying a spin-polarized current, or an external magnetic field. This corresponds to moving the magnetic domain wall separating the two different magnetic domains (parallel and anti-parallel to the fixed layer) as illustrated in Figure \ref{fig:GMR}, and can be used to write and rewrite information. In this project we will study the dynamical properties of this magnetic soliton as a function of current and external magnetic field.
+The magnetic solitons can be used for information storage in form of bits. An example of this is the giant magnetoresistance (GMR) effect discovered independently by Fert and Gr\"{u}nberg in 1988 \cite{Fert1988} \cite{Grunberg1989}, which they won the Nobel prize in physics for in 2007. GMR is widely used today in hard drives and magnetoresistive random-access-memory (MRAM). This effect occurs in a system with three different layers; a fixed magnetic layer, a non-magnetic layer, and a magnetic layer with reversable magnetization. If the last magnetic layer has the same magnetization direction as the fixed layer, there is a low resistance to an electrical current passing through the system. If the last layer has the opposite magnetization direction of the fixed layer, however, the resistance increases significantly. This is therefore suitable to describe a bit, which has two possible values. The magnetization direction in the last layer can be manipulated by either applying a spin-polarized current, or an external magnetic field. An example of how this can be used in a racetrack memory to read bit values is illustrated in Figure \ref{fig:GMR}. In the wire where the information is stored in the racetrack memory, the information is sent forward for processing by moving the domain walls instead of physically moving the wire. In this project we will study the dynamical properties of this magnetic soliton as a function of current and external magnetic field.
 
 \begin{figure}[h!]
 \centering
-\begin{subfigure}{.27\textwidth}
+\begin{subfigure}{.7\textwidth}
   \centering
-  \includegraphics[width=1.0\linewidth]{Figures/GMRParallel.pdf}
+  \includegraphics[width=1.0\linewidth]{Figures/GMR_RT_P.pdf}
   \caption{}
-\end{subfigure}%
-\begin{subfigure}{.35\textwidth}
+\end{subfigure}\\
+\begin{subfigure}{.7\textwidth}
   \centering
-  \includegraphics[width=1.0\linewidth]{Figures/GMRField.pdf}
-  \caption{}
-\end{subfigure}%
-\begin{subfigure}{.27\textwidth}
-  \centering
-  \includegraphics[width=1.0\linewidth]{Figures/GMRAParallel.pdf}
+  \includegraphics[width=1.0\linewidth]{Figures/GMR_RT_AP.pdf}
   \caption{}
 \end{subfigure}
-\caption{An illustration of how to use domain wall motion in the GMR effect. This effect can be found in a thin-film structure consisting of three layers; a soft ferromagnetic layer (light blue), a non-magnetic layer (grey) and a hard/fixed ferromagnetic layer (dark blue). When the magnetizations (red arrows) of the two ferromagnetic layers are parallel as in (a), the resistance of a current passing through the three layers is low. When they are antiparallel as in (c), the resistance is much higher. One can get from (a) to (c) by applying an external magnetic field in the opposite direction of the magnetization of the soft ferromagnetic layer. It is assumed that the strength of the field is strong enough to change the magnetization in the soft ferromagnetic layer, but too weak to affect the hard layer. This field introduces another domain in the soft layer with the opposite magnetization of the original domain. Between the domains there is a domain wall that moves in the direction that will increase the size of the domain parallel to the field as shown in (b). Once the domain wall reaches the surface of the material the magnetization has switched its direction as shown in (c).}
+\caption{An illustration of how to use domain wall motion in the GMR effect. This effect can for example be used in the sensor that reads in a racetrack memory. A wire with different magnetic domains (marked in red and blue, with the given magnetization vector in white) lies above a sensor that consists of a non-magnetic material (in grey) and a ferromagnetic material with a fixed magnetization (the bottom box in red). When the magnetic domain in the wire above the sensor is parallel to the one in the sensor as shown in (a), a current passing transversely through the three layers will have a low resistance. A spin-polarized current is then sent through the wire, moving the domain walls and thereby the domains to the right. Now the magnetization in the domain that lies above the sensor is anti-parallel to the magnetization in the sensor as shown in (b). When a current passes transversely through the three layers now, there will be a much higher resistance as the magnetizations are anti-parallel. The different domains in red and blue can therefore represent bit values of 0 and 1 (low resistance and high resistance), with the bit-length being decided by the width of the sensor.}
 \label{fig:GMR}
 \end{figure}
 
@@ -693,15 +688,15 @@ The magnetization components are shown as a function of $x/\delta_{DW}$ in Figur
 \subsection{N\'{e}el walls}
 \begin{figure}[tpb]
 \centering
-\begin{minipage}{.6\textwidth}
+\begin{minipage}{.9\textwidth}
 \subcaptionbox{N\'{e}el wall}{\includegraphics[width=\textwidth]{Figures/NeelWallPlane.png}}
 \subcaptionbox{Bloch wall}{\includegraphics[width=\textwidth]{Figures/BlochWallPlane.png}}
 \end{minipage}%
-\hspace{5mm}
-\begin{minipage}{.3\textwidth}
-\subcaptionbox{Bloch wall}{\includegraphics[width=\textwidth]{Figures/BlochWallPerspective.png}}
-\end{minipage}
-\caption{An illustration of N\'{e}el and Bloch domain walls. The N\'{e}el wall in (a) rotates in the plane of the domains, while the Bloch wall as seen from different angles in (b) and (c) rotates out of the plane of the domains.}
+%\hspace{5mm}
+%\begin{minipage}{.3\textwidth}
+%\subcaptionbox{Bloch wall}{\includegraphics[width=\textwidth]{Figures/BlochWallPerspective.png}}
+%\end{minipage}
+\caption{An illustration of N\'{e}el and Bloch domain walls. The N\'{e}el wall in (a) rotates in the plane of the domains, while the Bloch wall in (b) rotates out of the plane of the domains.}
 \label{fig:NeelVsBlochWall}
 \end{figure}
 If the magnetic material has a large surface area, such as thin films, it may be more energetically favorable to avoid surface charges than to avoid volume charges. To have a domain wall that does this, we must require that the magnetization in the domain wall rotates in the plane of the domains, unlike the Bloch domain wall where the magnetization rotates out of that plane. If we look at a similar example as in the derivation of the Bloch domain wall, we must have a magnetization that rotates in the $xz$-plane rather than the $yz$-plane, as we let the $y$-direction be the direction normal to the magnet's surface. The easy axis in the material is kept to be along the $z$-axis. The energy expressions and the equation for $\theta (x)$ are exactly the same as for the Bloch domain wall, the only difference is that instead of forcing $\phi$ to be $\pi/2$ to avoid magnetic volume charges, we force $\phi$ to be 0 to let the $M_y$ component be 0 and thereby avoiding generating magnetic surface charges. The function $\theta(x)$ is therefore exactly the same as for the Bloch domain wall, given by \eqref{eq:thetaBloch}. The magnetization vector changes, however, from being $\vec{M} = M_s(0, \sin\theta, \cos\theta)$ for the Bloch domain wall to being $\vec{M} = M_s(\sin\theta, 0, \cos\theta)$ for our current domain wall. In other words, the magnetization component in the $x$- and $y$-directions switch. The magnetization therefore looks the same as in Figure \ref{fig:BlochWall}, with $M_y \rightarrow M_x$ and $M_y=0$. The difference between the N\'{e}el and Bloch domain walls is shown in Figure \ref{fig:NeelVsBlochWall}. This type of domain wall where the magnetization rotates in the plane of the domain magnetization is known as a N\'{e}el domain wall. This type of domain wall does not generate any surface charges, assuming the domains are parallel to the surface of the magnet, but generates magnetic volume charges as the divergence of the magnetization is not zero. We can calculate the magnetic volume charge that the N\'{e}el wall generates:
@@ -1369,12 +1364,16 @@ The total magnetic flux of the skyrmion can be written as a constant times the s
 \begin{align}
 N_{\textrm{sk}} = \frac{1}{4\pi}\int \hat{M}\cdot\left(\frac{\partial \hat{M}}{\partial x} \times \frac{\partial \hat{M}}{\partial y}\right) \d x \d y.
 \end{align}
-The skyrmion number is only non-zero for non-trivial topological magnetization structures. For the bulk form of the skyrmion profile it can be shown that the skyrmion number is $N_{\textrm{sk}} = 1$ \cite{Nagaosa2013}. Since the skyrmion carries with it a magnetic field, there will also be an emergent electric field $\vec{e}_e$ \cite{Schulz2012} that will balance out the Lorentz force 
+The skyrmion number is only non-zero for non-trivial topological magnetization structures. For the bulk form of the skyrmion profile it can be shown that the skyrmion number is $N_{\textrm{sk}} = 1$ \cite{Nagaosa2013}. Since the skyrmion core carries with it a localized magnetic field, there will also be an emergent electric field $\vec{e}_e$ \cite{Schulz2012} when the core moves, which can be seen from the Maxwell--Faraday equation:
+\begin{align}
+\nabla\times\vec{E} = -\frac{\partial\vec{B}}{\partial t}.
+\end{align}
+Once the motion of the skyrmion core has reached an equilibrium state, there will be no total force acting on the system. The resulting Lorentz-force from the emergent electromagnetic fields, given by
 \begin{align}
 \label{eq:LorentzForce}
 \vec{F}_{\textrm{Lorentz}} = q\left[\vec{e}_e + \vec{v}\times\vec{b}_e\right],
 \end{align}
-meaning the resulting emergent electric field becomes
+will then be zero everywhere. This means that the resulting emergent electric field becomes
 \begin{align}
 \vec{e}_e = -\vec{v}\times\vec{b}_e.
 \end{align}
@@ -1401,7 +1400,7 @@ Magnetization patterns that do not deform during their motion, like the motion o
 \label{eq:ThieleRelation}
 \frac{\textrm{d} \vec{M}}{\textrm{d} t} = \frac{\partial \vec{R}}{\partial t}\frac{\partial \vec{M}}{\partial \vec{R}} = \frac{\partial \vec{R}}{\partial t} (-\frac{\partial \vec{M}}{\partial \vec{r}}) = -(\vec{v}\cdot\nabla)\vec{M},
 \end{align}
-with $\vec{v}$ being the velocity of the magnetization pattern. Here we have used that since the magnetization exclusively depends on the difference between $\vec{r}$ and $\vec{R}(t)$, a small spatial change in $\vec{R}(t)$ can be replaced by a small spatial change in $\vec{r}$ in the opposite direction. This result can then be substituted into the implicit LLG equation in \eqref{eq:LLG_current} to simplify it. 
+with $\vec{v}$ being the velocity of the magnetization pattern. Here we have used that since the magnetization exclusively depends on the difference between $\vec{r}$ and $\vec{R}(t)$, a small spatial change in $\vec{R}(t)$ can be replaced by a small spatial change in $\vec{r}$ in the opposite direction. We note that in the case of domain walls this relation would only hold true up to the Walker breakdown, as the rotational motion of the domain wall is also needed to describe the velocity above the critical current or magnetic field. This result can then be substituted into the implicit LLG equation in \eqref{eq:LLG_current} to simplify it. 
 Another simplification one can make is setting the effective field $\vec{H}_{\text{eff}}$ equal to an external magnetic field $\vec{H}$. This can be seen as one finds that the skyrmion minimizes the energy from internal effects, meaning $\frac{\delta\epsilon}{\delta\theta}$ and $\frac{\delta\epsilon}{\delta\phi}$ are zero in the absence of an external magnetic field. Together, this means that the LLG equation can be written as
 \begin{align}
 \gamma'\vec{M}\times\vec{H} - ((\vec{v}+b_J\hat{j}_e)\cdot\nabla)\vec{M} + \frac{1}{M_s}\vec{M}\times((\alpha\vec{v}+\xi b_J\hat{j}_e)\cdot\nabla)\vec{M} = 0.
@@ -1417,7 +1416,7 @@ $\vec{F}$ is the force vector acting on the magnetization pattern, $\vec{G}$ is 
 \vec{G} &= \frac{2\pi M_s\mu_0}{\gamma'}\left[\cos\theta\right]_{\theta(\rho = 0)}^{\theta(\rho=\infty)} \hat{z} = G_0 \hat{z}, \label{eq:ThieleGyro} \\
 \bar{D} &= -\frac{\pi M_s\mu_0}{\gamma'}\int_0^{\infty}\d \rho \left(\rho \left(\frac{\partial \theta}{\partial \rho}\right)^2+\frac{\sin^2\theta}{\rho}\right)(\hat{x}\otimes\hat{x}+\hat{y}\otimes\hat{y}). \label{eq:ThieleDissipation}
 \end{align}
-A detailed derivation of how to obtain the Thiele equation from the LLG equation using Thiele's relation in \eqref{eq:ThieleRelation} is provided by Kr\"{u}ger in \cite{krugerDissertation}. If one solves the Thiele equation for our example of skyrmion motion due to a spin-polarized current, the end result becomes the same as the one we got by solving the LLG equation directly. This solution will not be shown here, but a simplification of Kr\"{u}ger's solution to our case without finite size effects of the film reduces to the result in \eqref{eq:SkyrmionV}.
+A detailed derivation of how to obtain the Thiele equation from the LLG equation using Thiele's relation in \eqref{eq:ThieleRelation} is provided by Kr\"{u}ger in \cite{krugerDissertation}. The Thiele equation as written above only describes the motion of rotationally symmetric magnetization structures localized in a plane for weak applied currents or magnetic fields. It therefore does not describe the motion of domain walls, which are 1D magnetization structures, or the motion of skyrmions above some threshold current or field that would be the equivalent of a Walker breakdown in domain wall motion. Below this threshold value, however, the Thiele equation and LLG equation are entirely equivalent for the motion of skyrmions. If one solves the Thiele equation for our example of skyrmion motion due to a spin-polarized current, the end result becomes the same as the one we got by solving the LLG equation directly. This solution will not be shown here, but a simplification of Kr\"{u}ger's solution to our case without finite size effects of the film reduces to the result in \eqref{eq:SkyrmionV}.
 
 The advantage of using the Thiele equation over the LLG equation is that once the profile of the skyrmion is known, the Thiele equation becomes an implicit vector equation for the velocity. The LLG equation, however, is a set of coupled equations in the velocity components. For cases where the skyrmion profile does not change during its motion, it is therefore easier to find the velocity of the skyrmion by using the Thiele equation than the LLG equation, especially as the complexity of the problem increases (for example when including finite film size effects as discussed by Kr\"{u}ger).
 
