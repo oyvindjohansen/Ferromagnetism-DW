@@ -959,8 +959,8 @@ If we insert the calculated differentials into \eqref{eq:LLG_current_explicit_sp
 \end{pmatrix}
 =
 \begin{pmatrix}
-\frac{\lambda \tilde{\gamma}'}{\mu_0 M_s} 2 K_{\perp} \sin\theta\sin\phi\cos\phi + \frac{(1+\xi\alpha)b_J}{1+\alpha^2}\sin\theta \\
--\frac{\tilde{\gamma}'\alpha}{\mu_0 M_s}2 K_{\perp} \sin\theta\sin\phi\cos\phi + \frac{(\xi-\alpha)b_J}{\lambda(1+\alpha^2)}\sin\theta
+\frac{\lambda \tilde{\gamma}'}{\mu_0 M_s} 2 K_{\perp} \sin\theta\sin\phi\cos\phi - \frac{(1+\xi\alpha)b_J}{1+\alpha^2}\sin\theta \\
+-\frac{\tilde{\gamma}'\alpha}{\mu_0 M_s}2 K_{\perp} \sin\theta\sin\phi\cos\phi - \frac{(\xi-\alpha)b_J}{\lambda(1+\alpha^2)}\sin\theta
 \end{pmatrix}.
 \end{align}
 We see that $\sin\theta$ is included in all the terms, meaning the domains where $\theta = 0$, $\theta = \pi$ automatically satisfy the equations. As $\sin\theta \neq 0$ except at $x = \pm \infty$, we can safely divide both the equations with $\sin\theta$ when considering the domain wall region:
@@ -971,19 +971,19 @@ We see that $\sin\theta$ is included in all the terms, meaning the domains where
 \end{pmatrix}
 =
 \begin{pmatrix}
-\frac{\lambda \tilde{\gamma}'}{\mu_0 M_s} K_{\perp} \sin2\phi + \frac{(1+\xi\alpha)b_J}{1+\alpha^2} \\
--\frac{\tilde{\gamma}'\alpha}{\mu_0 M_s} K_{\perp} \sin2\phi + \frac{(\xi-\alpha)b_J}{\lambda(1+\alpha^2)}
+\frac{\lambda \tilde{\gamma}'}{\mu_0 M_s} K_{\perp} \sin2\phi - \frac{(1+\xi\alpha)b_J}{1+\alpha^2} \\
+-\frac{\tilde{\gamma}'\alpha}{\mu_0 M_s} K_{\perp} \sin2\phi - \frac{(\xi-\alpha)b_J}{\lambda(1+\alpha^2)}
 \end{pmatrix}.
 \end{align}
 Note that $\lambda$ is a function of $\phi$, but due to the criterion in \eqref{eq:kperp_ll_k} $\lambda$ varies very little as $\phi$ changes. It is therefore alright to assume that $\lambda$ is a constant in the equations. As a cross-check of the validity of \eqref{eq:xdot_phidot} we can see what happens if there is no applied current, meaning $b_J = 0$. We see that the domain wall is static if $\dot{X} = \dot{\phi} = 0$, which requires that $\sin2\phi = 0$. This agrees with our solutions earlier, as we have a N\'{e}el wall when $\phi = 0, \pi$ and a Bloch wall when $\phi = \pi/2, 3\pi/2$. Because we are considering a system with a hard axis along the $y$-axis the stable solutions are N\'{e}el walls, so we set $\phi(0) = 0$ in our example. Then we can see that the initial speed of the domain wall is
 \begin{align}
 \label{eq:Xdot0}
-\dot{X}(0) = \frac{1+\xi\alpha}{1+\alpha^2}b_J.
+\dot{X}(0) = -\frac{1+\xi\alpha}{1+\alpha^2}b_J.
 \end{align}
 We also have $\dot{\phi}(0) \neq 0$ if $\xi \neq \alpha$, so that the wall rotates slightly. For small currents $j_e$, eventually $\phi(t)$ will obtain a value such that $\dot{\phi}(t) = 0$. If one then solves for $\sin2\phi$ in the second line of \eqref{eq:xdot_phidot} and substitutes into the first line, one then finds that the final domain wall speed becomes
 \begin{align}
 \label{eq:xdot_undercrit}
-\dot{X}(t\rightarrow\infty) = \frac{\xi}{\alpha} b_J.
+\dot{X}(t\rightarrow\infty) = -\frac{\xi}{\alpha} b_J.
 \end{align}
 The final speed of the domain wall is therefore decided by the non-adiabatic spin-transfer torque. Note that this relation is only true up to a certain critical current, as when the current passes a certain threshold, $\dot{\phi} = 0$ is no longer a solution. As $\sin2\phi$ can maximum be 1, we then find that the critical current $j_c$ is given by the relations
 \begin{align}
@@ -1002,45 +1002,46 @@ one can write the equations for $\dot{X}$ and $\dot{\phi}$ as
 \end{pmatrix}
 =
 \begin{pmatrix}
-\frac{\lambda}{\alpha T} \sin2\phi + \frac{\lambda}{T}\frac{(1+\xi\alpha)}{\xi - \alpha} \frac{j_e}{j_c} \\
--\frac{1}{T}  \sin2\phi + \frac{1}{T}\frac{j_e}{j_c}
+\frac{\lambda}{\alpha T} \sin2\phi - \frac{\lambda}{T}\frac{(1+\xi\alpha)}{\xi - \alpha} \frac{j_e}{j_c} \\
+-\frac{1}{T}  \sin2\phi - \frac{1}{T}\frac{j_e}{j_c}
 \end{pmatrix}.
 \end{align}
 It can be shown that the solution of $\phi(t)$ is
 \begin{align}
-\phi(t) = \arctan\left[\frac{1+\sqrt{(j_e/j_c)^2-1}\tan\left[\sqrt{(j_e/j_c)^2-1}(t/T+C)\right]}{j_e/j_c}\right],
+\phi(t) = -\arctan\left[\frac{1+\sqrt{(j_e/j_c)^2-1}\tan\left[\sqrt{(j_e/j_c)^2-1}(t/T+C)\right]}{j_e/j_c}\right],
+\label{eq:phiOfT}
 \end{align}
 with $C$ being an integration constant. As $\sin2\phi(t)$ is now oscillating in time without reaching a stable value, $\dot{X}$ will always be an oscillating function in time. From now on we will therefore consider the time averaged translational domain wall speed $\langle \dot{X} \rangle$. Using the expression for $\phi(t)$, we find that
 \begin{align}
-\langle\sin2\phi(t)\rangle = \frac{1}{\frac{\pi T}{\sqrt{(j_e/j_c)^2-1}}} \int_0^{\frac{\pi T}{\sqrt{(j_e/j_c)^2-1}}} \d t \sin2\phi(t) = \frac{j_e}{j_c}-\sqrt{\left(\frac{j_e}{j_c}\right)^2-1}.
+\langle\sin2\phi(t)\rangle = \frac{1}{\frac{\pi T}{\sqrt{(j_e/j_c)^2-1}}} \int_0^{\frac{\pi T}{\sqrt{(j_e/j_c)^2-1}}} \d t \sin2\phi(t) = -\frac{j_e}{j_c}+\sqrt{\left(\frac{j_e}{j_c}\right)^2-1}.
 \end{align}
 Inserting this result into the equation for $\dot{X}$, we find that when $j_e > j_c$
 \begin{align}
 \label{eq:xdot_av_abovecrit}
-\nonumber \langle\dot{X}\rangle &= \frac{\lambda}{T}\left[\frac{1}{\alpha}\left(\frac{j_e}{j_c}-\sqrt{\left(\frac{j_e}{j_c}\right)^2-1}\hspace{1mm}\right) + \frac{1+\xi\alpha}{\xi-\alpha}\cdot\frac{j_e}{j_c}\right] \\
-&= \frac{\xi-\alpha}{1+\alpha^2} \left[\frac{1}{\alpha}\left(\frac{j_e}{j_c}-\sqrt{\left(\frac{j_e}{j_c}\right)^2-1}\hspace{1mm}\right) + \frac{1+\xi\alpha}{\xi-\alpha}\cdot\frac{j_e}{j_c}\right] b_{JC}.
+\nonumber \langle\dot{X}\rangle &= \frac{\lambda}{T}\left[\frac{1}{\alpha}\left(-\frac{j_e}{j_c}+\sqrt{\left(\frac{j_e}{j_c}\right)^2-1}\hspace{1mm}\right) - \frac{1+\xi\alpha}{\xi-\alpha}\cdot\frac{j_e}{j_c}\right] \\
+&= \frac{\xi-\alpha}{1+\alpha^2} \left[\frac{1}{\alpha}\left(-\frac{j_e}{j_c}+\sqrt{\left(\frac{j_e}{j_c}\right)^2-1}\hspace{1mm}\right) - \frac{1+\xi\alpha}{\xi-\alpha}\cdot\frac{j_e}{j_c}\right] b_{JC}.
 \end{align}
 \begin{figure}[h!]
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[width=1.0\linewidth]{Figures/walkerBreakdown}
+  \includegraphics[width=1.0\linewidth]{Figures/walkerBreakdownv2}
   \caption{}
   \label{fig:walkerBreakdown}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[width=1.0\linewidth]{Figures/criticalCurrentXdot}
+  \includegraphics[width=1.0\linewidth]{Figures/criticalCurrentXdotv2}
   \caption{}
   \label{fig:criticalCurrent}
 \end{subfigure}
-\caption{The translational speed of the domain wall with a high damping parameter $\xi$ of the itinerant electrons (a) and with a small damping of the itinerant electrons (b) as a function of applied current.}
+\caption{The translational speed of the domain wall with a high damping parameter $\xi$ of the itinerant electrons (a) and with a small damping of the itinerant electrons (b) as a function of applied current. The absolute value of $\langle\dot{X}\rangle$ is shown in the plot, the true value is negative.}
 \label{fig:Xdot_afo_current}
 \end{figure}
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{Figures/criticalCurrentPhidot.pdf} 
-\caption{The rotational speed of the domain wall as a function of applied current.}
+\includegraphics[width=0.8\textwidth]{Figures/criticalCurrentPhidotv2.pdf} 
+\caption{The rotational speed of the domain wall as a function of applied current. The absolute value of $\langle\dot{\phi}\rangle$ is shown in the plot, the true value is negative.}
 \label{fig:phidot_afo_current} 
 \end{center}
 \end{figure}
@@ -1113,7 +1114,7 @@ In the case that $\dot{\phi}=0$ we substitute $\sin2\phi$ from the second equati
 \begin{align}
 \dot{X}(H\leq H_c) = \frac{\lambda}{T}\left(\frac{1}{\alpha}+\alpha\right) \frac{H}{H_c}.
 \end{align}
-As the equation for $\dot{\phi}$ is on the exact same form as \eqref{eq:xdot_phidot_v2} with $j_e/j_c \rightarrow H/H_c$, we can use the result that $\langle\sin2\phi\rangle = (H/H_c)- \sqrt{(H/H_c)^2-1}$ when $\dot{\phi} \neq 0$. The translational speed of the domain wall then becomes
+As the equation for $\dot{\phi}$ is on the exact same form as \eqref{eq:xdot_phidot_v2} with $j_e/j_c \rightarrow -H/H_c$, we can use the result that $\langle\sin2\phi\rangle = (H/H_c)- \sqrt{(H/H_c)^2-1}$ when $\dot{\phi} \neq 0$, as the solution of $\phi(t)$ in \eqref{eq:phiOfT} gets a different sign and $\sin 2\phi$ is an odd function. The translational speed of the domain wall then becomes
 \begin{align}
 \langle\dot{X}\rangle (H\geq H_c) = \frac{\lambda}{T} \left[\left(\frac{1}{\alpha}+\alpha\right) \frac{H}{H_c} - \frac{1}{\alpha}\sqrt{\left(\frac{H}{H_c}\right)^2-1} \right].
 \end{align}
@@ -1124,7 +1125,7 @@ As the equation for $\dot{\phi}$ is on the exact same form as \eqref{eq:xdot_phi
 \label{fig:criticalField} 
 \end{center}
 \end{figure}
-This result is shown in Figure \ref{fig:criticalField}. We see that we also get a Walker breakdown in the case of an applied magnetic field. The rotational speed of the domain wall is entirely equivalent with that of the case with an applied current, as shown in Figure \ref{fig:phidot_afo_current} (with $j_e/j_c \rightarrow H/H_c$). Below the critical field strength the translational speed is proportional to $\alpha^{-1}$, while the critical field strength is proportional to $\alpha$. This means it is possible to achieve high speeds with a relatively weak applied field if the damping parameter $\alpha$ is small. When the damping is small, the magnetization is initially tilted out of the plane, making the component perpendicular to the external field larger. This in turn increases the precession rate of the magnetization. As the damping is proportional to $\alpha$ and $|\frac{\textrm{d} \vec{M}}{\textrm{d} t}|$ the precession rate is allowed to grow significantly before the damping becomes large enough to stop it from increasing further. There is always a decrease in the translational velocity right after the Walker breakdown at $H=H_c$ as the Gilbert damping torque does not have a counterpart like in the motion due to a current, and there is a loss to the rotational motion once there is no longer a stable value for $\phi$. As $H\gg H_c$ the average translational speed becomes proportional to $\alpha$. For small $\alpha$ it is therefore best to apply a field $H$ equal to the critical field strength $H_c$ to obtain the highest translational speed of the domain wall.
+This result is shown in Figure \ref{fig:criticalField}. We see that we also get a Walker breakdown in the case of an applied magnetic field. The rotational speed of the domain wall is entirely equivalent with that of the case with an applied current, as shown in Figure \ref{fig:phidot_afo_current} (with $j_e/j_c \rightarrow -H/H_c$). Below the critical field strength the translational speed is proportional to $\alpha^{-1}$, while the critical field strength is proportional to $\alpha$. This means it is possible to achieve high speeds with a relatively weak applied field if the damping parameter $\alpha$ is small. When the damping is small, the magnetization is initially tilted out of the plane, making the component perpendicular to the external field larger. This in turn increases the precession rate of the magnetization. As the damping is proportional to $\alpha$ and $|\frac{\textrm{d} \vec{M}}{\textrm{d} t}|$ the precession rate is allowed to grow significantly before the damping becomes large enough to stop it from increasing further. There is always a decrease in the translational velocity right after the Walker breakdown at $H=H_c$ as the Gilbert damping torque does not have a counterpart like in the motion due to a current, and there is a loss to the rotational motion once there is no longer a stable value for $\phi$. As $H\gg H_c$ the average translational speed becomes proportional to $\alpha$. For small $\alpha$ it is therefore best to apply a field $H$ equal to the critical field strength $H_c$ to obtain the highest translational speed of the domain wall.
 
 One will notice that in dissipationless materials ($\alpha = 0$), the domain wall velocity diverges to $\infty$. This is an unphysical solution, and one must therefore conclude that the assumptions made to get this solution do not hold in this case. The main assumption made was that the domain wall motion could be described by the time dependent coordinates $X$ and $\phi$. It turns out, however, that in a dissipationless material another type of motion becomes available at weak external fields. This motion is known as the breathing mode of the domain wall. The name describes the oscillation of the domain wall width $\lambda$ during the motion of the domain wall, as it expands and shrinks periodically. This type of domain wall propagation was described by Wang et al. \cite{Wang2012}. Their physical picture of the propagation is that the external field causes the domain wall magnetization to precess around the field direction, generating an internal field that is non-uniform in the material. This causes the "breathing" of the domain wall, which in turn emits spin waves from the domain wall center. The emission of these spin waves is what drives the propagation of the domain wall. The spin waves also occur in materials with $\alpha > 0$ and will contribute to the domain wall propagation, but as the dissipation of these become significant for increasing $\alpha$ the contribution to the domain wall propagation decreases. The observant reader will also notice that there is a possible singularity in the current driven domain wall case like in the field driven case, as the final domain wall speed is proportional to $\xi/\alpha$ below the critical current as seen in \eqref{eq:xdot_undercrit}. It is reasonable to assume, however, that if the local magnetization is dissipationless, the magnetization of the conduction electrons will also be dissipationless. The ratio $\xi/\alpha$ can therefore be a finite value, and needs not necessarily diverge.
 
